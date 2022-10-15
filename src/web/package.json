@@ -1,7 +1,7 @@
 {
   "name": "web",
   "private": true,
-  "version": "0.1.1",
+  "version": "1.0.1",
   "main": "src/index.tsx",
   "types": "src/index.tsx",
   "license": "MIT",

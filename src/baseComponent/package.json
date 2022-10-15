@@ -1,6 +1,6 @@
 {
   "name": "@sina-base/component",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,7 +21,7 @@
     "clean": "rimraf ./dist && rimraf  tsconfig.tsbuildinfo"
   },
   "dependencies": {
-    "@sina-base/asset": "^0.1.5",
+    "@sina-base/asset": "^1.0.0",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {

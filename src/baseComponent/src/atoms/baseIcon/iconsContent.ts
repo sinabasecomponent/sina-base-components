@@ -1,0 +1,2 @@
+// Auto generate
+  export const iconsContent = {"Menu-Icon-_-Discovery":"e900","Menu-Icon-_-Faults":"e901","Menu-Icon-_-Inventory":"e902","Menu-Icon-_-Performance":"e903","Menu-Icon-_-Services":"e904","Menu-Icon-_-Sina-Logo":"e905","Menu-Icon-_-Topology":"e93e","Menu-Icon-_-User-Management":"e93f"}

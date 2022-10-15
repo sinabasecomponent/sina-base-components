@@ -1,0 +1,37 @@
+{
+  "name": "@sina-base/component",
+  "version": "0.1.5",
+  "private": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "src",
+    "dist",
+    "!**/__tests__",
+    "!tsconfig.json"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "compile": "tsc -b",
+    "watch": "tsc -b -w",
+    "clean": "rimraf ./dist && rimraf  tsconfig.tsbuildinfo"
+  },
+  "dependencies": {
+    "@sina-base/asset": "^0.1.5",
+    "classnames": "^2.3.1"
+  },
+  "peerDependencies": {
+    "@tanstack/react-virtual": "^3.0.0-beta.18"
+  },
+  "devDependencies": {
+    "reactjs-view-tests": "^2.4.0"
+  },
+  "description": "## PlusMenu",
+  "author": "",
+  "license": "ISC",
+  "gitHead": "f1417b83ece1c01f41618a16c01fdc3d2481be7b"
+}

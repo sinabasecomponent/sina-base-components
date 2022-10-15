@@ -1,0 +1,12 @@
+17 error Error: Command failed with exit code 1: git remote update
+17 error ssh: Could not resolve hostname gitlab.sinacomsys.local: Name or service not known
+17 error fatal: Could not read from remote repository.
+17 error
+17 error Please make sure you have the correct access rights
+17 error and the repository exists.
+17 error     at makeError (D:\project\sinaBase\node_modules\execa\lib\error.js:60:11)
+17 error     at Function.module.exports.sync (D:\project\sinaBase\node_modules\execa\index.js:194:17)
+17 error     at Object.execSync (D:\project\sinaBase\node_modules\@lerna\child-process\index.js:39:16)
+17 error     at updateRemote (D:\project\sinaBase\node_modules\@lerna\version\lib\is-behind-upstream.js:34:16)
+17 error     at isBehindUpstream (D:\project\sinaBase\node_modules\@lerna\version\lib\is-behind-upstream.js:16:3)
+17 error     at VersionCommand.initialize (D:\project\sinaBase\node_modules\@lerna\version\index.js:153:9)

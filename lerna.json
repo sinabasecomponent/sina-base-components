@@ -1,0 +1,20 @@
+{
+  "packages": [
+    "src/baseComponent",
+    "src/baseAsset",
+    "src/web",
+    "src/stories",
+    "src/baseComponentTest"
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "publish": {},
+    "version": {
+      "message": "chore(plus-base): publish",
+      "conventionalCommits": true,
+      "yes": true
+    }
+  },
+  "version": "1.0.0"
+}

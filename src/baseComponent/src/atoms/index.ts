@@ -1,1 +1,2 @@
-export * from "./baseIcon"
+export * from "./baseIcon";
+export * from "./text";

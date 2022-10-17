@@ -24,13 +24,10 @@
     "@sina-base/asset": "^1.0.1",
     "classnames": "^2.3.1"
   },
-  "peerDependencies": {
-    "@tanstack/react-virtual": "^3.0.0-beta.18"
-  },
   "devDependencies": {
     "reactjs-view-tests": "^2.4.0"
   },
-  "description": "## PlusMenu",
+  "description": "sina base component",
   "author": "",
   "license": "ISC",
   "gitHead": "f1417b83ece1c01f41618a16c01fdc3d2481be7b"

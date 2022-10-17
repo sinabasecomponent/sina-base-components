@@ -16,7 +16,6 @@ module.exports = {
   },
   webpackFinal: async (config) => {
     config = configOverrides.webpack(config, "");
-
     return config;
   },
 };

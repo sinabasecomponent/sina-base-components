@@ -28,7 +28,8 @@
     "publish-npm": "npm publish --access public",
     "lerna-watch": "lerna run watch --stream",
     "lerna-build": "lerna run compile --stream",
-    "lerna-clean": "lerna run clean --parallel"
+    "lerna-clean": "lerna run clean --parallel",
+    "lerna-bootstrap": "lerna bootstrap --use-workspaces"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^14.1.0",

@@ -2,7 +2,6 @@ import classNames from "classnames";
 import { forwardRef, memo, ReactNode } from "react";
 import { createUseStyles } from "react-jss";
 
-// type Style = 0 | false | undefined | CSSProperties | Style[];
 export type Variant =
   | "div"
   | "a"

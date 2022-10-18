@@ -4,8 +4,8 @@ import { BaseText, BaseTextProps, Variant } from "./baseText/baseText";
 import { fonts, fontSizes, fontWeights, useThemes } from "./style";
 
 interface TextProps extends BaseTextProps {
-  theme?: "medium" | "regular" | "light" | "bold";
-  lang?: "fa" | "en";
+  theme?: keyof typeof fonts;
+  // lang?: "fa" | "en";
   weight?: keyof typeof fontWeights | number;
   color?: string;
   /**
@@ -26,8 +26,7 @@ const Text = React.memo(
   React.forwardRef<any, TextProps>(
     (
       {
-        theme = "regular",
-        lang,
+        theme = "Regular",
         className,
         color,
         style,
@@ -39,11 +38,6 @@ const Text = React.memo(
       ref,
     ) => {
       const themes = useThemes();
-
-      // console.log(themes["bold"]);
-      // console.log(themes);
-      // console.log(theme);
-      // console.log(`${theme}${lang ? `-${lang}` : ""}`);
 
       const fontSize = typeof size === "string" ? fontSizes[size] : size;
       const fontWeight =
@@ -59,10 +53,7 @@ const Text = React.memo(
         <BaseText
           ref={ref}
           variant={variant || setVariant()}
-          className={classNames(
-            themes[`${theme}${lang ? `-${lang}` : ""}` as keyof typeof themes],
-            className,
-          )}
+          className={classNames(themes[theme], className)}
           style={{
             ...style,
             color,

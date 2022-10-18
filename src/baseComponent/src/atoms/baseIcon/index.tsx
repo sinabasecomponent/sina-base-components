@@ -1,17 +1,17 @@
 import icomoonJson from "@sina-base/asset/src/icomoon/selection.json";
 import React from "react";
+import { createIcomoonIconSet } from "./createIconSet";
 import "./icon";
 import { IconsNames } from "./iconNames";
-import { createIcomoonIconSet } from "./createIconSet"
 const IconMoon = createIcomoonIconSet(icomoonJson);
 
-interface BaseIconProps extends Omit<
-  React.HTMLAttributes<HTMLElement>,
-  "className" | "style" | "children" | "color"
-> {
+interface BaseIconProps
+  extends Omit<
+    React.HTMLAttributes<HTMLElement>,
+    "className" | "style" | "children" | "color"
+  > {
   name?: IconsNames;
   size?: "xsmall" | "small" | "medium" | "large" | number;
-
   color?: string | string[];
   testID?: string;
 }
@@ -45,8 +45,6 @@ const BaseIcon = ({
         fontSize = 18;
     }
   }
-
-
 
   return (
     <div {...rest}>

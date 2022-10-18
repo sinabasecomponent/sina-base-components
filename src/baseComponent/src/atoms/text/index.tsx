@@ -5,7 +5,6 @@ import { fonts, fontSizes, fontWeights, useThemes } from "./style";
 
 interface TextProps extends BaseTextProps {
   theme?: keyof typeof fonts;
-  // lang?: "fa" | "en";
   weight?: keyof typeof fontWeights | number;
   color?: string;
   /**

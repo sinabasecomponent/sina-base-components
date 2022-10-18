@@ -1,9 +1,5 @@
 17 error Error: Command failed with exit code 1: git remote update
-17 error ssh: Could not resolve hostname gitlab.sinacomsys.local: Name or service not known
-17 error fatal: Could not read from remote repository.
-17 error
-17 error Please make sure you have the correct access rights
-17 error and the repository exists.
+17 error fatal: unable to access 'https://github.com/sinabasecomponent/sina-base-components.git/': OpenSSL SSL_connect: Connection was reset in connection to github.com:443
 17 error     at makeError (D:\project\sinaBase\node_modules\execa\lib\error.js:60:11)
 17 error     at Function.module.exports.sync (D:\project\sinaBase\node_modules\execa\index.js:194:17)
 17 error     at Object.execSync (D:\project\sinaBase\node_modules\@lerna\child-process\index.js:39:16)

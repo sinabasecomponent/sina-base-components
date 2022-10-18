@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { forwardRef, memo, ReactNode } from "react";
-import classes from "./baseText.module.scss";
+import { createUseStyles } from "react-jss";
 
 // type Style = 0 | false | undefined | CSSProperties | Style[];
 export type Variant =
@@ -45,6 +45,7 @@ const BaseText = memo(
       },
       forwardedRef,
     ) => {
+      const classes = useStyles();
       return (
         <div
           ref={forwardedRef}
@@ -66,6 +67,35 @@ const BaseText = memo(
     },
   ),
 );
+
+const useStyles = createUseStyles({
+  text: {
+    border: "0 solid black",
+    boxSizing: "border-box",
+    color: "black",
+    display: "inline",
+    fontSize: 14,
+    margin: 0,
+    padding: 0,
+    whiteSpace: "pre-wrap",
+    wordWrap: "break-word",
+  },
+  // See #13
+  textMultiLine: {
+    display: "-webkit-box",
+    maxWidth: "100%",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    // whiteSpace: "pre",
+    WebkitBoxOrient: "vertical",
+  },
+  notSelectable: {
+    userSelect: "none",
+  },
+  selectable: {
+    userSelect: "text",
+  },
+});
 
 BaseText.displayName = "BaseText";
 

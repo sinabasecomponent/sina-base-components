@@ -1,10 +1,7 @@
 import classNames from "classnames";
 import * as React from "react";
 import { BaseText, BaseTextProps, Variant } from "./baseText/baseText";
-import { fonts, fontSizes, fontWeights } from "./baseText/fonts";
-import styles from "./text.module.scss";
-
-const themes = ["FiroGo", "FiraGOBoldItalic"];
+import { fonts, fontSizes, fontWeights, useThemes } from "./style";
 
 interface TextProps extends BaseTextProps {
   theme?: "medium" | "regular" | "light" | "bold";
@@ -41,6 +38,13 @@ const Text = React.memo(
       },
       ref,
     ) => {
+      const themes = useThemes();
+
+      // console.log(themes["bold"]);
+      // console.log(themes);
+      // console.log(theme);
+      // console.log(`${theme}${lang ? `-${lang}` : ""}`);
+
       const fontSize = typeof size === "string" ? fontSizes[size] : size;
       const fontWeight =
         typeof weight === "string" ? fontWeights[weight] : weight;
@@ -56,7 +60,7 @@ const Text = React.memo(
           ref={ref}
           variant={variant || setVariant()}
           className={classNames(
-            styles[`${theme}${lang ? `-${lang}` : ""}` as keyof typeof themes],
+            themes[`${theme}${lang ? `-${lang}` : ""}` as keyof typeof themes],
             className,
           )}
           style={{

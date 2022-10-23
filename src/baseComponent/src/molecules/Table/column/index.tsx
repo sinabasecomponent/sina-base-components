@@ -1,5 +1,7 @@
-import { ReactNode } from "react";
-import { Text } from "../../../atoms";
+import { ReactNode, useContext } from "react";
+import { BaseIcon, Text } from "../../../atoms";
+import { Colors } from "../../../colors";
+import { TableContext } from "../context";
 
 export interface ColumnProps<
   T extends Record<string, any>,
@@ -16,6 +18,7 @@ export interface ColumnProps<
   sorterIconSize?: number;
   width?: number;
   align?: "start" | "center" | "end";
+  renderFilter?: (data: { data: T[] }) => ReactNode;
   render?: (
     data:
       | {
@@ -51,6 +54,8 @@ const Column = <T extends Record<string, any>>({
   testID,
   align = "start",
 }: ColumnProps<T>) => {
+  const { onOrderChange, order, orderBy } = useContext(TableContext);
+
   // const commonClasses = useCommonStyle("muscles");
   // const { isSmallerThanMedium } = useObserveWindow();
   // const classes = useStyles();
@@ -59,8 +64,8 @@ const Column = <T extends Record<string, any>>({
   // const dispatch = SortStore.useDispatch();
   // const { headerStyles, headerHeight, headerWrapperStyles } =
   //   useContext(AditionalContext);
-  // const isAscending = orderBy === dataIndex && order === "ascending";
-  // const isDescending = orderBy === dataIndex && order === "descending";
+  const isAscending = orderBy === dataIndex && order === "ascending";
+  const isDescending = orderBy === dataIndex && order === "descending";
 
   // const onSort = () => {
   //   onPress?.();
@@ -68,6 +73,13 @@ const Column = <T extends Record<string, any>>({
   //     dispatch(changeOrder(dataIndex));
   //   }
   // };
+
+  const onSort = () => {
+    // onPress?.();
+    if (sorter) {
+      onOrderChange({ dataIndex });
+    }
+  };
 
   return (
     <td
@@ -77,11 +89,12 @@ const Column = <T extends Record<string, any>>({
       //   isSmallerThanMedium && classes.containerMedium,
       //   className,
       // )}
-      style={{ ...style, textAlign: "center" }}
+      style={{ ...style, height: "100%", width, padding: 0 }}
     >
       <div
         //   className={classNames(commonClasses.flexRow)}
         style={{
+          display: "flex",
           height: 45,
           lineHeight: `${45}px`,
           justifyContent:
@@ -90,13 +103,14 @@ const Column = <T extends Record<string, any>>({
               : align === "start"
               ? "flex-start"
               : "flex-end",
-          width,
+          // width,
         }}
-        //   onPress={onSort}
+        onClick={onSort}
       >
         {typeof children !== "object" ? (
           <Text
-            theme="Regular"
+            theme="Medium"
+            color={Colors.white}
             //   color={accent}
             //   style={{
             //     ...headerStyles,
@@ -107,26 +121,15 @@ const Column = <T extends Record<string, any>>({
         ) : (
           children
         )}
-        {/* {sorter && (
-            <View
-              testID={
-                testID ? `${testID}-${dataIndex.toString()}-sort` : undefined
-              }
-            >
-              <MaterialCommunityIcon
-                size={sorterIconSize || 14}
-                name="menu-up"
-                color={isAscending ? primaryLight : onBackgroundLight}
-                style={{ height: 6, marginTop: -4 }}
-              />
-              <MaterialCommunityIcon
-                size={sorterIconSize || 14}
-                name="menu-down"
-                color={isDescending ? primaryLight : onBackgroundLight}
-                style={{ height: 5 }}
-              />
-            </View>
-          )} */}
+        {sorter ? (
+          isDescending ? (
+            <BaseIcon name={"Table_Sort-Icon_A-to-Z"} />
+          ) : isAscending ? (
+            <BaseIcon name="Table_Sort-Icon_Z-to-A" />
+          ) : (
+            <BaseIcon name="Table_Sort-Icon_OFF" />
+          )
+        ) : null}
       </div>
     </td>
   );

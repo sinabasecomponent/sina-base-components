@@ -78,32 +78,46 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
   }, [orderBy, data, order]);
 
   return (
-    <div>
-      <table className={classes.table} role={"table"}>
-        <thead className={classes.tableHeader}>
-          <tr>
-            <td style={{ width: 42 }}>
-              <div
-                style={{
-                  height: 24,
-                  width: 32,
-                  borderRight: `1px solid ${Colors.purple_6}`,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <BaseIcon
-                  onClick={onToggleSearchBar}
-                  color={Colors.purple_6}
-                  name="Table_Search-Icon"
-                  size={16}
+    <>
+      <div>
+        <table className={classes.table} role={"table"}>
+          <colgroup>
+            <col style={{ width: 42 }} />
+            {columns.map(({ width, dataIndex }) => {
+              return (
+                <col
+                  key={dataIndex as string}
+                  style={{ ...(width && { width }) }}
                 />
-              </div>
-            </td>
-            {children}
-          </tr>
-          <tr
+              );
+            })}
+            <col style={{ width: 17 }} />
+          </colgroup>
+          <thead className={classes.tableHeader}>
+            <tr>
+              <th>
+                <div
+                  style={{
+                    height: 24,
+                    width: 32,
+                    borderRight: `1px solid ${Colors.purple_6}`,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <BaseIcon
+                    onClick={onToggleSearchBar}
+                    color={Colors.purple_6}
+                    name="Table_Search-Icon"
+                    size={16}
+                  />
+                </div>
+              </th>
+              {children}
+              <th style={{ width: 17 }} />
+            </tr>
+            {/* <tr
             style={{
               display: isSearchVisible ? "table-row" : "none",
             }}
@@ -128,26 +142,46 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
                 />
               </div>
             </td>
-            {columns.map(({ renderFilter }) => {
-              return <td>{renderFilter ? renderFilter({ data }) : null}</td>;
+            {columns.map(({ renderFilter }, index) => {
+              return (
+                <td key={index}>
+                  {renderFilter ? renderFilter({ data }) : null}
+                </td>
+              );
             })}
-            {/* {children} */}
-          </tr>
-        </thead>
-        <tbody>
-          {list.map((row, index) => {
-            return (
-              <RowContainer
-                rowData={row}
-                data={data}
-                index={index}
-                columns={columns}
-              />
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+          </tr> */}
+          </thead>
+        </table>
+      </div>
+      <div style={{ overflowY: "auto", height: 300 }}>
+        <table className={classes.table} role={"table"}>
+          <colgroup>
+            <col style={{ width: 42 }} />
+            {columns.map(({ width, dataIndex }) => {
+              return (
+                <col
+                  key={dataIndex as string}
+                  style={{ ...(width && { width }) }}
+                />
+              );
+            })}
+          </colgroup>
+          <tbody>
+            {list.map((row, index) => {
+              return (
+                <RowContainer
+                  key={index}
+                  rowData={row}
+                  data={data}
+                  index={index}
+                  columns={columns}
+                />
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 

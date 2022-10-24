@@ -18,10 +18,10 @@ const RowContainer = <T extends Object>({
   return (
     <Row>
       <td></td>
-      {columns.map(({ dataIndex, render, align }) => {
+      {columns.map(({ dataIndex, render, align }, index) => {
         const cell = rowData[dataIndex as keyof typeof rowData];
         return (
-          <Cell align={align}>
+          <Cell key={index} align={align}>
             <>
               {render
                 ? render({

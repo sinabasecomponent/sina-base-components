@@ -22,20 +22,21 @@ const Template: Story<any> = (args) => {
   return (
     <Table data={mockData}>
       <Table.Column
-        width={200}
+        width={100}
         sorter={(a, b) => a.name - b.name}
-        align="start"
         renderFilter={({ data }) => {
           return <input />;
         }}
         render={({ value }) => {
           return <button>{value}</button>;
         }}
+        align={"start"}
         dataIndex="name"
       >
         <Text color="blue">name</Text>
       </Table.Column>
       <Table.Column
+        width={200}
         sorter={(a, b) => {
           console.log({ a, b });
           return a.family - b.family;
@@ -49,6 +50,7 @@ const Template: Story<any> = (args) => {
         family
       </Table.Column>
       <Table.Column
+        width={200}
         sorter={(a, b) => a.age - b.age}
         render={({ value }) => {
           return <Text>{value}</Text>;
@@ -59,6 +61,7 @@ const Template: Story<any> = (args) => {
         age
       </Table.Column>
       <Table.Column
+        width={180}
         render={({ value }) => {
           return <Text>{value}</Text>;
         }}
@@ -69,6 +72,7 @@ const Template: Story<any> = (args) => {
       </Table.Column>
 
       <Table.Column
+        width={120}
         render={({ value }) => {
           return <Text>{value}</Text>;
         }}

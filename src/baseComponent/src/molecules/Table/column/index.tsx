@@ -82,14 +82,14 @@ const Column = <T extends Record<string, any>>({
   };
 
   return (
-    <td
+    <th
       // className={classNames(
       //   classes.headerCell,
       //   !isSmallerThanMedium && classes.containerBiggerThanMedium,
       //   isSmallerThanMedium && classes.containerMedium,
       //   className,
       // )}
-      style={{ ...style, height: "100%", width, padding: 0 }}
+      style={{ ...style, height: "100%", padding: 0 }}
     >
       <div
         //   className={classNames(commonClasses.flexRow)}
@@ -131,7 +131,7 @@ const Column = <T extends Record<string, any>>({
           )
         ) : null}
       </div>
-    </td>
+    </th>
   );
 };
 

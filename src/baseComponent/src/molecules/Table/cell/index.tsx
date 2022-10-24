@@ -12,7 +12,13 @@ export interface CellProps
   onPress?: () => void;
 }
 
-const Cell = ({ children, onPress, align = "start", ...rest }: CellProps) => {
+const Cell = ({
+  width,
+  children,
+  onPress,
+  align = "start",
+  ...rest
+}: CellProps) => {
   //   const classes = useStyles();
   //   const { onBackground } = useColors();
   //   const { isSmallerThanMedium } = useObserveWindow();

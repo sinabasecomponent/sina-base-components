@@ -1,4 +1,11 @@
-import { Fragment, ReactNode, useContext, useMemo, useState } from "react";
+import {
+  Fragment,
+  ReactNode,
+  useContext,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { BaseIcon } from "../../atoms";
 import { Colors } from "../../colors";
 import { Column, ColumnProps } from "./column";
@@ -6,11 +13,16 @@ import { Order, OrderBy, TableContext } from "./context";
 import { RowContainer } from "./rowContainer";
 import { useStyles } from "./style";
 
+const SEARCH_ICON = 42;
+const SCROLL_BAR = 17;
+
 export interface TableProps<T> {
   data: T[];
   children: ReactNode;
 }
 const Table = <T extends Object>({ children, data }: TableProps<T>) => {
+  const numOfColWithoutWidth = useRef(2);
+  const [totalWidth, setTotalWidth] = useState(0);
   const [isSearchVisible, setShowSearchBar] = useState(false);
   const { order, orderBy } = useContext(TableContext);
 
@@ -77,21 +89,50 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
     return result;
   }, [orderBy, data, order]);
 
+  const columnsWidth = columns.reduce((prev, { width }) => {
+    return prev + (width || 0);
+  }, 0);
+
+  const remainWidth = totalWidth - (columnsWidth + SCROLL_BAR + SEARCH_ICON);
+  // columns.forEach(({ width }) => {
+  //   if (!width) {
+  //     numOfColWithoutWidth.current += 1;
+  //   }
+  // });
+
+  // useEffect(()=>{
+
+  // },[])
+
+  let colWidth = 0;
+
+  if (numOfColWithoutWidth.current) {
+    colWidth = remainWidth / numOfColWithoutWidth.current;
+  }
+
+  console.log(numOfColWithoutWidth.current);
+
   return (
     <>
       <div>
-        <table className={classes.table} role={"table"}>
+        <table
+          ref={(ref) => {
+            setTotalWidth(ref?.offsetWidth || 0);
+          }}
+          className={classes.table}
+          role={"table"}
+        >
           <colgroup>
-            <col style={{ width: 42 }} />
+            <col style={{ width: SEARCH_ICON }} />
             {columns.map(({ width, dataIndex }) => {
               return (
                 <col
                   key={dataIndex as string}
-                  style={{ ...(width && { width }) }}
+                  style={{ width: width ? width : colWidth }}
                 />
               );
             })}
-            <col style={{ width: 17 }} />
+            <col style={{ width: SCROLL_BAR }} />
           </colgroup>
           <thead className={classes.tableHeader}>
             <tr>
@@ -123,7 +164,7 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
             }}
             className={classes.searchBar}
           >
-            <td style={{ width: 42 }}>
+            <td style={{ width: SEARCH_ICON }}>
               <div
                 style={{
                   height: 24,
@@ -156,12 +197,12 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
       <div style={{ overflowY: "auto", height: 300 }}>
         <table className={classes.table} role={"table"}>
           <colgroup>
-            <col style={{ width: 42 }} />
+            <col style={{ width: SEARCH_ICON }} />
             {columns.map(({ width, dataIndex }) => {
               return (
                 <col
                   key={dataIndex as string}
-                  style={{ ...(width && { width }) }}
+                  style={{ width: width ? width : colWidth }}
                 />
               );
             })}

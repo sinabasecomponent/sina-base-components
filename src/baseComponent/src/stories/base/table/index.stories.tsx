@@ -61,7 +61,7 @@ const Template: Story<any> = (args) => {
         age
       </Table.Column>
       <Table.Column
-        width={180}
+        // width={180}
         render={({ value }) => {
           return <Text>{value}</Text>;
         }}

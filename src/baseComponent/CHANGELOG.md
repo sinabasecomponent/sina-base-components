@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/sinabasecomponent/sina-base-components/compare/v1.0.2...v1.1.0) (2022-10-25)
+
+
+### Features
+
+* WIP column width ([bf5af3b](https://github.com/sinabasecomponent/sina-base-components/commit/bf5af3b2cb2adfc962bc292e88b3d7417b7ec7d2))
+* wip columns width ([110df51](https://github.com/sinabasecomponent/sina-base-components/commit/110df5114169ff3e22d2f8ee2f5e38aa6e2ac052))
+
+
+
+
+
+
 ## [1.0.2](https://github.com/sinabasecomponent/sina-base-components/compare/v1.0.1...v1.0.2) (2022-10-18)
 
 **Note:** Version bump only for package @sina-base/component

@@ -2,10 +2,11 @@ import {
   Fragment,
   ReactNode,
   useContext,
+  useEffect,
   useMemo,
-  useRef,
   useState,
 } from "react";
+import { ScrollView, View } from "reactjs-view";
 import { BaseIcon } from "../../atoms";
 import { Colors } from "../../colors";
 import { Column, ColumnProps } from "./column";
@@ -14,19 +15,20 @@ import { RowContainer } from "./rowContainer";
 import { useStyles } from "./style";
 
 const SEARCH_ICON = 42;
-const SCROLL_BAR = 17;
+const SCROLL_BAR = 10;
+export const DEFAULT_ALIGN = "center";
 
 export interface TableProps<T> {
   data: T[];
   children: ReactNode;
 }
 const Table = <T extends Object>({ children, data }: TableProps<T>) => {
-  const numOfColWithoutWidth = useRef(2);
   const [totalWidth, setTotalWidth] = useState(0);
   const [isSearchVisible, setShowSearchBar] = useState(false);
   const { order, orderBy } = useContext(TableContext);
+  const [colWidth, setColWidth] = useState(0);
 
-  const columns = useMemo(() => {
+  const columns: ColumnProps<T>[] = useMemo(() => {
     function getChildren(_children: any): ColumnProps<T>[] {
       if (!_children) {
         return [];
@@ -79,7 +81,6 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
       const sorter = columns.find(({ dataIndex }) => {
         return dataIndex === orderBy;
       })?.sorter;
-
       result = [...data].sort(
         (a, b) =>
           (order === "ascending" ? sorter?.(a, b) : sorter?.(b, a)) || 0,
@@ -89,39 +90,43 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
     return result;
   }, [orderBy, data, order]);
 
-  const columnsWidth = columns.reduce((prev, { width }) => {
-    return prev + (width || 0);
-  }, 0);
+  // const columnsWidth = columns.reduce((prev, { width }) => {
+  //   return prev + (width || 0);
+  // }, 0);
 
-  const remainWidth = totalWidth - (columnsWidth + SCROLL_BAR + SEARCH_ICON);
-  // columns.forEach(({ width }) => {
-  //   if (!width) {
-  //     numOfColWithoutWidth.current += 1;
-  //   }
-  // });
+  // const remainWidth = totalWidth - (columnsWidth + SCROLL_BAR + SEARCH_ICON);
+  // console.log({ remainWidth });
 
-  // useEffect(()=>{
+  useEffect(() => {
+    let x = 0;
+    const columnsWidth = columns.reduce((prev, { width }) => {
+      return prev + (width || 0);
+    }, 0);
 
-  // },[])
+    const remainWidth = totalWidth - (columnsWidth + SCROLL_BAR + SEARCH_ICON);
 
-  let colWidth = 0;
-
-  if (numOfColWithoutWidth.current) {
-    colWidth = remainWidth / numOfColWithoutWidth.current;
-  }
-
-  console.log(numOfColWithoutWidth.current);
+    columns.forEach(({ width }) => {
+      if (!width) {
+        x += 1;
+      }
+    });
+    if (x) {
+      setColWidth(remainWidth / x);
+    }
+  }, [totalWidth]);
 
   return (
-    <>
-      <div>
-        <table
-          ref={(ref) => {
-            setTotalWidth(ref?.offsetWidth || 0);
-          }}
-          className={classes.table}
-          role={"table"}
-        >
+    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+      <View
+        onLayout={({
+          nativeEvent: {
+            layout: { width },
+          },
+        }) => {
+          setTotalWidth(width || 0);
+        }}
+      >
+        <table className={classes.table} role={"table"}>
           <colgroup>
             <col style={{ width: SEARCH_ICON }} />
             {columns.map(({ width, dataIndex }) => {
@@ -156,45 +161,49 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
                 </div>
               </th>
               {children}
-              <th style={{ width: 17 }} />
+              <th />
             </tr>
-            {/* <tr
-            style={{
-              display: isSearchVisible ? "table-row" : "none",
-            }}
-            className={classes.searchBar}
-          >
-            <td style={{ width: SEARCH_ICON }}>
-              <div
-                style={{
-                  height: 24,
-                  width: 32,
-                  borderRight: `1px solid ${Colors.purple_6}`,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <BaseIcon
-                  onClick={onToggleSearchBar}
-                  color={Colors.purple_6}
-                  name="Table_Cross-Icon-for-erasing-all-of-filters"
-                  size={14}
-                />
-              </div>
-            </td>
-            {columns.map(({ renderFilter }, index) => {
-              return (
-                <td key={index}>
-                  {renderFilter ? renderFilter({ data }) : null}
-                </td>
-              );
-            })}
-          </tr> */}
+            <tr
+              style={{
+                display: isSearchVisible ? "table-row" : "none",
+              }}
+              className={classes.searchBar}
+            >
+              <th style={{ width: SEARCH_ICON }}>
+                <div
+                  style={{
+                    height: 24,
+                    width: 32,
+                    borderRight: `1px solid ${Colors.purple_6}`,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <BaseIcon
+                    onClick={onToggleSearchBar}
+                    color={Colors.purple_6}
+                    name="Table_Cross-Icon-for-erasing-all-of-filters"
+                    size={14}
+                  />
+                </div>
+              </th>
+              {columns.map(({ renderFilter, align }, index) => {
+                return (
+                  <th
+                    style={{ textAlign: align ? align : DEFAULT_ALIGN }}
+                    key={index}
+                  >
+                    {renderFilter ? renderFilter({ data }) : null}
+                  </th>
+                );
+              })}
+              <th />
+            </tr>
           </thead>
         </table>
-      </div>
-      <div style={{ overflowY: "auto", height: 300 }}>
+      </View>
+      <ScrollView style={{ flex: 1 }}>
         <table className={classes.table} role={"table"}>
           <colgroup>
             <col style={{ width: SEARCH_ICON }} />
@@ -221,8 +230,8 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
             })}
           </tbody>
         </table>
-      </div>
-    </>
+      </ScrollView>
+    </div>
   );
 };
 

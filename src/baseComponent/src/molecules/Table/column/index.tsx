@@ -1,4 +1,5 @@
 import { ReactNode, useContext } from "react";
+import { DEFAULT_ALIGN } from "..";
 import { BaseIcon, Text } from "../../../atoms";
 import { Colors } from "../../../colors";
 import { TableContext } from "../context";
@@ -52,7 +53,7 @@ const Column = <T extends Record<string, any>>({
   contentStyle,
   sorterIconSize,
   testID,
-  align = "start",
+  align = DEFAULT_ALIGN,
 }: ColumnProps<T>) => {
   const { onOrderChange, order, orderBy } = useContext(TableContext);
 

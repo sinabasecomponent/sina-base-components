@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "@sina-base/asset": "^1.0.2",
-    "classnames": "^2.3.1"
+    "classnames": "^2.3.1",
+    "reactjs-view": "^2.4.0"
   },
   "devDependencies": {
     "reactjs-view-tests": "^2.4.0"

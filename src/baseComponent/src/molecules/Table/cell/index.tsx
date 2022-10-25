@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
 import classNames from "classnames";
 import { ReactNode } from "react";
+import { DEFAULT_ALIGN } from "..";
 // import { useObserveWindow } from "reactjs-view-core";
 // import { useColors } from "shared-theme/src";
 import { Text } from "../../../atoms/text";
@@ -16,7 +17,7 @@ const Cell = ({
   width,
   children,
   onPress,
-  align = "start",
+  align = DEFAULT_ALIGN,
   ...rest
 }: CellProps) => {
   //   const classes = useStyles();

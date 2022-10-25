@@ -5130,6 +5130,18 @@
     "@typescript-eslint/types" "5.40.0"
     eslint-visitor-keys "^3.3.0"
 
+"@use-gesture/core@10.2.20":
+  version "10.2.20"
+  resolved "https://registry.yarnpkg.com/@use-gesture/core/-/core-10.2.20.tgz#b29e0aadd5e90336e599d849e50eef0e06aa28bf"
+  integrity sha512-4lFhHc8so4yIHkBEs641DnEsBxPyhJ5GEjB4PURFDH4p/FcZriH6w99knZgI63zN/MBFfylMyb8+PDuj6RIXKQ==
+
+"@use-gesture/react@^10.1.6":
+  version "10.2.20"
+  resolved "https://registry.yarnpkg.com/@use-gesture/react/-/react-10.2.20.tgz#2d556a62c22200507b9d478ce7159057004acb8d"
+  integrity sha512-KnJq9ZSqprWA6uNhWTUHZqTCh+rfa0j8ehTzqeBhktUPrmTj7yVOBvEQ/vSFU/7d72cGgWSsJ0f5T6GQCHXnvg==
+  dependencies:
+    "@use-gesture/core" "10.2.20"
+
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.11.1.tgz#2bfd767eae1a6996f432ff7e8d7fc75679c0b6a7"
@@ -15724,6 +15736,19 @@ react@^18.1.0:
   dependencies:
     loose-envify "^1.1.0"
 
+reactjs-view-asset@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/reactjs-view-asset/-/reactjs-view-asset-2.0.0.tgz#4c582a22d7a3e28ea7e021c9fdffe2ae39c60a9a"
+  integrity sha512-qcjLnLdGbFmAlOY3f3MGbBA3ENpnYHz+/F2fjnOdm3tYAsSOEhPr6fv/YJ4jFTv2d7EWuO9RNgOTStwUiPKjcA==
+
+reactjs-view-core@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/reactjs-view-core/-/reactjs-view-core-2.4.0.tgz#20da3dd0dd62f68b52e2c7199cb06e855688a5e0"
+  integrity sha512-r18JCr/mBZVfFc2piMQ6jVXQ5NuHBVUXAmrmJGBfp/+2oM0d9B8mySZqWj1tK23w1k9XET2CAyzG6L44XQOTgA==
+  dependencies:
+    "@use-gesture/react" "^10.1.6"
+    reactjs-view-share "^2.4.0"
+
 reactjs-view-share@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/reactjs-view-share/-/reactjs-view-share-2.4.0.tgz#f3d2e5c4688e67b7a38b3e3ae302b9176ad86a00"
@@ -15736,6 +15761,16 @@ reactjs-view-tests@^2.4.0:
   dependencies:
     "@testing-library/jest-dom" "^5.16.4"
     "@testing-library/react" "^13.3.0"
+    reactjs-view-share "^2.4.0"
+
+reactjs-view@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/reactjs-view/-/reactjs-view-2.4.0.tgz#7cba7030d4645f94f6660eef4ea051946a6acdad"
+  integrity sha512-CgjWsaditOrT8d3kUfA/NGdpPJ9n/mUdFxGiCloBUb8LnVYf7bLrKeWwV+zBB9FlCvFvxhTNFih9V6TBJ5GQFg==
+  dependencies:
+    classnames "^2.3.1"
+    reactjs-view-asset "^2.0.0"
+    reactjs-view-core "^2.4.0"
     reactjs-view-share "^2.4.0"
 
 read-cache@^1.0.0:

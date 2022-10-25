@@ -88,7 +88,7 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
     }
 
     return result;
-  }, [orderBy, data, order]);
+  }, [orderBy, data, order, columns]);
 
   // const columnsWidth = columns.reduce((prev, { width }) => {
   //   return prev + (width || 0);
@@ -113,6 +113,7 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
     if (x) {
       setColWidth(remainWidth / x);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalWidth]);
 
   return (

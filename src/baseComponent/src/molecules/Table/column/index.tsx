@@ -45,14 +45,14 @@ export interface ColumnProps<
 const Column = <T extends Record<string, any>>({
   children,
   dataIndex,
-  width,
+  // width,
   sorter,
-  onPress,
-  className,
+  // onPress,
+  // className,
   style,
-  contentStyle,
-  sorterIconSize,
-  testID,
+  // contentStyle,
+  // sorterIconSize,
+  // testID,
   align = DEFAULT_ALIGN,
 }: ColumnProps<T>) => {
   const { onOrderChange, order, orderBy } = useContext(TableContext);

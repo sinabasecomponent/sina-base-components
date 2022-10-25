@@ -22,11 +22,11 @@ const mockData = [...new Array(4)].map((_, index) => {
 const Template: Story<any> = (args) => {
   return (
     <StoryContainer>
-      <Table data={mockData}>
+      <Table {...args}>
         <Table.Column
           width={300}
           sorter={(a, b) => a.name - b.name}
-          renderFilter={({ data }) => {
+          renderFilter={() => {
             return <input />;
           }}
           render={({ value }) => {

@@ -1,5 +1,10 @@
 {
-  "packages": ["src/baseComponent", "src/baseAsset", "src/web", "src/stories"],
+  "packages": [
+    "src/baseComponent",
+    "src/baseAsset",
+    "src/web",
+    "src/stories"
+  ],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
@@ -10,5 +15,5 @@
       "yes": true
     }
   },
-  "version": "1.1.1"
+  "version": "1.1.2"
 }

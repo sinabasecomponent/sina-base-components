@@ -3,7 +3,7 @@
 // //@ts-ignore
 // import icomoonTTF from "@plus-base/asset/src/icomoon/fonts/icomoon.ttf";
 // //@ts-ignore
-// import icomoonWOFF from "@plus-base/asset/src/icomoon/fonts/icomoon.woff";
+// import icomoonWO from "@plus-base/asset/src/icomoon/fonts/icomoon.woff";
 
 // import { jss } from "react-jss";
 // import { generateIndex } from "reactjs-view-core";
@@ -59,4 +59,4 @@
 //   .attach();
 
 // export default iconsStyleSheet.classes;
-export {}
+export {};

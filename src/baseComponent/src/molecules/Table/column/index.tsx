@@ -50,7 +50,7 @@ const Column = <T extends Record<string, any>>({
   // onPress,
   // className,
   style,
-  // contentStyle,
+  // contentStyle
   // sorterIconSize,
   // testID,
   align = DEFAULT_ALIGN,

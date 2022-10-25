@@ -1,8 +1,140 @@
-17 error Error: Command failed with exit code 1: git remote update
-17 error fatal: unable to access 'https://github.com/sinabasecomponent/sina-base-components.git/': OpenSSL SSL_connect: Connection was reset in connection to github.com:443
-17 error     at makeError (D:\project\sinaBase\node_modules\execa\lib\error.js:60:11)
-17 error     at Function.module.exports.sync (D:\project\sinaBase\node_modules\execa\index.js:194:17)
-17 error     at Object.execSync (D:\project\sinaBase\node_modules\@lerna\child-process\index.js:39:16)
-17 error     at updateRemote (D:\project\sinaBase\node_modules\@lerna\version\lib\is-behind-upstream.js:34:16)
-17 error     at isBehindUpstream (D:\project\sinaBase\node_modules\@lerna\version\lib\is-behind-upstream.js:16:3)
-17 error     at VersionCommand.initialize (D:\project\sinaBase\node_modules\@lerna\version\index.js:153:9)
+0 silly argv {
+0 silly argv   _: [ 'publish' ],
+0 silly argv   composed: 'publish',
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': 'node_modules\\lerna\\cli.js'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath E:\sina-comsys-projects\sina-base-components
+3 verbose session 9090104edd490cf4
+4 verbose user-agent lerna/4.0.0/node@v16.17.0+x64 (win32)
+5 warn Yarn's registry proxy is broken, replacing with public npm registry
+6 warn If you don't have an npm token, you should exit and run `npm login`
+7 silly argv { _: [ 'publish' ], composed: 'publish', lernaVersion: '4.0.0' }
+8 verbose rootPath E:\sina-comsys-projects\sina-base-components
+9 info current version 1.1.4
+10 silly isAnythingCommitted
+11 verbose isAnythingCommitted 1
+12 silly getCurrentBranch
+13 verbose currentBranch master
+14 silly remoteBranchExists
+15 silly isBehindUpstream
+16 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 0
+17 silly hasTags
+18 verbose hasTags true
+19 silly git-describe.sync "v1.1.4-1-g6bb3126" => {"lastTagName":"v1.1.4","lastVersion":"v1.1.4","refCount":"1","sha":"6bb3126","isDirty":false}
+20 info Looking for changed packages since v1.1.4
+21 silly checking diff src/baseAsset
+22 silly no diff found in @sina-base/asset
+23 silly checking diff src/baseComponent
+24 silly found diff in src/baseComponent/src/index.ts
+25 verbose filtered diff [ 'src/baseComponent/src/index.ts' ]
+26 silly checking diff src/web
+27 silly no diff found in web
+28 verbose updated @sina-base/component
+29 verbose git-describe undefined => "v1.1.4-1-g6bb3126"
+30 silly git-describe parsed => {"lastTagName":"v1.1.4","lastVersion":"v1.1.4","refCount":"1","sha":"6bb3126","isDirty":false}
+31 silly fixed for @sina-base/component at E:\sina-comsys-projects\sina-base-components\src\baseComponent
+32 verbose getChangelogConfig using preset "conventional-changelog-angular"
+33 silly npa Result {
+33 silly npa   type: 'tag',
+33 silly npa   registry: true,
+33 silly npa   where: undefined,
+33 silly npa   raw: 'conventional-changelog-angular',
+33 silly npa   name: 'conventional-changelog-angular',
+33 silly npa   escapedName: 'conventional-changelog-angular',
+33 silly npa   scope: undefined,
+33 silly npa   rawSpec: '',
+33 silly npa   saveSpec: null,
+33 silly npa   fetchSpec: 'latest',
+33 silly npa   gitRange: undefined,
+33 silly npa   gitCommittish: undefined,
+33 silly npa   hosted: undefined
+33 silly npa }
+34 verbose getChangelogConfig Attempting to resolve preset "conventional-changelog-angular"
+35 info getChangelogConfig Successfully resolved preset "conventional-changelog-angular"
+36 verbose fixed increment 1.1.4 by patch
+37 info auto-confirmed
+38 info execute Skipping releases
+39 silly lifecycle No script for "preversion" in "baseweb", continuing
+40 silly lifecycle No script for "preversion" in "@sina-base/component", continuing
+41 silly lifecycle No script for "version" in "@sina-base/component", continuing
+42 silly fixed for @sina-base/component at E:\sina-comsys-projects\sina-base-components\src\baseComponent
+43 silly fixed writing new entry: "## [1.1.5](https://github.com/sinabasecomponent/sina-base-components/compare/v1.1.4...v1.1.5) (2022-10-25)\n\n**Note:** Version bump only for package @sina-base/component\n\n\n\n"
+44 verbose fixed wrote E:\sina-comsys-projects\sina-base-components\src\baseComponent\CHANGELOG.md
+45 silly root for baseweb at E:\sina-comsys-projects\sina-base-components
+46 silly root writing new entry: "## [1.1.5](https://github.com/sinabasecomponent/sina-base-components/compare/v1.1.4...v1.1.5) (2022-10-25)\n\n**Note:** Version bump only for package baseweb\n\n\n\n"
+47 verbose root wrote E:\sina-comsys-projects\sina-base-components\CHANGELOG.md
+48 silly lifecycle No script for "version" in "baseweb", continuing
+49 silly gitAdd [
+49 silly gitAdd   'src/baseComponent/package.json',
+49 silly gitAdd   'src/baseComponent/CHANGELOG.md',
+49 silly gitAdd   'CHANGELOG.md',
+49 silly gitAdd   'lerna.json'
+49 silly gitAdd ]
+50 silly gitCommit chore(plus-base): publish
+51 verbose git [ 'commit', '-m', 'chore(plus-base): publish' ]
+52 silly gitTag v1.1.5
+53 verbose git [ 'tag', 'v1.1.5', '-m', 'v1.1.5' ]
+54 silly lifecycle No script for "postversion" in "@sina-base/component", continuing
+55 silly lifecycle No script for "postversion" in "baseweb", continuing
+56 info git Pushing tags...
+57 silly gitPush origin master
+58 info publish Publishing packages to npm...
+59 info Verifying npm credentials
+60 verbose Retrieving npm user profile
+61 warn registry Unexpected warning for https://registry.npmjs.org/: Miscellaneous Warning FETCH_ERROR: network timeout at: https://registry.npmjs.org/-/npm/v1/user
+62 warn registry Using stale data from https://registry.npmjs.org/ due to a request error during revalidation.
+63 http fetch GET 200 https://registry.npmjs.org/-/npm/v1/user 300062ms (from cache)
+64 silly npm profile get received {"tfa":false,"name":"sinabase.component","email":"sinabase.component@gmail.com","email_verified":true,"created":"2022-10-12T08:24:02.788Z","updated":"2022-10-12T08:24:02.783Z","cidr_whitelist":null}
+65 silly get npm username received {"username":"sinabase.component","tfa":false,"name":"sinabase.component","email":"sinabase.component@gmail.com","email_verified":true,"created":"2022-10-12T08:24:02.788Z","updated":"2022-10-12T08:24:02.783Z","cidr_whitelist":null}
+66 silly verifyNpmPackageAccess
+67 http fetch GET 200 https://registry.npmjs.org/-/org/sinabase.component/package?format=cli 18326ms (cache updated)
+68 info Checking two-factor auth mode
+69 verbose Retrieving npm user profile
+70 http fetch GET 200 https://registry.npmjs.org/-/npm/v1/user 22426ms (from cache)
+71 silly npm profile get received {"tfa":false,"name":"sinabase.component","email":"sinabase.component@gmail.com","email_verified":true,"created":"2022-10-12T08:24:02.788Z","updated":"2022-10-12T08:24:02.783Z","cidr_whitelist":null}
+72 silly 2FA false
+73 warn ENOLICENSE Package @sina-base/component is missing a license.
+73 warn ENOLICENSE One way to fix this is to add a LICENSE.md file to the root of this repository.
+73 warn ENOLICENSE See https://choosealicense.com for additional guidance.
+74 silly getCurrentSHA
+75 verbose getCurrentSHA 11f18271205fd4b3fc5577237be53a25e4079a2d
+76 silly lifecycle No script for "prepublish" in "baseweb", continuing
+77 silly lifecycle No script for "prepare" in "baseweb", continuing
+78 silly lifecycle No script for "prepublishOnly" in "baseweb", continuing
+79 silly lifecycle No script for "prepack" in "baseweb", continuing
+80 verbose pack-directory src\baseComponent
+81 silly lifecycle No script for "prepublish" in "@sina-base/component", continuing
+82 silly lifecycle No script for "prepare" in "@sina-base/component", continuing
+83 silly lifecycle No script for "prepublishOnly" in "@sina-base/component", continuing
+84 silly lifecycle No script for "prepack" in "@sina-base/component", continuing
+85 silly lifecycle No script for "postpack" in "@sina-base/component", continuing
+86 verbose packed src\baseComponent
+87 silly lifecycle No script for "postpack" in "baseweb", continuing
+88 verbose publish @sina-base/component
+89 silly FetchError: request to https://registry.npmjs.org/@sina-base%2fcomponent failed, reason: socket hang up
+89 silly     at ClientRequest.<anonymous> (E:\sina-comsys-projects\sina-base-components\node_modules\minipass-fetch\lib\index.js:110:14)
+89 silly     at ClientRequest.emit (node:events:513:28)
+89 silly     at TLSSocket.socketOnEnd (node:_http_client:505:9)
+89 silly     at TLSSocket.emit (node:events:525:35)
+89 silly     at endReadableNT (node:internal/streams/readable:1358:12)
+89 silly     at processTicksAndRejections (node:internal/process/task_queues:83:21)
+89 silly  FetchError: request to https://registry.npmjs.org/@sina-base%2fcomponent failed, reason: socket hang up
+89 silly     at ClientRequest.<anonymous> (E:\sina-comsys-projects\sina-base-components\node_modules\minipass-fetch\lib\index.js:110:14)
+89 silly     at ClientRequest.emit (node:events:513:28)
+89 silly     at TLSSocket.socketOnEnd (node:_http_client:505:9)
+89 silly     at TLSSocket.emit (node:events:525:35)
+89 silly     at endReadableNT (node:internal/streams/readable:1358:12)
+89 silly     at processTicksAndRejections (node:internal/process/task_queues:83:21) {
+89 silly   code: 'ECONNRESET',
+89 silly   errno: 'ECONNRESET',
+89 silly   type: 'system'
+89 silly }
+90 error ECONNRESET request to https://registry.npmjs.org/@sina-base%2fcomponent failed, reason: socket hang up
+91 error FetchError: request to https://registry.npmjs.org/@sina-base%2fcomponent failed, reason: socket hang up
+91 error     at ClientRequest.<anonymous> (E:\sina-comsys-projects\sina-base-components\node_modules\minipass-fetch\lib\index.js:110:14)
+91 error     at ClientRequest.emit (node:events:513:28)
+91 error     at TLSSocket.socketOnEnd (node:_http_client:505:9)
+91 error     at TLSSocket.emit (node:events:525:35)
+91 error     at endReadableNT (node:internal/streams/readable:1358:12)

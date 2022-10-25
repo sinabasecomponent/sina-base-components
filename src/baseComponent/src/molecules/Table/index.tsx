@@ -113,6 +113,7 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
     if (x) {
       setColWidth(remainWidth / x);
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalWidth]);
 

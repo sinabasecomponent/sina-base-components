@@ -1,11 +1,5 @@
 {
-  "packages": [
-    "src/baseComponent",
-    "src/baseAsset",
-    "src/web",
-    "src/stories",
-    "src/baseComponentTest"
-  ],
+  "packages": ["src/baseComponent", "src/baseAsset", "src/web", "src/stories"],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {

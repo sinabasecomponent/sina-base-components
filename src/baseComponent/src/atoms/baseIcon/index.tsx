@@ -47,7 +47,7 @@ const BaseIcon = ({
   }
 
   return (
-    <div {...rest}>
+    <div style={{ display: "flex" }} {...rest}>
       <IconMoon name={name} color={color} size={fontSize} testID={testID} />
     </div>
   );

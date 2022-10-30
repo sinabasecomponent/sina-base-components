@@ -2,19 +2,20 @@
 // import { RowInteractionContext } from "../context";
 // import { useStyles } from "./styles";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Colors } from "../../../colors";
+import { TableContext } from "../context";
 
 interface RowProps extends React.HTMLAttributes<HTMLTableRowElement> {
   children?: React.ReactNode;
   isExpanded?: boolean;
   testID?: string;
+  index: number;
 }
 
-const Row = ({ className, testID, ...rest }: RowProps) => {
-  //   const classes = useStyles();
-  //   const { eventHandlers, isHovered } = useContext(RowInteractionContext);
+const Row = ({ className, index, testID, ...rest }: RowProps) => {
   const [isHoverd, setIsHovered] = useState(false);
+  const { onSelectRow, selectedRow } = useContext(TableContext);
 
   return (
     <tr
@@ -25,17 +26,19 @@ const Row = ({ className, testID, ...rest }: RowProps) => {
       onMouseLeave={() => {
         setIsHovered(false);
       }}
+      onClick={() => onSelectRow({ index })}
       style={{
-        backgroundColor: isHoverd ? Colors.blue_for_Text : "transparent",
-        height: 45,
+        backgroundColor:
+          selectedRow === index
+            ? Colors.cyan_3
+            : isHoverd
+            ? Colors.blue_for_Text
+            : "transparent",
+        height: 32,
+        borderBottom: ".5px solid #C1C0C0",
+        // borderInlineStart:
+        //   selectedRow === index ? `5px solid  ${Colors.main_cyan}` : "0px",
       }}
-      //   {...eventHandlers()}
-      //   className={classNames(
-      //     classes.container,
-      //     // isHovered && classes.expanded,
-      //     className,
-      //   )}
-      //   data-testid={testID}
     />
   );
 };

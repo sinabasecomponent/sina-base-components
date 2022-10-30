@@ -7,20 +7,21 @@ import {
   useState,
 } from "react";
 import { ScrollView, View } from "reactjs-view";
-import { BaseIcon } from "../../atoms";
-import { Colors } from "../../colors";
 import { Column, ColumnProps } from "./column";
 import { Order, OrderBy, TableContext } from "./context";
+import { Header } from "./header";
 import { RowContainer } from "./rowContainer";
+import { SearchBar } from "./searchBar";
 import { useStyles } from "./style";
 
-const SEARCH_ICON = 42;
-const SCROLL_BAR = 10;
+export const SEARCH_ICON = 42;
+export const SCROLL_BAR = 10;
 export const DEFAULT_ALIGN = "center";
 
 export interface TableProps<T> {
   data: T[];
   children: ReactNode;
+  onSelectedRow: (value: { index: number }) => void;
 }
 const Table = <T extends Object>({ children, data }: TableProps<T>) => {
   const [totalWidth, setTotalWidth] = useState(0);
@@ -90,15 +91,8 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
     return result;
   }, [orderBy, data, order, columns]);
 
-  // const columnsWidth = columns.reduce((prev, { width }) => {
-  //   return prev + (width || 0);
-  // }, 0);
-
-  // const remainWidth = totalWidth - (columnsWidth + SCROLL_BAR + SEARCH_ICON);
-  // console.log({ remainWidth });
-
   useEffect(() => {
-    let x = 0;
+    let withOutWidthNum = 0;
     const columnsWidth = columns.reduce((prev, { width }) => {
       return prev + (width || 0);
     }, 0);
@@ -107,11 +101,11 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
 
     columns.forEach(({ width }) => {
       if (!width) {
-        x += 1;
+        withOutWidthNum += 1;
       }
     });
-    if (x) {
-      setColWidth(remainWidth / x);
+    if (withOutWidthNum) {
+      setColWidth(remainWidth / withOutWidthNum);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -142,66 +136,13 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
             <col style={{ width: SCROLL_BAR }} />
           </colgroup>
           <thead className={classes.tableHeader}>
-            <tr>
-              <th>
-                <div
-                  style={{
-                    height: 24,
-                    width: 32,
-                    borderRight: `1px solid ${Colors.purple_6}`,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <BaseIcon
-                    onClick={onToggleSearchBar}
-                    color={Colors.purple_6}
-                    name="Table_Search-Icon"
-                    size={16}
-                  />
-                </div>
-              </th>
-              {children}
-              <th />
-            </tr>
-            <tr
-              style={{
-                display: isSearchVisible ? "table-row" : "none",
-              }}
-              className={classes.searchBar}
-            >
-              <th style={{ width: SEARCH_ICON }}>
-                <div
-                  style={{
-                    height: 24,
-                    width: 32,
-                    borderRight: `1px solid ${Colors.purple_6}`,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <BaseIcon
-                    onClick={onToggleSearchBar}
-                    color={Colors.purple_6}
-                    name="Table_Cross-Icon-for-erasing-all-of-filters"
-                    size={14}
-                  />
-                </div>
-              </th>
-              {columns.map(({ renderFilter, align }, index) => {
-                return (
-                  <th
-                    style={{ textAlign: align ? align : DEFAULT_ALIGN }}
-                    key={index}
-                  >
-                    {renderFilter ? renderFilter({ data }) : null}
-                  </th>
-                );
-              })}
-              <th />
-            </tr>
+            <Header onToggleSearchBar={onToggleSearchBar}>{children}</Header>
+            <SearchBar
+              columns={columns}
+              data={data}
+              isSearchVisible={isSearchVisible}
+              onToggleSearchBar={onToggleSearchBar}
+            />
           </thead>
         </table>
       </View>
@@ -240,6 +181,13 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
 const TableWrapper = <T extends Object>(props: TableProps<T>) => {
   const [orderBy, setOrderBy] = useState<OrderBy>(undefined);
   const [order, setOrder] = useState<Order>(undefined);
+  const [selectedRow, onSelectRow] = useState<number | undefined>(undefined);
+
+  const onRowClick = (value: { index: number }) => {
+    onSelectRow(value.index);
+    props.onSelectedRow({ index: value.index });
+  };
+
   const onOrderChange = ({ dataIndex }: { dataIndex: OrderBy }) => {
     setOrder(
       dataIndex === orderBy
@@ -256,7 +204,15 @@ const TableWrapper = <T extends Object>(props: TableProps<T>) => {
   };
 
   return (
-    <TableContext.Provider value={{ onOrderChange, order, orderBy }}>
+    <TableContext.Provider
+      value={{
+        onOrderChange,
+        order,
+        orderBy,
+        onSelectRow: onRowClick,
+        selectedRow: selectedRow,
+      }}
+    >
       <Table {...props} />
     </TableContext.Provider>
   );

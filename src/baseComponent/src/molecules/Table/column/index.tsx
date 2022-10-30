@@ -45,35 +45,14 @@ export interface ColumnProps<
 const Column = <T extends Record<string, any>>({
   children,
   dataIndex,
-  // width,
   sorter,
-  // onPress,
-  // className,
   style,
-  // contentStyle
-  // sorterIconSize,
-  // testID,
   align = DEFAULT_ALIGN,
 }: ColumnProps<T>) => {
   const { onOrderChange, order, orderBy } = useContext(TableContext);
 
-  // const commonClasses = useCommonStyle("muscles");
-  // const { isSmallerThanMedium } = useObserveWindow();
-  // const classes = useStyles();
-  // const { accent, onBackgroundLight, primaryLight } = useColors();
-  // const { order, orderBy } = SortStore.useState();
-  // const dispatch = SortStore.useDispatch();
-  // const { headerStyles, headerHeight, headerWrapperStyles } =
-  //   useContext(AditionalContext);
   const isAscending = orderBy === dataIndex && order === "ascending";
   const isDescending = orderBy === dataIndex && order === "descending";
-
-  // const onSort = () => {
-  //   onPress?.();
-  //   if (sorter) {
-  //     dispatch(changeOrder(dataIndex));
-  //   }
-  // };
 
   const onSort = () => {
     // onPress?.();
@@ -83,40 +62,24 @@ const Column = <T extends Record<string, any>>({
   };
 
   return (
-    <th
-      // className={classNames(
-      //   classes.headerCell,
-      //   !isSmallerThanMedium && classes.containerBiggerThanMedium,
-      //   isSmallerThanMedium && classes.containerMedium,
-      //   className,
-      // )}
-      style={{ ...style, height: "100%", padding: 0 }}
-    >
+    <th style={{ ...style, height: 45, padding: 0 }}>
       <div
-        //   className={classNames(commonClasses.flexRow)}
         style={{
+          height: "100%",
+          alignItems: "center",
           display: "flex",
-          height: 45,
-          lineHeight: `${45}px`,
+          cursor: sorter ? "pointer" : "default",
           justifyContent:
             align === "center"
               ? "center"
               : align === "start"
               ? "flex-start"
               : "flex-end",
-          // width,
         }}
         onClick={onSort}
       >
         {typeof children !== "object" ? (
-          <Text
-            theme="Medium"
-            color={Colors.white}
-            //   color={accent}
-            //   style={{
-            //     ...headerStyles,
-            //   }}
-          >
+          <Text theme="Medium" color={Colors.white}>
             {children}
           </Text>
         ) : (
@@ -124,11 +87,11 @@ const Column = <T extends Record<string, any>>({
         )}
         {sorter ? (
           isDescending ? (
-            <BaseIcon name={"Table_Sort-Icon_A-to-Z"} />
+            <BaseIcon size={20} name={"Table_Sort-Icon_A-to-Z"} />
           ) : isAscending ? (
-            <BaseIcon name="Table_Sort-Icon_Z-to-A" />
+            <BaseIcon size={20} name="Table_Sort-Icon_Z-to-A" />
           ) : (
-            <BaseIcon name="Table_Sort-Icon_OFF" />
+            <BaseIcon size={20} name="Table_Sort-Icon_OFF" />
           )
         ) : null}
       </div>

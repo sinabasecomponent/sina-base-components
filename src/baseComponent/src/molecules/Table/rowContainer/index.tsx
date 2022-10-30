@@ -1,5 +1,8 @@
+import { useContext } from "react";
+import { Colors } from "../../../colors";
 import { Cell } from "../cell";
 import { ColumnProps } from "../column";
+import { TableContext } from "../context";
 import { Row } from "../row";
 
 interface RowContainer<T extends Object> {
@@ -15,9 +18,16 @@ const RowContainer = <T extends Object>({
   data,
   index: rowIndex,
 }: RowContainer<T>) => {
+  const { selectedRow } = useContext(TableContext);
   return (
-    <Row>
-      <td></td>
+    <Row index={rowIndex}>
+      <td
+        style={{
+          ...(selectedRow === rowIndex && {
+            borderInlineStart: `5px solid ${Colors.main_cyan}`,
+          }),
+        }}
+      ></td>
       {columns.map(({ dataIndex, render, align }, index) => {
         const cell = rowData[dataIndex as keyof typeof rowData];
         return (

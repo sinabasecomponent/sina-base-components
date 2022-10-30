@@ -8,7 +8,7 @@ const Header = ({
   onToggleSearchBar,
 }: {
   children: React.ReactNode;
-  onToggleSearchBar: () => void;
+  onToggleSearchBar?: () => void;
 }) => {
   const classes = useStyles();
   return (

@@ -26,9 +26,9 @@ const Template: Story<any> = (args) => {
         <Table.Column
           width={300}
           sorter={(a, b) => a.name - b.name}
-          renderFilter={() => {
-            return <input />;
-          }}
+          // renderFilter={() => {
+          //   return <input />;
+          // }}
           render={({ value }) => {
             return <button>{value}</button>;
           }}

@@ -111,6 +111,7 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalWidth]);
 
+  const inSearchAvailable = columns.find(({ renderFilter }) => renderFilter);
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <View
@@ -136,13 +137,17 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
             <col style={{ width: SCROLL_BAR }} />
           </colgroup>
           <thead className={classes.tableHeader}>
-            <Header onToggleSearchBar={onToggleSearchBar}>{children}</Header>
-            <SearchBar
-              columns={columns}
-              data={data}
-              isSearchVisible={isSearchVisible}
-              onToggleSearchBar={onToggleSearchBar}
-            />
+            <Header onToggleSearchBar={inSearchAvailable && onToggleSearchBar}>
+              {children}
+            </Header>
+            {inSearchAvailable ? (
+              <SearchBar
+                columns={columns}
+                data={data}
+                isSearchVisible={isSearchVisible}
+                onToggleSearchBar={onToggleSearchBar}
+              />
+            ) : null}
           </thead>
         </table>
       </View>

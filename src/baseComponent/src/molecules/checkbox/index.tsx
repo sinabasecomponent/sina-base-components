@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Text } from "../../atoms/text";
 import { useStyles } from "./style";
 
@@ -18,27 +18,10 @@ const CheckBox = ({
   indeterminate,
   ...rest
 }: CheckBoxProps) => {
-  const [isCheck, setChecked] = useState(false);
-  const [isIndeterminate, setIndeterminate] = useState(false);
-
   const classes = useStyles();
-
-  useEffect(() => {
-    typeof indeterminate !== "undefined" && setIndeterminate(indeterminate);
-  }, [indeterminate]);
-
-  useEffect(() => {
-    typeof checked !== "undefined" && setChecked(checked);
-  }, [checked]);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(e);
-    if (typeof indeterminate === "undefined") {
-      setIndeterminate(false);
-    }
-    if (typeof checked !== "boolean" && typeof indeterminate === "undefined") {
-      setChecked((prev) => !prev);
-    }
   };
 
   return (
@@ -57,8 +40,8 @@ const CheckBox = ({
           }}
           className={classNames(
             classes.Input,
-            isCheck && !isIndeterminate && classes.Inputchecked,
-            isIndeterminate && classes.Indeterminate,
+            checked && !indeterminate && classes.Inputchecked,
+            indeterminate && classes.Indeterminate,
           )}
         />
         <input
@@ -66,7 +49,7 @@ const CheckBox = ({
           type={"checkbox"}
           value={value}
           name={name}
-          checked={isCheck}
+          checked={checked}
           onChange={onChangeHandler}
           {...rest}
         />

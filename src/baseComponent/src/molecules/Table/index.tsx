@@ -1,11 +1,4 @@
-import {
-  Fragment,
-  ReactNode,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { Fragment, ReactNode, useEffect, useMemo, useState } from "react";
 import { ScrollView, View } from "reactjs-view";
 import { Column, ColumnProps } from "./column";
 import { Order, OrderBy, TableContext } from "./context";
@@ -14,20 +7,33 @@ import { RowContainer } from "./rowContainer";
 import { SearchBar } from "./searchBar";
 import { useStyles } from "./style";
 
-export const SEARCH_ICON = 42;
+export const SEARCH_ICON = 32;
+export const ROW_SELECTION = 62;
 export const SCROLL_BAR = 10;
 export const DEFAULT_ALIGN = "center";
 
 export interface TableProps<T> {
-  data: T[];
-  children: ReactNode;
-  onSelectedRow: (value: { index: number }) => void;
+  data?: T[];
+  children?: ReactNode;
+  rowKey?: keyof T;
+  onCheckedRows?: (value: T[]) => void;
+  checkedRows?: T[];
+  sag?: (value: T[]) => void;
 }
-const Table = <T extends Object>({ children, data }: TableProps<T>) => {
+
+const Table = <T extends object>({
+  children,
+  data,
+  onCheckedRows,
+  rowKey,
+}: TableProps<T>) => {
   const [totalWidth, setTotalWidth] = useState(0);
+  const [order, setOrder] = useState<Order>(undefined);
   const [isSearchVisible, setShowSearchBar] = useState(false);
-  const { order, orderBy } = useContext(TableContext);
+  const [orderBy, setOrderBy] = useState<OrderBy>(undefined);
   const [colWidth, setColWidth] = useState(0);
+  const [checkedRows, setCheckRows] = useState<T[]>([]);
+  const [isAllRowsChecked, setAllRowsChecked] = useState(false);
 
   const columns: ColumnProps<T>[] = useMemo(() => {
     function getChildren(_children: any): ColumnProps<T>[] {
@@ -82,7 +88,7 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
       const sorter = columns.find(({ dataIndex }) => {
         return dataIndex === orderBy;
       })?.sorter;
-      result = [...data].sort(
+      result = [...(data || [])].sort(
         (a, b) =>
           (order === "ascending" ? sorter?.(a, b) : sorter?.(b, a)) || 0,
       );
@@ -111,87 +117,10 @@ const Table = <T extends Object>({ children, data }: TableProps<T>) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalWidth]);
 
+  const searchIconWidth =
+    typeof onCheckedRows !== "undefined" ? ROW_SELECTION : SEARCH_ICON;
+
   const inSearchAvailable = columns.find(({ renderFilter }) => renderFilter);
-  return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-      <View
-        onLayout={({
-          nativeEvent: {
-            layout: { width },
-          },
-        }) => {
-          setTotalWidth(width || 0);
-        }}
-      >
-        <table className={classes.table} role={"table"}>
-          <colgroup>
-            <col style={{ width: SEARCH_ICON }} />
-            {columns.map(({ width, dataIndex }) => {
-              return (
-                <col
-                  key={dataIndex as string}
-                  style={{ width: width ? width : colWidth }}
-                />
-              );
-            })}
-            <col style={{ width: SCROLL_BAR }} />
-          </colgroup>
-          <thead className={classes.tableHeader}>
-            <Header onToggleSearchBar={inSearchAvailable && onToggleSearchBar}>
-              {children}
-            </Header>
-            {inSearchAvailable ? (
-              <SearchBar
-                columns={columns}
-                data={data}
-                isSearchVisible={isSearchVisible}
-                onToggleSearchBar={onToggleSearchBar}
-              />
-            ) : null}
-          </thead>
-        </table>
-      </View>
-      <ScrollView style={{ flex: 1 }}>
-        <table className={classes.table} role={"table"}>
-          <colgroup>
-            <col style={{ width: SEARCH_ICON }} />
-            {columns.map(({ width, dataIndex }) => {
-              return (
-                <col
-                  key={dataIndex as string}
-                  style={{ width: width ? width : colWidth }}
-                />
-              );
-            })}
-          </colgroup>
-          <tbody>
-            {list.map((row, index) => {
-              return (
-                <RowContainer
-                  key={index}
-                  rowData={row}
-                  data={data}
-                  index={index}
-                  columns={columns}
-                />
-              );
-            })}
-          </tbody>
-        </table>
-      </ScrollView>
-    </div>
-  );
-};
-
-const TableWrapper = <T extends Object>(props: TableProps<T>) => {
-  const [orderBy, setOrderBy] = useState<OrderBy>(undefined);
-  const [order, setOrder] = useState<Order>(undefined);
-  const [selectedRow, onSelectRow] = useState<number | undefined>(undefined);
-
-  const onRowClick = (value: { index: number }) => {
-    onSelectRow(value.index);
-    props.onSelectedRow({ index: value.index });
-  };
 
   const onOrderChange = ({ dataIndex }: { dataIndex: OrderBy }) => {
     setOrder(
@@ -208,20 +137,142 @@ const TableWrapper = <T extends Object>(props: TableProps<T>) => {
     );
   };
 
+  const addRow = ({ rowId }: { rowId: keyof T }) => {
+    const currentRow = checkedRows.find((item) => {
+      return rowKey && item[rowKey] === rowId;
+    });
+
+    if (currentRow) {
+      const filtered = checkedRows.filter((item) => {
+        return rowKey && item[rowKey] !== rowId;
+      });
+      setCheckRows(filtered);
+      return;
+    }
+
+    const selectedRow = (data || []).find((item) => {
+      return rowKey && item[rowKey] === rowId;
+    });
+
+    if (selectedRow) {
+      setCheckRows((prev) => {
+        return [...prev, selectedRow];
+      });
+    }
+  };
+
+  const onCheckAllRows = () => {
+    setAllRowsChecked((prev) => !prev);
+    if (data) {
+      setCheckRows(data);
+    }
+    if (isAllRowsChecked) {
+      setCheckRows([]);
+    }
+  };
+
+  useEffect(() => {
+    onCheckedRows?.(checkedRows);
+    if (checkedRows.length === 0) {
+      setAllRowsChecked(false);
+      return;
+    }
+    if (checkedRows.length === data?.length) {
+      setAllRowsChecked(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, checkedRows]);
+
   return (
     <TableContext.Provider
       value={{
+        addRow,
+        checkedRows,
+        isAllRowsChecked,
+        onCheckAllRows,
         onOrderChange,
         order,
         orderBy,
-        onSelectRow: onRowClick,
-        selectedRow: selectedRow,
       }}
     >
-      <Table {...props} />
+      <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+        <View
+          onLayout={({
+            nativeEvent: {
+              layout: { width },
+            },
+          }) => {
+            setTotalWidth(width || 0);
+          }}
+        >
+          <table className={classes.table} role={"table"}>
+            <colgroup>
+              <col
+                style={{
+                  width: searchIconWidth,
+                }}
+              />
+              {columns.map(({ width, dataIndex }) => {
+                return (
+                  <col
+                    key={dataIndex as string}
+                    style={{ width: width ? width : colWidth }}
+                  />
+                );
+              })}
+              <col style={{ width: SCROLL_BAR }} />
+            </colgroup>
+            <thead className={classes.tableHeader}>
+              <Header
+                data={data || []}
+                onToggleSearchBar={inSearchAvailable && onToggleSearchBar}
+              >
+                {children}
+              </Header>
+              {inSearchAvailable ? (
+                <SearchBar
+                  columns={columns}
+                  data={data || []}
+                  isSearchVisible={isSearchVisible}
+                  onToggleSearchBar={onToggleSearchBar}
+                />
+              ) : null}
+            </thead>
+          </table>
+        </View>
+        <ScrollView style={{ flex: 1 }}>
+          <table className={classes.table} role={"table"}>
+            <colgroup>
+              <col style={{ width: searchIconWidth }} />
+              {columns.map(({ width, dataIndex }) => {
+                return (
+                  <col
+                    key={dataIndex as string}
+                    style={{ width: width ? width : colWidth }}
+                  />
+                );
+              })}
+            </colgroup>
+            <tbody>
+              {list.map((row, index) => {
+                return (
+                  <RowContainer
+                    rowKey={rowKey}
+                    key={index}
+                    rowData={row}
+                    data={data || []}
+                    index={index}
+                    columns={columns}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
+        </ScrollView>
+      </div>
     </TableContext.Provider>
   );
 };
 
-TableWrapper.Column = Column;
-export { TableWrapper as Table };
+Table.Column = Column;
+export { Table };

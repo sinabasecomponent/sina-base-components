@@ -4,7 +4,7 @@ import { Text } from "../../../atoms";
 import { Table } from "../../../molecules/Table";
 import { StoryContainer } from "../../container";
 export default {
-  title: "baseColumn",
+  title: "table",
   component: Table,
 } as Meta<any>;
 
@@ -16,13 +16,14 @@ const mockData = [...new Array(40)].map((_, index) => {
     city: faker.address.cityName(),
     country: faker.address.country(),
     address: "test address",
+    id: `${index}id`,
   };
 });
 
 const Template: Story<any> = (args) => {
   return (
     <StoryContainer>
-      <Table {...args}>
+      <Table data={mockData} rowKey={"id"} rowSelection={() => ({})} {...args}>
         <Table.Column
           width={300}
           sorter={(a, b) => a.name - b.name}
@@ -99,5 +100,5 @@ const Template: Story<any> = (args) => {
 export const baseTable = Template.bind({});
 
 baseTable.args = {
-  data: mockData,
+  // data: mockData,
 };

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Colors } from "../../../colors";
+import { CheckBox } from "../../checkbox";
 import { Cell } from "../cell";
 import { ColumnProps } from "../column";
 import { TableContext } from "../context";
@@ -10,6 +10,7 @@ interface RowContainer<T extends Object> {
   data: T[];
   columns: ColumnProps<T>[];
   index: number;
+  rowKey?: keyof T;
 }
 
 const RowContainer = <T extends Object>({
@@ -17,17 +18,34 @@ const RowContainer = <T extends Object>({
   columns,
   data,
   index: rowIndex,
+  rowKey,
 }: RowContainer<T>) => {
-  const { selectedRow } = useContext(TableContext);
+  const { checkedRows, addRow } = useContext(TableContext);
+
+  const isChecked = checkedRows.find(
+    (item) => rowKey && item?.[rowKey] === rowData[rowKey],
+  );
+
+  console.log({ isChecked });
+
   return (
-    <Row index={rowIndex}>
+    <Row index={rowIndex} isChecked={isChecked}>
       <td
-        style={{
-          ...(selectedRow === rowIndex && {
-            borderInlineStart: `5px solid ${Colors.main_cyan}`,
-          }),
-        }}
-      ></td>
+      // style={{
+      //   ...(selectedRow === rowIndex && {
+      //     borderInlineStart: `5px solid ${Colors.main_cyan}`,
+      //   }),
+      // }}
+      >
+        <div style={{ paddingInlineStart: 8 }}>
+          <CheckBox
+            onChange={() => {
+              rowKey && addRow({ rowId: rowData[rowKey] });
+            }}
+            checked={isChecked}
+          />
+        </div>
+      </td>
       {columns.map(({ dataIndex, render, align }, index) => {
         const cell = rowData[dataIndex as keyof typeof rowData];
         return (

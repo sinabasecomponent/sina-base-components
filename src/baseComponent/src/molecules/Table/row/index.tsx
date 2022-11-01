@@ -11,12 +11,12 @@ interface RowProps extends React.HTMLAttributes<HTMLTableRowElement> {
   isExpanded?: boolean;
   testID?: string;
   index: number;
+  isChecked: boolean;
 }
 
-const Row = ({ className, index, testID, ...rest }: RowProps) => {
+const Row = ({ isChecked, className, index, testID, ...rest }: RowProps) => {
   const [isHoverd, setIsHovered] = useState(false);
-  const { onSelectRow, selectedRow } = useContext(TableContext);
-
+  const { isAllRowsChecked } = useContext(TableContext);
   return (
     <tr
       {...rest}
@@ -26,18 +26,15 @@ const Row = ({ className, index, testID, ...rest }: RowProps) => {
       onMouseLeave={() => {
         setIsHovered(false);
       }}
-      onClick={() => onSelectRow({ index })}
+      // onClick={() => onSelectRow({ index })}
       style={{
-        backgroundColor:
-          selectedRow === index
-            ? Colors.cyan_3
-            : isHoverd
-            ? Colors.blue_for_Text
-            : "transparent",
+        backgroundColor: isChecked
+          ? Colors.cyan_3
+          : isHoverd
+          ? Colors.blue_for_Text
+          : "transparent",
         height: 32,
         borderBottom: ".5px solid #C1C0C0",
-        // borderInlineStart:
-        //   selectedRow === index ? `5px solid  ${Colors.main_cyan}` : "0px",
       }}
     />
   );

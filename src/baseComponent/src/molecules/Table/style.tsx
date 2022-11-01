@@ -6,6 +6,9 @@ export const useStyles = createUseStyles(() => {
     table: {
       width: "100%",
       borderCollapse: "collapse",
+      "& tr,td": {
+        padding: 0,
+      },
     },
     tableHeader: {
       backgroundColor: Colors.main_purple,

@@ -7,11 +7,8 @@ export default {
 
 const Template: Story<BaseIconProps> = (args) => (
   <div style={{ backgroundColor: "black" }}>
-    <BaseIcon {...args} />
+    <BaseIcon name={"Calendar-_-Close"} />
   </div>
 );
 
 export const Primary = Template.bind({});
-Primary.args = {
-  name: "Create-Project_Download-Icon",
-};

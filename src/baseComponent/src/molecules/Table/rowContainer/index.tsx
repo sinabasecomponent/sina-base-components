@@ -11,6 +11,7 @@ interface RowContainer<T extends Object> {
   columns: ColumnProps<T>[];
   index: number;
   rowKey?: keyof T;
+  isOnCheckedRowsAvailable: boolean;
 }
 
 const RowContainer = <T extends Object>({
@@ -19,14 +20,13 @@ const RowContainer = <T extends Object>({
   data,
   index: rowIndex,
   rowKey,
+  isOnCheckedRowsAvailable,
 }: RowContainer<T>) => {
   const { checkedRows, addRow } = useContext(TableContext);
 
   const isChecked = checkedRows.find(
     (item) => rowKey && item?.[rowKey] === rowData[rowKey],
   );
-
-  console.log({ isChecked });
 
   return (
     <Row index={rowIndex} isChecked={isChecked}>
@@ -37,14 +37,16 @@ const RowContainer = <T extends Object>({
       //   }),
       // }}
       >
-        <div style={{ paddingInlineStart: 8 }}>
-          <CheckBox
-            onChange={() => {
-              rowKey && addRow({ rowId: rowData[rowKey] });
-            }}
-            checked={isChecked}
-          />
-        </div>
+        {isOnCheckedRowsAvailable ? (
+          <div style={{ paddingInlineStart: 8 }}>
+            <CheckBox
+              onChange={() => {
+                rowKey && addRow({ rowId: rowData[rowKey] });
+              }}
+              checked={isChecked}
+            />
+          </div>
+        ) : null}
       </td>
       {columns.map(({ dataIndex, render, align }, index) => {
         const cell = rowData[dataIndex as keyof typeof rowData];

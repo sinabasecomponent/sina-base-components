@@ -8,7 +8,7 @@ export default {
   component: Table,
 } as Meta<any>;
 
-const mockData = [...new Array(40)].map((_, index) => {
+const mockData = [...new Array(400)].map((_, index) => {
   return {
     name: faker.name.firstName(),
     family: faker.name.lastName(),
@@ -23,13 +23,13 @@ const mockData = [...new Array(40)].map((_, index) => {
 const Template: Story<any> = (args) => {
   return (
     <StoryContainer>
-      <Table data={mockData} rowKey={"id"} rowSelection={() => ({})} {...args}>
+      <Table data={mockData} rowKey={"id"}>
         <Table.Column
           width={300}
           sorter={(a, b) => a.name - b.name}
-          // renderFilter={() => {
-          //   return <input />;
-          // }}
+          renderFilter={() => {
+            return <input />;
+          }}
           render={({ value }) => {
             return <button>{value}</button>;
           }}
@@ -98,7 +98,3 @@ const Template: Story<any> = (args) => {
 };
 
 export const baseTable = Template.bind({});
-
-baseTable.args = {
-  // data: mockData,
-};

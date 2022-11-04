@@ -87,11 +87,11 @@ const Column = <T extends Record<string, any>>({
         )}
         {sorter ? (
           isDescending ? (
-            <BaseIcon size={20} name={"Table_Sort-Icon_A-to-Z"} />
+            <BaseIcon size={20} name={"Table-_-Sort-Icon_A-to-Z"} />
           ) : isAscending ? (
-            <BaseIcon size={20} name="Table_Sort-Icon_Z-to-A" />
+            <BaseIcon size={20} name="Table-_-Sort-Icon_Z-to-A" />
           ) : (
-            <BaseIcon size={20} name="Table_Sort-Icon_OFF" />
+            <BaseIcon size={20} name="Table-_-Sort-Icon_OFF" />
           )
         ) : null}
       </div>

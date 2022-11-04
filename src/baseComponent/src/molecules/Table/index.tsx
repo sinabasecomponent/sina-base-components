@@ -1,4 +1,13 @@
-import { Fragment, ReactNode, useEffect, useMemo, useState } from "react";
+import {
+  Fragment,
+  ReactNode,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { useVirtual } from "react-virtual";
 import { ScrollView, View } from "reactjs-view";
 import { Column, ColumnProps } from "./column";
 import { Order, OrderBy, TableContext } from "./context";
@@ -17,8 +26,6 @@ export interface TableProps<T> {
   children?: ReactNode;
   rowKey?: keyof T;
   onCheckedRows?: (value: T[]) => void;
-  checkedRows?: T[];
-  sag?: (value: T[]) => void;
 }
 
 const Table = <T extends object>({
@@ -27,6 +34,7 @@ const Table = <T extends object>({
   onCheckedRows,
   rowKey,
 }: TableProps<T>) => {
+  const classes = useStyles();
   const [totalWidth, setTotalWidth] = useState(0);
   const [order, setOrder] = useState<Order>(undefined);
   const [isSearchVisible, setShowSearchBar] = useState(false);
@@ -34,6 +42,7 @@ const Table = <T extends object>({
   const [colWidth, setColWidth] = useState(0);
   const [checkedRows, setCheckRows] = useState<T[]>([]);
   const [isAllRowsChecked, setAllRowsChecked] = useState(false);
+  const tableContainerRef = useRef<HTMLDivElement>(null);
 
   const columns: ColumnProps<T>[] = useMemo(() => {
     function getChildren(_children: any): ColumnProps<T>[] {
@@ -74,14 +83,6 @@ const Table = <T extends object>({
     return mappedChildren;
   }, [children]);
 
-  const classes = useStyles();
-
-  const onToggleSearchBar = () => {
-    setShowSearchBar((prev) => {
-      return !prev;
-    });
-  };
-
   const list = useMemo(() => {
     let result = data || [];
     if (orderBy) {
@@ -97,7 +98,13 @@ const Table = <T extends object>({
     return result;
   }, [orderBy, data, order, columns]);
 
-  useEffect(() => {
+  const onToggleSearchBar = () => {
+    setShowSearchBar((prev) => {
+      return !prev;
+    });
+  };
+
+  useLayoutEffect(() => {
     let withOutWidthNum = 0;
     const columnsWidth = columns.reduce((prev, { width }) => {
       return prev + (width || 0);
@@ -117,8 +124,7 @@ const Table = <T extends object>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalWidth]);
 
-  const searchIconWidth =
-    typeof onCheckedRows !== "undefined" ? ROW_SELECTION : SEARCH_ICON;
+  const searchIconWidth = onCheckedRows ? ROW_SELECTION : SEARCH_ICON;
 
   const inSearchAvailable = columns.find(({ renderFilter }) => renderFilter);
 
@@ -137,7 +143,7 @@ const Table = <T extends object>({
     );
   };
 
-  const addRow = ({ rowId }: { rowId: keyof T }) => {
+  const addRow = ({ rowId }: { rowId: T[keyof T] }) => {
     const currentRow = checkedRows.find((item) => {
       return rowKey && item[rowKey] === rowId;
     });
@@ -183,6 +189,19 @@ const Table = <T extends object>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, checkedRows]);
 
+  const rowVirtualizer = useVirtual({
+    parentRef: tableContainerRef,
+    size: list.length,
+    overscan: 20,
+  });
+
+  const { virtualItems: virtualRows, totalSize } = rowVirtualizer;
+  const paddingTop = virtualRows.length > 0 ? virtualRows?.[0]?.start || 0 : 0;
+  const paddingBottom =
+    virtualRows.length > 0
+      ? totalSize - (virtualRows?.[virtualRows.length - 1]?.end || 0)
+      : 0;
+
   return (
     <TableContext.Provider
       value={{
@@ -224,6 +243,7 @@ const Table = <T extends object>({
             </colgroup>
             <thead className={classes.tableHeader}>
               <Header
+                isOnCheckedRowsAvailable={Boolean(onCheckedRows)}
                 data={data || []}
                 onToggleSearchBar={inSearchAvailable && onToggleSearchBar}
               >
@@ -240,7 +260,7 @@ const Table = <T extends object>({
             </thead>
           </table>
         </View>
-        <ScrollView style={{ flex: 1 }}>
+        <ScrollView ref={tableContainerRef} style={{ flex: 1 }}>
           <table className={classes.table} role={"table"}>
             <colgroup>
               <col style={{ width: searchIconWidth }} />
@@ -253,12 +273,20 @@ const Table = <T extends object>({
                 );
               })}
             </colgroup>
+
             <tbody>
-              {list.map((row, index) => {
+              {paddingTop > 0 && (
+                <tr>
+                  <td style={{ height: `${paddingTop}px` }} />
+                </tr>
+              )}
+              {virtualRows.map((virtualRow, index) => {
+                const row = list[virtualRow.index];
                 return (
                   <RowContainer
-                    rowKey={rowKey}
                     key={index}
+                    isOnCheckedRowsAvailable={Boolean(onCheckedRows)}
+                    rowKey={rowKey}
                     rowData={row}
                     data={data || []}
                     index={index}
@@ -266,6 +294,11 @@ const Table = <T extends object>({
                   />
                 );
               })}
+              {paddingBottom > 0 && (
+                <tr>
+                  <td style={{ height: `${paddingBottom}px` }} />
+                </tr>
+              )}
             </tbody>
           </table>
         </ScrollView>

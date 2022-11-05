@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { BaseIcon } from "../../../atoms";
 import { Colors } from "../../../colors";
-import { CheckBox } from "../../checkbox";
+import { CheckBox } from "../../../molecules/checkbox";
 import { TableContext } from "../context";
 import { useStyles } from "./style";
 

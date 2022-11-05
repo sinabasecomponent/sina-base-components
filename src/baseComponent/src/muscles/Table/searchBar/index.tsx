@@ -40,7 +40,7 @@ const SearchBar = <T extends Record<string, any>>({
             onClick={onToggleSearchBar}
             color={Colors.purple_6}
             name="Table-_-Clear-Filters"
-            size={14}
+            size={17}
           />
         </div>
       </th>

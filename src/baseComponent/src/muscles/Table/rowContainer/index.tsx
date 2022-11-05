@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CheckBox } from "../../checkbox";
+import { CheckBox } from "../../../molecules/checkbox";
 import { Cell } from "../cell";
 import { ColumnProps } from "../column";
 import { TableContext } from "../context";

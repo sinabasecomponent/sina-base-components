@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { Text } from "../../../atoms";
-import { Table } from "../../../molecules/Table";
+import { Table } from "../../../muscles/Table";
 import { StoryContainer } from "../../container";
 export default {
   title: "table",

@@ -39,7 +39,7 @@ const SearchBar = <T extends Record<string, any>>({
           <BaseIcon
             onClick={onToggleSearchBar}
             color={Colors.purple_6}
-            name="Table_Cross-Icon-for-erasing-all-of-filters"
+            name="Table-_-Clear-Filters"
             size={14}
           />
         </div>

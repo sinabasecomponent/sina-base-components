@@ -9,10 +9,12 @@ const Header = ({
   children,
   onToggleSearchBar,
   data,
+  isOnCheckedRowsAvailable,
 }: {
   children: React.ReactNode;
   onToggleSearchBar?: () => void;
   data: any[];
+  isOnCheckedRowsAvailable: boolean;
 }) => {
   const classes = useStyles();
   const { checkedRows, onCheckAllRows, isAllRowsChecked } =
@@ -27,29 +29,32 @@ const Header = ({
             alignItems: "center",
           }}
         >
-          <div
-            style={{
-              borderRight: `1px solid ${Colors.purple_6}`,
-              width: 31,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: 24,
-            }}
-          >
-            <CheckBox
-              checked={isAllRowsChecked}
-              onChange={onCheckAllRows}
-              indeterminate={
-                checkedRows.length > 0 && checkedRows.length !== data.length
-              }
-            />
-          </div>
+          {isOnCheckedRowsAvailable ? (
+            <div
+              style={{
+                borderRight: `1px solid ${Colors.purple_6}`,
+                width: 31,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: 24,
+              }}
+            >
+              <CheckBox
+                checked={isAllRowsChecked}
+                onChange={onCheckAllRows}
+                indeterminate={
+                  checkedRows.length > 0 && checkedRows.length !== data.length
+                }
+              />
+            </div>
+          ) : null}
+
           <div style={{ height: 24 }} className={classes.search}>
             <BaseIcon
               onClick={onToggleSearchBar}
               color={Colors.purple_6}
-              name="Table_Search-Icon"
+              name="Table-_-Filter"
               size={16}
             />
           </div>

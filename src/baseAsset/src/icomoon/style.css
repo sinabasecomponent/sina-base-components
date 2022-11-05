@@ -1,24 +1,18 @@
-/* body {
-  background-color: black;
-} */
 @font-face {
-  font-family: "icomoon";
-  src: url("fonts/icomoon.eot?wilffd");
-  src: url("fonts/icomoon.eot?wilffd#iefix")
-      format("embedded-opentype"),
-    url("fonts/icomoon.ttf?wilffd") format("truetype"),
-    url("fonts/icomoon.woff?wilffd") format("woff"),
-    url("fonts/icomoon.svg?wilffd#icomoon")
-      format("svg");
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?stoc83');
+  src:  url('fonts/icomoon.eot?stoc83#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?stoc83') format('truetype'),
+    url('fonts/icomoon.woff?stoc83') format('woff'),
+    url('fonts/icomoon.svg?stoc83#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"],
-[class*=" icon-"] {
+[class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "icomoon" !important;
+  font-family: 'icomoon' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -41,7 +35,7 @@
 }
 .icon-Calendar-_-Close:before {
   content: "\e902";
-  color: red;
+  color: #fff;
 }
 .icon-Calendar-_-Combo-Calendar:before {
   content: "\e903";
@@ -49,19 +43,19 @@
 }
 .icon-Calendar-_-Month-_-Next-Month:before {
   content: "\e904";
-  color: red;
+  color: #fff;
 }
 .icon-Calendar-_-Month-_-Previous-Month:before {
   content: "\e905";
-  color: red;
+  color: #fff;
 }
 .icon-Calendar-_-Year-_-Next-Year:before {
   content: "\e906";
-  color: red;
+  color: #fff;
 }
 .icon-Calendar-_-Year-_-Previous-Year:before {
   content: "\e907";
-  color: red;
+  color: #fff;
 }
 .icon-Discovery-_-Map-_-Node-Icon .path1:before {
   content: "\e908";
@@ -144,24 +138,20 @@
   margin-left: -1em;
   color: rgb(255, 255, 255);
 }
-.icon-Every-Tables-_-Table-_-Check-Box-in-Rows
-  .path1:before {
+.icon-Every-Tables-_-Table-_-Check-Box-in-Rows .path1:before {
   content: "\e91b";
   color: rgb(55, 71, 117);
 }
-.icon-Every-Tables-_-Table-_-Check-Box-in-Rows
-  .path2:before {
+.icon-Every-Tables-_-Table-_-Check-Box-in-Rows .path2:before {
   content: "\e91c";
   margin-left: -1em;
   color: rgb(227, 230, 241);
 }
-.icon-Every-Tables-_-Table-_-Check-Box-on-Title-Bar-A
-  .path1:before {
+.icon-Every-Tables-_-Table-_-Check-Box-on-Title-Bar-A .path1:before {
   content: "\e91d";
   color: rgb(255, 255, 255);
 }
-.icon-Every-Tables-_-Table-_-Check-Box-on-Title-Bar-A
-  .path2:before {
+.icon-Every-Tables-_-Table-_-Check-Box-on-Title-Bar-A .path2:before {
   content: "\e91e";
   margin-left: -1em;
   color: rgb(149, 157, 184);
@@ -170,13 +160,11 @@
   content: "\e91f";
   color: #58cc87;
 }
-.icon-Every-Tables-_-Table-_-Check-Box-on-Title-Bar-C
-  .path1:before {
+.icon-Every-Tables-_-Table-_-Check-Box-on-Title-Bar-C .path1:before {
   content: "\e920";
   color: rgb(255, 255, 255);
 }
-.icon-Every-Tables-_-Table-_-Check-Box-on-Title-Bar-C
-  .path2:before {
+.icon-Every-Tables-_-Table-_-Check-Box-on-Title-Bar-C .path2:before {
   content: "\e921";
   margin-left: -1em;
   color: rgb(88, 204, 135);
@@ -680,25 +668,21 @@
   margin-left: -1em;
   color: rgb(114, 135, 160);
 }
-.icon-Inventory-_-Device-Images-_-Check-Box-for-Selection
-  .path1:before {
+.icon-Inventory-_-Device-Images-_-Check-Box-for-Selection .path1:before {
   content: "\e988";
   color: rgb(255, 255, 255);
 }
-.icon-Inventory-_-Device-Images-_-Check-Box-for-Selection
-  .path2:before {
+.icon-Inventory-_-Device-Images-_-Check-Box-for-Selection .path2:before {
   content: "\e989";
   margin-left: -1em;
   color: rgb(255, 255, 255);
 }
-.icon-Inventory-_-Device-Images-_-Check-Box-for-Selection
-  .path3:before {
+.icon-Inventory-_-Device-Images-_-Check-Box-for-Selection .path3:before {
   content: "\e98a";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Inventory-_-Device-Images-_-Check-Box-for-Selection
-  .path4:before {
+.icon-Inventory-_-Device-Images-_-Check-Box-for-Selection .path4:before {
   content: "\e98b";
   margin-left: -1em;
   color: rgb(227, 230, 241);
@@ -1010,27 +994,27 @@
 }
 .icon-Menu-Icon-_-Dashboard:before {
   content: "\e9cc";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Discovery:before {
   content: "\e9cd";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Faults:before {
   content: "\e9ce";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Inventory:before {
   content: "\e9cf";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Performance:before {
   content: "\e9d0";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Services:before {
   content: "\e9d1";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Sina-Logo .path1:before {
   content: "\e9d2";
@@ -1366,15 +1350,15 @@
 }
 .icon-Menu-Icon-_-Topology:before {
   content: "\ea0b";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-User-Management:before {
   content: "\ea0c";
-  color: red;
+  color: #fff;
 }
 .icon-Performance-_-Edit-Setting-of-Chart:before {
   content: "\ea0d";
-  color: red;
+  color: #fff;
 }
 .icon-Performance-_-No-Chart-Yet .path1:before {
   content: "\ea0e";
@@ -1412,7 +1396,7 @@
 }
 .icon-Performance-_-Print-of-Chart:before {
   content: "\ea15";
-  color: red;
+  color: #fff;
 }
 .icon-Performance-_-Table-Setting-_-Bullet:before {
   content: "\ea16";
@@ -1426,256 +1410,213 @@
   content: "\ea18";
   color: #abb6d6;
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path1:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path1:before {
   content: "\ea19";
   color: rgb(227, 230, 241);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path2:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path2:before {
   content: "\ea1a";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path3:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path3:before {
   content: "\ea1b";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path4:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path4:before {
   content: "\ea1c";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path5:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path5:before {
   content: "\ea1d";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path6:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path6:before {
   content: "\ea1e";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path7:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path7:before {
   content: "\ea1f";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path8:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path8:before {
   content: "\ea20";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path9:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path9:before {
   content: "\ea21";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path10:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path10:before {
   content: "\ea22";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path11:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path11:before {
   content: "\ea23";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path12:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path12:before {
   content: "\ea24";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path13:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path13:before {
   content: "\ea25";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path14:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path14:before {
   content: "\ea26";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path15:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path15:before {
   content: "\ea27";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-day
-  .path16:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-day .path16:before {
   content: "\ea28";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-hour
-  .path1:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-hour .path1:before {
   content: "\ea29";
   color: rgb(194, 201, 219);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-hour
-  .path2:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-hour .path2:before {
   content: "\ea2a";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-hour
-  .path3:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-hour .path3:before {
   content: "\ea2b";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-hour
-  .path4:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-hour .path4:before {
   content: "\ea2c";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-hour
-  .path5:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-hour .path5:before {
   content: "\ea2d";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-hour
-  .path6:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-hour .path6:before {
   content: "\ea2e";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-1-hour
-  .path7:before {
+.icon-Performance-_-Table-Setting-_-Time-_-1-hour .path7:before {
   content: "\ea2f";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-6-hours
-  .path1:before {
+.icon-Performance-_-Table-Setting-_-Time-_-6-hours .path1:before {
   content: "\ea30";
   color: rgb(227, 230, 241);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-6-hours
-  .path2:before {
+.icon-Performance-_-Table-Setting-_-Time-_-6-hours .path2:before {
   content: "\ea31";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-6-hours
-  .path3:before {
+.icon-Performance-_-Table-Setting-_-Time-_-6-hours .path3:before {
   content: "\ea32";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-6-hours
-  .path4:before {
+.icon-Performance-_-Table-Setting-_-Time-_-6-hours .path4:before {
   content: "\ea33";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path1:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path1:before {
   content: "\ea34";
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path2:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path2:before {
   content: "\ea35";
   margin-left: -1em;
   color: rgb(227, 230, 241);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path3:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path3:before {
   content: "\ea36";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path4:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path4:before {
   content: "\ea37";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path5:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path5:before {
   content: "\ea38";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path6:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path6:before {
   content: "\ea39";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path7:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path7:before {
   content: "\ea3a";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path8:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path8:before {
   content: "\ea3b";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path9:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path9:before {
   content: "\ea3c";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path10:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path10:before {
   content: "\ea3d";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path11:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path11:before {
   content: "\ea3e";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path12:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path12:before {
   content: "\ea3f";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path13:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path13:before {
   content: "\ea40";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path14:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path14:before {
   content: "\ea41";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path15:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path15:before {
   content: "\ea42";
   margin-left: -1em;
   color: rgb(55, 71, 117);
 }
-.icon-Performance-_-Table-Setting-_-Time-_-7-days
-  .path16:before {
+.icon-Performance-_-Table-Setting-_-Time-_-7-days .path16:before {
   content: "\ea43";
   margin-left: -1em;
   color: rgb(55, 71, 117);
@@ -1696,19 +1637,16 @@
   content: "\ea47";
   color: #374775;
 }
-.icon-Services-_-Port-Mapping-_-Show-More
-  .path1:before {
+.icon-Services-_-Port-Mapping-_-Show-More .path1:before {
   content: "\ea48";
   color: rgb(255, 255, 255);
 }
-.icon-Services-_-Port-Mapping-_-Show-More
-  .path2:before {
+.icon-Services-_-Port-Mapping-_-Show-More .path2:before {
   content: "\ea49";
   margin-left: -1em;
   color: rgb(235, 237, 242);
 }
-.icon-Services-_-Port-Mapping-_-Show-More
-  .path3:before {
+.icon-Services-_-Port-Mapping-_-Show-More .path3:before {
   content: "\ea4a";
   margin-left: -1em;
   color: rgb(194, 201, 219);
@@ -1734,35 +1672,29 @@
   margin-left: -1em;
   color: rgb(133, 196, 85);
 }
-.icon-Shelf-View-_-Components-_-Ethernet
-  .path1:before {
+.icon-Shelf-View-_-Components-_-Ethernet .path1:before {
   content: "\ea50";
   color: rgb(133, 196, 85);
 }
-.icon-Shelf-View-_-Components-_-Ethernet
-  .path2:before {
+.icon-Shelf-View-_-Components-_-Ethernet .path2:before {
   content: "\ea51";
   margin-left: -1em;
   color: rgb(51, 51, 51);
 }
-.icon-Shelf-View-_-Components-_-LC-Connector
-  .path1:before {
+.icon-Shelf-View-_-Components-_-LC-Connector .path1:before {
   content: "\ea52";
   color: rgb(133, 196, 85);
 }
-.icon-Shelf-View-_-Components-_-LC-Connector
-  .path2:before {
+.icon-Shelf-View-_-Components-_-LC-Connector .path2:before {
   content: "\ea53";
   margin-left: -1em;
   color: rgb(51, 51, 51);
 }
-.icon-Shelf-View-_-Components-_-QSFP-or-XFP
-  .path1:before {
+.icon-Shelf-View-_-Components-_-QSFP-or-XFP .path1:before {
   content: "\ea54";
   color: rgb(51, 51, 51);
 }
-.icon-Shelf-View-_-Components-_-QSFP-or-XFP
-  .path2:before {
+.icon-Shelf-View-_-Components-_-QSFP-or-XFP .path2:before {
   content: "\ea55";
   margin-left: -1em;
   color: rgb(133, 196, 85);
@@ -1770,13 +1702,11 @@
 .icon-Shelf-View-_-Components-_-Seven-Segments:before {
   content: "\ea56";
 }
-.icon-Shelf-View-_-Components-_-SFP-plus
-  .path1:before {
+.icon-Shelf-View-_-Components-_-SFP-plus .path1:before {
   content: "\ea57";
   color: rgb(51, 51, 51);
 }
-.icon-Shelf-View-_-Components-_-SFP-plus
-  .path2:before {
+.icon-Shelf-View-_-Components-_-SFP-plus .path2:before {
   content: "\ea58";
   margin-left: -1em;
   color: rgb(133, 196, 85);
@@ -1901,11 +1831,11 @@
 }
 .icon-Shelf-View-_-Loopback:before {
   content: "\ea71";
-  color: red;
+  color: #fff;
 }
 .icon-Shelf-View-_-PRBS:before {
   content: "\ea72";
-  color: red;
+  color: #fff;
 }
 .icon-Shelf-View-_-Refresh:before {
   content: "\ea73";
@@ -1965,7 +1895,7 @@
 }
 .icon-Table-_-Info:before {
   content: "\ea81";
-  color: red;
+  color: #fff;
 }
 .icon-Table-_-Search-Icon:before {
   content: "\ea82";

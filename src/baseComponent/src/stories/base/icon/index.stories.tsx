@@ -5,7 +5,7 @@ export default {
   component: BaseIcon,
 } as Meta<BaseIconProps>;
 
-const Template: Story<BaseIconProps> = (args) => (
+const Template: Story<BaseIconProps> = () => (
   <div style={{ backgroundColor: "black" }}>
     <BaseIcon name={"Calendar-_-Close"} />
   </div>

@@ -1,0 +1,86 @@
+@import "../../styles/color";
+.dropdown {
+  width: 350px;
+  position: relative;
+
+  &__button {
+    width: 100%;
+    padding: 0.3rem;
+    background-color: #fff;
+    color: $primary-1;
+    border: 2px dotted $primary-1;
+    position: relative;
+
+    &:hover {
+      background-color: unset;
+    }
+  }
+
+  &__icon {
+    &--down {
+      // fill: $primary-1;
+      // stroke: $primary-1;
+      // stroke-width: 1.5;
+      position: absolute;
+      right: 1rem;
+      // width: 11px;
+      top: 42%;
+      transform: scale(1.5) rotate(180deg);
+    }
+  }
+
+  &__searchbox {
+    background-color: inherit;
+    border: 0.4px solid white;
+    padding: 0.3rem;
+    margin: 0 auto;
+    height: unset;
+    width: 94%;
+    margin-bottom: 0.5rem;
+    color: white;
+
+    &::placeholder {
+      color: rgb(209, 209, 209);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    padding: 0.8rem 0;
+    width: 100%;
+    top: 110%;
+    background-color: $primary-2;
+    border-radius: 0.5rem;
+    max-height: 210px;
+    overflow-y: scroll;
+
+    /* width */
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px $primary-7;
+      border-radius: 2px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: $grey-1;
+      border-radius: 10px;
+    }
+  }
+
+  &__item {
+    font-size: 16px;
+    color: white;
+    min-height: 27px;
+    padding: 0 0.7rem;
+
+    &:hover {
+      background-color: $primary-1;
+      cursor: pointer;
+    }
+  }
+}

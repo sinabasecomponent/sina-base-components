@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { FC } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
-import { BaseIcon } from "../baseIcon";
+import { BaseIcon } from "../../atoms/baseIcon";
 import styles from "./file-input.module.scss";
 import useFileInput from "./useFileInput";
 

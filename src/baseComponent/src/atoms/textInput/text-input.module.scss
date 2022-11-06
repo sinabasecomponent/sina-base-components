@@ -1,0 +1,23 @@
+@import "../../styles/color";
+.text-input {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  & > label {
+    font-size: 1rem;
+    line-height: 1.125rem;
+    color: $primary-2;
+    text-transform: capitalize;
+  }
+
+  & > input {
+    width: 75%;
+    background-color: $border-color;
+    color: $primary-2;
+    border: none;
+    padding: 0.7rem;
+    border-radius: 0.4375rem;
+    outline: none;
+  }
+}

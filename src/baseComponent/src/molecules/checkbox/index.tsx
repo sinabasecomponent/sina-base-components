@@ -22,6 +22,8 @@ const CheckBox = ({
     onChange?.(e);
   };
 
+  console.log({ styles });
+
   return (
     <label style={{ display: "flex" }}>
       <div

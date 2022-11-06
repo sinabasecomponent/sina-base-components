@@ -1,0 +1,36 @@
+.file-input {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  & > label {
+    font-size: 1rem;
+    line-height: 1.125rem;
+    color: $primary-2;
+    text-transform: capitalize;
+  }
+
+  &__file-chooser {
+    * {
+      cursor: pointer;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    cursor: pointer;
+    background-color: white;
+    color: $primary-2;
+    border: dotted $primary-2 2px;
+    padding: 0.7rem;
+    border-radius: 0.4375rem;
+    outline: none;
+    column-gap: 2%;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    height: 2.5rem;
+  }
+
+  &__icon {
+    width: 11px;
+  }
+}

@@ -18,8 +18,8 @@ Primary.args = {
   // checked: true,
 };
 
-export const indeterminate = Template.bind({});
+export const Indeterminate = Template.bind({});
 
-indeterminate.args = {
+Indeterminate.args = {
   indeterminate: true,
 };

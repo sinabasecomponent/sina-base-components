@@ -20,7 +20,7 @@ const mockData = [...new Array(400)].map((_, index) => {
   };
 });
 
-const Template: Story<any> = (args) => {
+const Template: Story<any> = () => {
   return (
     <StoryContainer>
       <Table data={mockData} rowKey={"id"}>

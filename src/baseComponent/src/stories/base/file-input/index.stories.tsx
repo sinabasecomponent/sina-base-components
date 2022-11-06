@@ -5,6 +5,6 @@ export default {
   component: FileInput,
 } as Meta<FileInputProps>;
 
-const Template: Story<FileInputProps> = (args) => <FileInput />;
+const Template: Story<FileInputProps> = () => <FileInput />;
 
 export const Primary = Template.bind({});

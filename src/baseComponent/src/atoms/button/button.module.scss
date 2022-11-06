@@ -1,0 +1,23 @@
+@import "../../styles/color";
+
+.button {
+  border-radius: 0.4375rem;
+  background-color: $primary-2;
+  min-width: 6rem;
+  padding: 0.75rem;
+
+  color: white;
+  font-size: 1rem;
+  line-height: 1.0625rem;
+  border: none;
+  outline: none;
+  * {
+    cursor: pointer !important;
+  }
+  cursor: pointer !important;
+
+  &:hover {
+    background-color: $secondary-1;
+    cursor: pointer;
+  }
+}

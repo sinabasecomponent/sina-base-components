@@ -1,8 +1,8 @@
 // import { ArrowIcon } from "assets/icons";
 import classNames from "classnames";
 import { FC } from "react";
+import { BaseIcon } from "../../atoms/baseIcon";
 import { Colors } from "../../colors";
-import { BaseIcon } from "../baseIcon";
 import styles from "./node-button.module.scss";
 
 export interface NodeButtonProps {

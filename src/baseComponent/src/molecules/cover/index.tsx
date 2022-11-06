@@ -1,5 +1,5 @@
 // import { StartFlagIcon } from 'assets/icons';
-import { BaseIcon } from "../baseIcon";
+import { BaseIcon } from "../../atoms/baseIcon";
 import styles from "./cover.module.scss";
 
 const Cover = () => {

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 import { Text } from "../../atoms/text";
-import { useStyles } from "./style";
+import styles from "./checkbox.module.scss";
 
 export interface CheckBoxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -18,11 +18,11 @@ const CheckBox = ({
   indeterminate,
   ...rest
 }: CheckBoxProps) => {
-  const classes = useStyles();
-
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(e);
   };
+
+  console.log({ styles });
 
   return (
     <label style={{ display: "flex" }}>
@@ -39,13 +39,13 @@ const CheckBox = ({
             ...(typeof children !== "undefined" && { marginInlineEnd: 4 }),
           }}
           className={classNames(
-            classes.Input,
-            checked && !indeterminate && classes.Inputchecked,
-            indeterminate && classes.Indeterminate,
+            styles["Input"],
+            checked && !indeterminate && styles["Inputchecked"],
+            indeterminate && styles["Indeterminate"],
           )}
         />
         <input
-          className={classes.hiddenInput}
+          className={styles["hiddenInput"]}
           type={"checkbox"}
           value={value}
           name={name}

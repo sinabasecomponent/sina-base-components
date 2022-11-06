@@ -2,6 +2,7 @@ export * from "../molecules/file-input";
 export * from "../molecules/node-button";
 export * from "./baseIcon";
 export * from "./button";
+export * from "./cover";
 export * from "./search-box";
 export * from "./text";
 export * from "./textInput";

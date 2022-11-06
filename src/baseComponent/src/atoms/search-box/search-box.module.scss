@@ -1,0 +1,21 @@
+@import "../../styles/color";
+
+.search-box {
+  border: solid $primary-2 1.5px;
+  outline: none;
+  background-color: white;
+  color: $primary-2;
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 0.4375rem;
+  margin-bottom: 0.625rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 0.6rem;
+
+  &::placeholder {
+    text-align: center;
+    color: $primary-2;
+  }
+}

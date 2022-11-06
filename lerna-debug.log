@@ -6,13 +6,13 @@
 0 silly argv }
 1 notice cli v4.0.0
 2 verbose rootPath E:\sina-comsys-projects\sina-base-components
-3 verbose session 9090104edd490cf4
+3 verbose session d22550ec77b74105
 4 verbose user-agent lerna/4.0.0/node@v16.17.0+x64 (win32)
 5 warn Yarn's registry proxy is broken, replacing with public npm registry
 6 warn If you don't have an npm token, you should exit and run `npm login`
 7 silly argv { _: [ 'publish' ], composed: 'publish', lernaVersion: '4.0.0' }
 8 verbose rootPath E:\sina-comsys-projects\sina-base-components
-9 info current version 1.1.4
+9 info current version 1.1.6
 10 silly isAnythingCommitted
 11 verbose isAnythingCommitted 1
 12 silly getCurrentBranch
@@ -22,119 +22,261 @@
 16 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 0
 17 silly hasTags
 18 verbose hasTags true
-19 silly git-describe.sync "v1.1.4-1-g6bb3126" => {"lastTagName":"v1.1.4","lastVersion":"v1.1.4","refCount":"1","sha":"6bb3126","isDirty":false}
-20 info Looking for changed packages since v1.1.4
+19 silly git-describe.sync "v1.1.6-28-gc86d7ad" => {"lastTagName":"v1.1.6","lastVersion":"v1.1.6","refCount":"28","sha":"c86d7ad","isDirty":false}
+20 info Looking for changed packages since v1.1.6
 21 silly checking diff src/baseAsset
-22 silly no diff found in @sina-base/asset
-23 silly checking diff src/baseComponent
-24 silly found diff in src/baseComponent/src/index.ts
-25 verbose filtered diff [ 'src/baseComponent/src/index.ts' ]
-26 silly checking diff src/web
-27 silly no diff found in web
-28 verbose updated @sina-base/component
-29 verbose git-describe undefined => "v1.1.4-1-g6bb3126"
-30 silly git-describe parsed => {"lastTagName":"v1.1.4","lastVersion":"v1.1.4","refCount":"1","sha":"6bb3126","isDirty":false}
-31 silly fixed for @sina-base/component at E:\sina-comsys-projects\sina-base-components\src\baseComponent
-32 verbose getChangelogConfig using preset "conventional-changelog-angular"
-33 silly npa Result {
-33 silly npa   type: 'tag',
-33 silly npa   registry: true,
-33 silly npa   where: undefined,
-33 silly npa   raw: 'conventional-changelog-angular',
-33 silly npa   name: 'conventional-changelog-angular',
-33 silly npa   escapedName: 'conventional-changelog-angular',
-33 silly npa   scope: undefined,
-33 silly npa   rawSpec: '',
-33 silly npa   saveSpec: null,
-33 silly npa   fetchSpec: 'latest',
-33 silly npa   gitRange: undefined,
-33 silly npa   gitCommittish: undefined,
-33 silly npa   hosted: undefined
-33 silly npa }
-34 verbose getChangelogConfig Attempting to resolve preset "conventional-changelog-angular"
-35 info getChangelogConfig Successfully resolved preset "conventional-changelog-angular"
-36 verbose fixed increment 1.1.4 by patch
-37 info auto-confirmed
-38 info execute Skipping releases
-39 silly lifecycle No script for "preversion" in "baseweb", continuing
-40 silly lifecycle No script for "preversion" in "@sina-base/component", continuing
-41 silly lifecycle No script for "version" in "@sina-base/component", continuing
-42 silly fixed for @sina-base/component at E:\sina-comsys-projects\sina-base-components\src\baseComponent
-43 silly fixed writing new entry: "## [1.1.5](https://github.com/sinabasecomponent/sina-base-components/compare/v1.1.4...v1.1.5) (2022-10-25)\n\n**Note:** Version bump only for package @sina-base/component\n\n\n\n"
-44 verbose fixed wrote E:\sina-comsys-projects\sina-base-components\src\baseComponent\CHANGELOG.md
-45 silly root for baseweb at E:\sina-comsys-projects\sina-base-components
-46 silly root writing new entry: "## [1.1.5](https://github.com/sinabasecomponent/sina-base-components/compare/v1.1.4...v1.1.5) (2022-10-25)\n\n**Note:** Version bump only for package baseweb\n\n\n\n"
-47 verbose root wrote E:\sina-comsys-projects\sina-base-components\CHANGELOG.md
-48 silly lifecycle No script for "version" in "baseweb", continuing
-49 silly gitAdd [
-49 silly gitAdd   'src/baseComponent/package.json',
-49 silly gitAdd   'src/baseComponent/CHANGELOG.md',
-49 silly gitAdd   'CHANGELOG.md',
-49 silly gitAdd   'lerna.json'
-49 silly gitAdd ]
-50 silly gitCommit chore(plus-base): publish
-51 verbose git [ 'commit', '-m', 'chore(plus-base): publish' ]
-52 silly gitTag v1.1.5
-53 verbose git [ 'tag', 'v1.1.5', '-m', 'v1.1.5' ]
-54 silly lifecycle No script for "postversion" in "@sina-base/component", continuing
-55 silly lifecycle No script for "postversion" in "baseweb", continuing
-56 info git Pushing tags...
-57 silly gitPush origin master
-58 info publish Publishing packages to npm...
-59 info Verifying npm credentials
-60 verbose Retrieving npm user profile
-61 warn registry Unexpected warning for https://registry.npmjs.org/: Miscellaneous Warning FETCH_ERROR: network timeout at: https://registry.npmjs.org/-/npm/v1/user
-62 warn registry Using stale data from https://registry.npmjs.org/ due to a request error during revalidation.
-63 http fetch GET 200 https://registry.npmjs.org/-/npm/v1/user 300062ms (from cache)
-64 silly npm profile get received {"tfa":false,"name":"sinabase.component","email":"sinabase.component@gmail.com","email_verified":true,"created":"2022-10-12T08:24:02.788Z","updated":"2022-10-12T08:24:02.783Z","cidr_whitelist":null}
-65 silly get npm username received {"username":"sinabase.component","tfa":false,"name":"sinabase.component","email":"sinabase.component@gmail.com","email_verified":true,"created":"2022-10-12T08:24:02.788Z","updated":"2022-10-12T08:24:02.783Z","cidr_whitelist":null}
-66 silly verifyNpmPackageAccess
-67 http fetch GET 200 https://registry.npmjs.org/-/org/sinabase.component/package?format=cli 18326ms (cache updated)
-68 info Checking two-factor auth mode
-69 verbose Retrieving npm user profile
-70 http fetch GET 200 https://registry.npmjs.org/-/npm/v1/user 22426ms (from cache)
-71 silly npm profile get received {"tfa":false,"name":"sinabase.component","email":"sinabase.component@gmail.com","email_verified":true,"created":"2022-10-12T08:24:02.788Z","updated":"2022-10-12T08:24:02.783Z","cidr_whitelist":null}
-72 silly 2FA false
-73 warn ENOLICENSE Package @sina-base/component is missing a license.
-73 warn ENOLICENSE One way to fix this is to add a LICENSE.md file to the root of this repository.
-73 warn ENOLICENSE See https://choosealicense.com for additional guidance.
-74 silly getCurrentSHA
-75 verbose getCurrentSHA 11f18271205fd4b3fc5577237be53a25e4079a2d
-76 silly lifecycle No script for "prepublish" in "baseweb", continuing
-77 silly lifecycle No script for "prepare" in "baseweb", continuing
-78 silly lifecycle No script for "prepublishOnly" in "baseweb", continuing
-79 silly lifecycle No script for "prepack" in "baseweb", continuing
-80 verbose pack-directory src\baseComponent
-81 silly lifecycle No script for "prepublish" in "@sina-base/component", continuing
-82 silly lifecycle No script for "prepare" in "@sina-base/component", continuing
-83 silly lifecycle No script for "prepublishOnly" in "@sina-base/component", continuing
-84 silly lifecycle No script for "prepack" in "@sina-base/component", continuing
-85 silly lifecycle No script for "postpack" in "@sina-base/component", continuing
-86 verbose packed src\baseComponent
-87 silly lifecycle No script for "postpack" in "baseweb", continuing
-88 verbose publish @sina-base/component
-89 silly FetchError: request to https://registry.npmjs.org/@sina-base%2fcomponent failed, reason: socket hang up
-89 silly     at ClientRequest.<anonymous> (E:\sina-comsys-projects\sina-base-components\node_modules\minipass-fetch\lib\index.js:110:14)
-89 silly     at ClientRequest.emit (node:events:513:28)
-89 silly     at TLSSocket.socketOnEnd (node:_http_client:505:9)
-89 silly     at TLSSocket.emit (node:events:525:35)
-89 silly     at endReadableNT (node:internal/streams/readable:1358:12)
-89 silly     at processTicksAndRejections (node:internal/process/task_queues:83:21)
-89 silly  FetchError: request to https://registry.npmjs.org/@sina-base%2fcomponent failed, reason: socket hang up
-89 silly     at ClientRequest.<anonymous> (E:\sina-comsys-projects\sina-base-components\node_modules\minipass-fetch\lib\index.js:110:14)
-89 silly     at ClientRequest.emit (node:events:513:28)
-89 silly     at TLSSocket.socketOnEnd (node:_http_client:505:9)
-89 silly     at TLSSocket.emit (node:events:525:35)
-89 silly     at endReadableNT (node:internal/streams/readable:1358:12)
-89 silly     at processTicksAndRejections (node:internal/process/task_queues:83:21) {
-89 silly   code: 'ECONNRESET',
-89 silly   errno: 'ECONNRESET',
-89 silly   type: 'system'
-89 silly }
-90 error ECONNRESET request to https://registry.npmjs.org/@sina-base%2fcomponent failed, reason: socket hang up
-91 error FetchError: request to https://registry.npmjs.org/@sina-base%2fcomponent failed, reason: socket hang up
-91 error     at ClientRequest.<anonymous> (E:\sina-comsys-projects\sina-base-components\node_modules\minipass-fetch\lib\index.js:110:14)
-91 error     at ClientRequest.emit (node:events:513:28)
-91 error     at TLSSocket.socketOnEnd (node:_http_client:505:9)
-91 error     at TLSSocket.emit (node:events:525:35)
-91 error     at endReadableNT (node:internal/streams/readable:1358:12)
+22 silly found diff in src/baseAsset/src/icomoon/Read Me.txt
+22 silly found diff in src/baseAsset/src/icomoon/demo.html
+22 silly found diff in src/baseAsset/src/icomoon/fonts/icomoon.eot
+22 silly found diff in src/baseAsset/src/icomoon/fonts/icomoon.svg
+22 silly found diff in src/baseAsset/src/icomoon/fonts/icomoon.ttf
+22 silly found diff in src/baseAsset/src/icomoon/fonts/icomoon.woff
+22 silly found diff in src/baseAsset/src/icomoon/selection.json
+22 silly found diff in src/baseAsset/src/icomoon/style.css
+23 verbose filtered diff [
+23 verbose filtered diff   'src/baseAsset/src/icomoon/Read Me.txt',
+23 verbose filtered diff   'src/baseAsset/src/icomoon/demo.html',
+23 verbose filtered diff   'src/baseAsset/src/icomoon/fonts/icomoon.eot',
+23 verbose filtered diff   'src/baseAsset/src/icomoon/fonts/icomoon.svg',
+23 verbose filtered diff   'src/baseAsset/src/icomoon/fonts/icomoon.ttf',
+23 verbose filtered diff   'src/baseAsset/src/icomoon/fonts/icomoon.woff',
+23 verbose filtered diff   'src/baseAsset/src/icomoon/selection.json',
+23 verbose filtered diff   'src/baseAsset/src/icomoon/style.css'
+23 verbose filtered diff ]
+24 silly checking diff src/baseComponent
+25 silly found diff in src/baseComponent/src/atoms/baseIcon/iconNames.ts
+25 silly found diff in src/baseComponent/src/atoms/baseIcon/iconsContent.ts
+25 silly found diff in src/baseComponent/src/atoms/baseIcon/index.tsx
+25 silly found diff in src/baseComponent/src/atoms/button/button.module.scss
+25 silly found diff in src/baseComponent/src/atoms/button/index.tsx
+25 silly found diff in src/baseComponent/src/atoms/index.ts
+25 silly found diff in src/baseComponent/src/atoms/search-box/index.tsx
+25 silly found diff in src/baseComponent/src/atoms/search-box/search-box.module.scss
+25 silly found diff in src/baseComponent/src/atoms/textInput/index.tsx
+25 silly found diff in src/baseComponent/src/atoms/textInput/text-input.module.scss
+25 silly found diff in src/baseComponent/src/index.ts
+25 silly found diff in src/baseComponent/src/molecules/Table/cell/style.tsx
+25 silly found diff in src/baseComponent/src/molecules/Table/index.tsx
+25 silly found diff in src/baseComponent/src/molecules/Table/rowContainer/index.tsx
+25 silly found diff in src/baseComponent/src/molecules/Table/style.tsx
+25 silly found diff in src/baseComponent/src/molecules/checkbox/checkbox.module.scss
+25 silly found diff in src/baseComponent/src/molecules/checkbox/index.tsx
+25 silly found diff in src/baseComponent/src/molecules/confirmationDialog/confirmationDialog.module.scss
+25 silly found diff in src/baseComponent/src/molecules/confirmationDialog/index.tsx
+25 silly found diff in src/baseComponent/src/molecules/cover/cover.module.scss
+25 silly found diff in src/baseComponent/src/molecules/cover/index.tsx
+25 silly found diff in src/baseComponent/src/molecules/dropDown/dropDown.module.scss
+25 silly found diff in src/baseComponent/src/molecules/dropDown/index.tsx
+25 silly found diff in src/baseComponent/src/molecules/file-input/file-input.module.scss
+25 silly found diff in src/baseComponent/src/molecules/file-input/index.tsx
+25 silly found diff in src/baseComponent/src/molecules/file-input/useFileInput.ts
+25 silly found diff in src/baseComponent/src/molecules/index.tsx
+25 silly found diff in src/baseComponent/src/molecules/node-button/index.tsx
+25 silly found diff in src/baseComponent/src/molecules/node-button/node-button.module.scss
+25 silly found diff in src/baseComponent/src/muscles/Table/cell/cell.module.scss
+25 silly found diff in src/baseComponent/src/muscles/Table/cell/index.tsx
+25 silly found diff in src/baseComponent/src/muscles/Table/column/index.tsx
+25 silly found diff in src/baseComponent/src/muscles/Table/context/index.tsx
+25 silly found diff in src/baseComponent/src/muscles/Table/header/header.module.scss
+25 silly found diff in src/baseComponent/src/muscles/Table/header/index.tsx
+25 silly found diff in src/baseComponent/src/muscles/Table/index.tsx
+25 silly found diff in src/baseComponent/src/muscles/Table/row/index.tsx
+25 silly found diff in src/baseComponent/src/muscles/Table/rowContainer/index.tsx
+25 silly found diff in src/baseComponent/src/muscles/Table/searchBar/index.tsx
+25 silly found diff in src/baseComponent/src/muscles/Table/searchBar/searchBar.module.scss
+25 silly found diff in src/baseComponent/src/muscles/Table/table.module.scss
+25 silly found diff in src/baseComponent/src/muscles/index.tsx
+25 silly found diff in src/baseComponent/src/stories/base/button/index.stories.tsx
+25 silly found diff in src/baseComponent/src/stories/base/checkbox/index.stories.tsx
+25 silly found diff in src/baseComponent/src/stories/base/confirmationDialog/index.stories.tsx
+25 silly found diff in src/baseComponent/src/stories/base/cover/index.stories.tsx
+25 silly found diff in src/baseComponent/src/stories/base/dropDown/index.stories.tsx
+25 silly found diff in src/baseComponent/src/stories/base/file-input/index.stories.tsx
+25 silly found diff in src/baseComponent/src/stories/base/icon/index.stories.tsx
+25 silly found diff in src/baseComponent/src/stories/base/nodeButton/index.stories.tsx
+25 silly found diff in src/baseComponent/src/stories/base/searchBox/index.stories.tsx
+25 silly found diff in src/baseComponent/src/stories/base/table/index.stories.tsx
+25 silly found diff in src/baseComponent/src/stories/base/testInput/index.stories.tsx
+25 silly found diff in src/baseComponent/src/styles/_color.scss
+26 verbose filtered diff [
+26 verbose filtered diff   'src/baseComponent/src/atoms/baseIcon/iconNames.ts',
+26 verbose filtered diff   'src/baseComponent/src/atoms/baseIcon/iconsContent.ts',
+26 verbose filtered diff   'src/baseComponent/src/atoms/baseIcon/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/atoms/button/button.module.scss',
+26 verbose filtered diff   'src/baseComponent/src/atoms/button/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/atoms/index.ts',
+26 verbose filtered diff   'src/baseComponent/src/atoms/search-box/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/atoms/search-box/search-box.module.scss',
+26 verbose filtered diff   'src/baseComponent/src/atoms/textInput/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/atoms/textInput/text-input.module.scss',
+26 verbose filtered diff   'src/baseComponent/src/index.ts',
+26 verbose filtered diff   'src/baseComponent/src/molecules/Table/cell/style.tsx',
+26 verbose filtered diff   'src/baseComponent/src/molecules/Table/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/molecules/Table/rowContainer/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/molecules/Table/style.tsx',
+26 verbose filtered diff   'src/baseComponent/src/molecules/checkbox/checkbox.module.scss',
+26 verbose filtered diff   'src/baseComponent/src/molecules/checkbox/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/molecules/confirmationDialog/confirmationDialog.module.scss',
+26 verbose filtered diff   'src/baseComponent/src/molecules/confirmationDialog/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/molecules/cover/cover.module.scss',
+26 verbose filtered diff   'src/baseComponent/src/molecules/cover/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/molecules/dropDown/dropDown.module.scss',
+26 verbose filtered diff   'src/baseComponent/src/molecules/dropDown/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/molecules/file-input/file-input.module.scss',
+26 verbose filtered diff   'src/baseComponent/src/molecules/file-input/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/molecules/file-input/useFileInput.ts',
+26 verbose filtered diff   'src/baseComponent/src/molecules/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/molecules/node-button/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/molecules/node-button/node-button.module.scss',
+26 verbose filtered diff   'src/baseComponent/src/muscles/Table/cell/cell.module.scss',
+26 verbose filtered diff   'src/baseComponent/src/muscles/Table/cell/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/muscles/Table/column/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/muscles/Table/context/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/muscles/Table/header/header.module.scss',
+26 verbose filtered diff   'src/baseComponent/src/muscles/Table/header/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/muscles/Table/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/muscles/Table/row/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/muscles/Table/rowContainer/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/muscles/Table/searchBar/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/muscles/Table/searchBar/searchBar.module.scss',
+26 verbose filtered diff   'src/baseComponent/src/muscles/Table/table.module.scss',
+26 verbose filtered diff   'src/baseComponent/src/muscles/index.tsx',
+26 verbose filtered diff   'src/baseComponent/src/stories/base/button/index.stories.tsx',
+26 verbose filtered diff   'src/baseComponent/src/stories/base/checkbox/index.stories.tsx',
+26 verbose filtered diff   'src/baseComponent/src/stories/base/confirmationDialog/index.stories.tsx',
+26 verbose filtered diff   'src/baseComponent/src/stories/base/cover/index.stories.tsx',
+26 verbose filtered diff   'src/baseComponent/src/stories/base/dropDown/index.stories.tsx',
+26 verbose filtered diff   'src/baseComponent/src/stories/base/file-input/index.stories.tsx',
+26 verbose filtered diff   'src/baseComponent/src/stories/base/icon/index.stories.tsx',
+26 verbose filtered diff   'src/baseComponent/src/stories/base/nodeButton/index.stories.tsx',
+26 verbose filtered diff   'src/baseComponent/src/stories/base/searchBox/index.stories.tsx',
+26 verbose filtered diff   'src/baseComponent/src/stories/base/table/index.stories.tsx',
+26 verbose filtered diff   'src/baseComponent/src/stories/base/testInput/index.stories.tsx',
+26 verbose filtered diff   'src/baseComponent/src/styles/_color.scss'
+26 verbose filtered diff ]
+27 silly checking diff src/web
+28 silly no diff found in web
+29 verbose updated @sina-base/asset
+30 verbose updated @sina-base/component
+31 verbose git-describe undefined => "v1.1.6-28-gc86d7ad"
+32 silly git-describe parsed => {"lastTagName":"v1.1.6","lastVersion":"v1.1.6","refCount":"28","sha":"c86d7ad","isDirty":false}
+33 verbose version Overriding version of @sina-base/asset from 1.1.4 to 1.1.6
+34 silly fixed for @sina-base/asset at E:\sina-comsys-projects\sina-base-components\src\baseAsset
+35 verbose getChangelogConfig using preset "conventional-changelog-angular"
+36 silly npa Result {
+36 silly npa   type: 'tag',
+36 silly npa   registry: true,
+36 silly npa   where: undefined,
+36 silly npa   raw: 'conventional-changelog-angular',
+36 silly npa   name: 'conventional-changelog-angular',
+36 silly npa   escapedName: 'conventional-changelog-angular',
+36 silly npa   scope: undefined,
+36 silly npa   rawSpec: '',
+36 silly npa   saveSpec: null,
+36 silly npa   fetchSpec: 'latest',
+36 silly npa   gitRange: undefined,
+36 silly npa   gitCommittish: undefined,
+36 silly npa   hosted: undefined
+36 silly npa }
+37 verbose getChangelogConfig Attempting to resolve preset "conventional-changelog-angular"
+38 info getChangelogConfig Successfully resolved preset "conventional-changelog-angular"
+39 verbose fixed increment 1.1.6 by patch
+40 silly fixed for @sina-base/component at E:\sina-comsys-projects\sina-base-components\src\baseComponent
+41 verbose fixed increment 1.1.6 by patch
+42 info auto-confirmed
+43 info execute Skipping releases
+44 silly lifecycle No script for "preversion" in "baseweb", continuing
+45 silly lifecycle No script for "preversion" in "@sina-base/asset", continuing
+46 silly lifecycle No script for "version" in "@sina-base/asset", continuing
+47 silly fixed for @sina-base/asset at E:\sina-comsys-projects\sina-base-components\src\baseAsset
+48 silly fixed writing new entry: "## [1.1.7](https://github.com/sinabasecomponent/sina-base-components/compare/v1.1.6...v1.1.7) (2022-11-06)\n\n**Note:** Version bump only for package @sina-base/asset\n\n\n\n"
+49 verbose fixed wrote E:\sina-comsys-projects\sina-base-components\src\baseAsset\CHANGELOG.md
+50 silly lifecycle No script for "preversion" in "@sina-base/component", continuing
+51 silly lifecycle No script for "version" in "@sina-base/component", continuing
+52 silly fixed for @sina-base/component at E:\sina-comsys-projects\sina-base-components\src\baseComponent
+53 silly fixed writing new entry: "## [1.1.7](https://github.com/sinabasecomponent/sina-base-components/compare/v1.1.6...v1.1.7) (2022-11-06)\n\n**Note:** Version bump only for package @sina-base/component\n\n\n\n"
+54 verbose fixed wrote E:\sina-comsys-projects\sina-base-components\src\baseComponent\CHANGELOG.md
+55 silly root for baseweb at E:\sina-comsys-projects\sina-base-components
+56 silly root writing new entry: "## [1.1.7](https://github.com/sinabasecomponent/sina-base-components/compare/v1.1.6...v1.1.7) (2022-11-06)\n\n**Note:** Version bump only for package baseweb\n\n\n\n"
+57 verbose root wrote E:\sina-comsys-projects\sina-base-components\CHANGELOG.md
+58 silly lifecycle No script for "version" in "baseweb", continuing
+59 silly gitAdd [
+59 silly gitAdd   'src/baseAsset/package.json',
+59 silly gitAdd   'src/baseAsset/CHANGELOG.md',
+59 silly gitAdd   'src/baseComponent/package.json',
+59 silly gitAdd   'src/baseComponent/CHANGELOG.md',
+59 silly gitAdd   'CHANGELOG.md',
+59 silly gitAdd   'lerna.json'
+59 silly gitAdd ]
+60 silly gitCommit chore(plus-base): publish
+61 verbose git [ 'commit', '-m', 'chore(plus-base): publish' ]
+62 silly gitTag v1.1.7
+63 verbose git [ 'tag', 'v1.1.7', '-m', 'v1.1.7' ]
+64 silly lifecycle No script for "postversion" in "@sina-base/asset", continuing
+65 silly lifecycle No script for "postversion" in "@sina-base/component", continuing
+66 silly lifecycle No script for "postversion" in "baseweb", continuing
+67 info git Pushing tags...
+68 silly gitPush origin master
+69 info publish Publishing packages to npm...
+70 info Verifying npm credentials
+71 verbose Retrieving npm user profile
+72 http fetch GET 200 https://registry.npmjs.org/-/npm/v1/user 1340ms
+73 silly npm profile get received {"tfa":false,"name":"sinabase.component","email":"sinabase.component@gmail.com","email_verified":true,"created":"2022-10-12T08:24:02.788Z","updated":"2022-10-12T08:24:02.783Z","cidr_whitelist":null}
+74 silly get npm username received {"username":"sinabase.component","tfa":false,"name":"sinabase.component","email":"sinabase.component@gmail.com","email_verified":true,"created":"2022-10-12T08:24:02.788Z","updated":"2022-10-12T08:24:02.783Z","cidr_whitelist":null}
+75 silly verifyNpmPackageAccess
+76 http fetch GET 200 https://registry.npmjs.org/-/org/sinabase.component/package?format=cli 828ms (cache updated)
+77 info Checking two-factor auth mode
+78 verbose Retrieving npm user profile
+79 http fetch GET 200 https://registry.npmjs.org/-/npm/v1/user 421ms
+80 silly npm profile get received {"tfa":false,"name":"sinabase.component","email":"sinabase.component@gmail.com","email_verified":true,"created":"2022-10-12T08:24:02.788Z","updated":"2022-10-12T08:24:02.783Z","cidr_whitelist":null}
+81 silly 2FA false
+82 warn ENOLICENSE Packages @sina-base/asset and @sina-base/component are missing a license.
+82 warn ENOLICENSE One way to fix this is to add a LICENSE.md file to the root of this repository.
+82 warn ENOLICENSE See https://choosealicense.com for additional guidance.
+83 silly getCurrentSHA
+84 verbose getCurrentSHA 74d38a9c6280ac337682a949c924fa4143aec12d
+85 silly lifecycle No script for "prepublish" in "baseweb", continuing
+86 silly lifecycle No script for "prepare" in "baseweb", continuing
+87 silly lifecycle No script for "prepublishOnly" in "baseweb", continuing
+88 silly lifecycle No script for "prepack" in "baseweb", continuing
+89 verbose pack-directory src\baseAsset
+90 silly lifecycle No script for "prepublish" in "@sina-base/asset", continuing
+91 silly lifecycle No script for "prepare" in "@sina-base/asset", continuing
+92 silly lifecycle No script for "prepublishOnly" in "@sina-base/asset", continuing
+93 silly lifecycle No script for "prepack" in "@sina-base/asset", continuing
+94 silly lifecycle No script for "postpack" in "@sina-base/asset", continuing
+95 verbose packed src\baseAsset
+96 verbose pack-directory src\baseComponent
+97 silly lifecycle No script for "prepublish" in "@sina-base/component", continuing
+98 silly lifecycle No script for "prepare" in "@sina-base/component", continuing
+99 silly lifecycle No script for "prepublishOnly" in "@sina-base/component", continuing
+100 silly lifecycle No script for "prepack" in "@sina-base/component", continuing
+101 silly lifecycle No script for "postpack" in "@sina-base/component", continuing
+102 verbose packed src\baseComponent
+103 silly lifecycle No script for "postpack" in "baseweb", continuing
+104 verbose publish @sina-base/asset
+105 silly FetchError: request to https://registry.npmjs.org/@sina-base%2fasset failed, reason: socket hang up
+105 silly     at ClientRequest.<anonymous> (E:\sina-comsys-projects\sina-base-components\node_modules\minipass-fetch\lib\index.js:110:14)
+105 silly     at ClientRequest.emit (node:events:513:28)
+105 silly     at TLSSocket.socketOnEnd (node:_http_client:505:9)
+105 silly     at TLSSocket.emit (node:events:525:35)
+105 silly     at endReadableNT (node:internal/streams/readable:1358:12)
+105 silly     at processTicksAndRejections (node:internal/process/task_queues:83:21)
+105 silly  FetchError: request to https://registry.npmjs.org/@sina-base%2fasset failed, reason: socket hang up
+105 silly     at ClientRequest.<anonymous> (E:\sina-comsys-projects\sina-base-components\node_modules\minipass-fetch\lib\index.js:110:14)
+105 silly     at ClientRequest.emit (node:events:513:28)
+105 silly     at TLSSocket.socketOnEnd (node:_http_client:505:9)
+105 silly     at TLSSocket.emit (node:events:525:35)
+105 silly     at endReadableNT (node:internal/streams/readable:1358:12)
+105 silly     at processTicksAndRejections (node:internal/process/task_queues:83:21) {
+105 silly   code: 'ECONNRESET',
+105 silly   errno: 'ECONNRESET',
+105 silly   type: 'system'
+105 silly }
+106 error ECONNRESET request to https://registry.npmjs.org/@sina-base%2fasset failed, reason: socket hang up
+107 error FetchError: request to https://registry.npmjs.org/@sina-base%2fasset failed, reason: socket hang up
+107 error     at ClientRequest.<anonymous> (E:\sina-comsys-projects\sina-base-components\node_modules\minipass-fetch\lib\index.js:110:14)
+107 error     at ClientRequest.emit (node:events:513:28)
+107 error     at TLSSocket.socketOnEnd (node:_http_client:505:9)
+107 error     at TLSSocket.emit (node:events:525:35)
+107 error     at endReadableNT (node:internal/streams/readable:1358:12)

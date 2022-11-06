@@ -1,0 +1,9 @@
+@import "../../../styles/color";
+.search {
+  border-right: 1px solid $primary-4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 31px;
+}

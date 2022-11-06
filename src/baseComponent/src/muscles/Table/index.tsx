@@ -14,7 +14,8 @@ import { Order, OrderBy, TableContext } from "./context";
 import { Header } from "./header";
 import { RowContainer } from "./rowContainer";
 import { SearchBar } from "./searchBar";
-import { useStyles } from "./style";
+// import { useStyles } from "./style";
+import styles from "./table.module.scss";
 
 export const SEARCH_ICON = 32;
 export const ROW_SELECTION = 62;
@@ -34,7 +35,7 @@ const Table = <T extends object>({
   onCheckedRows,
   rowKey,
 }: TableProps<T>) => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [totalWidth, setTotalWidth] = useState(0);
   const [order, setOrder] = useState<Order>(undefined);
   const [isSearchVisible, setShowSearchBar] = useState(false);
@@ -224,7 +225,7 @@ const Table = <T extends object>({
             setTotalWidth(width || 0);
           }}
         >
-          <table className={classes.table} role={"table"}>
+          <table className={styles["table"]} role={"table"}>
             <colgroup>
               <col
                 style={{
@@ -241,7 +242,7 @@ const Table = <T extends object>({
               })}
               <col style={{ width: SCROLL_BAR }} />
             </colgroup>
-            <thead className={classes.tableHeader}>
+            <thead className={styles["tableHeader"]}>
               <Header
                 isOnCheckedRowsAvailable={Boolean(onCheckedRows)}
                 data={data || []}
@@ -261,7 +262,7 @@ const Table = <T extends object>({
           </table>
         </View>
         <ScrollView ref={tableContainerRef} style={{ flex: 1 }}>
-          <table className={classes.table} role={"table"}>
+          <table className={styles["table"]} role={"table"}>
             <colgroup>
               <col style={{ width: searchIconWidth }} />
               {columns.map(({ width, dataIndex }) => {

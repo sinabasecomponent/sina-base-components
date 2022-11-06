@@ -1,0 +1,13 @@
+@import "../../styles/color";
+.table {
+  width: "100%";
+  border-collapse: collapse;
+  & tr,
+  td,
+  th {
+    padding: 0px;
+  }
+}
+.tableHeader {
+  background-color: $primary-2;
+}

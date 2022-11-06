@@ -3,7 +3,7 @@ import { BaseIcon } from "../../../atoms";
 import { Colors } from "../../../colors";
 import { CheckBox } from "../../../molecules/checkbox";
 import { TableContext } from "../context";
-import { useStyles } from "./style";
+import styles from "./header.module.scss";
 
 const Header = ({
   children,
@@ -16,9 +16,10 @@ const Header = ({
   data: any[];
   isOnCheckedRowsAvailable: boolean;
 }) => {
-  const classes = useStyles();
   const { checkedRows, onCheckAllRows, isAllRowsChecked } =
     useContext(TableContext);
+
+  console.log({ styles });
   return (
     <tr>
       <th>
@@ -50,7 +51,7 @@ const Header = ({
             </div>
           ) : null}
 
-          <div style={{ height: 24 }} className={classes.search}>
+          <div style={{ height: 24 }} className={styles["search"]}>
             <BaseIcon
               onClick={onToggleSearchBar}
               color={Colors.purple_6}

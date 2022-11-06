@@ -2,12 +2,10 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
 import { DEFAULT_ALIGN } from "..";
-// import { useObserveWindow } from "reactjs-view-core";
-// import { useColors } from "shared-theme/src";
 import { Text } from "../../../atoms/text";
-import { useStyles } from "./style";
+import styles from "./cell.module.scss";
 export interface CellProps
-  extends Omit<React.TdHTMLAttributes<HTMLTableDataCellElement>, "align"> {
+  extends Omit<React.TdHTMLAttributes<HTMLTableCellElement>, "align"> {
   children?: ReactNode;
   align?: "start" | "center" | "end";
   onPress?: () => void;
@@ -20,22 +18,14 @@ const Cell = ({
   align = DEFAULT_ALIGN,
   ...rest
 }: CellProps) => {
-  //   const classes = useStyles();
-  //   const { onBackground } = useColors();
-  //   const { isSmallerThanMedium } = useObserveWindow();
-  const classes = useStyles();
-
   return (
     <td
       {...rest}
       onClick={onPress}
       className={classNames(
-        // !isSmallerThanMedium && classes.container,
-        // isSmallerThanMedium && classes.containerMedium,
-        // onPress && classes.pointer,
-        align === "start" && classes.start,
-        align === "center" && classes.center,
-        align === "end" && classes.end,
+        align === "start" && styles["start"],
+        align === "center" && styles["center"],
+        align === "end" && styles["end"],
       )}
     >
       {typeof children !== "object" ? (

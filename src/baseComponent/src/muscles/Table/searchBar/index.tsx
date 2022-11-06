@@ -2,7 +2,7 @@ import { DEFAULT_ALIGN, SEARCH_ICON } from "..";
 import { BaseIcon } from "../../../atoms";
 import { Colors } from "../../../colors";
 import { ColumnProps } from "../column";
-import { useStyles } from "./style";
+import styles from "./searchBar.module.scss";
 
 interface SearchBarProps<T extends Record<string, any>> {
   isSearchVisible: boolean;
@@ -17,13 +17,12 @@ const SearchBar = <T extends Record<string, any>>({
   columns,
   data,
 }: SearchBarProps<T>) => {
-  const classes = useStyles();
   return (
     <tr
       style={{
         display: isSearchVisible ? "table-row" : "none",
       }}
-      className={classes.searchBar}
+      className={styles["searchBar"]}
     >
       <th style={{ width: SEARCH_ICON }}>
         <div

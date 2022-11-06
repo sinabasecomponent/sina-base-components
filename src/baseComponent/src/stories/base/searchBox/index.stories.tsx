@@ -6,14 +6,9 @@ export default {
   component: SearchBox,
 } as Meta<SearchBoxProps>;
 
-const Template: Story<SearchBoxProps> = (args) => (
+const Template: Story<SearchBoxProps> = () => (
   <StoryContainer>
-    <SearchBox
-      searchTitle={"sdfsdf"}
-      searchHandler={(value) => {
-        console.log(value);
-      }}
-    />
+    <SearchBox searchTitle={"sdfsdf"} searchHandler={() => {}} />
   </StoryContainer>
 );
 

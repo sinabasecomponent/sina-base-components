@@ -2,9 +2,8 @@
 // import { RowInteractionContext } from "../context";
 // import { useStyles } from "./styles";
 
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Colors } from "../../../colors";
-import { TableContext } from "../context";
 
 interface RowProps extends React.HTMLAttributes<HTMLTableRowElement> {
   children?: React.ReactNode;
@@ -16,7 +15,7 @@ interface RowProps extends React.HTMLAttributes<HTMLTableRowElement> {
 
 const Row = ({ isChecked, className, index, testID, ...rest }: RowProps) => {
   const [isHoverd, setIsHovered] = useState(false);
-  const { isAllRowsChecked } = useContext(TableContext);
+  // const { isAllRowsChecked } = useContext(TableContext);
   return (
     <tr
       {...rest}

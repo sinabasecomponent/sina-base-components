@@ -97,4 +97,4 @@ const Template: Story<any> = () => {
   );
 };
 
-export const baseTable = Template.bind({});
+export const BaseTable = Template.bind({});

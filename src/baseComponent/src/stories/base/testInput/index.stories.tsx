@@ -6,7 +6,7 @@ export default {
   component: TextInput,
 } as Meta<TextInputProps>;
 
-const Template: Story<TextInputProps> = (args) => (
+const Template: Story<TextInputProps> = () => (
   <StoryContainer>
     <TextInput />
   </StoryContainer>

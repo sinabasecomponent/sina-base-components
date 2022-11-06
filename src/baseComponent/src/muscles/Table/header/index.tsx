@@ -19,7 +19,6 @@ const Header = ({
   const { checkedRows, onCheckAllRows, isAllRowsChecked } =
     useContext(TableContext);
 
-  console.log({ styles });
   return (
     <tr>
       <th>

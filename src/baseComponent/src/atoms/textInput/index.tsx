@@ -1,76 +1,189 @@
 import classNames from "classnames";
-import React, { InputHTMLAttributes } from "react";
-import TextInputState from "./testInputState";
+import * as React from "react";
+import { composeRef } from "reactjs-view-core";
+// import { flattenStyle } from "../../atoms";
+// import { useThemes } from "../../molecules/text/styles";
 import styles from "./text-input.module.scss";
+import TextInputState from "./TextInputState";
+import { TextInputProps } from "./types";
 
-export interface TextInputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "className"> {
-  label?: string;
-  className?: string;
-  onKeyPress?: (e: any) => void;
-  onSubmitEditing?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  blurOnSubmit?: boolean;
-  clearTextOnFocus?: boolean;
-  selectTextOnFocus?: boolean;
-}
+/**
+ * Determines whether a 'selection' prop differs from a node's existing
+ * selection state.
+ */
+const isSelectionStale = (
+  node: { selectionEnd: any; selectionStart: any },
+  selection: { start: any; end?: any },
+) => {
+  const { selectionEnd, selectionStart } = node;
+  const { start, end } = selection;
+  return start !== selectionStart || end !== selectionEnd;
+};
 
+/**
+ * Certain input types do no support 'selectSelectionRange' and will throw an
+ * error.
+ */
+const setSelection = (node: any, selection: { start: any; end?: any }) => {
+  if (isSelectionStale(node, selection)) {
+    const { start, end } = selection;
+    try {
+      node.setSelectionRange(start, end || start);
+    } catch (e) {}
+  }
+};
+
+// If an Input Method Editor is processing key input, the 'keyCode' is 229.
+// https://www.w3.org/TR/uievents/#determine-keydown-keyup-keyCode
 function isEventComposing(nativeEvent: any) {
   return nativeEvent.isComposing || nativeEvent.keyCode === 229;
 }
 
-const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
+const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
   (
     {
-      label,
-      className,
-      onKeyPress,
+      autoCapitalize = "sentences",
+      autoComplete,
+      autoCompleteType,
+      autoCorrect = true,
       blurOnSubmit,
-      onSubmitEditing,
-      onBlur,
-      onFocus,
       clearTextOnFocus,
+      dir,
+      theme = "regular",
+      lang,
+      editable = true,
+      keyboardType = "default",
+      multiline = false,
+      numberOfLines = 1,
+      onBlur,
+      onChange,
+      onChangeText,
+      onContentSizeChange,
+      onFocus,
+      onKeyPress,
+      // onLayout,
+      onSelectionChange,
+      onSubmitEditing,
+      placeholderTextColor,
+      returnKeyType,
+      secureTextEntry = false,
+      selection,
       selectTextOnFocus,
+      spellCheck,
+      className,
+      style: styleProps,
+      testID,
+      label,
       ...rest
     },
-    forwardRef,
+    forwardedRef,
   ) => {
-    function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-      const hostNode = e.target;
-      // Prevent key events bubbling (see #612)
-      e.stopPropagation();
-      const shouldBlurOnSubmit = blurOnSubmit;
-      const nativeEvent = e.nativeEvent;
-      const isComposing = isEventComposing(nativeEvent);
-      if (onKeyPress) {
-        onKeyPress(e);
-      }
-      if (
-        e.key === "Enter" &&
-        !e.shiftKey &&
-        // Do not call submit if composition is occuring.
-        !isComposing &&
-        !e.isDefaultPrevented()
-      ) {
-        if (blurOnSubmit && onSubmitEditing) {
-          // prevent "Enter" from inserting a newline or submitting a form
-          e.preventDefault();
-          //@ts-ignore
-          nativeEvent.text = e.target.value;
-          onSubmitEditing(e);
-        }
-        if (shouldBlurOnSubmit && hostNode != null) {
-          //@ts-ignore
-          hostNode.blur();
-        }
-      }
+    let type: React.InputHTMLAttributes<HTMLInputElement>["type"];
+    let inputMode: React.HTMLAttributes<HTMLInputElement>["inputMode"];
+    // const themes = useThemes();
+
+    switch (keyboardType) {
+      case "email-address":
+        type = "email";
+        break;
+      case "number-pad":
+      case "numeric":
+        inputMode = "numeric";
+        break;
+      case "decimal-pad":
+        inputMode = "decimal";
+        break;
+      case "phone-pad":
+        type = "tel";
+        break;
+      case "search":
+      case "web-search":
+        type = "search";
+        break;
+      case "url":
+        type = "url";
+        break;
+      default:
+        type = "text";
     }
 
+    if (secureTextEntry) {
+      type = "password";
+    }
+
+    const dimensions = React.useRef({ height: null, width: null });
+    const hostRef = React.useRef(null);
+
+    const handleContentSizeChange = React.useCallback(
+      (hostNode: any) => {
+        if (multiline && onContentSizeChange && hostNode != null) {
+          const newHeight = hostNode.scrollHeight;
+          const newWidth = hostNode.scrollWidth;
+          if (
+            newHeight !== dimensions.current.height ||
+            newWidth !== dimensions.current.width
+          ) {
+            dimensions.current.height = newHeight;
+            dimensions.current.width = newWidth;
+            onContentSizeChange({
+              nativeEvent: {
+                contentSize: {
+                  height: dimensions.current.height,
+                  width: dimensions.current.width,
+                },
+              },
+            });
+          }
+        }
+      },
+      [multiline, onContentSizeChange],
+    );
+
+    const imperativeRef = React.useMemo(
+      () => (hostNode: any) => {
+        // TextInput needs to add more methods to the hostNode in addition to those
+        // added by `usePlatformMethods`. This is temporarily until an API like
+        // `TextInput.clear(hostRef)` is added to React Native.
+        if (hostNode != null) {
+          hostNode.clear = function () {
+            if (hostNode != null) {
+              hostNode.value = "";
+            }
+          };
+          hostNode.isFocused = function () {
+            return (
+              hostNode != null &&
+              TextInputState.currentlyFocusedField() === hostNode
+            );
+          };
+          handleContentSizeChange(hostNode);
+        }
+      },
+      [handleContentSizeChange],
+    );
+
     function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
-      // TextInputState._currentlyFocusedNode = null;
+      TextInputState._currentlyFocusedNode = null;
       if (onBlur) {
         //@ts-ignore
         e.nativeEvent.text = e.target.value;
         onBlur(e);
+      }
+    }
+
+    function handleChange(
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) {
+      const hostNode = e.target;
+      const text = hostNode.value;
+      //@ts-ignore
+      e.nativeEvent.text = text;
+      handleContentSizeChange(hostNode);
+      if (onChange) {
+        onChange(e);
+      }
+      if (onChangeText) {
+        onChangeText(text);
       }
     }
 
@@ -95,19 +208,130 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       }
     }
 
-    return (
+    function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+      const hostNode = e.target;
+      // Prevent key events bubbling (see #612)
+      e.stopPropagation();
+
+      const blurOnSubmitDefault = !multiline;
+      const shouldBlurOnSubmit =
+        blurOnSubmit == null ? blurOnSubmitDefault : blurOnSubmit;
+
+      const nativeEvent = e.nativeEvent;
+      const isComposing = isEventComposing(nativeEvent);
+
+      if (onKeyPress) {
+        onKeyPress(e);
+      }
+
+      if (
+        e.key === "Enter" &&
+        !e.shiftKey &&
+        // Do not call submit if composition is occuring.
+        !isComposing &&
+        !e.isDefaultPrevented()
+      ) {
+        if ((blurOnSubmit || !multiline) && onSubmitEditing) {
+          // prevent "Enter" from inserting a newline or submitting a form
+          e.preventDefault();
+          //@ts-ignore
+          nativeEvent.text = e.target.value;
+          onSubmitEditing(e);
+        }
+        if (shouldBlurOnSubmit && hostNode != null) {
+          //@ts-ignore
+          hostNode.blur();
+        }
+      }
+    }
+
+    const handleSelectionChange: React.DOMAttributes<HTMLInputElement>["onSelect"] =
+      (e) => {
+        if (onSelectionChange) {
+          try {
+            const node = e.target;
+            const { selectionStart, selectionEnd } = node as any;
+            //@ts-ignore
+            e.nativeEvent.selection = {
+              start: selectionStart,
+              end: selectionEnd,
+            };
+            //@ts-ignore
+            e.nativeEvent.text = e.target.value;
+            onSelectionChange(e);
+          } catch (e) {}
+        }
+      };
+
+    React.useEffect(() => {
+      const node = hostRef.current;
+      if (node && selection) {
+        setSelection(node, selection);
+      }
+      if (document.activeElement === node) {
+        TextInputState._currentlyFocusedNode = node;
+      }
+    }, [hostRef, selection]);
+
+    // const style = flattenStyle([
+    //   styleProps,
+    //   //@ts-ignore
+    //   !!placeholderTextColor && { placeholderTextColor },
+    // ]);
+
+    // useElementLayout(hostRef, onLayout);
+
+    const supportedProps:
+      | React.TextareaHTMLAttributes<HTMLTextAreaElement>
+      | React.InputHTMLAttributes<HTMLInputElement> = rest;
+
+    supportedProps.autoCapitalize = autoCapitalize;
+    supportedProps.autoComplete = autoComplete || autoCompleteType || "on";
+    supportedProps.autoCorrect = autoCorrect ? "on" : "off";
+    // supportedProps.className = classNames(
+    //   // classes.textinput,
+    //   themes[`${theme}${lang ? `-${lang}` : ""}` as keyof typeof themes],
+    //   className,
+    // );
+    // 'auto' by default allows browsers to infer writing direction
+    (supportedProps as any).enterKeyHint = returnKeyType;
+    supportedProps.onBlur = handleBlur;
+    supportedProps.onChange = handleChange;
+    supportedProps.onFocus = handleFocus;
+    supportedProps.onKeyDown = handleKeyDown;
+    supportedProps.onSelect = handleSelectionChange;
+    supportedProps.readOnly = !editable;
+    // @ts-ignore
+    supportedProps.rows = multiline ? numberOfLines : undefined;
+    supportedProps.spellCheck = spellCheck != null ? spellCheck : autoCorrect;
+    // supportedProps.style = style;
+    (supportedProps as React.InputHTMLAttributes<HTMLInputElement>).type = (
+      multiline ? undefined : type
+    ) as string;
+    supportedProps.inputMode = inputMode;
+    //@ts-ignore
+    supportedProps["data-testid"] = testID;
+
+    const setRef = composeRef(hostRef, imperativeRef, forwardedRef);
+
+    return multiline ? (
+      <textarea
+        ref={setRef}
+        {...(supportedProps as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
+      />
+    ) : (
       <div className={classNames(styles["text-input"], className)}>
         <label htmlFor={label}>{label}</label>
         <input
-          {...rest}
-          type="text"
-          ref={forwardRef}
-          onKeyDown={handleKeyDown}
-          onBlur={handleBlur}
+          ref={setRef}
+          {...(supportedProps as React.InputHTMLAttributes<HTMLInputElement>)}
         />
       </div>
     );
   },
 );
 
+TextInput.displayName = "TextInput";
+
+export type { TextInputProps };
 export { TextInput };

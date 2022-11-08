@@ -1,0 +1,12 @@
+@import "../../styles/color";
+
+.container {
+  background-color: $background-color;
+  border-radius: 20px;
+  padding-block-start: 25px;
+  // height: 300px;
+}
+
+.header {
+  padding-inline-start: 26px;
+}

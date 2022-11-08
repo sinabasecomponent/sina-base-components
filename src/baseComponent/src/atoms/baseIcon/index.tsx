@@ -1,4 +1,5 @@
 import icomoonJson from "@sina-base/asset/src/icomoon/selection.json";
+import classNames from "classnames";
 import React from "react";
 import { createIcomoonIconSet } from "./createIconSet";
 import "./icon";
@@ -14,6 +15,8 @@ interface BaseIconProps
   size?: "xsmall" | "small" | "medium" | "large" | number;
   color?: string | string[];
   testID?: string;
+  wrapperStyle?: React.CSSProperties;
+  wrapperClassName?: string;
 }
 
 const BaseIcon = ({
@@ -21,6 +24,8 @@ const BaseIcon = ({
   color,
   size = 18,
   testID,
+  wrapperStyle,
+  wrapperClassName,
   ...rest
 }: BaseIconProps) => {
   let fontSize: number = 18;
@@ -47,7 +52,11 @@ const BaseIcon = ({
   }
 
   return (
-    <div style={{ display: "flex" }} {...rest}>
+    <div
+      className={classNames(wrapperClassName)}
+      style={{ display: "flex", ...wrapperStyle }}
+      {...rest}
+    >
       <IconMoon name={name} color={color} size={fontSize} testID={testID} />
     </div>
   );

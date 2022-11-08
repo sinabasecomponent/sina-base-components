@@ -8,7 +8,11 @@ export default {
 
 const Template: Story<TextInputProps> = () => (
   <StoryContainer>
-    <TextInput />
+    <TextInput
+      onChange={(e) => {
+        e.target.value;
+      }}
+    />
   </StoryContainer>
 );
 

@@ -1,3 +1,4 @@
+@import "../../styles/color";
 .hiddenInput {
   position: absolute;
   top: 50%;
@@ -9,7 +10,7 @@
 .Input {
   width: 16px;
   height: 16px;
-  border: 1px solid green;
+  border: 1px solid $color-primary-1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +22,7 @@
     display: block;
     width: 10px;
     height: 10px;
-    background-color: red;
+    background-color: $color-primary-6;
     opacity: 1;
     border-radius: 1px;
   }
@@ -29,7 +30,7 @@
 .Inputchecked {
   &::after {
     opacity: 1;
-    background-color: green;
+    background-color: $color-secondary-1;
   }
 }
 .Indeterminate {

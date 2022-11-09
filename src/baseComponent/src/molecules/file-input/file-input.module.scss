@@ -7,7 +7,7 @@
   & > label {
     font-size: 1rem;
     line-height: 1.125rem;
-    color: $primary-2;
+    color: $color-primary-2;
     text-transform: capitalize;
   }
 
@@ -21,8 +21,8 @@
     width: 75%;
     cursor: pointer;
     background-color: white;
-    color: $primary-2;
-    border: dotted $primary-2 2px;
+    color: $color-primary-2;
+    border: dotted $color-primary-2 2px;
     padding: 0.7rem;
     border-radius: 0.4375rem;
     outline: none;

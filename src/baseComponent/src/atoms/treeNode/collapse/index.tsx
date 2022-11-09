@@ -13,39 +13,28 @@ const Collapse = ({
   level: number;
 }) => {
   const [open, setOpen] = useState(false);
-  // const [height, setHeight] = useState(0);
-  const [height2, setHeight2] = useState(0);
+  const [height, setHeight] = useState(0);
   const handleClick = () => {
     setOpen((prev) => !prev);
   };
 
   return (
-    <View
-    // onLayout={({
-    //   nativeEvent: {
-    //     layout: { height },
-    //   },
-    // }) => {
-    //   setHeight(height);
-    // }}
-    // className={styles["collapseWrapper"]}
-    >
+    <div>
       <Item
         level={level}
         title={title}
         onClick={handleClick}
         isChild
         arrowDirection={open ? "up" : "down"}
-        // height={height}
       />
-      <motion.div animate={{ height: open ? height2 : 0 }}>
+      <motion.div animate={{ height: open ? height : 0 }}>
         <View
           onLayout={({
             nativeEvent: {
               layout: { height },
             },
           }) => {
-            setHeight2(height);
+            setHeight(height);
           }}
         >
           {open && children}
@@ -55,7 +44,7 @@ const Collapse = ({
                 position: "absolute",
                 top: -20,
                 left: 14,
-                height: height2 - 16,
+                height: height - 16,
                 width: 0,
                 borderLeft: "2px dotted blue",
               }}
@@ -63,7 +52,7 @@ const Collapse = ({
           ) : null}
         </View>
       </motion.div>
-    </View>
+    </div>
   );
 };
 

@@ -1,10 +1,10 @@
 @import "../../styles/color";
 
 .search-box {
-  border: solid $primary-2 1.5px;
+  border: solid $color-primary-2 1.5px;
   outline: none;
   background-color: white;
-  color: $primary-2;
+  color: $color-primary-2;
   width: 100%;
   height: 2.5rem;
   border-radius: 0.4375rem;
@@ -16,6 +16,6 @@
 
   &::placeholder {
     text-align: center;
-    color: $primary-2;
+    color: $color-primary-2;
   }
 }

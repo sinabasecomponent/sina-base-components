@@ -7,8 +7,8 @@
     width: 100%;
     padding: 0.3rem;
     background-color: #fff;
-    color: $primary-1;
-    border: 2px dotted $primary-1;
+    color: $color-primary-1;
+    border: 2px dotted $color-primary-1;
     position: relative;
 
     &:hover {
@@ -49,7 +49,7 @@
     padding: 0.8rem 0;
     width: 100%;
     top: 110%;
-    background-color: $primary-2;
+    background-color: $color-primary-2;
     border-radius: 0.5rem;
     max-height: 210px;
     overflow-y: scroll;
@@ -61,13 +61,13 @@
 
     /* Track */
     &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px $primary-7;
+      box-shadow: inset 0 0 5px $color-primary-7;
       border-radius: 2px;
     }
 
     /* Handle */
     &::-webkit-scrollbar-thumb {
-      background: $grey-1;
+      background: $color-gray-5;
       border-radius: 10px;
     }
   }
@@ -79,7 +79,7 @@
     padding: 0 0.7rem;
 
     &:hover {
-      background-color: $primary-1;
+      background-color: $color-primary-1;
       cursor: pointer;
     }
   }

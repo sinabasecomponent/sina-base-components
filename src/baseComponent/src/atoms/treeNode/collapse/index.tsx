@@ -1,7 +1,7 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { View } from "reactjs-view";
 import { Item } from "../item";
-import styles from "./collapse.module.scss";
 
 const Collapse = ({
   title,
@@ -13,21 +13,22 @@ const Collapse = ({
   level: number;
 }) => {
   const [open, setOpen] = useState(false);
-  const [height, setHeight] = useState(0);
+  // const [height, setHeight] = useState(0);
+  const [height2, setHeight2] = useState(0);
   const handleClick = () => {
     setOpen((prev) => !prev);
   };
 
   return (
     <View
-      onLayout={({
-        nativeEvent: {
-          layout: { height },
-        },
-      }) => {
-        setHeight(height);
-      }}
-      className={styles["collapseWrapper"]}
+    // onLayout={({
+    //   nativeEvent: {
+    //     layout: { height },
+    //   },
+    // }) => {
+    //   setHeight(height);
+    // }}
+    // className={styles["collapseWrapper"]}
     >
       <Item
         level={level}
@@ -35,21 +36,33 @@ const Collapse = ({
         onClick={handleClick}
         isChild
         arrowDirection={open ? "up" : "down"}
-        height={height}
+        // height={height}
       />
-      {open && children}
-      {open ? (
-        <div
-          style={{
-            position: "absolute",
-            top: 32,
-            left: 14,
-            height: height - 67,
-            width: 0,
-            borderLeft: "2px dotted blue",
+      <motion.div animate={{ height: open ? height2 : 0 }}>
+        <View
+          onLayout={({
+            nativeEvent: {
+              layout: { height },
+            },
+          }) => {
+            setHeight2(height);
           }}
-        />
-      ) : null}
+        >
+          {open && children}
+          {open ? (
+            <div
+              style={{
+                position: "absolute",
+                top: -20,
+                left: 14,
+                height: height2 - 16,
+                width: 0,
+                borderLeft: "2px dotted blue",
+              }}
+            />
+          ) : null}
+        </View>
+      </motion.div>
     </View>
   );
 };

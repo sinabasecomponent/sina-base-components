@@ -7,7 +7,7 @@ import { Item } from "../item";
 const InnerTree = ({ data }: TreeNodeProps) => {
   const level = useContext(LevelContext);
   return (
-    <div style={{ paddingInlineStart: level > 1 ? 32 : 0 }}>
+    <div className={"sag"} style={{ paddingInlineStart: level > 1 ? 32 : 0 }}>
       {data.map(({ children, id, title }) => {
         if (children) {
           return (

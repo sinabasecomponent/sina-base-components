@@ -21,7 +21,7 @@ const TreeNode = ({ data }: TreeNodeProps) => {
           Test Header
         </Text>
       </div>
-      <ScrollView style={{ paddingInline: 16 }}>
+      <ScrollView style={{ paddingInline: 16, flex: 1 }}>
         <InnerTree data={data} />
       </ScrollView>
     </div>

@@ -8,7 +8,7 @@ interface ItemProps {
   isChild?: boolean;
   arrowDirection?: "up" | "down";
   level?: number;
-  height?: number;
+  // height?: number;
 }
 
 const Item = ({
@@ -17,8 +17,8 @@ const Item = ({
   arrowDirection,
   isChild,
   level,
-  height,
-}: ItemProps) => {
+}: // height,
+ItemProps) => {
   return (
     <div
       onClick={onClick}

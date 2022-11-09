@@ -31,12 +31,12 @@ const mockData = [
 
 const Template: Story<any> = (args) => (
   <StoryContainer>
-    <div style={{ width: 268 }}>
-      <TreeNode data={mockData} />
-    </div>
+    <TreeNode {...args} />
   </StoryContainer>
 );
 
-export const Primary = Template.bind({
+export const Primary = Template.bind({});
+
+Primary.args = {
   data: mockData,
-});
+};

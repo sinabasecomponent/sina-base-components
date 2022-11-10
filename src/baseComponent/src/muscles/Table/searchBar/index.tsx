@@ -29,7 +29,7 @@ const SearchBar = <T extends Record<string, any>>({
           style={{
             height: 24,
             width: 32,
-            borderRight: `1px solid ${Colors.purple_6}`,
+            borderRight: `1px solid ${Colors.color_danger_1}`,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -37,7 +37,7 @@ const SearchBar = <T extends Record<string, any>>({
         >
           <BaseIcon
             onClick={onToggleSearchBar}
-            color={Colors.purple_6}
+            color={Colors.color_danger_1}
             name="Table-_-Clear-Filters"
             size={17}
           />

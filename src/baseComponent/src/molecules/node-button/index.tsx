@@ -36,9 +36,9 @@ const NodeButton: FC<NodeButtonProps> = ({
       />
       <span>{text}</span>
       {isOpen ? (
-        <BaseIcon name="Amount-Boxes_Decrease" color={Colors.white} />
+        <BaseIcon name="Amount-Boxes_Decrease" color={Colors.color_white} />
       ) : (
-        <BaseIcon name="Amount-Boxes_Increase" color={Colors.white} />
+        <BaseIcon name="Amount-Boxes_Increase" color={Colors.color_white} />
       )}
     </div>
   );

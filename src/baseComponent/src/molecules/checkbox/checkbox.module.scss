@@ -1,4 +1,12 @@
 @import "../../styles/color";
+
+.checkBoxWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .hiddenInput {
   position: absolute;
   top: 50%;
@@ -6,33 +14,9 @@
   transform: translate(-50%, -50%);
   margin: 0px;
   opacity: 0;
-}
-.Input {
-  width: 16px;
-  height: 16px;
-  border: 1px solid $color-primary-1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 3px;
   cursor: pointer;
-  &::after {
-    position: absolute;
-    content: "";
-    display: block;
-    width: 10px;
-    height: 10px;
-    background-color: $color-primary-6;
-    opacity: 1;
-    border-radius: 1px;
-  }
 }
-.Inputchecked {
-  &::after {
-    opacity: 1;
-    background-color: $color-secondary-1;
-  }
-}
+
 .Indeterminate {
   &::after {
     width: 6px;

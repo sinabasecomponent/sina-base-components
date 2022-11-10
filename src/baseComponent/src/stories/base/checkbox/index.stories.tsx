@@ -1,4 +1,6 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
+import { useState } from "react";
+import { Colors } from "../../../colors";
 import { CheckBox, CheckBoxProps } from "../../../molecules/checkbox";
 import { StoryContainer } from "../../container";
 export default {
@@ -6,16 +8,38 @@ export default {
   component: CheckBox,
 } as Meta<CheckBoxProps>;
 
-const Template: Story<CheckBoxProps> = (args) => (
-  <StoryContainer>
-    <CheckBox {...args} />
-  </StoryContainer>
-);
+const Template: Story<CheckBoxProps> = (args) => {
+  const [isCheck, SetValue] = useState(false);
+  const hangleOnChange = () => {
+    SetValue((prev) => !prev);
+  };
+  return (
+    <StoryContainer>
+      <div
+        style={{
+          backgroundColor: Colors.color_gray_4,
+          width: 200,
+          height: 200,
+        }}
+      >
+        <CheckBox {...args} checked={isCheck} onChange={hangleOnChange}>
+          test
+        </CheckBox>
+      </div>
+    </StoryContainer>
+  );
+};
 
-export const Primary = Template.bind({});
-Primary.args = {
-  value: "sag11",
-  // checked: true,
+export const LightMode = Template.bind({});
+export const DarkMode = Template.bind({});
+LightMode.args = {
+  value: "test value",
+  mode: "light",
+};
+
+DarkMode.args = {
+  value: "test value",
+  mode: "dark",
 };
 
 export const Indeterminate = Template.bind({});

@@ -28,9 +28,9 @@ const Row = ({ isChecked, className, index, testID, ...rest }: RowProps) => {
       // onClick={() => onSelectRow({ index })}
       style={{
         backgroundColor: isChecked
-          ? Colors.cyan_3
+          ? Colors.color_danger_3
           : isHoverd
-          ? Colors.blue_for_Text
+          ? Colors.color_primary_2
           : "transparent",
         height: 32,
         borderBottom: ".5px solid #C1C0C0",

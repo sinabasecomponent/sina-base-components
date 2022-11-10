@@ -1,12 +1,14 @@
-import classNames from "classnames";
 import React from "react";
 import { Text } from "../../atoms/text";
 import styles from "./checkbox.module.scss";
+import { Indeterminate } from "./customRectangle/indeterminate";
+import { CustomRectangle } from "./customRectangle/inex";
 
 export interface CheckBoxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   children?: React.ReactNode;
   indeterminate?: boolean;
+  mode?: "dark" | "light";
 }
 
 const CheckBox = ({
@@ -16,6 +18,7 @@ const CheckBox = ({
   children,
   name,
   indeterminate,
+  mode = "dark",
   ...rest
 }: CheckBoxProps) => {
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,23 +28,17 @@ const CheckBox = ({
   return (
     <label style={{ display: "flex" }}>
       <div
+        className={styles["checkBoxWrapper"]}
         style={{
-          position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          ...(typeof children !== "undefined" && { marginInlineEnd: 4 }),
         }}
       >
-        <div
-          style={{
-            ...(typeof children !== "undefined" && { marginInlineEnd: 4 }),
-          }}
-          className={classNames(
-            styles["Input"],
-            checked && !indeterminate && styles["Inputchecked"],
-            indeterminate && styles["Indeterminate"],
-          )}
-        />
+        {indeterminate ? (
+          <Indeterminate />
+        ) : (
+          <CustomRectangle checked={checked} mode={mode} />
+        )}
+
         <input
           className={styles["hiddenInput"]}
           type={"checkbox"}

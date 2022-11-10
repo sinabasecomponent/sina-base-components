@@ -32,7 +32,7 @@ const Header = ({
           {isOnCheckedRowsAvailable ? (
             <div
               style={{
-                borderRight: `1px solid ${Colors.purple_6}`,
+                borderRight: `1px solid ${Colors.color_primary_6}`,
                 width: 31,
                 display: "flex",
                 justifyContent: "center",
@@ -53,7 +53,7 @@ const Header = ({
           <div style={{ height: 24 }} className={styles["search"]}>
             <BaseIcon
               onClick={onToggleSearchBar}
-              color={Colors.purple_6}
+              color={Colors.color_primary_6}
               name="Table-_-Filter"
               size={16}
             />

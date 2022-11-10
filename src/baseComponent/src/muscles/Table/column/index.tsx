@@ -79,7 +79,7 @@ const Column = <T extends Record<string, any>>({
         onClick={onSort}
       >
         {typeof children !== "object" ? (
-          <Text theme="Medium" color={Colors.white}>
+          <Text theme="Medium" color={Colors.color_white}>
             {children}
           </Text>
         ) : (

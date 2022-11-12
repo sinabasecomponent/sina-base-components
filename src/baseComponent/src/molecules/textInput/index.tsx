@@ -308,11 +308,13 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       />
     ) : (
       <div className={classNames(styles["text-input"], className)}>
-        <label htmlFor={label}>{label}</label>
-        <input
-          ref={setRef}
-          {...(supportedProps as React.InputHTMLAttributes<HTMLInputElement>)}
-        />
+        {label ? <label htmlFor={label}>{label}</label> : null}
+        <div style={{ flex: 1 }}>
+          <input
+            ref={setRef}
+            {...(supportedProps as React.InputHTMLAttributes<HTMLInputElement>)}
+          />
+        </div>
       </div>
     );
   },

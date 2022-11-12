@@ -23,7 +23,7 @@ interface ViewProps
 
 export interface TextInputProps extends Omit<ViewProps, "autoCorrect"> {
   className?: string;
-  label: string;
+  label?: string;
   autoCapitalize?: "characters" | "none" | "sentences" | "words";
   theme?: TextProps["theme"];
   lang?: TextProps["lang"];

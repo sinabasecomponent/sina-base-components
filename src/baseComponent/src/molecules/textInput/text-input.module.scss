@@ -3,16 +3,15 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
-  & > label {
+  & label {
     font-size: 1rem;
     line-height: 1.125rem;
     color: $color-primary-2;
     text-transform: capitalize;
   }
 
-  & > input {
-    width: 75%;
+  & input {
+    width: 100%;
     background-color: $color-background;
     color: $color-primary-2;
     border: none;

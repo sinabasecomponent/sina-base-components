@@ -2,13 +2,9 @@
 .wrapper {
   height: 32px;
   border-radius: 7px;
-  background-color: gray;
   display: flex;
   margin-block-end: 20px;
   position: relative;
-  &__cursor {
-    cursor: pointer;
-  }
 }
 .dotLine {
   &::before {

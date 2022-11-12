@@ -8,15 +8,17 @@ export default {
 
 const mockData = [
   { id: "1", title: "test1" },
-  { id: "2", title: "test2" },
+  { id: "2", title: "data2" },
   { id: "3", title: "test3" },
   {
     id: "4",
     title: "test4",
+
     children: [
       {
         id: "4-1",
         title: "test4-1",
+
         children: [
           { id: "4-1-1", title: "test4-1-1" },
           { id: "4-1-2", title: "test4-1-2" },
@@ -31,7 +33,16 @@ const mockData = [
 
 const Template: Story<any> = (args) => (
   <StoryContainer>
-    <TreeNode {...args} />
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        backgroundColor: "#EEEEEE",
+        padding: 50,
+      }}
+    >
+      <TreeNode data={mockData} />
+    </div>
   </StoryContainer>
 );
 

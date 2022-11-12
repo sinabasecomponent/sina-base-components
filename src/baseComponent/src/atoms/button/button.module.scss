@@ -1,23 +1,31 @@
 @import "../../styles/color";
 
 .button {
-  border-radius: 0.4375rem;
-  background-color: $color-primary-2;
-  min-width: 6rem;
-  padding: 0.75rem;
-
-  color: white;
-  font-size: 1rem;
-  line-height: 1.0625rem;
+  min-width: 140px;
+  border-radius: 7px;
+  height: 40px;
   border: none;
   outline: none;
-  * {
-    cursor: pointer !important;
+  &--primary {
+    background-color: $color-primary-1;
+    color: $color-white;
+    &:hover {
+      background-color: red;
+      color: blue;
+    }
+    &:active {
+      background-color: blue;
+    }
+  }
+  &--secondary {
+    background-color: $color-secondary-1;
+    color: $color-white;
+    &:hover {
+      background-color: red;
+    }
+    &:active {
+      background-color: yellow;
+    }
   }
   cursor: pointer !important;
-
-  &:hover {
-    background-color: $color-secondary-1;
-    cursor: pointer;
-  }
 }

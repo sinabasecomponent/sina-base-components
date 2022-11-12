@@ -1,30 +1,41 @@
 import classNames from "classnames";
-import { FC, MouseEventHandler, ReactNode } from "react";
+import { FC } from "react";
+import { Colors } from "../../colors";
+import { Text } from "../text";
 import styles from "./button.module.scss";
 
-export interface ButtonProps {
-  children: ReactNode | ReactNode[];
+export interface ButtonProps
+  extends Omit<React.DOMAttributes<HTMLButtonElement>, "type" | "children"> {
+  type?: "submit" | "button" | "reset";
+  mode?: "primary" | "secondary";
+  children: React.ReactNode;
   className?: string;
-  onClick?: MouseEventHandler<HTMLElement> | undefined;
-  type?: "submit" | "button";
-  formId?: string;
 }
 
 const Button: FC<ButtonProps> = ({
   children,
+  mode = "primary",
+  type = "button",
   className,
-  onClick,
-  type,
-  formId,
+  ...rest
 }) => {
   return (
     <button
-      className={classNames(styles["button"], className)}
-      type={type}
-      onClick={onClick ?? onClick}
-      form={formId}
+      {...rest}
+      className={classNames(
+        styles["button"],
+        mode === "primary" && styles["button--primary"],
+        mode === "secondary" && styles["button--"],
+        className,
+      )}
     >
-      {children}
+      {typeof children !== "object" ? (
+        <Text size={16} color={Colors.color_white}>
+          {children}
+        </Text>
+      ) : (
+        children
+      )}
     </button>
   );
 };

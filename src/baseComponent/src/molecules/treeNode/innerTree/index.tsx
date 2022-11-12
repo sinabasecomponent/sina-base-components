@@ -17,6 +17,7 @@ const InnerTree = ({
   const level = useContext(LevelContext);
 
   const handleClickLeaf = (value: string) => {
+    if (level !== 3) return;
     onSelectLeaf(value);
   };
 

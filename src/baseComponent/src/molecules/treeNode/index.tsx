@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ScrollView } from "reactjs-view";
 import { Text } from "../../atoms/text";
+import { Colors } from "../../colors";
 import { TextInput } from "../textInput";
 import { InnerTree } from "./innerTree";
 import styles from "./treeNode.module.scss";
@@ -22,9 +23,10 @@ export interface DataProps {
 export interface TreeNodeProps {
   data: DataProps[];
   onSelectShelf?: (id: string) => void;
+  title: string;
 }
 
-const TreeNode = ({ data, onSelectShelf }: TreeNodeProps) => {
+const TreeNode = ({ data, onSelectShelf, title }: TreeNodeProps) => {
   const [activeLeaf, setActiveLelf] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const onSelectLeaf = (id: string) => {
@@ -43,8 +45,8 @@ const TreeNode = ({ data, onSelectShelf }: TreeNodeProps) => {
   return (
     <div className={styles["container"]}>
       <div className={styles["header"]}>
-        <Text theme="Regular" size={20}>
-          Test Header
+        <Text color={Colors.color_primary_2} theme="Regular" size={20}>
+          {title}
         </Text>
       </div>
       <div className={styles["search"]}>

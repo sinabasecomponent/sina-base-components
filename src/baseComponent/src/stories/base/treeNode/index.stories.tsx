@@ -31,7 +31,7 @@ const mockData = [
   { id: "5", title: "test5" },
 ];
 
-const Template: Story<any> = (args) => (
+const Template: Story<any> = () => (
   <StoryContainer>
     <div
       style={{
@@ -41,7 +41,7 @@ const Template: Story<any> = (args) => (
         padding: 50,
       }}
     >
-      <TreeNode data={mockData} />
+      <TreeNode data={mockData} title={"TREE VIEW"} />
     </div>
   </StoryContainer>
 );

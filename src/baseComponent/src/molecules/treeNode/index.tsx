@@ -57,11 +57,19 @@ const TreeNode = ({ data, onSelectShelf, title }: TreeNodeProps) => {
         />
       </div>
       <ScrollView style={{ paddingInline: 16, flex: 1 }}>
-        <InnerTree
-          onSelectLeaf={onSelectLeaf}
-          activeLeaf={activeLeaf}
-          data={filterdData}
-        />
+        {filterdData.length > 0 ? (
+          <InnerTree
+            onSelectLeaf={onSelectLeaf}
+            activeLeaf={activeLeaf}
+            data={filterdData}
+          />
+        ) : (
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Text size={20} color={Colors.color_primary_2}>
+              not found!
+            </Text>
+          </div>
+        )}
       </ScrollView>
     </div>
   );

@@ -10,11 +10,15 @@ const Header = ({
   onToggleSearchBar,
   data,
   isOnCheckedRowsAvailable,
+  isSearchVisible,
+  filterIcon,
 }: {
   children: React.ReactNode;
   onToggleSearchBar?: () => void;
   data: any[];
   isOnCheckedRowsAvailable: boolean;
+  isSearchVisible: boolean;
+  filterIcon?: React.ReactNode;
 }) => {
   const { checkedRows, onCheckAllRows, isAllRowsChecked } =
     useContext(TableContext);
@@ -41,6 +45,7 @@ const Header = ({
               }}
             >
               <CheckBox
+                mode="light"
                 checked={isAllRowsChecked}
                 onChange={onCheckAllRows}
                 indeterminate={
@@ -51,12 +56,20 @@ const Header = ({
           ) : null}
 
           <div style={{ height: 24 }} className={styles["search"]}>
-            <BaseIcon
-              onClick={onToggleSearchBar}
-              color={Colors.color_primary_6}
-              name="Table-_-Filter"
-              size={16}
-            />
+            {filterIcon ? (
+              filterIcon
+            ) : (
+              <BaseIcon
+                color={
+                  isSearchVisible
+                    ? Colors.color_secondary_2
+                    : Colors.color_primary_6
+                }
+                onClick={onToggleSearchBar}
+                name="Table-_-Filter"
+                size={16}
+              />
+            )}
           </div>
         </div>
       </th>

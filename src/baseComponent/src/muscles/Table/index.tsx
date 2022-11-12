@@ -9,6 +9,7 @@ import {
 } from "react";
 import { useVirtual } from "react-virtual";
 import { ScrollView, View } from "reactjs-view";
+import { Colors } from "../../colors";
 import { Column, ColumnProps } from "./column";
 import { Order, OrderBy, TableContext } from "./context";
 import { Header } from "./header";
@@ -27,6 +28,13 @@ export interface TableProps<T> {
   children?: ReactNode;
   rowKey?: keyof T;
   onCheckedRows?: (value: T[]) => void;
+  headerStyle?: React.CSSProperties;
+  headerClassName?: string;
+  searchBarClassName?: string;
+  searchBarStyle?: React.CSSProperties;
+  searchBarToggle?: () => void;
+  filterIcon?: React.ReactNode;
+  clearFilterIcon?: React.ReactNode;
 }
 
 const Table = <T extends object>({
@@ -34,8 +42,14 @@ const Table = <T extends object>({
   data,
   onCheckedRows,
   rowKey,
+  headerStyle,
+  headerClassName,
+  searchBarClassName,
+  searchBarToggle,
+  searchBarStyle,
+  filterIcon,
+  clearFilterIcon,
 }: TableProps<T>) => {
-  // const classes = useStyles();
   const [totalWidth, setTotalWidth] = useState(0);
   const [order, setOrder] = useState<Order>(undefined);
   const [isSearchVisible, setShowSearchBar] = useState(false);
@@ -103,6 +117,7 @@ const Table = <T extends object>({
     setShowSearchBar((prev) => {
       return !prev;
     });
+    searchBarToggle?.();
   };
 
   useLayoutEffect(() => {
@@ -127,7 +142,7 @@ const Table = <T extends object>({
 
   const searchIconWidth = onCheckedRows ? ROW_SELECTION : SEARCH_ICON;
 
-  const inSearchAvailable = columns.find(({ renderFilter }) => renderFilter);
+  const isSearchAvailable = columns.find(({ renderFilter }) => renderFilter);
 
   const onOrderChange = ({ dataIndex }: { dataIndex: OrderBy }) => {
     setOrder(
@@ -242,20 +257,31 @@ const Table = <T extends object>({
               })}
               <col style={{ width: SCROLL_BAR }} />
             </colgroup>
-            <thead className={styles["tableHeader"]}>
+            <thead
+              className={headerClassName}
+              style={{
+                backgroundColor: Colors.color_primary_1,
+                ...headerStyle,
+              }}
+            >
               <Header
+                filterIcon={filterIcon}
+                isSearchVisible={isSearchVisible}
                 isOnCheckedRowsAvailable={Boolean(onCheckedRows)}
                 data={data || []}
-                onToggleSearchBar={inSearchAvailable && onToggleSearchBar}
+                onToggleSearchBar={isSearchAvailable && onToggleSearchBar}
               >
                 {children}
               </Header>
-              {inSearchAvailable ? (
+              {isSearchAvailable ? (
                 <SearchBar
+                  clearFilterIcon={clearFilterIcon}
+                  searchBarStyle={searchBarStyle}
+                  searchBarClassName={searchBarClassName}
                   columns={columns}
                   data={data || []}
                   isSearchVisible={isSearchVisible}
-                  onToggleSearchBar={onToggleSearchBar}
+                  isOnCheckedRowsAvailable={Boolean(onCheckedRows)}
                 />
               ) : null}
             </thead>

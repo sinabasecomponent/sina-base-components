@@ -79,7 +79,7 @@ const Column = <T extends Record<string, any>>({
         onClick={onSort}
       >
         {typeof children !== "object" ? (
-          <Text theme="Medium" color={Colors.color_white}>
+          <Text size={14} theme="Regular" color={Colors.color_white}>
             {children}
           </Text>
         ) : (
@@ -87,11 +87,23 @@ const Column = <T extends Record<string, any>>({
         )}
         {sorter ? (
           isDescending ? (
-            <BaseIcon size={20} name={"Table-_-Sort-Icon_A-to-Z"} />
+            <BaseIcon
+              size={20}
+              color={Colors.color_secondary_1}
+              name={"Table-_-Sort-Icon_A-to-Z"}
+            />
           ) : isAscending ? (
-            <BaseIcon size={20} name="Table-_-Sort-Icon_Z-to-A" />
+            <BaseIcon
+              size={20}
+              color={Colors.color_secondary_1}
+              name="Table-_-Sort-Icon_Z-to-A"
+            />
           ) : (
-            <BaseIcon size={20} name="Table-_-Sort-Icon_OFF" />
+            <BaseIcon
+              size={20}
+              color={Colors.color_white}
+              name="Table-_-Sort-Icon_OFF"
+            />
           )
         ) : null}
       </div>

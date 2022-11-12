@@ -23,7 +23,13 @@ const mockData = [...new Array(400)].map((_, index) => {
 const Template: Story<any> = () => {
   return (
     <StoryContainer>
-      <Table data={mockData} rowKey={"id"}>
+      <Table
+        data={mockData}
+        rowKey={"id"}
+        onCheckedRows={(rows) => {
+          console.log(rows);
+        }}
+      >
         <Table.Column
           width={300}
           sorter={(a, b) => a.name - b.name}

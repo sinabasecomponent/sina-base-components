@@ -273,14 +273,6 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       }
     }, [hostRef, selection]);
 
-    // const style = flattenStyle([
-    //   styleProps,
-    //   //@ts-ignore
-    //   !!placeholderTextColor && { placeholderTextColor },
-    // ]);
-
-    // useElementLayout(hostRef, onLayout);
-
     const supportedProps:
       | React.TextareaHTMLAttributes<HTMLTextAreaElement>
       | React.InputHTMLAttributes<HTMLInputElement> = rest;
@@ -288,12 +280,7 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
     supportedProps.autoCapitalize = autoCapitalize;
     supportedProps.autoComplete = autoComplete || autoCompleteType || "on";
     supportedProps.autoCorrect = autoCorrect ? "on" : "off";
-    // supportedProps.className = classNames(
-    //   // classes.textinput,
-    //   themes[`${theme}${lang ? `-${lang}` : ""}` as keyof typeof themes],
-    //   className,
-    // );
-    // 'auto' by default allows browsers to infer writing direction
+
     (supportedProps as any).enterKeyHint = returnKeyType;
     supportedProps.onBlur = handleBlur;
     supportedProps.onChange = handleChange;

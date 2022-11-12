@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { BaseIcon } from "../../baseIcon";
+import { BaseIcon } from "../../../atoms/baseIcon";
 import styles from "./node.module.scss";
 
 interface ItemProps {

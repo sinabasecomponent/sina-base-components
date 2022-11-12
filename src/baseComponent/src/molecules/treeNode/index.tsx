@@ -1,5 +1,5 @@
 import { ScrollView } from "reactjs-view";
-import { Text } from "../text";
+import { Text } from "../../atoms/text";
 import { InnerTree } from "./innerTree";
 import styles from "./treeNode.module.scss";
 

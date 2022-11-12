@@ -1,5 +1,5 @@
 import { Story } from "@storybook/react/types-6-0";
-import { Cover } from "../../../atoms";
+import { Cover } from "../../../molecules";
 import { StoryContainer } from "../../container";
 export default {
   title: "cover",

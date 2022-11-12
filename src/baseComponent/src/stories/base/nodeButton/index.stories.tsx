@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { NodeButton, NodeButtonProps } from "../../../atoms";
+import { NodeButton, NodeButtonProps } from "../../../molecules";
 export default {
   title: "node button",
   component: NodeButton,

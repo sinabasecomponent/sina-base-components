@@ -25,7 +25,7 @@ const Button: FC<ButtonProps> = ({
       className={classNames(
         styles["button"],
         mode === "primary" && styles["button--primary"],
-        mode === "secondary" && styles["button--"],
+        mode === "secondary" && styles["button--secondary"],
         className,
       )}
     >

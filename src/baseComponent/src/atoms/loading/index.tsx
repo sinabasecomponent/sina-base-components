@@ -6,7 +6,7 @@ import { Spinner } from "./spinner";
 
 export interface LoadingProps {
   children?: React.ReactNode;
-  isLoading: boolean;
+  isLoading?: boolean;
   spinnerColor?: Colors;
   size?: "small" | "medium" | "large";
 }
@@ -16,7 +16,7 @@ const Loading = ({ children, isLoading, spinnerColor, size }: LoadingProps) => {
     return <Spinner spinerColor={spinnerColor} size={size} />;
   } else {
     return (
-      <div className={styles["wrapper"]} style={{ position: "relative" }}>
+      <div style={{ position: "relative", height: "100%" }}>
         {isLoading ? (
           <div
             style={{

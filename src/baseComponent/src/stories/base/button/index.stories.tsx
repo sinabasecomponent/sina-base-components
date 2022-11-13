@@ -1,4 +1,5 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
+import { useState } from "react";
 import { Button, ButtonProps } from "../../../atoms";
 import { StoryContainer } from "../../container";
 export default {
@@ -6,11 +7,21 @@ export default {
   component: Button,
 } as Meta<ButtonProps>;
 
-const Template: Story<ButtonProps> = (args) => (
-  <StoryContainer>
-    <Button {...args}></Button>
-  </StoryContainer>
-);
+const Template: Story<ButtonProps> = (args) => {
+  const [isLoading, setLoading] = useState(false);
+
+  return (
+    <StoryContainer>
+      <Button
+        {...args}
+        onClick={() => {
+          setLoading((prev) => !prev);
+        }}
+        isLoading={isLoading}
+      />
+    </StoryContainer>
+  );
+};
 
 export const Primary = Template.bind({});
 export const secondary = Template.bind({});

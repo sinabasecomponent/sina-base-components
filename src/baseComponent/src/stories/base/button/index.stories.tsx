@@ -11,7 +11,6 @@ const Template: Story<ButtonProps> = (args) => {
   const [isLoading, setLoading] = useState(false);
 
   const enterLoading = () => {
-    console.log("sag");
     setLoading(true);
     setTimeout(() => {
       setLoading(false);

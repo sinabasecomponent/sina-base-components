@@ -32,6 +32,7 @@ const Template: Story<any> = () => {
         <button style={{ marginBottom: 20 }} onClick={onLoading}>
           click for loading!
         </button>
+
         <Table
           isLoading={isLoading}
           data={mockData}
@@ -108,7 +109,7 @@ const Template: Story<any> = () => {
           >
             address
           </Table.Column>
-        </Table
+        </Table>
       </div>
     </StoryContainer>
   );

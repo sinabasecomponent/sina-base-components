@@ -1,10 +1,17 @@
 import classNames from "classnames";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Colors } from "../../colors";
 import { Loading } from "../loading";
 import { Text } from "../text";
 import styles from "./button.module.scss";
 
+type Ripple = {
+  top: string;
+  left: string;
+  height: string;
+  width: string;
+  id: number;
+};
 export interface ButtonProps
   extends Omit<React.HTMLAttributes<HTMLButtonElement>, "type" | "children"> {
   type?: "submit" | "button" | "reset";
@@ -22,11 +29,68 @@ const Button: FC<ButtonProps> = ({
   className,
   isLoading,
   disabled,
+  onClick,
   ...rest
 }) => {
+  const [ripples, setRipples] = useState<Ripple[]>([]);
+
+  const showRipple = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (isLoading) return;
+    const rippleContainer = e.currentTarget;
+    const size = rippleContainer.offsetWidth;
+    const pos = rippleContainer.getBoundingClientRect();
+    const x = e.pageX - pos.x - size / 2;
+    const y = e.pageY - pos.y - size / 2;
+    const spanStyles = {
+      top: y + "px",
+      left: x + "px",
+      height: size + "px",
+      width: size + "px",
+      id: Date.now(),
+    };
+
+    setRipples((prev) => {
+      return [...prev, spanStyles];
+    });
+  };
+
+  const handleOnClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    onClick?.(e);
+  };
+
+  let bounce: NodeJS.Timeout;
+
+  const callCleanUp = (cleanup: () => void, delay: number) => {
+    return function () {
+      bounce = setTimeout(() => {
+        cleanup();
+      }, delay);
+    };
+  };
+
+  const cleanUp = () => {
+    setRipples([]);
+    clearTimeout(bounce);
+  };
+
+  const renderRipple = () => {
+    if (ripples.length > 0) {
+      return ripples.map(({ id, ...rest }) => {
+        return (
+          <span style={{ ...rest }} key={id} className={styles["ripple"]} />
+        );
+      });
+    }
+  };
+
   return (
     <button
       {...rest}
+      onMouseDown={showRipple}
+      onMouseUp={callCleanUp(cleanUp, 2000)}
+      onClick={handleOnClick}
       disabled={disabled || isLoading}
       className={classNames(
         styles["button"],
@@ -67,6 +131,7 @@ const Button: FC<ButtonProps> = ({
         </div>
       ) : null}
       {(isLoading || disabled) && <div className={styles["cover"]} />}
+      {renderRipple()}
     </button>
   );
 };

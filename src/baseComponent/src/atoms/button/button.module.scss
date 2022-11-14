@@ -1,5 +1,11 @@
 @import "../../styles/color";
 
+@keyframes ripple {
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
 .button {
   cursor: pointer !important;
   padding: 0px 25px;
@@ -28,4 +34,13 @@
     opacity: 0.3;
     cursor: not-allowed;
   }
+}
+
+.ripple {
+  transform: scale(0);
+  border-radius: 100%;
+  position: absolute;
+  opacity: 0.4;
+  background-color: #ffffff;
+  animation: ripple 550ms;
 }

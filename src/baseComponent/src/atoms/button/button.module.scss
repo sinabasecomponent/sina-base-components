@@ -1,6 +1,7 @@
 @import "../../styles/color";
 
 .button {
+  cursor: pointer !important;
   padding: 0px 25px;
   min-width: 140px;
   box-shadow: 0px 3px 6px rgb(0, 0, 0, 0.16);
@@ -8,6 +9,7 @@
   height: 40px;
   border: none;
   outline: none;
+  position: relative;
   &--primary {
     background-color: $color-primary-1;
     color: $color-white;
@@ -16,5 +18,14 @@
     background-color: $color-secondary-1;
     color: $color-white;
   }
-  cursor: pointer !important;
+  .cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $color-white;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
 }

@@ -6,12 +6,13 @@ import { Text } from "../text";
 import styles from "./button.module.scss";
 
 export interface ButtonProps
-  extends Omit<React.DOMAttributes<HTMLButtonElement>, "type" | "children"> {
+  extends Omit<React.HTMLAttributes<HTMLButtonElement>, "type" | "children"> {
   type?: "submit" | "button" | "reset";
   mode?: "primary" | "secondary";
   children: React.ReactNode;
   className?: string;
   isLoading?: boolean;
+  disabled?: boolean;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -20,18 +21,19 @@ const Button: FC<ButtonProps> = ({
   type = "button",
   className,
   isLoading,
+  disabled,
   ...rest
 }) => {
   return (
     <button
       {...rest}
+      disabled={disabled || isLoading}
       className={classNames(
         styles["button"],
         mode === "primary" && styles["button--primary"],
         mode === "secondary" && styles["button--secondary"],
         className,
       )}
-      // disabled={isLoading}
     >
       <div
         style={{
@@ -47,16 +49,24 @@ const Button: FC<ButtonProps> = ({
         ) : (
           children
         )}
-        {isLoading ? (
-          <div style={{ marginInlineStart: 8 }}>
-            <Loading
-              isLoading
-              spinnerColor={Colors.color_white}
-              size={"medium"}
-            />
-          </div>
-        ) : null}
       </div>
+      {isLoading ? (
+        <div
+          style={{
+            position: "absolute",
+            right: 0,
+            top: "53%",
+            transform: "translate(-20px,-50%)",
+          }}
+        >
+          <Loading
+            isLoading
+            spinnerColor={Colors.color_white}
+            size={"medium"}
+          />
+        </div>
+      ) : null}
+      {(isLoading || disabled) && <div className={styles["cover"]} />}
     </button>
   );
 };

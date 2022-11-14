@@ -10,15 +10,17 @@ export default {
 const Template: Story<ButtonProps> = (args) => {
   const [isLoading, setLoading] = useState(false);
 
+  const enterLoading = () => {
+    console.log("sag");
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  };
+
   return (
     <StoryContainer>
-      <Button
-        {...args}
-        onClick={() => {
-          setLoading((prev) => !prev);
-        }}
-        isLoading={isLoading}
-      />
+      <Button {...args} onClick={enterLoading} isLoading={isLoading} />
     </StoryContainer>
   );
 };

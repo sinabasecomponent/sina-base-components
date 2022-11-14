@@ -221,122 +221,131 @@ const Table = <T extends object>({
       : 0;
 
   return (
-    <Loading size="large" isLoading={isLoading}>
-      <TableContext.Provider
-        value={{
-          addRow,
-          checkedRows,
-          isAllRowsChecked,
-          onCheckAllRows,
-          onOrderChange,
-          order,
-          orderBy,
-        }}
-      >
-        <div
-          style={{ display: "flex", flexDirection: "column", height: "100%" }}
+    <div
+      style={{
+        flex: 1,
+        width: "100%",
+        height: "100%",
+        overflowY: "auto",
+      }}
+    >
+      <Loading size="large" isLoading={isLoading}>
+        <TableContext.Provider
+          value={{
+            addRow,
+            checkedRows,
+            isAllRowsChecked,
+            onCheckAllRows,
+            onOrderChange,
+            order,
+            orderBy,
+          }}
         >
-          <View
-            onLayout={({
-              nativeEvent: {
-                layout: { width },
-              },
-            }) => {
-              setTotalWidth(width || 0);
-            }}
+          <div
+            style={{ display: "flex", flexDirection: "column", height: "100%" }}
           >
-            <table className={styles["table"]} role={"table"}>
-              <colgroup>
-                <col
+            <View
+              onLayout={({
+                nativeEvent: {
+                  layout: { width },
+                },
+              }) => {
+                setTotalWidth(width || 0);
+              }}
+            >
+              <table className={styles["table"]} role={"table"}>
+                <colgroup>
+                  <col
+                    style={{
+                      width: searchIconWidth,
+                    }}
+                  />
+                  {columns.map(({ width, dataIndex }) => {
+                    return (
+                      <col
+                        key={dataIndex as string}
+                        style={{ width: width ? width : colWidth }}
+                      />
+                    );
+                  })}
+                  <col style={{ width: SCROLL_BAR }} />
+                </colgroup>
+                <thead
+                  className={headerClassName}
                   style={{
-                    width: searchIconWidth,
+                    backgroundColor: Colors.color_primary_1,
+                    ...headerStyle,
                   }}
-                />
-                {columns.map(({ width, dataIndex }) => {
-                  return (
-                    <col
-                      key={dataIndex as string}
-                      style={{ width: width ? width : colWidth }}
-                    />
-                  );
-                })}
-                <col style={{ width: SCROLL_BAR }} />
-              </colgroup>
-              <thead
-                className={headerClassName}
-                style={{
-                  backgroundColor: Colors.color_primary_1,
-                  ...headerStyle,
-                }}
-              >
-                <Header
-                  filterIcon={filterIcon}
-                  isSearchVisible={isSearchVisible}
-                  isOnCheckedRowsAvailable={Boolean(onCheckedRows)}
-                  data={data || []}
-                  onToggleSearchBar={isSearchAvailable && onToggleSearchBar}
                 >
-                  {children}
-                </Header>
-                {isSearchAvailable ? (
-                  <SearchBar
-                    clearFilterIcon={clearFilterIcon}
-                    searchBarStyle={searchBarStyle}
-                    searchBarClassName={searchBarClassName}
-                    columns={columns}
-                    data={data || []}
+                  <Header
+                    filterIcon={filterIcon}
                     isSearchVisible={isSearchVisible}
                     isOnCheckedRowsAvailable={Boolean(onCheckedRows)}
-                  />
-                ) : null}
-              </thead>
-            </table>
-          </View>
-          <ScrollView ref={tableContainerRef} style={{ flex: 1 }}>
-            <table className={styles["table"]} role={"table"}>
-              <colgroup>
-                <col style={{ width: searchIconWidth }} />
-                {columns.map(({ width, dataIndex }) => {
-                  return (
-                    <col
-                      key={dataIndex as string}
-                      style={{ width: width ? width : colWidth }}
-                    />
-                  );
-                })}
-              </colgroup>
-
-              <tbody>
-                {paddingTop > 0 && (
-                  <tr>
-                    <td style={{ height: `${paddingTop}px` }} />
-                  </tr>
-                )}
-                {virtualRows.map((virtualRow, index) => {
-                  const row = list[virtualRow.index];
-                  return (
-                    <RowContainer
-                      key={index}
-                      isOnCheckedRowsAvailable={Boolean(onCheckedRows)}
-                      rowKey={rowKey}
-                      rowData={row}
-                      data={data || []}
-                      index={index}
+                    data={data || []}
+                    onToggleSearchBar={isSearchAvailable && onToggleSearchBar}
+                  >
+                    {children}
+                  </Header>
+                  {isSearchAvailable ? (
+                    <SearchBar
+                      clearFilterIcon={clearFilterIcon}
+                      searchBarStyle={searchBarStyle}
+                      searchBarClassName={searchBarClassName}
                       columns={columns}
+                      data={data || []}
+                      isSearchVisible={isSearchVisible}
+                      isOnCheckedRowsAvailable={Boolean(onCheckedRows)}
                     />
-                  );
-                })}
-                {paddingBottom > 0 && (
-                  <tr>
-                    <td style={{ height: `${paddingBottom}px` }} />
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </ScrollView>
-        </div>
-      </TableContext.Provider>
-    </Loading>
+                  ) : null}
+                </thead>
+              </table>
+            </View>
+            <ScrollView ref={tableContainerRef} style={{ flex: 1 }}>
+              <table className={styles["table"]} role={"table"}>
+                <colgroup>
+                  <col style={{ width: searchIconWidth }} />
+                  {columns.map(({ width, dataIndex }) => {
+                    return (
+                      <col
+                        key={dataIndex as string}
+                        style={{ width: width ? width : colWidth }}
+                      />
+                    );
+                  })}
+                </colgroup>
+
+                <tbody>
+                  {paddingTop > 0 && (
+                    <tr>
+                      <td style={{ height: `${paddingTop}px` }} />
+                    </tr>
+                  )}
+                  {virtualRows.map((virtualRow, index) => {
+                    const row = list[virtualRow.index];
+                    return (
+                      <RowContainer
+                        key={index}
+                        isOnCheckedRowsAvailable={Boolean(onCheckedRows)}
+                        rowKey={rowKey}
+                        rowData={row}
+                        data={data || []}
+                        index={index}
+                        columns={columns}
+                      />
+                    );
+                  })}
+                  {paddingBottom > 0 && (
+                    <tr>
+                      <td style={{ height: `${paddingBottom}px` }} />
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </ScrollView>
+          </div>
+        </TableContext.Provider>
+      </Loading>
+    </div>
   );
 };
 

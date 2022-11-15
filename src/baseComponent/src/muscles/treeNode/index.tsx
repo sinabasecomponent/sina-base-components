@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ScrollView } from "reactjs-view";
 import { Text } from "../../atoms/text";
 import { Colors } from "../../colors";
-import { TextInput } from "../textInput";
+import { TextInput } from "../../molecules/textInput";
 import { InnerTree } from "./innerTree";
 import styles from "./treeNode.module.scss";
 

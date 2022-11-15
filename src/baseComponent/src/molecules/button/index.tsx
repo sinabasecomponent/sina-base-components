@@ -1,9 +1,9 @@
 import classNames from "classnames";
 import _ from "lodash";
 import { FC, useCallback, useState } from "react";
+import { Loading } from "../../atoms/loading";
+import { Text } from "../../atoms/text";
 import { Colors } from "../../colors";
-import { Loading } from "../loading";
-import { Text } from "../text";
 import styles from "./button.module.scss";
 
 type Ripple = {

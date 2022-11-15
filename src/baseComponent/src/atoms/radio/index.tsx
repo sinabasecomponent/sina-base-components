@@ -92,10 +92,10 @@ const Group = ({
   };
 
   return (
-    <div>sag</div>
-    // <RadioContext.Provider value={{ value, onChange: hangleOnChange, name }}>
-    //   {children}
-    // </RadioContext.Provider>
+    // <div>sag</div>
+    <RadioContext.Provider value={{ value, onChange: hangleOnChange, name }}>
+      {children}
+    </RadioContext.Provider>
   );
 };
 

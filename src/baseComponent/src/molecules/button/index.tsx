@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import _ from "lodash";
-import { FC, useCallback, useState } from "react";
+import { FC, useMemo, useState } from "react";
 import { Loading } from "../../atoms/loading";
 import { Text } from "../../atoms/text";
 import { Colors } from "../../colors";
@@ -61,12 +61,6 @@ const Button: FC<ButtonProps> = ({
     onClick?.(e);
   };
 
-  let bounce: NodeJS.Timeout;
-
-  const cleanUp = () => {
-    setRipples([]);
-  };
-
   const renderRipple = () => {
     if (ripples.length > 0) {
       return ripples.map(({ id, ...rest }) => {
@@ -77,16 +71,18 @@ const Button: FC<ButtonProps> = ({
     }
   };
 
-  const onDebounce = useCallback(
-    _.debounce(() => {
-      setRipples([]);
-    }, 1000),
+  const onDebounce = useMemo(
+    () =>
+      _.debounce(() => {
+        setRipples([]);
+      }, 1000),
     [],
   );
 
   return (
     <button
       {...rest}
+      type={type}
       onMouseDown={showRipple}
       onMouseUp={onDebounce}
       onClick={handleOnClick}

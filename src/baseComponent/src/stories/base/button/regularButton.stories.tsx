@@ -1,6 +1,5 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { useState } from "react";
-import { Button, ButtonProps } from "../../../atoms";
+import { Button, ButtonProps } from "../../../molecules";
 import { StoryContainer } from "../../container";
 export default {
   title: "button/regularButton",
@@ -8,24 +7,22 @@ export default {
 } as Meta<ButtonProps>;
 
 const Template: Story<ButtonProps> = (args) => {
-  const [isLoading, setLoading] = useState(false);
-
   return (
     <StoryContainer>
-      <Button {...args} isLoading={isLoading} />
+      <Button {...args} />
     </StoryContainer>
   );
 };
 
 export const Primary = Template.bind({});
-export const secondary = Template.bind({});
+export const Secondary = Template.bind({});
 
 Primary.args = {
   children: "add",
   mode: "primary",
 };
 
-secondary.args = {
+Secondary.args = {
   children: "cancel",
   mode: "secondary",
 };

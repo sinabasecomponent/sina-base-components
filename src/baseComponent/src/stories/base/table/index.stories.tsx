@@ -38,6 +38,7 @@ const Template: Story<any> = () => {
           data={mockData}
           rowKey={"id"}
           onCheckedRows={(rows) => {
+            // eslint-disable-next-line no-console
             console.log(rows);
           }}
         >

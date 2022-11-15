@@ -1,6 +1,6 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { useState } from "react";
-import { Button, ButtonProps } from "../../../atoms";
+import { Button, ButtonProps } from "../../../molecules";
 import { StoryContainer } from "../../container";
 export default {
   title: "button/buttonWithLoading",

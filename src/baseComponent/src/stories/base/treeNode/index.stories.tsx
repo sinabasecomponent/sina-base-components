@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { TreeNode } from "../../../molecules";
+import { TreeNode } from "../../../muscles";
 import { StoryContainer } from "../../container";
 export default {
   title: "tree node",

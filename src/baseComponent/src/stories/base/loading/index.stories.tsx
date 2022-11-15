@@ -8,12 +8,12 @@ export default {
 } as Meta<LoadingProps>;
 
 const Template: Story<LoadingProps> = () => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   return (
     <StoryContainer>
       <div>
         <div style={{ width: 300 }}>
-          <Loading isLoading={loading} size="small">
+          <Loading isLoading={isLoading} size="small">
             <div style={{ height: 200, border: "1px solid red" }}>
               <button>sdfsdf</button>
               test text

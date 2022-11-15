@@ -49,6 +49,7 @@ const InnerTree = ({
               backgroundColor={backgourndColor}
               title={title}
               level={level}
+              key={id}
             >
               <LevelContext.Provider value={level + 1}>
                 <InnerTree

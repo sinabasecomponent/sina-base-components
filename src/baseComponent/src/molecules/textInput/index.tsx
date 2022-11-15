@@ -49,7 +49,7 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       blurOnSubmit,
       clearTextOnFocus,
       dir,
-      theme = "regular",
+      // theme = "regular",
       lang,
       editable = true,
       keyboardType = "default",
@@ -213,9 +213,9 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       // Prevent key events bubbling (see #612)
       e.stopPropagation();
 
-      const blurOnSubmitDefault = !multiline;
+      const isBlurOnSubmitDefault = !multiline;
       const shouldBlurOnSubmit =
-        blurOnSubmit == null ? blurOnSubmitDefault : blurOnSubmit;
+        blurOnSubmit == null ? isBlurOnSubmitDefault : blurOnSubmit;
 
       const nativeEvent = e.nativeEvent;
       const isComposing = isEventComposing(nativeEvent);

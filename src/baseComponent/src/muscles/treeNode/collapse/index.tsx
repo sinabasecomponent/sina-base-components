@@ -17,7 +17,7 @@ const Collapse = ({
   backgroundColor: Colors;
   textColor: Colors;
 }) => {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
   const [height, setHeight] = useState(0);
   const handleClick = () => {
     setOpen((prev) => !prev);
@@ -31,9 +31,9 @@ const Collapse = ({
         level={level}
         title={title}
         onClick={handleClick}
-        arrowDirection={open ? "up" : "down"}
+        arrowDirection={isOpen ? "up" : "down"}
       />
-      <motion.div animate={{ height: open ? height : 0 }}>
+      <motion.div animate={{ height: isOpen ? height : 0 }}>
         <View
           onLayout={({
             nativeEvent: {
@@ -43,8 +43,8 @@ const Collapse = ({
             setHeight(height);
           }}
         >
-          {open && children}
-          {open ? (
+          {isOpen && children}
+          {isOpen ? (
             <div
               style={{
                 position: "absolute",

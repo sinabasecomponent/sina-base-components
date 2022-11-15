@@ -1,0 +1,26 @@
+@import "../../styles/color";
+
+.checkBoxWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hiddenInput {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.Indeterminate {
+  &::after {
+    width: 6px;
+    height: 6px;
+    background-color: blue;
+  }
+}

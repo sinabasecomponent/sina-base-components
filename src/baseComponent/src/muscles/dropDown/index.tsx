@@ -7,7 +7,8 @@ import {
   useRef,
   useState,
 } from "react";
-import { BaseIcon, Button, SearchBox } from "../../atoms";
+import { BaseIcon, SearchBox } from "../../atoms";
+import { Button } from "../../molecules/button";
 import styles from "./dropDown.module.scss";
 
 export interface DropDownProps<T> {

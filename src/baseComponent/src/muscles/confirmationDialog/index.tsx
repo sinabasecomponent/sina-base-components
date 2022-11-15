@@ -8,7 +8,8 @@ import {
   useRef,
   useState,
 } from "react";
-import { BaseIcon, Button } from "../../atoms";
+import { BaseIcon } from "../../atoms";
+import { Button } from "../../molecules/button";
 import styles from "./confirmationDialog.module.scss";
 
 export interface ConfirmationDialogProps {

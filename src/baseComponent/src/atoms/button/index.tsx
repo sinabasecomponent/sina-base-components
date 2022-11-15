@@ -1,5 +1,6 @@
 import classNames from "classnames";
-import { FC, useState } from "react";
+import _ from "lodash";
+import { FC, useCallback, useState } from "react";
 import { Colors } from "../../colors";
 import { Loading } from "../loading";
 import { Text } from "../text";
@@ -62,17 +63,8 @@ const Button: FC<ButtonProps> = ({
 
   let bounce: NodeJS.Timeout;
 
-  const callCleanUp = (cleanup: () => void, delay: number) => {
-    return function () {
-      bounce = setTimeout(() => {
-        cleanup();
-      }, delay);
-    };
-  };
-
   const cleanUp = () => {
     setRipples([]);
-    clearTimeout(bounce);
   };
 
   const renderRipple = () => {
@@ -85,11 +77,18 @@ const Button: FC<ButtonProps> = ({
     }
   };
 
+  const onDebounce = useCallback(
+    _.debounce(() => {
+      setRipples([]);
+    }, 1000),
+    [],
+  );
+
   return (
     <button
       {...rest}
       onMouseDown={showRipple}
-      onMouseUp={callCleanUp(cleanUp, 2000)}
+      onMouseUp={onDebounce}
       onClick={handleOnClick}
       disabled={disabled || isLoading}
       className={classNames(

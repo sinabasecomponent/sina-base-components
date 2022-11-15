@@ -36,6 +36,7 @@ export interface TableProps<T> {
   filterIcon?: React.ReactNode;
   clearFilterIcon?: React.ReactNode;
   isLoading?: boolean;
+  onSelectRow?: (value: T) => void;
 }
 
 const Table = <T extends object>({
@@ -51,13 +52,16 @@ const Table = <T extends object>({
   filterIcon,
   clearFilterIcon,
   isLoading,
+  onSelectRow,
 }: TableProps<T>) => {
   const [totalWidth, setTotalWidth] = useState(0);
   const [order, setOrder] = useState<Order>(undefined);
   const [isSearchVisible, setShowSearchBar] = useState(false);
   const [orderBy, setOrderBy] = useState<OrderBy>(undefined);
   const [colWidth, setColWidth] = useState(0);
+  const [selectedRow, setSelectedRow] = useState<T | undefined>(undefined);
   const [checkedRows, setCheckRows] = useState<T[]>([]);
+
   const [isAllRowsChecked, setAllRowsChecked] = useState(false);
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
@@ -161,7 +165,7 @@ const Table = <T extends object>({
     );
   };
 
-  const addRow = ({ rowId }: { rowId: T[keyof T] }) => {
+  const handleCheckRow = ({ rowId }: { rowId: T[keyof T] }) => {
     const currentRow = checkedRows.find((item) => {
       return rowKey && item[rowKey] === rowId;
     });
@@ -185,7 +189,13 @@ const Table = <T extends object>({
     }
   };
 
+  const handleOnSelectRow = (value: T) => {
+    setSelectedRow(value);
+    onSelectRow?.(value);
+  };
+
   const onCheckAllRows = () => {
+    if (!rowKey) return;
     setAllRowsChecked((prev) => !prev);
     if (data) {
       setCheckRows(data);
@@ -232,13 +242,15 @@ const Table = <T extends object>({
       <Loading size="large" isLoading={isLoading}>
         <TableContext.Provider
           value={{
-            addRow,
+            handleCheckRow,
             checkedRows,
             isAllRowsChecked,
             onCheckAllRows,
             onOrderChange,
             order,
             orderBy,
+            selectedRow: selectedRow,
+            onSelectRow: handleOnSelectRow,
           }}
         >
           <div
@@ -324,6 +336,7 @@ const Table = <T extends object>({
                     const row = list[virtualRow.index];
                     return (
                       <RowContainer
+                        // onSelectRow={handleOnSelectRow}
                         key={index}
                         isOnCheckedRowsAvailable={Boolean(onCheckedRows)}
                         rowKey={rowKey}

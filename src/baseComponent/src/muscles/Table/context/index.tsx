@@ -7,9 +7,11 @@ interface TableContextProps {
   orderBy: OrderBy;
   onOrderChange: (data: { dataIndex: OrderBy }) => void;
   checkedRows: any[];
-  addRow: (value: { rowId: any }) => void;
+  handleCheckRow: (value: { rowId: any }) => void;
   isAllRowsChecked: boolean;
   onCheckAllRows: () => void;
+  onSelectRow: (value: any) => void;
+  selectedRow: any;
 }
 
 export const TableContext = createContext<TableContextProps>({
@@ -17,7 +19,9 @@ export const TableContext = createContext<TableContextProps>({
   orderBy: undefined,
   onOrderChange: () => ({}),
   checkedRows: [],
-  addRow: () => ({}),
+  handleCheckRow: () => ({}),
   isAllRowsChecked: false,
   onCheckAllRows: () => ({}),
+  onSelectRow: () => ({}),
+  selectedRow: undefined,
 });

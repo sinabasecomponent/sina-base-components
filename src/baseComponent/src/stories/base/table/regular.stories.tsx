@@ -2,14 +2,15 @@ import { faker } from "@faker-js/faker";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { useState } from "react";
 import { Text } from "../../../atoms";
+import { Colors } from "../../../colors";
 import { Table } from "../../../muscles/Table";
 import { StoryContainer } from "../../container";
 export default {
-  title: "table",
+  title: "table/Regular",
   component: Table,
 } as Meta<any>;
 
-const mockData = [...new Array(400)].map((_, index) => {
+const mockData = [...new Array(4000)].map((_, index) => {
   return {
     name: faker.name.firstName(),
     family: faker.name.lastName(),
@@ -36,11 +37,11 @@ const Template: Story<any> = () => {
         <Table
           isLoading={isLoading}
           data={mockData}
-          rowKey={"id"}
-          onCheckedRows={(rows) => {
+          onSelectRow={(value) => {
             // eslint-disable-next-line no-console
-            console.log(rows);
+            console.log(value);
           }}
+          rowKey={"id"}
         >
           <Table.Column
             width={300}
@@ -53,7 +54,9 @@ const Template: Story<any> = () => {
             }}
             dataIndex="name"
           >
-            <Text color="blue">name</Text>
+            <Text size={20} theme="BookItalic" color={Colors.color_white}>
+              name
+            </Text>
           </Table.Column>
           <Table.Column
             width={200}

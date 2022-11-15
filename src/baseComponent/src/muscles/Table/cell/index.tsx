@@ -21,6 +21,7 @@ const Cell = ({
   return (
     <td
       {...rest}
+      style={{ height: "inherit" }}
       onClick={onPress}
       className={classNames(
         align === "start" && styles["start"],

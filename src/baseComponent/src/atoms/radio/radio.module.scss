@@ -1,26 +1,26 @@
 @import "../../styles/color";
 
-.checkBoxWrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@keyframes ripple {
+  to {
+    opacity: 0;
+    width: 30px;
+    height: 30px;
+  }
 }
 
-.hiddenInput {
-  position: absolute;
+.ripple {
+  transform: scale(0);
+  width: 0px;
+  height: 0px;
+  background-color: $color-primary-1;
+  animation: ripple 700ms;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin: 0px;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.Indeterminate {
-  &::after {
-    width: 6px;
-    height: 6px;
-    background-color: blue;
-  }
+  z-index: 1;
+  // opacity: 0.4;
+  position: absolute;
+  transform-origin: center;
+  animation-direction: "forward";
+  border-radius: 50%;
 }

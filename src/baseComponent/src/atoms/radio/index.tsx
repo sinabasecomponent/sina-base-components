@@ -1,22 +1,24 @@
-import { useContext, useState } from "react";
+import _ from "lodash";
+import { useContext, useEffect, useMemo, useState } from "react";
+import { Colors } from "../../colors";
 import { Text } from "../text";
-import { RadioContext } from "./context";
+import { ModeType, RadioContext, ValueType } from "./context";
+import styles from "./radio.module.scss";
 
 export interface RadioProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "value"> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "value" | "name"> {
   children?: React.ReactNode;
-  mode?: "dark" | "light";
-  value?: string | number | undefined;
+  value?: ValueType;
 }
-const Radio = ({
-  checked,
-  children,
-  mode,
-  name,
-  value,
-  ...rest
-}: RadioProps) => {
-  const { onChange, value: _valuex } = useContext(RadioContext);
+const Radio = ({ children, value, ...rest }: RadioProps) => {
+  const [ripples, setRipples] = useState<{ id: number }[]>([]);
+
+  const {
+    onChange,
+    value: contextValue,
+    mode,
+    name,
+  } = useContext(RadioContext);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e);
@@ -26,43 +28,110 @@ const Radio = ({
     ? value
     : undefined;
 
+  const isChecked = _value === contextValue;
+
+  const isLightChecked = mode === "light" && isChecked;
+  const isLightUnChecked = mode === "light" && !isChecked;
+  const isDarkChecked = mode === "dark" && isChecked;
+  const isDarkUnChecked = mode === "dark" && !isChecked;
+
+  const borderColor = isLightChecked
+    ? Colors.color_secondary_1
+    : isLightUnChecked
+    ? Colors.color_white
+    : (isDarkChecked || isDarkUnChecked) && Colors.color_primary_1;
+
+  const backgroundColor = isLightChecked
+    ? Colors.color_secondary_1
+    : isLightUnChecked
+    ? Colors.color_primary_3
+    : isDarkChecked
+    ? Colors.color_secondary_1
+    : isDarkUnChecked
+    ? Colors.color_primary_6
+    : Colors.color_primary_6;
+
+  const showRipple = () => {
+    setRipples((prev) => {
+      return [...prev, { id: Date.now() }];
+    });
+  };
+
+  const renderRipple = () => {
+    if (ripples.length > 0) {
+      return ripples.map(({ id }) => {
+        return <div className={styles["ripple"]} key={id} />;
+      });
+    }
+  };
+
+  const onDebounce = useMemo(
+    () =>
+      _.debounce(() => {
+        setRipples([]);
+      }, 1000),
+    [],
+  );
+
   return (
     <label
+      onMouseDown={showRipple}
+      onMouseUp={onDebounce}
       style={{
         position: "relative",
         display: "inline-flex",
         alignItems: "center",
-        columnGap: 8,
+        columnGap: 11,
+        cursor: "pointer",
       }}
     >
-      <div
-        style={{
-          width: 16,
-          height: 16,
-          border: "1px solid green",
-          borderRadius: "50%",
-          backgroundColor: "white",
-          position: "relative",
-          display: "inline-block",
-        }}
-      >
-        <input
-          onChange={onChangeHandler}
-          //   onClick={onChangeHandler}
+      <div style={{ position: "relative", width: 16, height: 16 }}>
+        <div
           style={{
-            opacity: 0,
+            width: 16,
+            height: 16,
+            border: `1px solid ${borderColor}`,
+            borderRadius: "50%",
+            backgroundColor: Colors.color_white,
             position: "absolute",
+            display: "inline-block",
+            zIndex: 2,
             top: "50%",
             left: "50%",
-            margin: 0,
             transform: "translate(-50%,-50%)",
           }}
-          type={"radio"}
-          value={_value}
-          name={name}
-          //   checked={checked}
-          {...rest}
-        />
+        >
+          <div
+            style={{
+              width: 10,
+              height: 10,
+              backgroundColor: backgroundColor,
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%,-50%)",
+              borderRadius: "50%",
+            }}
+          />
+          <input
+            onChange={onChangeHandler}
+            style={{
+              opacity: 0,
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              margin: 0,
+              transform: "translate(-50%,-50%)",
+              cursor: "pointer",
+            }}
+            type={"radio"}
+            value={_value}
+            name={name}
+            checked={_value === contextValue}
+            {...rest}
+          />
+        </div>
+        {renderRipple()}
       </div>
 
       {typeof children === "string" ? (
@@ -80,20 +149,35 @@ const Group = ({
   children,
   value,
   name,
+  onChange,
+  mode = "dark",
 }: {
   children?: React.ReactNode;
-  value: string;
-  name: string;
+  value?: ValueType;
+  name?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  mode?: ModeType;
 }) => {
-  const [xvalue, setxValue] = useState();
+  const [internalValue, setInternalValue] = useState<ValueType>(undefined);
+
+  useEffect(() => {
+    setInternalValue(value);
+  }, [value]);
 
   const hangleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value, "saga");
+    setInternalValue(e.target.value);
+    onChange?.(e);
   };
 
   return (
-    // <div>sag</div>
-    <RadioContext.Provider value={{ value, onChange: hangleOnChange, name }}>
+    <RadioContext.Provider
+      value={{
+        value: internalValue,
+        onChange: hangleOnChange,
+        name,
+        mode,
+      }}
+    >
       {children}
     </RadioContext.Provider>
   );

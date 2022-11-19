@@ -9,11 +9,21 @@ interface GroupProps {
   mode?: ModeType;
   onBlur?: React.FocusEventHandler<HTMLDivElement>;
   onFocus?: React.FocusEventHandler<HTMLDivElement>;
+  wrapperStyle?: React.CSSProperties;
 }
 
 const Group = React.forwardRef<HTMLDivElement, GroupProps>(
   (
-    { children, value, name, onChange, mode = "dark", onBlur, onFocus },
+    {
+      children,
+      value,
+      name,
+      onChange,
+      mode = "dark",
+      onBlur,
+      onFocus,
+      wrapperStyle,
+    },
     ref,
   ) => {
     const [internalValue, setInternalValue] = useState<ValueType>(undefined);
@@ -28,7 +38,12 @@ const Group = React.forwardRef<HTMLDivElement, GroupProps>(
     };
 
     return (
-      <div onBlur={onBlur} onFocus={onFocus} ref={ref}>
+      <div
+        style={{ ...wrapperStyle }}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        ref={ref}
+      >
         <RadioContext.Provider
           value={{
             value: internalValue,

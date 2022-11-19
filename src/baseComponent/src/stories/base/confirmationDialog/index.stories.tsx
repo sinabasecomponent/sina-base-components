@@ -1,8 +1,5 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
-import {
-  ConfirmationDialog,
-  ConfirmationDialogProps,
-} from "../../../molecules";
+import { ConfirmationDialog, ConfirmationDialogProps } from "../../../muscles";
 import { StoryContainer } from "../../container";
 export default {
   title: "confirmation dialog",

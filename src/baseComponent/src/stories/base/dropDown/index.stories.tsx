@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { Story } from "@storybook/react/types-6-0";
-import { DropDown } from "../../../molecules";
+import { DropDown } from "../../../muscles";
 import { StoryContainer } from "../../container";
 export default {
   title: "drop down",

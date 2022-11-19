@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
 import React, { useContext, useState } from "react";
+import { Text } from "../../../atoms/text";
 import { Colors } from "../../../colors";
-import { Text } from "../../text";
 import { RadioContext, ValueType } from "../context";
 import { CustomCircle } from "./customCircle";
-
 import styles from "./radio.module.scss";
 
 export interface RadioProps

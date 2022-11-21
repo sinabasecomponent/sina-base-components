@@ -70,7 +70,11 @@ const Template: Story<any> = () => {
               return 0;
             }}
             render={({ value }) => {
-              return <Text>{value}</Text>;
+              return (
+                <Text color={"red"} size={20}>
+                  {value}
+                </Text>
+              );
             }}
             dataIndex="family"
           >

@@ -3,5 +3,5 @@ export * from "./checkbox";
 export * from "./cover";
 export * from "./file-input";
 export * from "./node-button";
-export * from "./switch";
+export * from "./radio";
 export * from "./textInput";

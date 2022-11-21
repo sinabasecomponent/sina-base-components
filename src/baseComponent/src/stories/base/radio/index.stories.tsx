@@ -1,5 +1,6 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { Radio, RadioProps, Text } from "../../../atoms";
+import { Text } from "../../../atoms";
+import { Radio, RadioProps } from "../../../molecules";
 import { StoryContainer } from "../../container";
 export default {
   title: "radio",

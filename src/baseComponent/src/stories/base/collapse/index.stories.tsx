@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { Collapse, CollapseProps } from "../../../atoms";
+import { Collapse, CollapseProps } from "../../../molecules";
 import { StoryContainer } from "../../container";
 
 const { Panel } = Collapse;

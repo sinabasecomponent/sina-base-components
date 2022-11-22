@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import React, { useContext, useState } from "react";
 import { View } from "reactjs-view";
+import { BaseIcon } from "../../../atoms/baseIcon";
+import { Text } from "../../../atoms/text";
 import { Colors } from "../../../colors";
-import { BaseIcon } from "../../baseIcon";
-import { Text } from "../../text";
 import { CollapseContext } from "../context";
 
 const RIGHT_GUTTER = 30;

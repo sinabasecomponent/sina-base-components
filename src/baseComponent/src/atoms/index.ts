@@ -1,5 +1,4 @@
 export * from "./baseIcon";
-export * from "./collapse";
 export * from "./loading";
 export * from "./search-box";
 export * from "./switch";

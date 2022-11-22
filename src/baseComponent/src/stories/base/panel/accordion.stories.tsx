@@ -5,7 +5,7 @@ import { StoryContainer } from "../../container";
 const { Panel } = Collapse;
 
 export default {
-  title: "collapse/self control",
+  title: "collapse/accordion",
   component: Collapse,
 } as Meta<CollapseProps>;
 
@@ -13,6 +13,7 @@ const Template: Story<CollapseProps> = () => {
   return (
     <StoryContainer>
       <Collapse
+        accordion
         onChange={(value) => {
           console.log(value);
         }}

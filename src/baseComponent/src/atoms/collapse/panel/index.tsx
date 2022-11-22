@@ -15,7 +15,7 @@ export interface PanelProps {
 }
 
 const Panel = ({ children, title, id }: PanelProps) => {
-  const { openPanels, onClickPanel } = useContext(CollapseContext);
+  const { openedPanels, onClickPanel } = useContext(CollapseContext);
 
   const [height, setHeight] = useState(0);
 
@@ -24,10 +24,10 @@ const Panel = ({ children, title, id }: PanelProps) => {
   };
 
   let isOpen: boolean = false;
-  if (Array.isArray(openPanels)) {
-    isOpen = Boolean(openPanels.find((item) => item === id));
-  } else if (!Array.isArray(openPanels)) {
-    isOpen = Boolean(id === openPanels);
+  if (Array.isArray(openedPanels)) {
+    isOpen = Boolean(openedPanels.find((item) => item === id));
+  } else if (!Array.isArray(openedPanels)) {
+    isOpen = Boolean(id === openedPanels);
   }
 
   return (
@@ -76,6 +76,7 @@ const Panel = ({ children, title, id }: PanelProps) => {
         >
           <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
             <BaseIcon
+              color={isOpen ? Colors.color_primary_1 : Colors.color_primary_3}
               name={"Every-Boxes-_-Flesh-Icon-for-more-choices"}
               size={12}
             />

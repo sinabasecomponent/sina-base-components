@@ -2,12 +2,12 @@ import { createContext } from "react";
 
 interface CollapseContextProps {
   onClickPanel: (value: string) => void;
-  openPanels: string[] | string | null;
+  openedPanels: string[];
 }
 
 const defaultValue: CollapseContextProps = {
   onClickPanel: () => ({}),
-  openPanels: null,
+  openedPanels: [],
 };
 
 const CollapseContext = createContext(defaultValue);

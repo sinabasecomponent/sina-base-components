@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CollapseContext } from "./context";
 import { Panel } from "./panel";
 
 export interface CollapseProps {
   children: React.ReactNode;
   accordion?: boolean;
-  onChange?: (value: string[] | null) => void;
+  onChange?: (value: {
+    activePanelsKey: string[];
+    clickedPanelKey: string;
+  }) => void;
   activeKey?: string[];
 }
 
@@ -17,38 +20,40 @@ const Collapse = ({
 }: CollapseProps) => {
   const [openedPanels, setOpenPanel] = useState<string[]>([]);
 
-  useEffect(() => {
-    activeKey && setOpenPanel(activeKey);
-  }, [activeKey]);
+  let _openedPanels: string[] = [];
 
-  useEffect(() => {
-    onChange?.(openedPanels);
-  }, [openedPanels]);
+  if (activeKey) {
+    _openedPanels = activeKey;
+  } else {
+    _openedPanels = openedPanels;
+  }
 
   const handleOnClickPanel = (value: string) => {
     if (activeKey) {
-      onChange?.([value]);
+      onChange?.({ activePanelsKey: [value], clickedPanelKey: value });
       return;
     }
     const alreadyExist = openedPanels.find((item) => item === value);
+    let _openedPanels: string[] = [];
+
     if (!accordion) {
       if (alreadyExist) {
-        const newOpenedPanels = openedPanels.filter(
-          (item) => item !== alreadyExist,
-        );
-        setOpenPanel(newOpenedPanels);
+        _openedPanels = openedPanels.filter((item) => item !== alreadyExist);
+        setOpenPanel(_openedPanels);
       } else if (!alreadyExist) {
-        setOpenPanel([...openedPanels, value]);
+        _openedPanels = [...openedPanels, value];
+        setOpenPanel(_openedPanels);
       }
     } else if (accordion) {
-      const newState = alreadyExist ? [] : [value];
-      setOpenPanel(newState);
+      _openedPanels = alreadyExist ? [] : [value];
+      setOpenPanel(_openedPanels);
     }
+    onChange?.({ activePanelsKey: _openedPanels, clickedPanelKey: value });
   };
 
   return (
     <CollapseContext.Provider
-      value={{ onClickPanel: handleOnClickPanel, openPanels: openedPanels }}
+      value={{ onClickPanel: handleOnClickPanel, openedPanels: _openedPanels }}
     >
       <div>{children}</div>
     </CollapseContext.Provider>

@@ -14,6 +14,7 @@ const Template: Story<CollapseProps> = () => {
     <StoryContainer>
       <Collapse
         onChange={(value) => {
+          // eslint-disable-next-line no-console
           console.log(value);
         }}
       >

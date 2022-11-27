@@ -15,6 +15,7 @@ const Template: Story<CollapseProps> = () => {
       <Collapse
         accordion
         onChange={(value) => {
+          // eslint-disable-next-line no-console
           console.log(value);
         }}
       >

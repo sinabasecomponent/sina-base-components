@@ -18,9 +18,11 @@ const Template: Story<RadioProps> = () => {
       <Radio.Group
         name="sag"
         onBlur={(e) => {
+          // eslint-disable-next-line no-console
           console.log(e, "blur");
         }}
         onFocus={(e) => {
+          // eslint-disable-next-line no-console
           console.log(e, "focus");
         }}
         onChange={onChangeHandler}

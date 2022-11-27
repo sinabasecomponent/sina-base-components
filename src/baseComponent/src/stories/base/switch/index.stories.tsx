@@ -11,6 +11,7 @@ const Template: Story<SwitchProps> = () => {
   const [isCheck, setIsCheck] = useState<boolean>(false);
   const ref = useRef<HTMLInputElement>(null);
   const handleOnClick = (checked: boolean) => {
+    // eslint-disable-next-line no-console
     console.log({ checked });
     setIsCheck(checked);
   };

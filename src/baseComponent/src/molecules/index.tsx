@@ -5,4 +5,5 @@ export * from "./cover";
 export * from "./file-input";
 export * from "./node-button";
 export * from "./radio";
+export * from "./tabs";
 export * from "./textInput";

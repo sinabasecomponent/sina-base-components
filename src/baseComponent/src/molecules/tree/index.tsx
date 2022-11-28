@@ -4,15 +4,15 @@ import { Collapse } from "./collapse";
 import { LevelContext } from "./context/levelProvider";
 import { Item } from "./item";
 
-export interface DataProps {
+export interface TreeDataProps {
   title: string;
   id: string;
   isActive?: boolean;
-  children?: DataProps[];
+  children?: TreeDataProps[];
 }
 
 export interface TreeProps {
-  data: DataProps[];
+  data: TreeDataProps[];
   activeLeaf?: string | null;
   onSelectLeaf?: (id: string) => void;
 }

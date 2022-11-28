@@ -3,7 +3,7 @@ import { ScrollView } from "reactjs-view";
 import { Text } from "../../atoms/text";
 import { Colors } from "../../colors";
 import { TextInput } from "../../molecules/textInput";
-import { DataProps, Tree } from "../../molecules/tree";
+import { Tree, TreeDataProps } from "../../molecules/tree";
 import styles from "./treeNode.module.scss";
 
 export const isInclude = (a: string, b: string) => {
@@ -14,7 +14,7 @@ export const isInclude = (a: string, b: string) => {
 };
 
 export interface TreeNodeProps {
-  data: DataProps[];
+  data: TreeDataProps[];
   onSelectShelf?: (id: string) => void;
   title: string;
 }

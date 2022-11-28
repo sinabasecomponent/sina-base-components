@@ -3,7 +3,7 @@ import { ScrollView } from "reactjs-view";
 import { Text } from "../../atoms/text";
 import { Colors } from "../../colors";
 import { TextInput } from "../../molecules/textInput";
-import { InnerTree } from "./innerTree";
+import { DataProps, Tree } from "../../molecules/tree";
 import styles from "./treeNode.module.scss";
 
 export const isInclude = (a: string, b: string) => {
@@ -12,13 +12,6 @@ export const isInclude = (a: string, b: string) => {
     b.toLowerCase().includes(a.toLowerCase())
   );
 };
-
-export interface DataProps {
-  title: string;
-  id: string;
-  isActive?: boolean;
-  children?: DataProps[];
-}
 
 export interface TreeNodeProps {
   data: DataProps[];
@@ -58,7 +51,7 @@ const TreeNode = ({ data, onSelectShelf, title }: TreeNodeProps) => {
       </div>
       <ScrollView style={{ paddingInline: 16, flex: 1 }}>
         {filterdData.length > 0 ? (
-          <InnerTree
+          <Tree
             onSelectLeaf={onSelectLeaf}
             activeLeaf={activeLeaf}
             data={filterdData}

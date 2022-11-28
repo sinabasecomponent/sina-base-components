@@ -7,3 +7,4 @@ export * from "./node-button";
 export * from "./radio";
 export * from "./tabs";
 export * from "./textInput";
+export * from "./tree";

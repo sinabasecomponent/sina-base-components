@@ -1,24 +1,27 @@
 import { useContext } from "react";
-import { DataProps } from "..";
-import { Colors } from "../../../colors";
-import { Collapse } from "../collapse";
-import { LevelContext } from "../context/levelProvider";
-import { Item } from "../item";
+import { Colors } from "../../colors";
+import { Collapse } from "./collapse";
+import { LevelContext } from "./context/levelProvider";
+import { Item } from "./item";
 
-const InnerTree = ({
-  data,
-  activeLeaf,
-  onSelectLeaf,
-}: {
+export interface DataProps {
+  title: string;
+  id: string;
+  isActive?: boolean;
+  children?: DataProps[];
+}
+
+export interface TreeProps {
   data: DataProps[];
-  activeLeaf: string | null;
-  onSelectLeaf: (id: string) => void;
-}) => {
-  const level = useContext(LevelContext);
+  activeLeaf?: string | null;
+  onSelectLeaf?: (id: string) => void;
+}
 
+const Tree = ({ data, activeLeaf, onSelectLeaf }: TreeProps) => {
+  const level = useContext(LevelContext);
   const handleClickLeaf = (value: string) => {
     if (level !== 3) return;
-    onSelectLeaf(value);
+    onSelectLeaf?.(value);
   };
 
   const backgourndColor =
@@ -52,7 +55,7 @@ const InnerTree = ({
               key={id}
             >
               <LevelContext.Provider value={level + 1}>
-                <InnerTree
+                <Tree
                   onSelectLeaf={onSelectLeaf}
                   activeLeaf={activeLeaf}
                   data={children}
@@ -78,4 +81,4 @@ const InnerTree = ({
   );
 };
 
-export { InnerTree };
+export { Tree };

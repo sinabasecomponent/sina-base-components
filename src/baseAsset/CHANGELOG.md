@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.12](https://github.com/sinabasecomponent/sina-base-components/compare/v1.1.11...v1.1.12) (2022-11-28)
+
+**Note:** Version bump only for package @sina-base/asset
+
+
+
+
+
+
 ## [1.1.8](https://github.com/sinabasecomponent/sina-base-components/compare/v1.1.7...v1.1.8) (2022-11-06)
 
 **Note:** Version bump only for package @sina-base/asset

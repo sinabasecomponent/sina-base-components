@@ -1,6 +1,6 @@
 {
   "name": "@sina-base/component",
-  "version": "1.1.14",
+  "version": "1.1.15",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,15 +22,15 @@
   },
   "dependencies": {
     "@sina-base/asset": "^1.1.12",
+    "@tanstack/react-virtual": "^3.0.0-beta.18",
     "classnames": "^2.3.1",
-    "reactjs-view": "^2.4.0",
     "framer-motion": "^7.6.5",
+    "lodash": "^4.17.21",
     "react-jss": "^10.9.2",
     "react-virtual": "^2.10.4",
+    "reactjs-view": "^2.4.0",
     "sass-loader": "^13.1.0",
-    "style-loader": "^3.3.1",
-    "lodash": "^4.17.21",
-    "@tanstack/react-virtual": "^3.0.0-beta.18"
+    "style-loader": "^3.3.1"
   },
   "devDependencies": {
     "reactjs-view-tests": "^2.4.0"

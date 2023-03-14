@@ -1,5 +1,3 @@
-const configOverrides = require("../src/web/config-overrides");
-
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
@@ -15,7 +13,6 @@ module.exports = {
     builder: "@storybook/builder-webpack5",
   },
   webpackFinal: async (config) => {
-    config = configOverrides.webpack(config, "");
     return config;
   },
 };

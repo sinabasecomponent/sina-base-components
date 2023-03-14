@@ -1,12 +1,6 @@
 {
-  "packages": [
-    "src/baseComponent",
-    "src/baseAsset",
-    "src/web",
-    "src/stories"
-  ],
   "npmClient": "yarn",
-  "useWorkspaces": true,
+  "useWorkspaces": false,
   "command": {
     "publish": {},
     "version": {

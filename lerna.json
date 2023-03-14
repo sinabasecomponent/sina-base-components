@@ -1,4 +1,5 @@
 {
+  "packages": ["component"],
   "npmClient": "yarn",
   "useWorkspaces": false,
   "command": {

@@ -1,5 +1,5 @@
 {
-  "name": "baseweb",
+  "name": "@sina-base/component",
   "version": "0.1.0",
   "private": false,
   "secure": false,

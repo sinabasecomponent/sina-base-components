@@ -3,14 +3,13 @@
   "version": "1.1.23",
   "private": false,
   "secure": false,
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
-  "description": "this package will be used for web functionalities of payamgostar packages",
-  "main": "dist/index.js",
+  "types": "src/index.d.ts",
+  "main": "src/index.ts",
   "files": [
-    "src",
-    "types"
+    "src"
   ],
+  "module": "s/esm/index.js",
+  "description": "this package will be used for web functionalities of payamgostar packages",
   "scripts": {
     "compile": "yarn lerna-clean && yarn lerna-build && tsc -b",
     "build": " yarn workspace web build",

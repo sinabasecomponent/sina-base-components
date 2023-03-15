@@ -1,14 +1,17 @@
 import React from "react";
-import "./icon";
 import { IconsNames } from "./iconNames";
+export declare type Unit = "viewPort" | "pixel";
 interface BaseIconProps extends Omit<React.HTMLAttributes<HTMLElement>, "className" | "style" | "children" | "color"> {
     name?: IconsNames;
-    size?: "xsmall" | "small" | "medium" | "large" | number;
+    size: {
+        width: number;
+        height: number;
+    };
     color?: string | string[];
-    testID?: string;
     wrapperStyle?: React.CSSProperties;
     wrapperClassName?: string;
+    unit?: Unit;
 }
-declare const BaseIcon: ({ name, color, size, testID, wrapperStyle, wrapperClassName, ...rest }: BaseIconProps) => JSX.Element;
+declare const BaseIcon: React.ForwardRefExoticComponent<BaseIconProps & React.RefAttributes<HTMLDivElement>>;
 export { BaseIcon };
 export type { IconsNames, BaseIconProps };

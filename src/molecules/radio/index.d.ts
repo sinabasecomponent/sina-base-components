@@ -1,6 +1,6 @@
 /// <reference types="react" />
-import { Group } from "./group";
-import { RadioProps } from "./internalRadio";
+import { Group } from './group';
+import { RadioProps } from './internalRadio';
 interface CompoundedComponent extends React.ForwardRefExoticComponent<RadioProps & React.RefAttributes<HTMLElement>> {
     Group: typeof Group;
 }

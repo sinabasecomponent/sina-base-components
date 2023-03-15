@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { forwardRef, memo, ReactNode } from "react";
 import { createUseStyles } from "react-jss";
+import { pxToVh } from "../../../utils/convertUnit";
 
 export type Variant =
   | "div"
@@ -22,26 +23,19 @@ export interface BaseTextProps
   href?: string;
   variant?: Variant;
   children?: ReactNode | ReactNode[] | null;
-  onPress?: (e: any) => void;
+  onPress?: (e: unknown) => void;
   dir?: "auto" | "ltr" | "rtl";
   numberOfLines?: number;
   selectable?: boolean;
   className?: Parameters<typeof classNames>[0];
+  ellipsis?: boolean;
 }
 
 /** Inspired of React-native Text */
 const BaseText = memo(
-  forwardRef<any, BaseTextProps>(
+  forwardRef<HTMLDivElement, BaseTextProps>(
     (
-      {
-        dir,
-        numberOfLines,
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        selectable,
-        className,
-        style,
-        ...rest
-      },
+      { dir, numberOfLines, selectable, className, style, ellipsis, ...rest },
       forwardedRef,
     ) => {
       const classes = useStyles();
@@ -54,6 +48,7 @@ const BaseText = memo(
             selectable === true && classes.selectable,
             selectable === false && classes.notSelectable,
             numberOfLines != null && classes.textMultiLine,
+            ellipsis === true && classes.ellipsis,
             className,
           )}
           style={{
@@ -73,7 +68,7 @@ const useStyles = createUseStyles({
     boxSizing: "border-box",
     color: "black",
     display: "inline",
-    fontSize: 14,
+    fontSize: `${pxToVh(14)}vh`,
     margin: 0,
     padding: 0,
     whiteSpace: "pre-wrap",
@@ -82,11 +77,17 @@ const useStyles = createUseStyles({
   // See #13
   textMultiLine: {
     display: "-webkit-box",
-    maxWidth: "100%",
+    // maxWidth: '100%',
     overflow: "hidden",
     textOverflow: "ellipsis",
+    // whiteSpace: 'nowrap',
     // whiteSpace: "pre",
     WebkitBoxOrient: "vertical",
+  },
+  ellipsis: {
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
   notSelectable: {
     userSelect: "none",

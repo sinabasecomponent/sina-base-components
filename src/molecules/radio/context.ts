@@ -1,7 +1,7 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
 export type ValueType = string | number | undefined | null;
-export type ModeType = "dark" | "light";
+export type ModeType = 'dark' | 'light';
 
 interface RadioContextProps {
   value: string | number | undefined | null;
@@ -13,7 +13,7 @@ const initialValue: RadioContextProps = {
   value: undefined,
   onChange: () => ({}),
   name: undefined,
-  mode: "dark",
+  mode: 'dark',
 };
 
 const RadioContext = createContext(initialValue);

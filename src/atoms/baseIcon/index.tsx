@@ -1,10 +1,12 @@
 import classNames from "classnames";
 import React from "react";
+import icomoonJson from "../../icomoon/selection.json";
 import { createIcomoonIconSet } from "./createIconSet";
-import "./icon";
+// import './icon';
 import { IconsNames } from "./iconNames";
-import icomoonJson from "./selection.json";
 const IconMoon = createIcomoonIconSet(icomoonJson);
+
+export type Unit = "viewPort" | "pixel";
 
 interface BaseIconProps
   extends Omit<
@@ -12,55 +14,45 @@ interface BaseIconProps
     "className" | "style" | "children" | "color"
   > {
   name?: IconsNames;
-  size?: "xsmall" | "small" | "medium" | "large" | number;
+  size: { width: number; height: number };
   color?: string | string[];
-  testID?: string;
   wrapperStyle?: React.CSSProperties;
   wrapperClassName?: string;
+  unit?: Unit;
 }
 
-const BaseIcon = ({
-  name,
-  color,
-  size = 18,
-  testID,
-  wrapperStyle,
-  wrapperClassName,
-  ...rest
-}: BaseIconProps) => {
-  let fontSize: number = 18;
-  if (typeof size === "number") {
-    fontSize = size;
-  } else {
-    switch (size) {
-      case "xsmall":
-        fontSize = 12;
-        break;
-      case "small":
-        fontSize = 14;
-        break;
-      case "medium":
-        fontSize = 18;
-        break;
-      case "large":
-        fontSize = 24;
-        break;
+const BaseIcon = React.forwardRef<HTMLDivElement, BaseIconProps>(
+  (
+    {
+      name,
+      color,
+      size,
+      wrapperStyle,
+      wrapperClassName,
+      unit = "pixel",
+      ...rest
+    },
+    ref,
+  ) => {
+    return (
+      <div
+        ref={ref}
+        className={classNames(wrapperClassName)}
+        style={{ display: "flex", ...wrapperStyle }}
+        {...rest}
+      >
+        <IconMoon
+          name={name}
+          color={color}
+          size={{ height: size.height, width: size.width }}
+          unit={unit}
+        />
+      </div>
+    );
+  },
+);
 
-      default:
-        fontSize = 18;
-    }
-  }
-
-  return (
-    <div
-      className={classNames(wrapperClassName)}
-      style={{ display: "flex", ...wrapperStyle }}
-      {...rest}
-    >
-      <IconMoon name={name} color={color} size={fontSize} testID={testID} />
-    </div>
-  );
-};
+BaseIcon.displayName = "BaseIcon";
 
 export { BaseIcon };
 export type { IconsNames, BaseIconProps };

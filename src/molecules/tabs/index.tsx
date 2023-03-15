@@ -1,7 +1,8 @@
 import classNames from "classnames";
 import { Fragment, ReactNode, useEffect, useMemo, useState } from "react";
-import { Text } from "../../atoms";
+import { Text } from "../../atoms/text";
 import { Colors } from "../../colors";
+import { pxToVh } from "../../utils/convertUnit";
 import { useHorizontalScroll } from "../../utils/useHorizontalScroll";
 import { InternalTabPane } from "./internalTabPane";
 import { TabPane, TabPaneProps } from "./TabPane";
@@ -14,6 +15,7 @@ export interface TabsProps {
   onClose?: (id: string) => void;
   className?: string;
   TabsTitle?: string | React.ReactNode;
+  noContent?: React.ReactNode;
 }
 
 const Tabs = ({
@@ -23,18 +25,14 @@ const Tabs = ({
   onClose,
   className,
   TabsTitle,
+  noContent,
 }: TabsProps) => {
   const [activeTab, setActiveTab] = useState<string | null>(null);
-  const [opendTabs, setOpenedTabs] = useState<string[]>([]);
+  const [openedTabs, setOpenedTabs] = useState<string[]>([]);
   const tabListRef = useHorizontalScroll();
 
   const handleOnChange = (id: string) => {
     onChange?.(id);
-    setOpenedTabs((prev) => {
-      const alreadyExist = prev.find((item) => item === id);
-      if (alreadyExist) return prev;
-      return [...prev, id];
-    });
     if (activeTabProp) return;
     setActiveTab(id);
   };
@@ -99,16 +97,19 @@ const Tabs = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (activeTabProp) {
+      setOpenedTabs((prev) => {
+        const alreadyExist = prev.find((item) => item === activeTabProp);
+        if (alreadyExist) return prev;
+        return [...prev, activeTabProp];
+      });
+    }
+  }, [activeTabProp]);
+
   return (
     <div className={classNames(styles["tabs"], className)}>
-      <div
-        style={{
-          display: "flex",
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
-          overflow: "hidden",
-        }}
-      >
+      <div className={styles["tabs__container"]}>
         {TabsTitle ? (
           <div
             style={{
@@ -117,8 +118,12 @@ const Tabs = ({
             }}
           >
             {typeof TabsTitle === "string" ? (
-              <div style={{ padding: "15px 15px 0px 15px" }}>
-                <Text theme="Regular" size={20} color={Colors.color_primary_2}>
+              <div className={styles["tabs__title"]}>
+                <Text
+                  theme="Regular"
+                  size={`${pxToVh(20)}vh`}
+                  color={Colors.color_primary_2}
+                >
                   {TabsTitle}
                 </Text>
               </div>
@@ -131,7 +136,6 @@ const Tabs = ({
         <div ref={tabListRef} className={styles["tabs__list"]}>
           {tabs.map(({ id, renderTitle, closable }) => {
             const isActive = id === _activeTab;
-
             return (
               <InternalTabPane
                 renderTitle={renderTitle}
@@ -147,18 +151,25 @@ const Tabs = ({
         </div>
       </div>
 
-      <div className={styles["tabs__content"]}>
-        {opendTabs.map((_id) => {
-          const tab = tabs.find(({ id }) => id === _id);
-          return (
-            <div
-              key={tab?.id}
-              style={{ display: tab?.id === _activeTab ? "block" : "none" }}
-            >
-              {tab?.children}
-            </div>
-          );
-        })}
+      <div className={styles["tabs__content-container"]}>
+        {noContent ? (
+          <div style={{ height: "100%" }}>{noContent}</div>
+        ) : (
+          openedTabs.map((_id) => {
+            const tab = tabs.find(({ id }) => id === _id);
+            return (
+              <div
+                key={tab?.id}
+                style={{
+                  display: tab?.id === _activeTab ? "block" : "none",
+                  height: "100%",
+                }}
+              >
+                {tab?.children}
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

@@ -1,14 +1,15 @@
 /// <reference types="react" />
-import { Colors } from "../../../colors";
+import { Colors } from '../../../colors';
 interface ItemProps {
-    title: string;
-    onClick?: () => void;
-    arrowDirection?: "up" | "down";
-    level?: number;
+    title?: string;
+    arrowDirection?: 'up' | 'down';
+    level: number;
     backgroundColor: Colors;
-    isActiveLeaf?: boolean;
+    isActive?: boolean;
     textColor: Colors;
     fontSize?: number;
+    isLoading: boolean;
+    onClick?: () => void;
 }
-declare const Item: ({ title, onClick, arrowDirection, level, backgroundColor, isActiveLeaf, textColor, fontSize, }: ItemProps) => JSX.Element;
+declare const Item: ({ title, onClick, arrowDirection, level, backgroundColor, isActive, textColor, fontSize, isLoading, }: ItemProps) => JSX.Element;
 export { Item };

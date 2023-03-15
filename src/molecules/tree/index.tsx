@@ -1,28 +1,34 @@
-import { useContext } from "react";
-import { Colors } from "../../colors";
-import { Collapse } from "./collapse";
-import { LevelContext } from "./context/levelProvider";
-import { Item } from "./item";
+import { useContext } from 'react';
+import { Colors } from '../../colors';
+import { Collapse } from './collapse';
+import { LevelContext } from './context/levelProvider';
 
-export interface TreeDataProps {
+export interface TreeBasicType<T> {
   title: string;
   id: string;
-  isActive?: boolean;
-  children?: TreeDataProps[];
+  children?: T[];
 }
 
-export interface TreeProps {
-  data: TreeDataProps[];
-  activeLeaf?: string | null;
-  onSelectLeaf?: (id: string) => void;
+export type OnSelectItemProps<T> = {
+  data: T;
+  level: number;
+};
+
+export type OnLoadData<T> = (value: OnSelectItemProps<T>) => Promise<void>;
+export interface TreeProps<T> {
+  data: T[];
+  onSelectItem?: (value: OnSelectItemProps<T>) => void;
+  onLoadData?: (value: OnSelectItemProps<T>) => Promise<void>;
+  activeItemId?: string;
 }
 
-const Tree = ({ data, activeLeaf, onSelectLeaf }: TreeProps) => {
+const Tree = <T extends TreeBasicType<T>>({
+  data,
+  onSelectItem,
+  onLoadData,
+  activeItemId,
+}: TreeProps<T>) => {
   const level = useContext(LevelContext);
-  const handleClickLeaf = (value: string) => {
-    if (level !== 3) return;
-    onSelectLeaf?.(value);
-  };
 
   const backgourndColor =
     level === 1
@@ -44,37 +50,31 @@ const Tree = ({ data, activeLeaf, onSelectLeaf }: TreeProps) => {
 
   return (
     <div style={{ paddingInlineStart: level > 1 ? 32 : 0 }}>
-      {data.map(({ children, id, title }) => {
-        if (children) {
-          return (
-            <Collapse
-              textColor={textColor}
-              backgroundColor={backgourndColor}
-              title={title}
-              level={level}
-              key={id}
-            >
+      {data.map((data) => {
+        return (
+          <Collapse
+            onClick={onSelectItem}
+            data={data}
+            textColor={textColor}
+            backgroundColor={backgourndColor}
+            title={data.title}
+            level={level}
+            key={data.id}
+            onLoadData={onLoadData}
+            id={data.id}
+            activeItemId={activeItemId}
+          >
+            {data?.children?.length ? (
               <LevelContext.Provider value={level + 1}>
                 <Tree
-                  onSelectLeaf={onSelectLeaf}
-                  activeLeaf={activeLeaf}
-                  data={children}
+                  onSelectItem={onSelectItem}
+                  data={data.children}
+                  onLoadData={onLoadData}
+                  activeItemId={activeItemId}
                 />
               </LevelContext.Provider>
-            </Collapse>
-          );
-        }
-        return (
-          <Item
-            fontSize={14}
-            textColor={textColor}
-            isActiveLeaf={id === activeLeaf}
-            backgroundColor={backgourndColor}
-            title={title}
-            key={id}
-            level={level}
-            onClick={() => handleClickLeaf(id)}
-          />
+            ) : null}
+          </Collapse>
         );
       })}
     </div>

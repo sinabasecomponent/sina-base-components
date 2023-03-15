@@ -31,14 +31,23 @@ const NodeButton: FC<NodeButtonProps> = ({
       )}
     >
       <BaseIcon
+        size={{ height: 10, width: 10 }}
         name="Abstract-Service-Graph_Hamburger-Menu"
         onClick={settingClicked}
       />
       <span>{text}</span>
       {isOpen ? (
-        <BaseIcon name="Amount-Boxes_Decrease" color={Colors.color_white} />
+        <BaseIcon
+          size={{ height: 10, width: 10 }}
+          name="Amount-Boxes_Decrease"
+          color={Colors.color_white}
+        />
       ) : (
-        <BaseIcon name="Amount-Boxes_Increase" color={Colors.color_white} />
+        <BaseIcon
+          size={{ height: 10, width: 10 }}
+          name="Amount-Boxes_Increase"
+          color={Colors.color_white}
+        />
       )}
     </div>
   );

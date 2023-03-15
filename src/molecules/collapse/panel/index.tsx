@@ -1,12 +1,11 @@
-import { motion } from "framer-motion";
-import React, { useContext, useState } from "react";
-// import { View } from "reactjs-view";
-import { BaseIcon } from "../../../atoms/baseIcon";
-import { Text } from "../../../atoms/text";
-import { Colors } from "../../../colors";
-import { CollapseContext } from "../context";
-
-const RIGHT_GUTTER = 30;
+import { motion } from 'framer-motion';
+import React, { useContext, useLayoutEffect } from 'react';
+import Measure from 'react-measure';
+import { BaseIcon } from '../../../atoms/baseIcon';
+import { Text } from '../../../atoms/text';
+import { Colors } from '../../../colors';
+import { CollapseContext } from '../context';
+import styles from './panel.module.scss';
 
 export interface PanelProps {
   children: React.ReactNode;
@@ -15,93 +14,62 @@ export interface PanelProps {
 }
 
 const Panel = ({ children, title, id }: PanelProps) => {
-  const { openedPanels, onClickPanel } = useContext(CollapseContext);
-
-  const [height, setHeight] = useState(0);
+  const { openedPanels, onClickPanel, defaultOpen, handleDefaultOpen } =
+    useContext(CollapseContext);
 
   const handleOnClick = () => {
     onClickPanel(id);
   };
 
-  let isOpen: boolean = false;
-  if (Array.isArray(openedPanels)) {
-    isOpen = Boolean(openedPanels.find((item) => item === id));
-  } else if (!Array.isArray(openedPanels)) {
-    isOpen = Boolean(id === openedPanels);
-  }
+  useLayoutEffect(() => {
+    if (defaultOpen) {
+      handleDefaultOpen(id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const isOpen = Boolean(openedPanels.find((item) => item === id));
 
   return (
     <div style={{ marginBottom: 16 }}>
-      <div
-        style={{ display: "flex", height: 30, cursor: "pointer" }}
-        onClick={handleOnClick}
-      >
-        <div
-          style={{
-            flex: 1,
-            height: "100%",
-            backgroundColor: Colors.color_primary_7,
-            borderRadius: 7,
-          }}
-        >
-          {typeof title === "string" ? (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "100%",
-              }}
+      <div className={styles['title-wrapper']} onClick={handleOnClick}>
+        <div className={styles['title']}>
+          {typeof title === 'string' ? (
+            <Text
+              theme='Regular'
+              size={16}
+              color={isOpen ? Colors.color_primary_1 : Colors.color_primary_3}
+              ellipsis
             >
-              <Text
-                theme="Regular"
-                size={16}
-                color={isOpen ? Colors.color_primary_1 : Colors.color_primary_3}
-              >
-                {title}
-              </Text>
-            </div>
+              {title}
+            </Text>
           ) : (
             title
           )}
         </div>
-        <div
-          style={{
-            height: "100%",
-            width: RIGHT_GUTTER,
-            justifyContent: "end",
-            alignItems: "center",
-            display: "flex",
-          }}
+        <motion.div
+          style={{ marginRight: 10 }}
+          animate={{ rotate: isOpen ? 180 : 0 }}
         >
-          <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
-            <BaseIcon
-              color={isOpen ? Colors.color_primary_1 : Colors.color_primary_3}
-              name={"Every-Boxes-_-Flesh-Icon-for-more-choices"}
-              size={12}
-            />
-          </motion.div>
-        </div>
+          <BaseIcon
+            color={isOpen ? Colors.color_primary_1 : Colors.color_primary_3}
+            name={'Every-Boxes-_-Flesh-Icon-for-more-choices'}
+            size={{ height: 6, width: 12 }}
+          />
+        </motion.div>
       </div>
-      <motion.div
-        style={{ overflow: "hidden", height: 0 }}
-        animate={{ height: isOpen ? height : 0 }}
-      >
-        <div
-          // onLayout={({
-          //   nativeEvent: {
-          //     layout: { height },
-          //   },
-          // }) => {
-          //   setHeight(height);
-          // }}
-          style={{
-            width: `calc(100% - ${RIGHT_GUTTER}px)`,
-          }}
-        >
-          {children}
-        </div>
-      </motion.div>
+      <Measure client bounds offset>
+        {({ measureRef, contentRect }) => {
+          return (
+            <motion.div
+              style={{ overflow: 'hidden', height: 0 }}
+              animate={{ height: isOpen ? contentRect.bounds?.height : 0 }}
+            >
+              <div ref={measureRef}>{children}</div>
+            </motion.div>
+          );
+        }}
+      </Measure>
     </div>
   );
 };

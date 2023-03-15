@@ -7,7 +7,10 @@ const Cover = () => {
   return (
     <div className={styles["cover"]}>
       <div className={styles["text-box"]}>
-        <BaseIcon name="Title-Bar-Icon-_-Exit" />
+        <BaseIcon
+          size={{ height: 30, width: 30 }}
+          name="Title-Bar-Icon-_-Exit"
+        />
         <Text size={16}> Hi! LOAD OR CREATE A PROJECT AND START!</Text>
       </div>
     </div>

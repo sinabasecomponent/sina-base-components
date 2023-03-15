@@ -1,16 +1,16 @@
-import { Colors } from "../../../colors";
+import { Colors } from '../../../colors';
 
 const CustomRectangle = ({
   mode,
   checked,
 }: {
-  mode?: "dark" | "light";
+  mode?: 'dark' | 'light';
   checked?: boolean;
 }) => {
-  const isLightChecked = mode === "light" && checked;
-  const isLightUnChecked = mode === "light" && !checked;
-  const isDarkChecked = mode === "dark" && checked;
-  const isDarkUnChecked = mode === "dark" && !checked;
+  const isLightChecked = mode === 'light' && checked;
+  const isLightUnChecked = mode === 'light' && !checked;
+  const isDarkChecked = mode === 'dark' && checked;
+  const isDarkUnChecked = mode === 'dark' && !checked;
 
   const borderColor = isLightChecked
     ? Colors.color_secondary_1
@@ -35,19 +35,19 @@ const CustomRectangle = ({
         height: 16,
         borderRadius: 3,
         border: `1px solid ${borderColor}`,
-        position: "relative",
-        backgroundColor: "transparent",
+        position: 'relative',
+        backgroundColor: 'transparent',
       }}
     >
       <div
         style={{
-          position: "absolute",
+          position: 'absolute',
           width: 10,
           height: 10,
           backgroundColor: backgroundColor,
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
         }}
       />
     </div>

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { ModeType, RadioContext, ValueType } from "../context";
+import React, { useEffect, useState } from 'react';
+import { ModeType, RadioContext, ValueType } from '../context';
 
 interface GroupProps {
   children?: React.ReactNode;
@@ -19,12 +19,12 @@ const Group = React.forwardRef<HTMLDivElement, GroupProps>(
       value,
       name,
       onChange,
-      mode = "dark",
+      mode = 'dark',
       onBlur,
       onFocus,
       wrapperStyle,
     },
-    ref,
+    ref
   ) => {
     const [internalValue, setInternalValue] = useState<ValueType>(undefined);
 
@@ -56,8 +56,10 @@ const Group = React.forwardRef<HTMLDivElement, GroupProps>(
         </RadioContext.Provider>
       </div>
     );
-  },
+  }
 );
+
+Group.displayName = 'Group';
 
 export { Group };
 export type { GroupProps };

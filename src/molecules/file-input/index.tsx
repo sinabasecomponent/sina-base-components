@@ -20,7 +20,10 @@ const FileInput: FC<FileInputProps> = ({ register, className, fileType }) => {
       <label className={styles["file-input__file-chooser"]}>
         {label ?? (
           <>
-            <BaseIcon name="Add-Box_Add-Icon" />
+            <BaseIcon
+              size={{ height: 10, width: 10 }}
+              name="Add-Box_Add-Icon"
+            />
             Add File
           </>
         )}

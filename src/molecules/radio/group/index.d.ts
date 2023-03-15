@@ -1,5 +1,5 @@
-import React from "react";
-import { ModeType, ValueType } from "../context";
+import React from 'react';
+import { ModeType, ValueType } from '../context';
 interface GroupProps {
     children?: React.ReactNode;
     value?: ValueType;

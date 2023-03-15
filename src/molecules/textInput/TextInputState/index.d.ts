@@ -13,7 +13,6 @@
  * here
  */
 declare const TextInputState: {
-    /** Internal state */
     _currentlyFocusedNode: Object | null;
     /**
      * Returns the ID of the currently focused text field, if one exists If no

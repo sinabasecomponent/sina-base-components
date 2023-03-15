@@ -1,0 +1,17 @@
+.search {
+  border-right: 1px solid $color-primary-6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 31px;
+}
+
+.select-all {
+  border-right: 1px solid $color-primary-6;
+  width: 31px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+}

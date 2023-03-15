@@ -1,13 +1,13 @@
-import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
-import { Colors } from "../../colors";
+import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { Colors } from '../../colors';
 
 interface SwitchProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   checked?: boolean;
   onChange?: (
     checked: boolean,
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => void;
   name?: string;
 }
@@ -39,9 +39,9 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
     };
 
     return (
-      <label style={{ display: "inline-block", position: "relative" }}>
+      <label style={{ display: 'inline-block', position: 'relative' }}>
         <div
-          role={"switch"}
+          role={'switch'}
           style={{
             width: 26,
             height: 14,
@@ -50,20 +50,20 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
               : Colors.color_warning_3,
             borderRadius: 8,
             border: 0,
-            outline: "none",
+            outline: 'none',
             padding: 2,
-            position: "relative",
-            cursor: "pointer",
+            position: 'relative',
+            cursor: 'pointer',
             zIndex: 2,
           }}
         >
           <input
             {...rest}
             style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%,-50%)",
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%,-50%)',
               margin: 0,
               opacity: 0,
             }}
@@ -72,18 +72,18 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
             onFocus={focusHandler}
             onBlur={blurHandler}
             checked={isCheck}
-            type={"checkbox"}
+            type={'checkbox'}
             name={name}
           />
-          <div style={{ position: "relative", height: "100%" }}>
+          <div style={{ position: 'relative', height: '100%' }}>
             <motion.div
               animate={{ left: isCheck ? `calc(100% - ${CIRCLE_WIDTH}px)` : 0 }}
               style={{
                 width: CIRCLE_WIDTH,
                 height: CIRCLE_WIDTH,
-                border: "2px solid white",
-                borderRadius: "50%",
-                position: "absolute",
+                border: '2px solid white',
+                borderRadius: '50%',
+                position: 'absolute',
               }}
             />
           </div>
@@ -94,10 +94,10 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
             backgroundColor: isCheck
               ? Colors.color_secondary_1
               : Colors.color_warning_3,
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%,-50%)",
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%,-50%)',
             borderRadius: 8,
             zIndex: 1,
           }}
@@ -108,8 +108,10 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
         />
       </label>
     );
-  },
+  }
 );
+
+Switch.displayName = 'Switch';
 
 export { Switch };
 export type { SwitchProps };

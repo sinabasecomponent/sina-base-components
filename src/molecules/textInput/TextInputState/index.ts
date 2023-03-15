@@ -14,13 +14,15 @@
  * here
  */
 const TextInputState = {
-  /** Internal state */
+  // eslint-disable-next-line
   _currentlyFocusedNode: null as null | Object,
 
   /**
    * Returns the ID of the currently focused text field, if one exists If no
    * text field is focused it returns null
    */
+
+  // eslint-disable-next-line
   currentlyFocusedField(): null | Object {
     if (document.activeElement !== this._currentlyFocusedNode) {
       this._currentlyFocusedNode = null;

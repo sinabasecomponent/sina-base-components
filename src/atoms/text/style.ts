@@ -1,28 +1,28 @@
-import { createUseStyles } from "react-jss";
-import FiraBold from "../../fonts/FiraGO-Bold.ttf";
-import FiraBoldItalic from "../../fonts/FiraGO-BoldItalic.ttf";
-import FiroGoBook from "../../fonts/FiraGO-Book.ttf";
-import FiroGoBookItalic from "../../fonts/FiraGO-BookItalic.ttf";
-import FiraGOEight from "../../fonts/FiraGO-Eight.ttf";
-import FiraGOEightItalic from "../../fonts/FiraGO-EightItalic.ttf";
-import FiraGOFour from "../../fonts/FiraGO-Four.ttf";
-import FiraGOFourItalic from "../../fonts/FiraGO-FourItalic.ttf";
-import FiraGOHair from "../../fonts/FiraGO-Hair.ttf";
-import FiraGOHairItalic from "../../fonts/FiraGO-HairItalic.ttf";
-import FiraGOHeavyItalic from "../../fonts/FiraGO-HeavyItalic.ttf";
-import FiraGOItalic from "../../fonts/FiraGO-Italic.ttf";
-import FiraGOLight from "../../fonts/FiraGO-Light.ttf";
-import FiraGOLightItalic from "../../fonts/FiraGO-LightItalic.ttf";
-import FiraGOMedium from "../../fonts/FiraGO-Medium.ttf";
-import FiraGOMediumItalic from "../../fonts/FiraGO-MediumItalic.ttf";
-import FiraGORegular from "../../fonts/FiraGO-Regular.ttf";
-import FiraGOSemiBold from "../../fonts/FiraGO-SemiBold.ttf";
-import FiraGOSemiBoldItalic from "../../fonts/FiraGO-SemiBoldItalic.ttf";
-import FiraGOThin from "../../fonts/FiraGO-Thin.ttf";
-import FiraGOThinItalic from "../../fonts/FiraGO-ThinItalic.ttf";
-import FiraGOTwo from "../../fonts/FiraGO-Two.ttf";
-import FiraGOTwoItalic from "../../fonts/FiraGO-TwoItalic.ttf";
-import FiraGOUltraLight from "../../fonts/FiraGO-UltraLight.ttf";
+import FiroGoBook from 'public/fonts/FiraGO-Book.ttf';
+import FiraBoldItalic from 'public/fonts/FiraGO-BoldItalic.ttf';
+import FiraBold from 'public/fonts/FiraGO-Bold.ttf';
+import FiroGoBookItalic from 'public/fonts/FiraGO-BookItalic.ttf';
+import FiraGOEight from 'public/fonts/FiraGO-Eight.ttf';
+import FiraGOEightItalic from 'public/fonts/FiraGO-EightItalic.ttf';
+import FiraGOFour from 'public/fonts/FiraGO-Four.ttf';
+import FiraGOFourItalic from 'public/fonts/FiraGO-FourItalic.ttf';
+import FiraGOHair from 'public/fonts/FiraGO-Hair.ttf';
+import FiraGOHairItalic from 'public/fonts/FiraGO-HairItalic.ttf';
+import FiraGOHeavyItalic from 'public/fonts/FiraGO-HeavyItalic.ttf';
+import FiraGOItalic from 'public/fonts/FiraGO-Italic.ttf';
+import FiraGOLight from 'public/fonts/FiraGO-Light.ttf';
+import FiraGOLightItalic from 'public/fonts/FiraGO-LightItalic.ttf';
+import FiraGOMedium from 'public/fonts/FiraGO-Medium.ttf';
+import FiraGOMediumItalic from 'public/fonts/FiraGO-MediumItalic.ttf';
+import FiraGORegular from 'public/fonts/FiraGO-Regular.ttf';
+import FiraGOSemiBold from 'public/fonts/FiraGO-SemiBold.ttf';
+import FiraGOSemiBoldItalic from 'public/fonts/FiraGO-SemiBoldItalic.ttf';
+import FiraGOThin from 'public/fonts/FiraGO-Thin.ttf';
+import FiraGOThinItalic from 'public/fonts/FiraGO-ThinItalic.ttf';
+import FiraGOTwo from 'public/fonts/FiraGO-Two.ttf';
+import FiraGOTwoItalic from 'public/fonts/FiraGO-TwoItalic.ttf';
+import FiraGOUltraLight from 'public/fonts/FiraGO-UltraLight.ttf';
+import { createUseStyles } from 'react-jss';
 
 export const fontWeights = {
   light: 100,
@@ -50,124 +50,124 @@ export const fontSizes = {
 /** Change font before run any component */
 export const fonts = {
   bold: {
-    name: "FiraBold",
+    name: 'FiraBold',
     url: FiraBold,
-    format: "truetype",
+    format: 'truetype',
   },
   BoldItalic: {
-    name: "FiraBoldItalic",
+    name: 'FiraBoldItalic',
     url: FiraBoldItalic,
-    format: "truetype",
+    format: 'truetype',
   },
   Book: {
-    name: "FiroGoBook",
+    name: 'FiroGoBook',
     url: FiroGoBook,
-    format: "truetype",
+    format: 'truetype',
   },
   BookItalic: {
-    name: "FiroGoBookItalic",
+    name: 'FiroGoBookItalic',
     url: FiroGoBookItalic,
-    format: "truetype",
+    format: 'truetype',
   },
   Eight: {
-    name: "FiraGOEight",
+    name: 'FiraGOEight',
     url: FiraGOEight,
-    format: "truetype",
+    format: 'truetype',
   },
   EightItalic: {
-    name: "FiraGOEightItalic",
+    name: 'FiraGOEightItalic',
     url: FiraGOEightItalic,
-    format: "truetype",
+    format: 'truetype',
   },
   Four: {
-    name: "FiraGOFour",
+    name: 'FiraGOFour',
     url: FiraGOFour,
-    format: "truetype",
+    format: 'truetype',
   },
   FourItalic: {
-    name: "FiraGOFourItalic",
+    name: 'FiraGOFourItalic',
     url: FiraGOFourItalic,
-    format: "truetype",
+    format: 'truetype',
   },
   Hair: {
-    name: "FiraGOHair",
+    name: 'FiraGOHair',
     url: FiraGOHair,
-    format: "truetype",
+    format: 'truetype',
   },
   HairItalic: {
-    name: "FiraGOHairItalic",
+    name: 'FiraGOHairItalic',
     url: FiraGOHairItalic,
-    format: "truetype",
+    format: 'truetype',
   },
   HeavyItalic: {
-    name: "FiraGOHeavyItalic",
+    name: 'FiraGOHeavyItalic',
     url: FiraGOHeavyItalic,
-    format: "truetype",
+    format: 'truetype',
   },
   Italic: {
-    name: "FiraGOItalic",
+    name: 'FiraGOItalic',
     url: FiraGOItalic,
-    format: "truetype",
+    format: 'truetype',
   },
   Light: {
-    name: "FiraGOLight",
+    name: 'FiraGOLight',
     url: FiraGOLight,
-    format: "truetype",
+    format: 'truetype',
   },
   LightItalic: {
-    name: "FiraGOLightItalic",
+    name: 'FiraGOLightItalic',
     url: FiraGOLightItalic,
-    format: "truetype",
+    format: 'truetype',
   },
   Medium: {
-    name: "FiraGOMedium",
+    name: 'FiraGOMedium',
     url: FiraGOMedium,
-    format: "truetype",
+    format: 'truetype',
   },
   MediumItalic: {
-    name: "FiraGOMediumItalic",
+    name: 'FiraGOMediumItalic',
     url: FiraGOMediumItalic,
-    format: "truetype",
+    format: 'truetype',
   },
   Regular: {
-    name: "FiraGORegular",
+    name: 'FiraGORegular',
     url: FiraGORegular,
-    format: "truetype",
+    format: 'truetype',
   },
   SemiBold: {
-    name: "FiraGOSemiBold",
+    name: 'FiraGOSemiBold',
     url: FiraGOSemiBold,
-    format: "truetype",
+    format: 'truetype',
   },
   SemiBoldItalic: {
-    name: "FiraGOSemiBoldItalic",
+    name: 'FiraGOSemiBoldItalic',
     url: FiraGOSemiBoldItalic,
-    format: "truetype",
+    format: 'truetype',
   },
   Thin: {
-    name: "FiraGOThin",
+    name: 'FiraGOThin',
     url: FiraGOThin,
-    format: "truetype",
+    format: 'truetype',
   },
   ThinItalic: {
-    name: "FiraGOThinItalic",
+    name: 'FiraGOThinItalic',
     url: FiraGOThinItalic,
-    format: "truetype",
+    format: 'truetype',
   },
   Two: {
-    name: "FiraGOTwo",
+    name: 'FiraGOTwo',
     url: FiraGOTwo,
-    format: "truetype",
+    format: 'truetype',
   },
   TwoItalic: {
-    name: "FiraGOTwoItalic",
+    name: 'FiraGOTwoItalic',
     url: FiraGOTwoItalic,
-    format: "truetype",
+    format: 'truetype',
   },
   UltraLight: {
-    name: "FiraGOUltraLight",
+    name: 'FiraGOUltraLight',
     url: FiraGOUltraLight,
-    format: "truetype",
+    format: 'truetype',
   },
 };
 
@@ -182,13 +182,13 @@ const useThemes = () => {
           {
             fontFamily: name,
           },
-        ]),
+        ])
       ) as any),
-      ["@font-face" as any]: Object.values(fonts).map(
+      ['@font-face' as any]: Object.values(fonts).map(
         ({ format, name, url }) => ({
           fontFamily: name,
           src: `url(${url}) format('${format}')`,
-        }),
+        })
       ),
     });
   }

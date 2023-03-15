@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 export interface CollapseProps {
     children: React.ReactNode;
     accordion?: boolean;
@@ -7,9 +7,10 @@ export interface CollapseProps {
         clickedPanelKey: string;
     }) => void;
     activeKey?: string[];
+    defaultOpen?: boolean;
 }
 declare const Collapse: {
-    ({ children, accordion, onChange, activeKey, }: CollapseProps): JSX.Element;
+    ({ children, accordion, onChange, activeKey, defaultOpen, }: CollapseProps): JSX.Element;
     Panel: ({ children, title, id }: import("./panel").PanelProps) => JSX.Element;
 };
 export { Collapse };

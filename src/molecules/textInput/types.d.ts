@@ -6,19 +6,19 @@
  *
  * @flow
  */
-import React from "react";
-import { TextProps } from "../../atoms";
-interface ViewProps extends Omit<React.HTMLAttributes<HTMLElement>, "className" | "style" | "children"> {
+import React from 'react';
+import { TextProps } from '../../atoms';
+interface ViewProps extends Omit<React.HTMLAttributes<HTMLElement>, 'className' | 'style' | 'children'> {
     testID?: string;
     href?: string;
     onPress?: (e: any) => void;
 }
-export interface TextInputProps extends Omit<ViewProps, "autoCorrect"> {
+export interface TextInputProps extends Omit<ViewProps, 'autoCorrect'> {
     className?: string;
     label?: string;
-    autoCapitalize?: "characters" | "none" | "sentences" | "words";
-    theme?: TextProps["theme"];
-    lang?: TextProps["lang"];
+    autoCapitalize?: 'characters' | 'none' | 'sentences' | 'words';
+    theme?: TextProps['theme'];
+    lang?: TextProps['lang'];
     autoComplete?: string;
     autoCompleteType?: string;
     autoCorrect?: boolean;
@@ -26,11 +26,11 @@ export interface TextInputProps extends Omit<ViewProps, "autoCorrect"> {
     blurOnSubmit?: boolean;
     clearTextOnFocus?: boolean;
     defaultValue?: string;
-    dir?: "auto" | "ltr" | "rtl";
+    dir?: 'auto' | 'ltr' | 'rtl';
     disabled?: boolean;
     editable?: boolean;
     inputAccessoryViewID?: string;
-    keyboardType?: "default" | "email-address" | "number-pad" | "numbers-and-punctuation" | "numeric" | "phone-pad" | "search" | "url" | "decimal-pad" | "web-search";
+    keyboardType?: 'default' | 'email-address' | 'number-pad' | 'numbers-and-punctuation' | 'numeric' | 'phone-pad' | 'search' | 'url' | 'decimal-pad' | 'web-search';
     maxLength?: number;
     multiline?: boolean;
     numberOfLines?: number;
@@ -44,7 +44,7 @@ export interface TextInputProps extends Omit<ViewProps, "autoCorrect"> {
     onSubmitEditing?: (e: any) => void;
     placeholder?: string;
     placeholderTextColor?: string;
-    returnKeyType?: "enter" | "done" | "go" | "next" | "previous" | "search" | "send";
+    returnKeyType?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
     secureTextEntry?: boolean;
     selectTextOnFocus?: boolean;
     selection?: {

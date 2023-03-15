@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React, { useContext, useState } from "react";
 import { Text } from "../../../atoms/text";
 import { Colors } from "../../../colors";
+import { pxToVh } from "../../../utils/convertUnit";
 import { RadioContext, ValueType } from "../context";
 import { CustomCircle } from "./customCircle";
 import styles from "./radio.module.scss";
@@ -9,7 +10,7 @@ import styles from "./radio.module.scss";
 export interface RadioProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "value" | "name"> {
   children?: React.ReactNode;
-  value?: ValueType;
+  value: ValueType;
 }
 const InternalRadio = React.forwardRef<HTMLDivElement, RadioProps>(
   ({ children, value, onFocus, onBlur, ...rest }, ref) => {
@@ -47,7 +48,11 @@ const InternalRadio = React.forwardRef<HTMLDivElement, RadioProps>(
     const isDarkChecked = mode === "dark" && isChecked;
     const isDarkUnChecked = mode === "dark" && !isChecked;
 
-    const borderColor: Colors = isLightChecked
+    const isDisabled = rest.disabled;
+
+    const borderColor: Colors = isDisabled
+      ? Colors.color_gray_4
+      : isLightChecked
       ? Colors.color_secondary_1
       : isLightUnChecked
       ? Colors.color_white
@@ -55,7 +60,9 @@ const InternalRadio = React.forwardRef<HTMLDivElement, RadioProps>(
       ? Colors.color_primary_1
       : Colors.color_primary_1;
 
-    const backgroundColor: Colors = isLightChecked
+    const backgroundColor: Colors = isDisabled
+      ? Colors.color_gray_4
+      : isLightChecked
       ? Colors.color_secondary_1
       : isLightUnChecked
       ? Colors.color_primary_3
@@ -66,30 +73,14 @@ const InternalRadio = React.forwardRef<HTMLDivElement, RadioProps>(
       : Colors.color_primary_6;
 
     return (
-      <label
-        style={{
-          position: "relative",
-          display: "inline-flex",
-          alignItems: "center",
-          columnGap: 11,
-          cursor: "pointer",
-        }}
-      >
-        <div ref={ref} style={{ position: "relative", width: 16, height: 16 }}>
+      <label className={styles["label"]}>
+        <div ref={ref} className={styles["container"]}>
           <CustomCircle {...{ borderColor, backgroundColor }} />
           <input
+            className={styles["input"]}
             onFocus={focusHandler}
             onBlur={blurHandler}
             onChange={onChangeHandler}
-            style={{
-              opacity: 0,
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              margin: 0,
-              transform: "translate(-50%,-50%)",
-              cursor: "pointer",
-            }}
             type={"radio"}
             value={_value}
             name={name}
@@ -99,15 +90,20 @@ const InternalRadio = React.forwardRef<HTMLDivElement, RadioProps>(
           <motion.div
             className={styles["ripple"]}
             animate={{
-              width: isFocused ? 20 : 0,
-              height: isFocused ? 20 : 0,
+              width: isFocused ? `${pxToVh(20)}vh` : 0,
+              height: isFocused ? `${pxToVh(20)}vh` : 0,
             }}
           />
         </div>
 
         {typeof children === "string" ? (
           <span>
-            <Text size={16}>{children}</Text>
+            <Text
+              color={isDisabled ? Colors.color_gray_4 : Colors.color_primary_1}
+              size={`${pxToVh(16)}vh`}
+            >
+              {children}
+            </Text>
           </span>
         ) : (
           <span>{children}</span>
@@ -116,5 +112,7 @@ const InternalRadio = React.forwardRef<HTMLDivElement, RadioProps>(
     );
   },
 );
+
+InternalRadio.displayName = "InternalRadio";
 
 export { InternalRadio };

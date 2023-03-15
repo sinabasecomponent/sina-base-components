@@ -1,4 +1,5 @@
-import { Colors } from "../../../colors";
+import { Colors } from '../../../colors';
+import styles from './radio.module.scss';
 
 const CustomCircle = ({
   borderColor,
@@ -9,30 +10,15 @@ const CustomCircle = ({
 }) => {
   return (
     <div
+      className={styles['outterCircle']}
       style={{
-        width: 16,
-        height: 16,
         border: `1px solid ${borderColor}`,
-        borderRadius: "50%",
-        backgroundColor: Colors.color_white,
-        position: "absolute",
-        display: "inline-block",
-        zIndex: 2,
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%,-50%)",
       }}
     >
       <div
+        className={styles['innerCircle']}
         style={{
-          width: 10,
-          height: 10,
           backgroundColor: backgroundColor,
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%,-50%)",
-          borderRadius: "50%",
         }}
       />
     </div>

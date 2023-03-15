@@ -1,8 +1,7 @@
-@import "../../styles/color";
-
 .spin-container {
   position: relative;
   height: 100%;
+  overflow: hidden;
   &::after {
     opacity: 0;
     position: absolute;
@@ -15,7 +14,7 @@
     height: 100%;
     background: transparent;
     transition: all 0.3s;
-    content: "";
+    content: '';
     pointer-events: none;
   }
   &--loading {

@@ -1,14 +1,21 @@
-@import "../../styles/color";
 .tabs {
   display: flex;
   flex-direction: column;
   height: 100%;
 
+  &__title {
+    width: 131px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &__list {
     display: flex;
-    height: 2.625rem;
+    height: pxToVh(42);
     justify-content: space-between;
-    column-gap: 0.25rem;
+    column-gap: 4px;
     background-color: white;
 
     overflow-x: auto;
@@ -30,13 +37,6 @@
     &::-webkit-scrollbar-thumb:hover {
       background: #555;
     }
-
-    // & > :first-child {
-    //   border-top-left-radius: 1.25rem;
-    // }
-    // & > :last-child {
-    //   border-top-right-radius: 1.25rem;
-    // }
   }
   &__tab {
     flex-basis: 200px;
@@ -51,10 +51,12 @@
     position: relative;
     text-transform: uppercase;
     font-size: 14px;
-    padding: 0 2rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     * {
       cursor: pointer;
     }
@@ -62,14 +64,25 @@
       background-color: $color-primary-1;
     }
   }
+  &__title-wrapper {
+    width: calc(100% - 16px);
+    padding: 0px 8px;
+  }
 
-  &__content {
+  &__content-container {
     overflow: auto;
     background-color: white;
     border-bottom-left-radius: 1.25rem;
     border-bottom-right-radius: 1.25rem;
     width: 100%;
-    height: calc(100% - 40px);
     position: relative;
+    flex: 1;
+  }
+  &__container {
+    display: flex;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+    height: pxToVh(42);
   }
 }

@@ -6,12 +6,13 @@ export interface BaseTextProps extends Omit<React.HTMLAttributes<HTMLElement>, "
     href?: string;
     variant?: Variant;
     children?: ReactNode | ReactNode[] | null;
-    onPress?: (e: any) => void;
+    onPress?: (e: unknown) => void;
     dir?: "auto" | "ltr" | "rtl";
     numberOfLines?: number;
     selectable?: boolean;
     className?: Parameters<typeof classNames>[0];
+    ellipsis?: boolean;
 }
 /** Inspired of React-native Text */
-declare const BaseText: import("react").MemoExoticComponent<import("react").ForwardRefExoticComponent<BaseTextProps & import("react").RefAttributes<any>>>;
+declare const BaseText: import("react").MemoExoticComponent<import("react").ForwardRefExoticComponent<BaseTextProps & import("react").RefAttributes<HTMLDivElement>>>;
 export { BaseText };

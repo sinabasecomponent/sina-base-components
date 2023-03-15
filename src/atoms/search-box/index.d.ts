@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from 'react';
 export interface SearchBoxProps {
     searchHandler: (input: string) => void;
     searchTitle: string;

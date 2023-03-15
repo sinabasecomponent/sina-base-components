@@ -1,8 +1,8 @@
-import classNames from "classnames";
-import { ReactNode } from "react";
-import { BaseIcon, Text } from "../../atoms";
-import { Colors } from "../../colors";
-import styles from "./tabs.module.scss";
+import classNames from 'classnames';
+import { ReactNode } from 'react';
+import { BaseIcon, Text } from '../../atoms';
+import { Colors } from '../../colors';
+import styles from './tabs.module.scss';
 
 export interface InternalTabPaneProps {
   id: string;
@@ -24,45 +24,46 @@ function InternalTabPane({
   onClose,
 }: InternalTabPaneProps) {
   return (
-    <button
+    <div
       onClick={(e) => {
         e.preventDefault();
         onClick(id);
       }}
       className={classNames(
-        styles["tabs__tab"],
-        isActive && styles["tabs__tab--active"],
+        styles['tabs__tab'],
+        isActive && styles['tabs__tab--active']
       )}
       key={id}
     >
-      {typeof renderTitle === "string" ? (
-        <Text
-          size={14}
-          theme={"Regular"}
-          color={isActive ? Colors.color_white : Colors.color_primary_3}
-        >
-          {renderTitle}
-        </Text>
-      ) : typeof renderTitle === "function" ? (
-        renderTitle({ id, isActive })
-      ) : null}
+      <div className={styles['tabs__title-wrapper']}>
+        {typeof renderTitle === 'string' ? (
+          <Text
+            size={14}
+            theme={'Regular'}
+            color={isActive ? Colors.color_white : Colors.color_primary_3}
+          >
+            {renderTitle}
+          </Text>
+        ) : typeof renderTitle === 'function' ? (
+          renderTitle({ id, isActive })
+        ) : null}
+      </div>
       {closable && (
         <BaseIcon
           wrapperStyle={{
-            position: "absolute",
-            top: 5,
-            right: 5,
+            width: 16,
           }}
           color={Colors.color_primary_4}
-          name="Table-_-Cross-Icon-for-erasing-all-of-filters"
-          size={9}
+          name='Table-_-Cross-Icon-for-erasing-all-of-filters'
+          size={{ height: 10, width: 10 }}
+          unit={'pixel'}
           onClick={(event: React.MouseEvent) => {
             event.stopPropagation();
             onClose?.(id);
           }}
         />
       )}
-    </button>
+    </div>
   );
 }
 

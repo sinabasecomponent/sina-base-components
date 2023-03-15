@@ -35,7 +35,7 @@ export default [
         include: ["**/*.ttf"],
         // setting infinite limit will ensure that the files
         // are always bundled with the code, not copied to /dist
-        // limit: Infinity,
+        limit: Infinity,
       }),
       json({ compact: true }),
     ],

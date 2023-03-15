@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 export interface PanelProps {
     children: React.ReactNode;
     title: React.ReactNode;

@@ -3,7 +3,7 @@
     "target": "ES2020",
     "module": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "declarationDir": "src",
+    "declarationDir": "types",
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

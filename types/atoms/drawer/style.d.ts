@@ -1,3 +1,4 @@
+import { ColorsType } from "../../theme/context";
 export declare const useStyle: (data?: {
-    theme?: Jss.Theme | undefined;
+    theme?: ColorsType | undefined;
 } | undefined) => import("jss").Classes<"sag">;

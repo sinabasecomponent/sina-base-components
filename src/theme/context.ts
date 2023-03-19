@@ -54,5 +54,10 @@ export interface ColorsType {
 
 const ThemeContext = React.createContext<ColorsType>(Colors);
 // Creating a namespaced theming object.
-const theming = createTheming(ThemeContext);
-export const { ThemeProvider: SinaBaseThemeProvider, useTheme } = theming;
+export const theming = createTheming(ThemeContext);
+export const {
+  ThemeProvider: SinaBaseThemeProvider,
+  useTheme,
+  context,
+  withTheme,
+} = theming;

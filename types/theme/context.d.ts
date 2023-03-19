@@ -24,4 +24,9 @@ export interface ColorsType {
     color_warning_2?: string;
     color_warning_3?: string;
 }
-export declare const SinaBaseThemeProvider: React.ComponentClass<import("theming").ThemeProviderProps<ColorsType>, any> | React.FunctionComponent<import("theming").ThemeProviderProps<ColorsType>>, useTheme: <CustomTheme = ColorsType>() => CustomTheme;
+export declare const theming: import("theming").Theming<ColorsType>;
+export declare const SinaBaseThemeProvider: React.ComponentClass<import("theming").ThemeProviderProps<ColorsType>, any> | React.FunctionComponent<import("theming").ThemeProviderProps<ColorsType>>, useTheme: <CustomTheme = ColorsType>() => CustomTheme, context: React.Context<ColorsType>, withTheme: <InnerProps extends {
+    theme: ColorsType;
+}, InnerComponent extends React.ComponentType<InnerProps>, OuterProps extends InnerProps & {
+    theme?: ColorsType | undefined;
+}>(comp: InnerComponent) => React.ComponentType<OuterProps>;

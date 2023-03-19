@@ -1,2 +1,2 @@
-import { SinaBaseThemeProvider, useTheme } from "./context";
-export { SinaBaseThemeProvider, useTheme };
+import { theming } from "./context";
+export { theming };

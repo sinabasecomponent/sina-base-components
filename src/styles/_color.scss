@@ -26,3 +26,7 @@ $color-danger-3: #ffe0ce;
 $color-warning-1: #ffc917;
 $color-warning-2: #fff0be;
 $color-warning-3: #ff8946;
+
+@function pxToVh($value) {
+  @return ($value/10.8) * 1vh;
+}

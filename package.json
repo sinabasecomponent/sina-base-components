@@ -1,6 +1,6 @@
 {
   "name": "@sina-base/component",
-  "version": "1.1.36",
+  "version": "1.1.37",
   "private": false,
   "secure": false,
   "types": "types/index.d.ts",
@@ -94,11 +94,13 @@
     "style-loader": "^3.3.1"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-url": "^8.0.1",
     "@sentry/browser": "^7.1.1",
     "@types/react-measure": "^2.0.8",
     "react-measure": "^2.5.2",
+    "react-poper": "^1.1.5",
     "react-popper": "^2.3.0",
     "reactjs-view-core": "^2.4.0",
     "rollup-plugin-dts": "^5.2.0",

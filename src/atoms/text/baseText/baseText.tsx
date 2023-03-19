@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { forwardRef, memo, ReactNode } from "react";
 import { createUseStyles } from "react-jss";
-import { pxToVh } from "../../../utils/convertUnit";
 
 export type Variant =
   | "div"
@@ -68,7 +67,7 @@ const useStyles = createUseStyles({
     boxSizing: "border-box",
     color: "black",
     display: "inline",
-    fontSize: `${pxToVh(14)}vh`,
+    fontSize: 14,
     margin: 0,
     padding: 0,
     whiteSpace: "pre-wrap",

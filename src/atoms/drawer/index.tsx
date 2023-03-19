@@ -5,7 +5,6 @@ import ReactDOM from "react-dom";
 import { Colors } from "../../colors";
 import { useOnClickOutSide } from "../../utils/useOnclickOutsiede";
 import styles from "./drawer.module.scss";
-import { useStyle } from "./style";
 
 interface DrawerProps {
   isVisible: boolean;
@@ -46,7 +45,7 @@ const Drawer = ({
   width,
   destroyOnClose,
 }: DrawerProps) => {
-  const { sag } = useStyle();
+  // const { sag } = useStyle();
   const [drawerRef, setDrawerRef] = useState<HTMLDivElement | null>(null);
   const [bodyRef, setBodyRef] = useState<HTMLElement | null>(null);
 
@@ -135,7 +134,6 @@ const Drawer = ({
         ...dimentions?.rect,
       }}
     >
-      <div className={sag}>sdsdfsdf</div>
       {children}
     </motion.div>
   );

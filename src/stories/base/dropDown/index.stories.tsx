@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { Story } from "@storybook/react/types-6-0";
-import { DropDown } from "../../../muscles";
+import { DropDown } from "../../../organism";
 import { StoryContainer } from "../../container";
 export default {
   title: "drop down",
@@ -16,7 +16,7 @@ const mockData = [...new Array(40)].map((_, index) => {
 
 const Template: Story<any> = () => (
   <StoryContainer>
-    <DropDown placeholder="test placeholder" options={mockData} />
+    <div>drop down</div>
   </StoryContainer>
 );
 

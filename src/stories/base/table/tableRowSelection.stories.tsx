@@ -3,7 +3,7 @@ import { Meta, Story } from "@storybook/react/types-6-0";
 import { useState } from "react";
 import { Text } from "../../../atoms";
 import { Colors } from "../../../colors";
-import { Table } from "../../../muscles/Table";
+import { Table } from "../../../organism";
 import { StoryContainer } from "../../container";
 export default {
   title: "table/RowSelection",

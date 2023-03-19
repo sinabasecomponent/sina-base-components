@@ -28,14 +28,26 @@ const Template: Story<RadioProps> = () => {
         onChange={onChangeHandler}
         value="1"
       >
-        <Radio value={"1"}>radio 1</Radio>
-        <Radio value={"2"}>
-          <Text color="red" size={20}>
+        <Radio size={14} value={"1"}>
+          <Text color="red" size={14}>
+            radio 1
+          </Text>
+        </Radio>
+        <Radio size={14} value={"2"}>
+          <Text color="red" size={14}>
             radio 2
           </Text>
         </Radio>
-        <Radio value={"3"}>radio 3</Radio>
-        <Radio value={"4"}>radio 4</Radio>
+        <Radio size={14} value={"3"}>
+          <Text color="red" size={14}>
+            radio 3
+          </Text>
+        </Radio>
+        <Radio size={14} value={"4"}>
+          <Text color="red" size={14}>
+            radio 4
+          </Text>
+        </Radio>
       </Radio.Group>
     </StoryContainer>
   );

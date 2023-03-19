@@ -1,3 +1,4 @@
+@import "../../../styles/color";
 .wrapper {
   height: 32px;
   border-radius: 7px;
@@ -8,7 +9,7 @@
 }
 .dotLine {
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     left: -18px;
     border: none;

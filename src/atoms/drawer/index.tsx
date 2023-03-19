@@ -122,7 +122,6 @@ const Drawer = ({
 
   const content = (
     <motion.div
-      className={sag}
       ref={handleDrawerRef}
       initial={{ ...dimentions?.initial, opacity: 0 }}
       animate={{
@@ -136,6 +135,7 @@ const Drawer = ({
         ...dimentions?.rect,
       }}
     >
+      <div className={sag}>sdsdfsdf</div>
       {children}
     </motion.div>
   );

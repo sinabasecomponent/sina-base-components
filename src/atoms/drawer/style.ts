@@ -3,6 +3,6 @@ import { ColorsType } from "../../theme/context";
 
 export const useStyle = createUseStyles((theme: ColorsType) => ({
   sag: {
-    backgroundColor: theme.color_primary_1,
+    color: theme.color_primary_1,
   },
 }));

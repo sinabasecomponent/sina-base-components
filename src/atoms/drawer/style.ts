@@ -1,8 +1,7 @@
 import { createUseStyles } from "react-jss";
-import { ColorsType } from "../../theme/context";
 
-export const useStyle = createUseStyles((theme: ColorsType) => ({
+export const useStyle = createUseStyles({
   sag: {
-    color: theme.color_primary_1,
+    color: "red",
   },
-}));
+});

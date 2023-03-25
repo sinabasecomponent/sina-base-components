@@ -3,9 +3,9 @@ import React, { HTMLAttributes, useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import { PopperProps, usePopper } from "react-popper";
 import { useOnClickOutSide } from "../../utils/useOnclickOutsiede";
-import style from "./tooltip.module.scss";
+import { useStyles } from "./style";
 
-interface TooltipProps {
+export interface TooltipProps {
   trigger?: "click" | "hover";
   children: React.ReactNode;
   content: React.ReactNode;
@@ -26,6 +26,7 @@ const Tooltip = ({
   maskStyle,
   isVisible: isVisibleProp,
 }: TooltipProps) => {
+  const classes = useStyles();
   const body = useRef<HTMLElement | null>(null);
   const [isVisible, setVisible] = useState<boolean>(false);
   const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(
@@ -126,10 +127,11 @@ const Tooltip = ({
   };
   const arrow = (
     <div
-      className={style["arrow"]}
+      className={classes["arrow"]}
       ref={setArrowElement}
       style={{
         ...styles.arrow,
+        transform: `${styles.arrow.transform} rotate(45deg)`,
         backgroundColor: arrowColor,
         ...(currentPlacement === "top" && { bottom: -4 }),
         ...(currentPlacement === "bottom" && { top: -4 }),
@@ -142,7 +144,7 @@ const Tooltip = ({
   const mask =
     trigger === "click" ? (
       <div
-        className={classNames(style["mask"], style["mask-visible"])}
+        className={classNames(classes["mask"], classes["maskVisible"])}
         style={{ ...maskStyle }}
       />
     ) : null;

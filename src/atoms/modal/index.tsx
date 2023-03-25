@@ -2,9 +2,9 @@ import classNames from "classnames";
 import React, { useEffect, useMemo, useState } from "react";
 import ReactDOM from "react-dom";
 import { useOnClickOutSide } from "../../utils/useOnclickOutsiede";
-import styles from "./modal.module.scss";
+import { useStyles } from "./style";
 
-interface ModalProps {
+export interface ModalProps {
   getContainer?: HTMLElement;
   isVisible: boolean;
   onClose?: () => void;
@@ -25,6 +25,7 @@ const Modal = ({
   centered,
   destroyOnClose,
 }: ModalProps) => {
+  const classes = useStyles();
   const [bodyRef, setBodyRef] = useState<HTMLElement | null>(null);
   const [modalRef, setModalRef] = useState<HTMLDivElement | null>(null);
 
@@ -45,13 +46,13 @@ const Modal = ({
   const drawerPositionStrategy: React.CSSProperties["position"] =
     modalContainerElement?.localName === "body" ? "fixed" : "absolute";
 
-  const mask = <div className={styles["mask"]} />;
+  const mask = <div className={classes.mask} />;
   const content = (
     <div
       ref={setModalRef}
       className={classNames(
-        styles["modal-container"],
-        centered && styles["centerd"],
+        classes.modalContainer,
+        centered && classes.centerd,
         className,
       )}
       style={{

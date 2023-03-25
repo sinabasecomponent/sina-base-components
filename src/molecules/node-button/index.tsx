@@ -1,9 +1,8 @@
-// import { ArrowIcon } from "assets/icons";
 import classNames from "classnames";
 import { FC } from "react";
-import { BaseIcon } from "../../atoms/baseIcon";
+import { BaseIcon, Text } from "../../atoms";
 import { Colors } from "../../colors";
-import styles from "./node-button.module.scss";
+import { useStyles } from "./style";
 
 export interface NodeButtonProps {
   text: string;
@@ -16,8 +15,9 @@ const NodeButton: FC<NodeButtonProps> = ({
   text,
   clickHandler,
   settingClickHandler,
-  isOpen = false,
+  isOpen = true,
 }) => {
+  const { lomNodeButton, lomNodeButtonSelected } = useStyles();
   const settingClicked = (event: React.MouseEvent) => {
     event.stopPropagation();
     settingClickHandler?.();
@@ -25,17 +25,14 @@ const NodeButton: FC<NodeButtonProps> = ({
   return (
     <div
       onClick={() => clickHandler()}
-      className={classNames(
-        styles["lom-node-button"],
-        isOpen && styles["lom-node-button--selected"],
-      )}
+      className={classNames(lomNodeButton, isOpen && lomNodeButtonSelected)}
     >
       <BaseIcon
         size={{ height: 10, width: 10 }}
         name="Abstract-Service-Graph_Hamburger-Menu"
         onClick={settingClicked}
       />
-      <span>{text}</span>
+      <Text>{text}</Text>
       {isOpen ? (
         <BaseIcon
           size={{ height: 10, width: 10 }}

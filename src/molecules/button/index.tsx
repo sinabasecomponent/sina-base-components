@@ -1,10 +1,11 @@
-import classNames from 'classnames';
-import _ from 'lodash';
-import React, { useMemo, useState } from 'react';
-import { Loading } from '../../atoms/loading';
-import { Text } from '../../atoms/text';
-import { Colors } from '../../colors';
-import styles from './button.module.scss';
+import classNames from "classnames";
+import _ from "lodash";
+import React, { useMemo, useState } from "react";
+import { Loading } from "../../atoms/loading";
+import { Text } from "../../atoms/text";
+import { Colors } from "../../colors";
+// import styles from './button.module.scss';
+import { useStyles } from "./style";
 
 type Ripple = {
   top: string;
@@ -14,9 +15,9 @@ type Ripple = {
   id: number;
 };
 export interface ButtonProps
-  extends Omit<React.HTMLAttributes<HTMLButtonElement>, 'type' | 'children'> {
-  type?: 'submit' | 'button' | 'reset';
-  mode?: 'primary' | 'secondary';
+  extends Omit<React.HTMLAttributes<HTMLButtonElement>, "type" | "children"> {
+  type?: "submit" | "button" | "reset";
+  mode?: "primary" | "secondary";
   children: React.ReactNode;
   className?: string;
   isLoading?: boolean;
@@ -27,16 +28,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
-      mode = 'primary',
-      type = 'button',
+      mode = "primary",
+      type = "button",
       className,
       isLoading,
       disabled,
       onClick,
       ...rest
     },
-    ref
+    ref,
   ) => {
+    const classes = useStyles();
     const [ripples, setRipples] = useState<Ripple[]>([]);
 
     const showRipple = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -47,10 +49,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       const x = e.pageX - pos.x - size / 2;
       const y = e.pageY - pos.y - size / 2;
       const spanStyles = {
-        top: y + 'px',
-        left: x + 'px',
-        height: size + 'px',
-        width: size + 'px',
+        top: y + "px",
+        left: x + "px",
+        height: size + "px",
+        width: size + "px",
         id: Date.now(),
       };
 
@@ -60,7 +62,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     const handleOnClick = (
-      e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+      e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     ) => {
       onClick?.(e);
     };
@@ -69,7 +71,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       if (ripples.length > 0) {
         return ripples.map(({ id, ...rest }) => {
           return (
-            <span style={{ ...rest }} key={id} className={styles['ripple']} />
+            <span style={{ ...rest }} key={id} className={classes["ripple"]} />
           );
         });
       }
@@ -80,7 +82,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         _.debounce(() => {
           setRipples([]);
         }, 1000),
-      []
+      [],
     );
 
     return (
@@ -93,20 +95,20 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         onClick={handleOnClick}
         disabled={disabled || isLoading}
         className={classNames(
-          styles['button'],
-          mode === 'primary' && styles['button--primary'],
-          mode === 'secondary' && styles['button--secondary'],
-          className
+          classes["button"],
+          mode === "primary" && classes["buttonPrimary"],
+          mode === "secondary" && classes["buttonSecondary"],
+          className,
         )}
       >
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          {typeof children !== 'object' ? (
+          {typeof children !== "object" ? (
             <Text size={16} color={Colors.color_white}>
               {children}
             </Text>
@@ -117,25 +119,25 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {isLoading ? (
           <div
             style={{
-              position: 'absolute',
+              position: "absolute",
               right: 0,
-              top: '53%',
-              transform: 'translate(-20px,-50%)',
+              top: "53%",
+              transform: "translate(-20px,-50%)",
             }}
           >
             <Loading
               isLoading
               spinnerColor={Colors.color_white}
-              size={'medium'}
+              size={"medium"}
             />
           </div>
         ) : null}
-        {(isLoading || disabled) && <div className={styles['cover']} />}
+        {(isLoading || disabled) && <div className={classes["cover"]} />}
         {renderRipple()}
       </button>
     );
-  }
+  },
 );
 
-Button.displayName = 'Button';
+Button.displayName = "Button";
 export { Button };

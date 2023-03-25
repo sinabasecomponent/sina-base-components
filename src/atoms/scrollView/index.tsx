@@ -1,8 +1,8 @@
-import React from 'react';
-import styles from './scrollView.module.scss';
-import classnames from 'classnames';
+import React from "react";
+import { useStyles } from "./style";
+import classnames from "classnames";
 
-interface ScrollViewProps {
+export interface ScrollViewProps {
   children: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
@@ -10,17 +10,18 @@ interface ScrollViewProps {
 
 const ScrollView = React.forwardRef<HTMLDivElement, ScrollViewProps>(
   ({ children, className, style }, ref) => {
+    const classes = useStyles();
     return (
       <div
         ref={ref}
         style={{ ...style }}
-        className={classnames(className, styles['container'])}
+        className={classnames(className, classes.container)}
       >
         {children}
       </div>
     );
-  }
+  },
 );
 
-ScrollView.displayName = 'ScrollView';
+ScrollView.displayName = "ScrollView";
 export { ScrollView };

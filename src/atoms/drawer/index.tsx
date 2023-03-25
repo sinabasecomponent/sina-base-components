@@ -4,9 +4,9 @@ import { useEffect, useMemo, useState } from "react";
 import ReactDOM from "react-dom";
 import { Colors } from "../../colors";
 import { useOnClickOutSide } from "../../utils/useOnclickOutsiede";
-import styles from "./drawer.module.scss";
+import { useStyle } from "./style";
 
-interface DrawerProps {
+export interface DrawerProps {
   isVisible: boolean;
   children: React.ReactNode;
   onClose: () => void;
@@ -45,7 +45,7 @@ const Drawer = ({
   width,
   destroyOnClose,
 }: DrawerProps) => {
-  // const { sag } = useStyle();
+  const classes = useStyle();
   const [drawerRef, setDrawerRef] = useState<HTMLDivElement | null>(null);
   const [bodyRef, setBodyRef] = useState<HTMLElement | null>(null);
 
@@ -64,7 +64,7 @@ const Drawer = ({
     },
   });
 
-  const mask = <div className={classNames(styles["mask"])} />;
+  const mask = <div className={classNames(classes["mask"])} />;
 
   const portalContainerElement = useMemo(() => {
     if (

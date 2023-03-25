@@ -1,4 +1,3 @@
-// import { StartFlagIcon } from 'assets/icons';
 import { useState } from "react";
 import { Text } from "../../atoms";
 import { BaseIcon } from "../../atoms/baseIcon";

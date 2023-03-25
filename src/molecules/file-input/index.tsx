@@ -2,8 +2,10 @@ import classNames from "classnames";
 import { FC } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import { BaseIcon } from "../../atoms/baseIcon";
-import styles from "./file-input.module.scss";
+import { useTheme } from "../../theme/context";
+import { useStyle } from "./style";
 import useFileInput from "./useFileInput";
+import { Text } from "../../atoms";
 
 export interface FileInputProps {
   register?: UseFormRegisterReturn;
@@ -12,19 +14,31 @@ export interface FileInputProps {
 }
 
 const FileInput: FC<FileInputProps> = ({ register, className, fileType }) => {
+  const classes = useStyle();
   const { label, fileChangeHandler } = useFileInput(register);
+  const { color_primary_2 } = useTheme();
 
   return (
-    <div className={classNames(styles["file-input"], className)}>
-      <label htmlFor={register?.name}>{register?.name}</label>
-      <label className={styles["file-input__file-chooser"]}>
-        {label ?? (
+    <div className={classNames(classes["fileInput"], className)}>
+      <label htmlFor={register?.name}>
+        <Text size={16} color={color_primary_2}>
+          {register?.name}
+        </Text>
+      </label>
+      <label className={classes["fileChooser"]}>
+        {label ? (
+          <Text size={16} color={color_primary_2}>
+            {label}
+          </Text>
+        ) : (
           <>
             <BaseIcon
               size={{ height: 10, width: 10 }}
               name="Add-Box_Add-Icon"
             />
-            Add File
+            <Text size={16} color={color_primary_2}>
+              Add File
+            </Text>
           </>
         )}
         <input

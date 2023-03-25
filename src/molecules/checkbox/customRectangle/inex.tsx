@@ -10,15 +10,10 @@ const CustomRectangle = ({
   checked?: boolean;
 }) => {
   const {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     color_secondary_1,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     color_white,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     color_primary_1,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     color_primary_3,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     color_primary_6,
   } = useTheme();
   const isLightChecked = mode === "light" && checked;

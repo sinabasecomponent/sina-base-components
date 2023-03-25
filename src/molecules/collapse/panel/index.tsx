@@ -3,9 +3,9 @@ import React, { useContext, useLayoutEffect } from "react";
 import Measure from "react-measure";
 import { BaseIcon } from "../../../atoms/baseIcon";
 import { Text } from "../../../atoms/text";
-import { Colors } from "../../../colors";
+import { useTheme } from "../../../theme/context";
 import { CollapseContext } from "../context";
-import styles from "./panel.module.scss";
+import { useStyles } from "./style";
 
 export interface PanelProps {
   children: React.ReactNode;
@@ -14,6 +14,8 @@ export interface PanelProps {
 }
 
 const Panel = ({ children, title, id }: PanelProps) => {
+  const classes = useStyles();
+  const { color_primary_1, color_primary_3 } = useTheme();
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { openedPanels, onClickPanel, defaultOpen, handleDefaultOpen } =
     useContext(CollapseContext);
@@ -33,13 +35,13 @@ const Panel = ({ children, title, id }: PanelProps) => {
 
   return (
     <div style={{ marginBottom: 16 }}>
-      <div className={styles["title-wrapper"]} onClick={handleOnClick}>
-        <div className={styles["title"]}>
+      <div className={classes["titleWrapper"]} onClick={handleOnClick}>
+        <div className={classes["title"]}>
           {typeof title === "string" ? (
             <Text
               theme="Regular"
               size={16}
-              color={isOpen ? Colors.color_primary_1 : Colors.color_primary_3}
+              color={isOpen ? color_primary_1 : color_primary_3}
               ellipsis
             >
               {title}
@@ -53,7 +55,7 @@ const Panel = ({ children, title, id }: PanelProps) => {
           animate={{ rotate: isOpen ? 180 : 0 }}
         >
           <BaseIcon
-            color={isOpen ? Colors.color_primary_1 : Colors.color_primary_3}
+            color={isOpen ? color_primary_1 : color_primary_3}
             name={"Every-Boxes-_-Flesh-Icon-for-more-choices"}
             size={{ height: 6, width: 12 }}
           />

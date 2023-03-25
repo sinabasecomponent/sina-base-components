@@ -78,7 +78,7 @@ module.exports = {
             // },
             {
               selector: "variable",
-              format: ["camelCase", "UPPER_CASE", "PascalCase"],
+              format: ["camelCase", "UPPER_CASE", "PascalCase", "snake_case"],
               leadingUnderscore: "allow",
               filter: {
                 // you can expand this regex to add more allowed names

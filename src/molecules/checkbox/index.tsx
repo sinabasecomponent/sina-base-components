@@ -1,14 +1,14 @@
-import React from 'react';
-import { Text } from '../../atoms/text';
-import styles from './checkbox.module.scss';
-import { Indeterminate } from './customRectangle/indeterminate';
-import { CustomRectangle } from './customRectangle/inex';
+import React from "react";
+import { Text } from "../../atoms/text";
+import { Indeterminate } from "./customRectangle/indeterminate";
+import { CustomRectangle } from "./customRectangle/inex";
+import { useStyles } from "./style";
 
 export interface CheckBoxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   children?: React.ReactNode;
   indeterminate?: boolean;
-  mode?: 'dark' | 'light';
+  mode?: "dark" | "light";
 }
 
 const CheckBox = ({
@@ -18,19 +18,20 @@ const CheckBox = ({
   children,
   name,
   indeterminate,
-  mode = 'dark',
+  mode = "dark",
   ...rest
 }: CheckBoxProps) => {
+  const classes = useStyles();
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(e);
   };
 
   return (
-    <label style={{ display: 'inline-flex' }}>
+    <label style={{ display: "inline-flex" }}>
       <div
-        className={styles['checkBoxWrapper']}
+        className={classes["checkBoxWrapper"]}
         style={{
-          ...(typeof children !== 'undefined' && { marginInlineEnd: 4 }),
+          ...(typeof children !== "undefined" && { marginInlineEnd: 4 }),
         }}
       >
         {indeterminate ? (
@@ -40,8 +41,8 @@ const CheckBox = ({
         )}
 
         <input
-          className={styles['hiddenInput']}
-          type={'checkbox'}
+          className={classes["hiddenInput"]}
+          type={"checkbox"}
           value={value}
           name={name}
           checked={checked}
@@ -50,7 +51,7 @@ const CheckBox = ({
         />
       </div>
 
-      {typeof children === 'string' ? (
+      {typeof children === "string" ? (
         <Text size={16}>{children}</Text>
       ) : (
         children

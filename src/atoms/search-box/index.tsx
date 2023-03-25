@@ -1,6 +1,7 @@
-import classNames from 'classnames';
-import React, { FC, useEffect, useState } from 'react';
-import styles from './search-box.module.scss';
+import classNames from "classnames";
+import React, { FC, useEffect, useState } from "react";
+// import styles from './search-box.module.scss';
+import { useStyles } from "./style";
 
 export interface SearchBoxProps {
   searchHandler: (input: string) => void;
@@ -12,10 +13,11 @@ export interface SearchBoxProps {
 const SearchBox: FC<SearchBoxProps> = ({
   searchHandler,
   searchTitle,
-  className = '',
+  className = "",
   debounce = false,
 }) => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
+  const classes = useStyles();
 
   const changeInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -37,10 +39,10 @@ const SearchBox: FC<SearchBoxProps> = ({
     <input
       value={search}
       onChange={changeInputHandler}
-      className={classNames(styles['search-box'], className)}
+      className={classNames(classes["searchBox"], className)}
       placeholder={`Search ${searchTitle} ${String.fromCodePoint(
         0xfe0e,
-        0x1f50e
+        0x1f50e,
       )}`}
     />
   );

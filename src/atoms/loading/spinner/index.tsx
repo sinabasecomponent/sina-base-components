@@ -1,5 +1,5 @@
-import { Colors } from '../../../colors';
-import styles from './spinner.module.scss';
+import { Colors } from "../../../colors";
+import { useStyle } from "./style";
 
 const SMALL_BORDER = 1;
 const MEDIUM_BORDER = 2;
@@ -12,33 +12,34 @@ const Spinner = ({
   spinerColor,
   size,
 }: {
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
   spinerColor?: Colors;
 }) => {
+  const classes = useStyle();
   const borderStyle = spinerColor
     ? `${spinerColor} transparent transparent transparent`
     : `${Colors.color_primary_1} transparent transparent transparent`;
 
   const borderWidth =
-    size === 'small'
+    size === "small"
       ? SMALL_BORDER
-      : size === 'medium'
+      : size === "medium"
       ? MEDIUM_BORDER
-      : size === 'large'
+      : size === "large"
       ? LARGE_BORDER
       : MEDIUM_BORDER;
 
   const width =
-    size === 'small'
+    size === "small"
       ? SMALL
-      : size === 'medium'
+      : size === "medium"
       ? MEDIUM
-      : size === 'large'
+      : size === "large"
       ? LARGE
       : MEDIUM;
 
   return (
-    <div style={{ width: width, height: width }} className={styles['lds-ring']}>
+    <div style={{ width: width, height: width }} className={classes.ldsRing}>
       <div
         style={{
           borderColor: borderStyle,

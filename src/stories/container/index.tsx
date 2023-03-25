@@ -1,5 +1,11 @@
+import { Colors, theming } from "../../theme/context";
 import "./style.css";
+const { ThemeProvider } = theming;
 
 export const StoryContainer = ({ children }: any) => {
-  return <div style={{ width: "100%", height: "100%" }}>{children}</div>;
+  return (
+    <ThemeProvider theme={Colors}>
+      <div style={{ width: "100%", height: "100%" }}>{children}</div>
+    </ThemeProvider>
+  );
 };

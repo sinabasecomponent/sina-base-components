@@ -1,6 +1,6 @@
 import React from "react";
 import { createTheming } from "react-jss";
-const Colors: ColorsType = {
+export const Colors: ColorsType = {
   color_primary_1: "#374775",
   color_primary_2: "#6c7797",
   color_primary_3: "#959db8",
@@ -27,7 +27,7 @@ const Colors: ColorsType = {
 };
 
 export interface ColorsType {
-  color_primary_1: string;
+  color_primary_1?: string;
   color_primary_2?: string;
   color_primary_3?: string;
   color_primary_4?: string;

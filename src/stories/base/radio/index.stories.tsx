@@ -31,24 +31,16 @@ const Template: Story<RadioProps> = () => {
       >
         <div style={{ display: "flex", flexDirection: "row", columnGap: 10 }}>
           <Radio size={14} value={"1"}>
-            <Text color="red" size={14}>
-              radio 1
-            </Text>
+            <Text size={14}>Radio 1</Text>
           </Radio>
           <Radio size={14} value={"2"}>
-            <Text color="red" size={14}>
-              radio 2
-            </Text>
+            <Text size={14}>Radio 2</Text>
           </Radio>
           <Radio size={14} value={"3"}>
-            <Text color="red" size={14}>
-              radio 3
-            </Text>
+            <Text size={14}>Radio 3</Text>
           </Radio>
           <Radio size={14} value={"4"}>
-            <Text color="red" size={14}>
-              radio 4
-            </Text>
+            <Text size={14}>Radio 4</Text>
           </Radio>
         </div>
       </Radio.Group>

@@ -2,6 +2,7 @@ import { Meta, Story } from "@storybook/react/types-6-0";
 import { useState } from "react";
 import { Tabs, TabsProps } from "../../../molecules";
 import { StoryContainer } from "../../container";
+import React from "react";
 export default {
   title: "tab",
   component: Tabs,
@@ -34,27 +35,6 @@ const Template: Story<TabsProps> = () => {
           <TabPane id="bpm" renderTitle="bpm">
             <div style={{ backgroundColor: "yellow", height: 200 }}>sag</div>
           </TabPane>
-          {/* <TabPane id="bpm1" renderTitle="bpm">
-            <div style={{ backgroundColor: "yellow", height: 200 }}>sag</div>
-          </TabPane>
-          <TabPane id="bpm2" renderTitle="bpm">
-            <div style={{ backgroundColor: "yellow", height: 200 }}>sag</div>
-          </TabPane> */}
-          {/* <TabPane id="bpm3" renderTitle="bpm">
-            <div style={{ backgroundColor: "yellow", height: 200 }}>sag</div>
-          </TabPane>
-          <TabPane id="bpm4" renderTitle="bpm">
-            <div style={{ backgroundColor: "yellow", height: 200 }}>sag</div>
-          </TabPane>
-          <TabPane id="bpm5" renderTitle="bpm">
-            <div style={{ backgroundColor: "yellow", height: 200 }}>sag</div>
-          </TabPane>
-          <TabPane id="bpm6" renderTitle="bpm">
-            <div style={{ backgroundColor: "yellow", height: 200 }}>sag</div>
-          </TabPane>
-          <TabPane id="bpm7" renderTitle="bpm">
-            <div style={{ backgroundColor: "yellow", height: 200 }}>sag</div>
-          </TabPane> */}
         </Tabs>
       </div>
     </StoryContainer>

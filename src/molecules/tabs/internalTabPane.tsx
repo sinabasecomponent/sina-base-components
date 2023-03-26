@@ -1,8 +1,8 @@
-import classNames from 'classnames';
-import { ReactNode } from 'react';
-import { BaseIcon, Text } from '../../atoms';
-import { Colors } from '../../colors';
-import styles from './tabs.module.scss';
+import classNames from "classnames";
+import { ReactNode } from "react";
+import { BaseIcon, Text } from "../../atoms";
+import { Colors } from "../../colors";
+import { useStyles } from "./style";
 
 export interface InternalTabPaneProps {
   id: string;
@@ -23,28 +23,26 @@ function InternalTabPane({
   isActive,
   onClose,
 }: InternalTabPaneProps) {
+  const classes = useStyles();
   return (
     <div
       onClick={(e) => {
         e.preventDefault();
         onClick(id);
       }}
-      className={classNames(
-        styles['tabs__tab'],
-        isActive && styles['tabs__tab--active']
-      )}
+      className={classNames(classes["tab"], isActive && classes["tabActive"])}
       key={id}
     >
-      <div className={styles['tabs__title-wrapper']}>
-        {typeof renderTitle === 'string' ? (
+      <div className={classes["tabsTitleWrapper"]}>
+        {typeof renderTitle === "string" ? (
           <Text
             size={14}
-            theme={'Regular'}
+            theme={"Regular"}
             color={isActive ? Colors.color_white : Colors.color_primary_3}
           >
             {renderTitle}
           </Text>
-        ) : typeof renderTitle === 'function' ? (
+        ) : typeof renderTitle === "function" ? (
           renderTitle({ id, isActive })
         ) : null}
       </div>
@@ -54,9 +52,9 @@ function InternalTabPane({
             width: 16,
           }}
           color={Colors.color_primary_4}
-          name='Table-_-Cross-Icon-for-erasing-all-of-filters'
+          name="Table-_-Cross-Icon-for-erasing-all-of-filters"
           size={{ height: 10, width: 10 }}
-          unit={'pixel'}
+          unit={"pixel"}
           onClick={(event: React.MouseEvent) => {
             event.stopPropagation();
             onClose?.(id);

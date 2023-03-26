@@ -6,8 +6,7 @@ import { pxToVh } from "../../utils/convertUnit";
 import { useHorizontalScroll } from "../../utils/useHorizontalScroll";
 import { InternalTabPane } from "./internalTabPane";
 import { TabPane, TabPaneProps } from "./TabPane";
-import styles from "./tabs.module.scss";
-
+import { useStyles } from "./style";
 export interface TabsProps {
   children: React.ReactNode;
   activeTab?: string;
@@ -27,6 +26,7 @@ const Tabs = ({
   TabsTitle,
   noContent,
 }: TabsProps) => {
+  const classes = useStyles();
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [openedTabs, setOpenedTabs] = useState<string[]>([]);
   const tabListRef = useHorizontalScroll();
@@ -108,8 +108,8 @@ const Tabs = ({
   }, [activeTabProp]);
 
   return (
-    <div className={classNames(styles["tabs"], className)}>
-      <div className={styles["tabs__container"]}>
+    <div className={classNames(classes["tabs"], className)}>
+      <div className={classes["tabsContainer"]}>
         {TabsTitle ? (
           <div
             style={{
@@ -118,7 +118,7 @@ const Tabs = ({
             }}
           >
             {typeof TabsTitle === "string" ? (
-              <div className={styles["tabs__title"]}>
+              <div className={classes["tabsTitle"]}>
                 <Text
                   theme="Regular"
                   size={`${pxToVh(20)}vh`}
@@ -133,7 +133,7 @@ const Tabs = ({
           </div>
         ) : null}
 
-        <div ref={tabListRef} className={styles["tabs__list"]}>
+        <div ref={tabListRef} className={classes["tabsList"]}>
           {tabs.map(({ id, renderTitle, closable }) => {
             const isActive = id === _activeTab;
             return (
@@ -151,7 +151,7 @@ const Tabs = ({
         </div>
       </div>
 
-      <div className={styles["tabs__content-container"]}>
+      <div className={classes["tabsContentContainer"]}>
         {noContent ? (
           <div style={{ height: "100%" }}>{noContent}</div>
         ) : (

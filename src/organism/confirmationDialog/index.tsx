@@ -1,5 +1,4 @@
-// import { CloseIcon } from "assets/icons";
-import classNames from 'classnames';
+import classNames from "classnames";
 import {
   FC,
   MouseEvent,
@@ -7,10 +6,11 @@ import {
   useEffect,
   useRef,
   useState,
-} from 'react';
-import { BaseIcon } from '../../atoms';
-import { Button } from '../../molecules/button';
-import styles from './confirmationDialog.module.scss';
+} from "react";
+import { BaseIcon } from "../../atoms";
+import { Button } from "../../molecules/button";
+import { useStyles } from "./style";
+// import styles from "./confirmationDialog.module.scss";
 
 export interface ConfirmationDialogProps {
   message: string;
@@ -19,7 +19,7 @@ export interface ConfirmationDialogProps {
   onClose?: () => void;
   className?: string;
   children: ReactElement;
-  okButtonOptions?: { type: 'submit' | 'button'; formId: string };
+  okButtonOptions?: { type: "submit" | "button"; formId: string };
   containerId?: string;
 }
 
@@ -28,11 +28,12 @@ const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
   title,
   onOkClicked,
   onClose,
-  className = '',
+  className = "",
   children,
   okButtonOptions,
   containerId,
 }) => {
+  const classes = useStyles();
   const [isShow, setShow] = useState(false);
   const dialogBoxRef = useRef<HTMLDivElement | null>(null);
 
@@ -47,17 +48,17 @@ const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
     if (!isShow) return;
     if (okButtonOptions?.formId) {
       const form = document.getElementById(okButtonOptions.formId);
-      form?.addEventListener('submit', okHandler);
+      form?.addEventListener("submit", okHandler);
     }
     if (!containerId) return;
     const container = document.getElementById(containerId);
     if (!container) return;
-    container.style.position = 'relative';
+    container.style.position = "relative";
     return () => {
       if (okButtonOptions) {
         document
           .getElementById(okButtonOptions.formId)
-          ?.removeEventListener('submit', okHandler);
+          ?.removeEventListener("submit", okHandler);
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -81,31 +82,31 @@ const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
     <>
       {isShow && (
         <div
-          className={classNames(styles['dialog'], className)}
+          className={classNames(classes["dialog"], className)}
           onClick={handleClickOutside}
         >
-          <div className={styles['dialog__box']} ref={dialogBoxRef}>
-            <div className={styles['dialog__box__close']}>
+          <div className={classes["dialogBox"]} ref={dialogBoxRef}>
+            <div className={classes["buttonClose"]}>
               <BaseIcon
                 size={{ width: 16, height: 16 }}
                 onClick={closeHandler}
-                name='Every-Boxes-_-Cross-Icon'
+                name="Every-Boxes-_-Cross-Icon"
               />
             </div>
-            <div className={styles['dialog__title']}>
+            <div>
               <span>{title}</span>
             </div>
-            <div className={styles['dialog__message']}>{message}</div>
-            <div className={styles['dialog__buttons']}>
+            <div className={classes["dialogMessage"]}>{message}</div>
+            <div className={classes["buttons"]}>
               <Button
                 onClick={closeHandler}
-                className={styles['dialog__buttons__cancel']}
+                className={classes["buttonCancel"]}
               >
                 Cancel
               </Button>
               <Button
                 onClick={onOkClicked ? okHandler : undefined}
-                className={styles['dialog__buttons__ok']}
+                className={classes["buttonOk"]}
                 {...okButtonOptions}
               >
                 OK

@@ -2,6 +2,7 @@ import { Meta, Story } from "@storybook/react/types-6-0";
 import { Text } from "../../../atoms";
 import { Radio, RadioProps } from "../../../molecules";
 import { StoryContainer } from "../../container";
+import React from "react";
 export default {
   title: "radio",
   component: Radio,
@@ -28,26 +29,28 @@ const Template: Story<RadioProps> = () => {
         onChange={onChangeHandler}
         value="1"
       >
-        <Radio size={14} value={"1"}>
-          <Text color="red" size={14}>
-            radio 1
-          </Text>
-        </Radio>
-        <Radio size={14} value={"2"}>
-          <Text color="red" size={14}>
-            radio 2
-          </Text>
-        </Radio>
-        <Radio size={14} value={"3"}>
-          <Text color="red" size={14}>
-            radio 3
-          </Text>
-        </Radio>
-        <Radio size={14} value={"4"}>
-          <Text color="red" size={14}>
-            radio 4
-          </Text>
-        </Radio>
+        <div style={{ display: "flex", flexDirection: "row", columnGap: 10 }}>
+          <Radio size={14} value={"1"}>
+            <Text color="red" size={14}>
+              radio 1
+            </Text>
+          </Radio>
+          <Radio size={14} value={"2"}>
+            <Text color="red" size={14}>
+              radio 2
+            </Text>
+          </Radio>
+          <Radio size={14} value={"3"}>
+            <Text color="red" size={14}>
+              radio 3
+            </Text>
+          </Radio>
+          <Radio size={14} value={"4"}>
+            <Text color="red" size={14}>
+              radio 4
+            </Text>
+          </Radio>
+        </div>
       </Radio.Group>
     </StoryContainer>
   );

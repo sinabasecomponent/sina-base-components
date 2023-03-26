@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
 import React, { useContext, useState } from "react";
 import { Text } from "../../../atoms/text";
-import { Colors } from "../../../colors";
+import { useTheme } from "../../../theme/context";
 import { pxToVh } from "../../../utils/convertUnit";
 import { RadioContext, ValueType } from "../context";
 import { CustomCircle } from "./customCircle";
-import styles from "./radio.module.scss";
-
+import { useStyles } from "./style";
 export interface RadioProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "value" | "name"> {
   children?: React.ReactNode;
@@ -14,6 +13,15 @@ export interface RadioProps
 }
 const InternalRadio = React.forwardRef<HTMLDivElement, RadioProps>(
   ({ children, value, onFocus, onBlur, ...rest }, ref) => {
+    const classes = useStyles();
+    const {
+      color_gray_4,
+      color_secondary_1,
+      color_white,
+      color_primary_1,
+      color_primary_3,
+      color_primary_6,
+    } = useTheme();
     const [isFocused, setFocus] = useState(false);
 
     const {
@@ -50,34 +58,34 @@ const InternalRadio = React.forwardRef<HTMLDivElement, RadioProps>(
 
     const isDisabled = rest.disabled;
 
-    const borderColor: Colors = isDisabled
-      ? Colors.color_gray_4
+    const borderColor = isDisabled
+      ? color_gray_4
       : isLightChecked
-      ? Colors.color_secondary_1
+      ? color_secondary_1
       : isLightUnChecked
-      ? Colors.color_white
+      ? color_white
       : isDarkChecked || isDarkUnChecked
-      ? Colors.color_primary_1
-      : Colors.color_primary_1;
+      ? color_primary_1
+      : color_primary_1;
 
-    const backgroundColor: Colors = isDisabled
-      ? Colors.color_gray_4
+    const backgroundColor = isDisabled
+      ? color_gray_4
       : isLightChecked
-      ? Colors.color_secondary_1
+      ? color_secondary_1
       : isLightUnChecked
-      ? Colors.color_primary_3
+      ? color_primary_3
       : isDarkChecked
-      ? Colors.color_secondary_1
+      ? color_secondary_1
       : isDarkUnChecked
-      ? Colors.color_primary_6
-      : Colors.color_primary_6;
+      ? color_primary_6
+      : color_primary_6;
 
     return (
-      <label className={styles["label"]}>
-        <div ref={ref} className={styles["container"]}>
+      <label className={classes["label"]}>
+        <div ref={ref} className={classes["container"]}>
           <CustomCircle {...{ borderColor, backgroundColor }} />
           <input
-            className={styles["input"]}
+            className={classes["input"]}
             onFocus={focusHandler}
             onBlur={blurHandler}
             onChange={onChangeHandler}
@@ -88,7 +96,7 @@ const InternalRadio = React.forwardRef<HTMLDivElement, RadioProps>(
             {...rest}
           />
           <motion.div
-            className={styles["ripple"]}
+            className={classes["ripple"]}
             animate={{
               width: isFocused ? `${pxToVh(20)}vh` : 0,
               height: isFocused ? `${pxToVh(20)}vh` : 0,
@@ -99,7 +107,7 @@ const InternalRadio = React.forwardRef<HTMLDivElement, RadioProps>(
         {typeof children === "string" ? (
           <span>
             <Text
-              color={isDisabled ? Colors.color_gray_4 : Colors.color_primary_1}
+              color={isDisabled ? color_gray_4 : color_primary_1}
               size={`${pxToVh(16)}vh`}
             >
               {children}

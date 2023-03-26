@@ -1,22 +1,21 @@
-import { Colors } from '../../../colors';
-import styles from './radio.module.scss';
-
+import { useStyles } from "./style";
 const CustomCircle = ({
   borderColor,
   backgroundColor,
 }: {
-  borderColor: Colors;
-  backgroundColor: Colors;
+  borderColor: string | undefined;
+  backgroundColor: string | undefined;
 }) => {
+  const classes = useStyles();
   return (
     <div
-      className={styles['outterCircle']}
+      className={classes["outterCircle"]}
       style={{
         border: `1px solid ${borderColor}`,
       }}
     >
       <div
-        className={styles['innerCircle']}
+        className={classes["innerCircle"]}
         style={{
           backgroundColor: backgroundColor,
         }}

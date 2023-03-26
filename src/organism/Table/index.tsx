@@ -9,7 +9,8 @@ import { Order, OrderBy, TableContext } from "./context";
 import { Header } from "./header";
 import { RowContainer } from "./rowContainer";
 import { SearchBar } from "./searchBar";
-import styles from "./table.module.scss";
+import { useStyles } from "./style";
+// import styles from "./table.module.scss";
 
 export const SEARCH_ICON = 32;
 export const ROW_SELECTION = 62;
@@ -51,6 +52,7 @@ const Table = <T extends Record<string, any>>({
   coloums,
   noContent,
 }: TableProps<T>) => {
+  const classes = useStyles();
   const [order, setOrder] = useState<Order>(undefined);
   const [isSearchVisible, setShowSearchBar] = useState(false);
   const [orderBy, setOrderBy] = useState<OrderBy>(undefined);
@@ -221,7 +223,7 @@ const Table = <T extends Record<string, any>>({
                     height: "100%",
                   }}
                 >
-                  <table className={styles["table"]} role={"table"}>
+                  <table className={classes["table"]} role={"table"}>
                     <colgroup>
                       <col
                         style={{
@@ -275,7 +277,7 @@ const Table = <T extends Record<string, any>>({
                     style={{ flex: 1, overflowY: "auto" }}
                   >
                     {virtualRows.length > 0 ? (
-                      <table className={styles["table"]} role={"table"}>
+                      <table className={classes["table"]} role={"table"}>
                         <colgroup>
                           <col style={{ width: searchIconWidth }} />
                           {coloums.map(({ width, dataIndex }) => {

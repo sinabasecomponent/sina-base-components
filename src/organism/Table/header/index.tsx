@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
-import { BaseIcon } from '../../../atoms';
-import { Colors } from '../../../colors';
-import { CheckBox } from '../../../molecules/checkbox';
-import { Column, ColumnType } from '../column';
-import { TableContext } from '../context';
-import styles from './header.module.scss';
-
+import React, { useContext } from "react";
+import { BaseIcon } from "../../../atoms";
+import { Colors } from "../../../colors";
+import { CheckBox } from "../../../molecules/checkbox";
+import { Column, ColumnType } from "../column";
+import { TableContext } from "../context";
+import { useStyles } from "./style";
 interface HeaderProps<T extends object> {
   onToggleSearchBar?: () => void;
   isOnCheckedRowsAvailable: boolean;
@@ -23,6 +22,7 @@ const Header = <T extends object>({
   columns,
   isIndeterminate,
 }: HeaderProps<T>) => {
+  const classes = useStyles();
   const { onCheckAllRows, isAllRowsChecked } = useContext(TableContext);
 
   return (
@@ -30,15 +30,15 @@ const Header = <T extends object>({
       <th>
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           {isOnCheckedRowsAvailable ? (
-            <div className={styles['select-all']}>
+            <div className={classes["selectAll"]}>
               <CheckBox
-                mode='light'
+                mode="light"
                 checked={isAllRowsChecked}
                 onChange={onCheckAllRows}
                 indeterminate={isIndeterminate}
@@ -46,7 +46,7 @@ const Header = <T extends object>({
             </div>
           ) : null}
 
-          <div style={{ height: 24 }} className={styles['search']}>
+          <div style={{ height: 24 }} className={classes["search"]}>
             {filterIcon ? (
               filterIcon
             ) : (
@@ -57,7 +57,7 @@ const Header = <T extends object>({
                     : Colors.color_primary_6
                 }
                 onClick={onToggleSearchBar}
-                name='Table-_-Filter'
+                name="Table-_-Filter"
                 size={{ width: 14, height: 14 }}
               />
             )}

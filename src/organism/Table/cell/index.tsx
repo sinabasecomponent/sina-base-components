@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-key */
-import classNames from 'classnames';
-import { ReactNode } from 'react';
-import { DEFAULT_ALIGN } from '..';
-import { Text } from '../../../atoms/text';
-import styles from './cell.module.scss';
+import classNames from "classnames";
+import { ReactNode } from "react";
+import { DEFAULT_ALIGN } from "..";
+import { Text } from "../../../atoms/text";
+import { useStyles } from "./style";
 export interface CellProps
-  extends Omit<React.TdHTMLAttributes<HTMLTableCellElement>, 'align'> {
+  extends Omit<React.TdHTMLAttributes<HTMLTableCellElement>, "align"> {
   children?: ReactNode;
-  align?: 'start' | 'center' | 'end';
+  align?: "start" | "center" | "end";
   onPress?: () => void;
 }
 
@@ -17,19 +17,20 @@ const Cell = ({
   align = DEFAULT_ALIGN,
   ...rest
 }: CellProps) => {
+  const classes = useStyles();
   return (
     <td
       {...rest}
-      style={{ height: 'inherit' }}
+      style={{ height: "inherit" }}
       onClick={onPress}
       className={classNames(
-        align === 'start' && styles['start'],
-        align === 'center' && styles['center'],
-        align === 'end' && styles['end']
+        align === "start" && classes["start"],
+        align === "center" && classes["center"],
+        align === "end" && classes["end"],
       )}
     >
-      {typeof children !== 'object' ? (
-        <Text theme='Regular' size='small' color={'red'}>
+      {typeof children !== "object" ? (
+        <Text theme="Regular" size="small" color={"red"}>
           {children}
         </Text>
       ) : (

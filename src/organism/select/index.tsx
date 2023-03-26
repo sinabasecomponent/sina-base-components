@@ -7,7 +7,7 @@ import { TextInput } from "../../molecules/textInput";
 import { useOnClickOutSide } from "../../utils/useOnclickOutsiede";
 import { Clear } from "./clear";
 import { Option } from "./option";
-import style from "./select.module.scss";
+import { useStyles } from "./style";
 import { Default, OptionValue, SelectProps, Value } from "./types";
 
 const Select = <T extends Record<string, unknown> = Default>({
@@ -18,6 +18,7 @@ const Select = <T extends Record<string, unknown> = Default>({
   onChange,
   onClear,
 }: SelectProps<T>) => {
+  const classes = useStyles();
   const [internalValue, setInternalValue] = useState<OptionValue | null>(null);
   const body = useRef<HTMLElement | null>(null);
   const [width, setWidth] = useState(0);
@@ -104,7 +105,7 @@ const Select = <T extends Record<string, unknown> = Default>({
       <div
         onClick={handleOnClick}
         ref={handleRefOfRefrenceElement}
-        className={style["select"]}
+        className={classes["select"]}
         onMouseEnter={handleMouseEvent}
         onMouseLeave={handleMouseEvent}
       >
@@ -136,8 +137,8 @@ const Select = <T extends Record<string, unknown> = Default>({
                 style={poperStyles.popper}
                 {...attributes.popper}
               >
-                <div style={{ width }} className={style["overlay"]}>
-                  <div className={style["input-wrapper"]}>
+                <div style={{ width }} className={classes["overlay"]}>
+                  <div className={classes["inputWrapper"]}>
                     <TextInput placeholder="Search" />
                   </div>
                   <ScrollView style={{ flex: 1 }}>

@@ -1,11 +1,9 @@
-import classNames from 'classnames';
-import * as React from 'react';
-import { composeRef } from 'reactjs-view-core';
-// import { flattenStyle } from "../../atoms";
-// import { useThemes } from "../../molecules/text/styles";
-import styles from './text-input.module.scss';
-import TextInputState from './TextInputState';
-import { TextInputProps } from './types';
+import classNames from "classnames";
+import * as React from "react";
+import { composeRef } from "reactjs-view-core";
+import { useStyles } from "./style";
+import TextInputState from "./TextInputState";
+import { TextInputProps } from "./types";
 
 /**
  * Determines whether a 'selection' prop differs from a node's existing
@@ -13,7 +11,7 @@ import { TextInputProps } from './types';
  */
 const isSelectionStale = (
   node: { selectionEnd: any; selectionStart: any },
-  selection: { start: any; end?: any }
+  selection: { start: any; end?: any },
 ) => {
   const { selectionEnd, selectionStart } = node;
   const { start, end } = selection;
@@ -42,7 +40,7 @@ function isEventComposing(nativeEvent: any) {
 const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
   (
     {
-      autoCapitalize = 'sentences',
+      autoCapitalize = "sentences",
       autoComplete,
       autoCompleteType,
       autoCorrect = true,
@@ -52,7 +50,7 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       // theme = "regular",
       // lang,
       editable = true,
-      keyboardType = 'default',
+      keyboardType = "default",
       multiline = false,
       numberOfLines = 1,
       onBlur,
@@ -76,39 +74,40 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       label,
       ...rest
     },
-    forwardedRef
+    forwardedRef,
   ) => {
-    let type: React.InputHTMLAttributes<HTMLInputElement>['type'];
-    let inputMode: React.HTMLAttributes<HTMLInputElement>['inputMode'];
+    const classes = useStyles();
+    let type: React.InputHTMLAttributes<HTMLInputElement>["type"];
+    let inputMode: React.HTMLAttributes<HTMLInputElement>["inputMode"];
     // const themes = useThemes();
 
     switch (keyboardType) {
-      case 'email-address':
-        type = 'email';
+      case "email-address":
+        type = "email";
         break;
-      case 'number-pad':
-      case 'numeric':
-        inputMode = 'numeric';
+      case "number-pad":
+      case "numeric":
+        inputMode = "numeric";
         break;
-      case 'decimal-pad':
-        inputMode = 'decimal';
+      case "decimal-pad":
+        inputMode = "decimal";
         break;
-      case 'phone-pad':
-        type = 'tel';
+      case "phone-pad":
+        type = "tel";
         break;
-      case 'search':
-      case 'web-search':
-        type = 'search';
+      case "search":
+      case "web-search":
+        type = "search";
         break;
-      case 'url':
-        type = 'url';
+      case "url":
+        type = "url";
         break;
       default:
-        type = 'text';
+        type = "text";
     }
 
     if (secureTextEntry) {
-      type = 'password';
+      type = "password";
     }
 
     const dimensions = React.useRef({ height: null, width: null });
@@ -136,7 +135,7 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
           }
         }
       },
-      [multiline, onContentSizeChange]
+      [multiline, onContentSizeChange],
     );
 
     const imperativeRef = React.useMemo(
@@ -147,7 +146,7 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
         if (hostNode != null) {
           hostNode.clear = function () {
             if (hostNode != null) {
-              hostNode.value = '';
+              hostNode.value = "";
             }
           };
           hostNode.isFocused = function () {
@@ -159,7 +158,7 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
           handleContentSizeChange(hostNode);
         }
       },
-      [handleContentSizeChange]
+      [handleContentSizeChange],
     );
 
     function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
@@ -172,7 +171,7 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
     }
 
     function handleChange(
-      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) {
       const hostNode = e.target;
       const text = hostNode.value;
@@ -197,7 +196,7 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       if (hostNode != null) {
         TextInputState._currentlyFocusedNode = hostNode;
         if (clearTextOnFocus) {
-          hostNode.value = '';
+          hostNode.value = "";
         }
         if (selectTextOnFocus) {
           // Safari requires selection to occur in a setTimeout
@@ -225,7 +224,7 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       }
 
       if (
-        e.key === 'Enter' &&
+        e.key === "Enter" &&
         !e.shiftKey &&
         // Do not call submit if composition is occuring.
         !isComposing &&
@@ -245,7 +244,7 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       }
     }
 
-    const handleSelectionChange: React.DOMAttributes<HTMLInputElement>['onSelect'] =
+    const handleSelectionChange: React.DOMAttributes<HTMLInputElement>["onSelect"] =
       (e) => {
         if (onSelectionChange) {
           try {
@@ -278,8 +277,8 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       | React.InputHTMLAttributes<HTMLInputElement> = rest;
 
     supportedProps.autoCapitalize = autoCapitalize;
-    supportedProps.autoComplete = autoComplete || autoCompleteType || 'on';
-    supportedProps.autoCorrect = autoCorrect ? 'on' : 'off';
+    supportedProps.autoComplete = autoComplete || autoCompleteType || "on";
+    supportedProps.autoCorrect = autoCorrect ? "on" : "off";
 
     (supportedProps as any).enterKeyHint = returnKeyType;
     supportedProps.onBlur = handleBlur;
@@ -297,7 +296,7 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
     ) as string;
     supportedProps.inputMode = inputMode;
     //@ts-ignore
-    supportedProps['data-testid'] = testID;
+    supportedProps["data-testid"] = testID;
 
     const setRef = composeRef(hostRef, imperativeRef, forwardedRef);
 
@@ -307,7 +306,7 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
         {...(supportedProps as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
       />
     ) : (
-      <div className={classNames(styles['text-input'], className)}>
+      <div className={classNames(classes["textInput"], className)}>
         {label ? <label htmlFor={label}>{label}</label> : null}
         <div style={{ flex: 1 }}>
           <input
@@ -317,10 +316,10 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
-TextInput.displayName = 'TextInput';
+TextInput.displayName = "TextInput";
 
 export type { TextInputProps };
 export { TextInput };

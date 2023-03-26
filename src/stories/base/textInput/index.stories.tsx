@@ -1,6 +1,7 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { TextInput, TextInputProps } from "../../../molecules";
 import { StoryContainer } from "../../container";
+import React from "react";
 export default {
   title: "text input",
   component: TextInput,

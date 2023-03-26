@@ -1,6 +1,7 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { Tree, TreeProps } from "../../../molecules";
 import { StoryContainer } from "../../container";
+import React from "react";
 export default {
   title: "tree",
   component: Tree,

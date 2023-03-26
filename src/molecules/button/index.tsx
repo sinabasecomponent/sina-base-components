@@ -4,7 +4,6 @@ import React, { useMemo, useState } from "react";
 import { Loading } from "../../atoms/loading";
 import { Text } from "../../atoms/text";
 import { Colors } from "../../colors";
-// import styles from './button.module.scss';
 import { useStyles } from "./style";
 
 type Ripple = {

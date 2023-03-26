@@ -1,7 +1,7 @@
-import { useContext } from 'react';
-import { Colors } from '../../colors';
-import { Collapse } from './collapse';
-import { LevelContext } from './context/levelProvider';
+import { useContext } from "react";
+import { Colors } from "../../colors";
+import { Collapse } from "./collapse";
+import { LevelContext } from "./context/levelProvider";
 
 export interface TreeBasicType<T> {
   title: string;
@@ -15,7 +15,13 @@ export type OnSelectItemProps<T> = {
 };
 
 export type OnLoadData<T> = (value: OnSelectItemProps<T>) => Promise<void>;
-export interface TreeProps<T> {
+export interface TreeProps<
+  T extends TreeBasicType<T> = {
+    title: string;
+    id: string;
+    children?: { title: string; id: string }[];
+  },
+> {
   data: T[];
   onSelectItem?: (value: OnSelectItemProps<T>) => void;
   onLoadData?: (value: OnSelectItemProps<T>) => Promise<void>;

@@ -1,14 +1,12 @@
-import classNames from 'classnames';
-// import { useState } from 'react';
-// import { OnSelectItemProps, TreeBasicType } from '..';
-import { Loading, Text } from '../../../atoms';
-import { BaseIcon } from '../../../atoms/baseIcon';
-import { Colors } from '../../../colors';
-import styles from './node.module.scss';
+import classNames from "classnames";
+import { Loading, Text } from "../../../atoms";
+import { BaseIcon } from "../../../atoms/baseIcon";
+import { Colors } from "../../../colors";
+import { useStyle } from "./style";
 
 interface ItemProps {
   title?: string;
-  arrowDirection?: 'up' | 'down';
+  arrowDirection?: "up" | "down";
   level: number;
   backgroundColor: Colors;
   isActive?: boolean;
@@ -29,37 +27,38 @@ const Item = ({
   fontSize = 16,
   isLoading,
 }: ItemProps) => {
+  const classes = useStyle();
   return (
     <div
       onClick={() => onClick?.()}
       style={{
-        cursor: 'pointer',
+        cursor: "pointer",
         backgroundColor: isActive ? Colors.color_primary_1 : backgroundColor,
       }}
       className={classNames(
-        styles['wrapper'],
-        level && level > 1 && styles['dotLine']
+        classes["wrapper"],
+        level && level > 1 && classes["dotLine"],
       )}
     >
-      <div className={styles['statusLine']} />
-      <div className={styles['content']}>
-        <Text theme='Regular' size={fontSize} color={textColor}>
+      <div className={classes["statusLine"]} />
+      <div className={classes["content"]}>
+        <Text theme="Regular" size={fontSize} color={textColor}>
           {title}
         </Text>
         {isLoading ? (
-          <div style={{ marginInlineStart: 'auto' }}>
-            <Loading size='small' spinnerColor={Colors.color_warning_1} />
+          <div style={{ marginInlineStart: "auto" }}>
+            <Loading size="small" spinnerColor={Colors.color_warning_1} />
           </div>
         ) : null}
         {arrowDirection !== undefined ? (
           <BaseIcon
             wrapperClassName={classNames(
-              styles['arrowDown'],
-              arrowDirection === 'up' && styles['arrowUp']
+              classes["arrowDown"],
+              arrowDirection === "up" && classes["arrowUp"],
             )}
-            name={'Amount-Boxes_Decrease'}
+            name={"Amount-Boxes_Decrease"}
             size={{ height: 6, width: 12 }}
-            wrapperStyle={{ marginInlineStart: 'auto' }}
+            wrapperStyle={{ marginInlineStart: "auto" }}
             color={Colors.color_primary_2}
           />
         ) : null}

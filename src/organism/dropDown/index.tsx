@@ -5,7 +5,7 @@ import { PopperProps, usePopper } from "react-popper";
 import { Text } from "../../atoms/text";
 import { Colors } from "../../colors";
 import { useOnClickOutSide } from "../../utils/useOnclickOutsiede";
-import style from "./dropDown.module.scss";
+import { useStyles } from "./style";
 
 type Value = string | number | null | undefined;
 type Default = {
@@ -34,6 +34,7 @@ const DropDown = <T extends Default>({
   onChange,
   value: propValue,
 }: DropDownProps<T>) => {
+  const classes = useStyles();
   const [internalValue, setInternalValue] = useState<Value | null>(null);
   const body = useRef<HTMLElement | null>(null);
   const [isVisible, setVisible] = useState<boolean>(false);
@@ -135,14 +136,14 @@ const DropDown = <T extends Default>({
   const _value = propValue || internalValue;
 
   const list = (
-    <div className={style["overlay"]}>
+    <div className={classes["overlay"]}>
       {items.map((item) => {
         return (
           <div
             onClick={() => onSelectItem(item)}
             className={classNames(
-              style["item"],
-              _value === item.value && style["item--selected"],
+              classes["item"],
+              _value === item.value && classes["itemSelected"],
             )}
             key={item.value}
           >

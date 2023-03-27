@@ -1,13 +1,12 @@
 /// <reference types="react" />
-import { OnSelectItemProps, TreeBasicType } from '..';
-import { Colors } from '../../../colors';
+import { OnSelectItemProps, TreeBasicType } from "..";
 interface CollapseProps<T> {
     data: T;
     title?: string;
     children: React.ReactNode;
     level: number;
-    backgroundColor: Colors;
-    textColor: Colors;
+    backgroundColor: string;
+    textColor: string;
     onLoadData?: (value: OnSelectItemProps<T>) => Promise<void>;
     onClick?: (value: OnSelectItemProps<T>) => void;
     activeItemId?: string;

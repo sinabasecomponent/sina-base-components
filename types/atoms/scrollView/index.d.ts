@@ -1,5 +1,5 @@
-import React from 'react';
-interface ScrollViewProps {
+import React from "react";
+export interface ScrollViewProps {
     children: React.ReactNode;
     style?: React.CSSProperties;
     className?: string;

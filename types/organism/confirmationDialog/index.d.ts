@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import { FC, ReactElement } from "react";
 export interface ConfirmationDialogProps {
     message: string;
     title: string;
@@ -7,7 +7,7 @@ export interface ConfirmationDialogProps {
     className?: string;
     children: ReactElement;
     okButtonOptions?: {
-        type: 'submit' | 'button';
+        type: "submit" | "button";
         formId: string;
     };
     containerId?: string;

@@ -1,6 +1,6 @@
 import React from "react";
 import { PopperProps } from "react-popper";
-interface TooltipProps {
+export interface TooltipProps {
     trigger?: "click" | "hover";
     children: React.ReactNode;
     content: React.ReactNode;

@@ -1,6 +1,7 @@
 import React from "react";
+export declare const Colors: ColorsType;
 export interface ColorsType {
-    color_primary_1: string;
+    color_primary_1?: string;
     color_primary_2?: string;
     color_primary_3?: string;
     color_primary_4?: string;

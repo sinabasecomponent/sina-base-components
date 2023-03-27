@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
-export interface CellProps extends Omit<React.TdHTMLAttributes<HTMLTableCellElement>, 'align'> {
+import { ReactNode } from "react";
+export interface CellProps extends Omit<React.TdHTMLAttributes<HTMLTableCellElement>, "align"> {
     children?: ReactNode;
-    align?: 'start' | 'center' | 'end';
+    align?: "start" | "center" | "end";
     onPress?: () => void;
 }
 declare const Cell: ({ children, onPress, align, ...rest }: CellProps) => JSX.Element;

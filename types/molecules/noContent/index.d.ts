@@ -1,5 +1,5 @@
 /// <reference types="react" />
-interface NoContentProps {
+export interface NoContentProps {
     text: string;
 }
 declare const NoContent: ({ text }: NoContentProps) => JSX.Element;

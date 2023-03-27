@@ -1,8 +1,8 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { useState } from "react";
-import { Colors } from "../../../colors";
 import { CheckBox, CheckBoxProps } from "../../../molecules/checkbox";
 import { StoryContainer } from "../../container";
+import React from "react";
 export default {
   title: "checkbox",
   component: CheckBox,
@@ -17,7 +17,7 @@ const Template: Story<CheckBoxProps> = (args) => {
     <StoryContainer>
       <div
         style={{
-          backgroundColor: Colors.color_gray_4,
+          backgroundColor: "gray",
           width: 200,
           height: 200,
         }}

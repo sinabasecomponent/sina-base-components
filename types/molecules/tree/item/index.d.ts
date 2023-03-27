@@ -1,12 +1,11 @@
 /// <reference types="react" />
-import { Colors } from '../../../colors';
 interface ItemProps {
     title?: string;
-    arrowDirection?: 'up' | 'down';
+    arrowDirection?: "up" | "down";
     level: number;
-    backgroundColor: Colors;
+    backgroundColor: string;
     isActive?: boolean;
-    textColor: Colors;
+    textColor: string;
     fontSize?: number;
     isLoading: boolean;
     onClick?: () => void;

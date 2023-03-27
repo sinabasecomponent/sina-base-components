@@ -1,5 +1,5 @@
 /// <reference types="react" />
-interface DrawerProps {
+export interface DrawerProps {
     isVisible: boolean;
     children: React.ReactNode;
     onClose: () => void;

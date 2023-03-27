@@ -1,7 +1,7 @@
-import React from 'react';
-export interface ButtonProps extends Omit<React.HTMLAttributes<HTMLButtonElement>, 'type' | 'children'> {
-    type?: 'submit' | 'button' | 'reset';
-    mode?: 'primary' | 'secondary';
+import React from "react";
+export interface ButtonProps extends Omit<React.HTMLAttributes<HTMLButtonElement>, "type" | "children"> {
+    type?: "submit" | "button" | "reset";
+    mode?: "primary" | "secondary";
     children: React.ReactNode;
     className?: string;
     isLoading?: boolean;

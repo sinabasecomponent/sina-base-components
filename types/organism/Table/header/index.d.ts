@@ -1,5 +1,5 @@
-import React from 'react';
-import { ColumnType } from '../column';
+import React from "react";
+import { ColumnType } from "../column";
 interface HeaderProps<T extends object> {
     onToggleSearchBar?: () => void;
     isOnCheckedRowsAvailable: boolean;

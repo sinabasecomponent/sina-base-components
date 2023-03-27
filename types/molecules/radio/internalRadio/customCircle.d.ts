@@ -1,7 +1,6 @@
 /// <reference types="react" />
-import { Colors } from '../../../colors';
 declare const CustomCircle: ({ borderColor, backgroundColor, }: {
-    borderColor: Colors;
-    backgroundColor: Colors;
+    borderColor: string | undefined;
+    backgroundColor: string | undefined;
 }) => JSX.Element;
 export { CustomCircle };

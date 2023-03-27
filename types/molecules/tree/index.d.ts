@@ -9,7 +9,14 @@ export declare type OnSelectItemProps<T> = {
     level: number;
 };
 export declare type OnLoadData<T> = (value: OnSelectItemProps<T>) => Promise<void>;
-export interface TreeProps<T> {
+export interface TreeProps<T extends TreeBasicType<T> = {
+    title: string;
+    id: string;
+    children?: {
+        title: string;
+        id: string;
+    }[];
+}> {
     data: T[];
     onSelectItem?: (value: OnSelectItemProps<T>) => void;
     onLoadData?: (value: OnSelectItemProps<T>) => Promise<void>;

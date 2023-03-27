@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { ColumnType } from '../column';
+import { ColumnType } from "../column";
 interface RowContainer<T> {
     rowData: T;
     data: T[];

@@ -1,5 +1,5 @@
 import React from "react";
-interface ModalProps {
+export interface ModalProps {
     getContainer?: HTMLElement;
     isVisible: boolean;
     onClose?: () => void;

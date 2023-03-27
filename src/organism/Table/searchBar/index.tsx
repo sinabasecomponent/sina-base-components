@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { DEFAULT_ALIGN, SEARCH_ICON } from "..";
 import { BaseIcon } from "../../../atoms";
-import { Colors } from "../../../colors";
 import { CheckBox } from "../../../molecules";
+import { useTheme } from "../../../theme/context";
 import { pxToVh } from "../../../utils/convertUnit";
 import { ColumnType } from "../column";
 import { TableContext } from "../context";
@@ -30,6 +30,7 @@ const SearchBar = <T extends Record<string, unknown>>({
   clearFilterIcon,
   isIndeterminate,
 }: SearchBarProps<T>) => {
+  const { color_primary_2, color_primary_5 } = useTheme();
   const { onCheckAllRows, isAllRowsChecked } = useContext(TableContext);
   return (
     <tr
@@ -37,7 +38,7 @@ const SearchBar = <T extends Record<string, unknown>>({
       style={{
         display: isSearchVisible ? "table-row" : "none",
         height: `${pxToVh(45)}vh`,
-        backgroundColor: Colors.color_primary_2,
+        backgroundColor: color_primary_2,
         ...searchBarStyle,
       }}
     >
@@ -52,7 +53,7 @@ const SearchBar = <T extends Record<string, unknown>>({
           {isOnCheckedRowsAvailable ? (
             <div
               style={{
-                borderRight: `1px solid ${Colors.color_primary_5}`,
+                borderRight: `1px solid ${color_primary_5}`,
                 width: 31,
                 display: "flex",
                 justifyContent: "center",
@@ -72,7 +73,7 @@ const SearchBar = <T extends Record<string, unknown>>({
             style={{
               height: 24,
               width: 31,
-              borderRight: `1px solid ${Colors.color_primary_5}`,
+              borderRight: `1px solid ${color_primary_5}`,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -84,7 +85,7 @@ const SearchBar = <T extends Record<string, unknown>>({
               <BaseIcon
                 wrapperStyle={{ cursor: "pointer" }}
                 onClick={onResetFilters}
-                color={Colors.color_primary_5}
+                color={color_primary_5}
                 name="Table-_-Clear-Filters"
                 size={{ width: 16, height: 16 }}
               />

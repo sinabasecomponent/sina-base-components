@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Table } from "../../../organism/Table";
 import { StoryContainer } from "../../container";
 import React from "react";

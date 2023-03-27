@@ -1,16 +1,16 @@
 import classNames from "classnames";
 import { Loading, Text } from "../../../atoms";
 import { BaseIcon } from "../../../atoms/baseIcon";
-import { Colors } from "../../../colors";
+import { useTheme } from "../../../theme/context";
 import { useStyle } from "./style";
 
 interface ItemProps {
   title?: string;
   arrowDirection?: "up" | "down";
   level: number;
-  backgroundColor: Colors;
+  backgroundColor: string;
   isActive?: boolean;
-  textColor: Colors;
+  textColor: string;
   fontSize?: number;
   isLoading: boolean;
   onClick?: () => void;
@@ -27,13 +27,14 @@ const Item = ({
   fontSize = 16,
   isLoading,
 }: ItemProps) => {
+  const { color_primary_1, color_warning_1, color_primary_2 } = useTheme();
   const classes = useStyle();
   return (
     <div
       onClick={() => onClick?.()}
       style={{
         cursor: "pointer",
-        backgroundColor: isActive ? Colors.color_primary_1 : backgroundColor,
+        backgroundColor: isActive ? color_primary_1 : backgroundColor,
       }}
       className={classNames(
         classes["wrapper"],
@@ -47,7 +48,7 @@ const Item = ({
         </Text>
         {isLoading ? (
           <div style={{ marginInlineStart: "auto" }}>
-            <Loading size="small" spinnerColor={Colors.color_warning_1} />
+            <Loading size="small" spinnerColor={color_warning_1} />
           </div>
         ) : null}
         {arrowDirection !== undefined ? (
@@ -59,7 +60,7 @@ const Item = ({
             name={"Amount-Boxes_Decrease"}
             size={{ height: 6, width: 12 }}
             wrapperStyle={{ marginInlineStart: "auto" }}
-            color={Colors.color_primary_2}
+            color={color_primary_2}
           />
         ) : null}
       </div>

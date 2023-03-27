@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
 import { BaseIcon, Text } from "../../atoms";
-import { Colors } from "../../colors";
+import { useTheme } from "../../theme/context";
 import { useStyles } from "./style";
 
 export interface InternalTabPaneProps {
@@ -24,6 +24,7 @@ function InternalTabPane({
   onClose,
 }: InternalTabPaneProps) {
   const classes = useStyles();
+  const { color_white, color_primary_3, color_primary_4 } = useTheme();
   return (
     <div
       onClick={(e) => {
@@ -38,7 +39,7 @@ function InternalTabPane({
           <Text
             size={14}
             theme={"Regular"}
-            color={isActive ? Colors.color_white : Colors.color_primary_3}
+            color={isActive ? color_white : color_primary_3}
           >
             {renderTitle}
           </Text>
@@ -51,7 +52,7 @@ function InternalTabPane({
           wrapperStyle={{
             width: 16,
           }}
-          color={Colors.color_primary_4}
+          color={color_primary_4}
           name="Table-_-Cross-Icon-for-erasing-all-of-filters"
           size={{ height: 10, width: 10 }}
           unit={"pixel"}

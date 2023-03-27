@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import { usePopper } from "react-popper";
 import { ScrollView, Text } from "../../atoms";
-import { Colors } from "../../colors";
 import { TextInput } from "../../molecules/textInput";
+import { useTheme } from "../../theme/context";
 import { useOnClickOutSide } from "../../utils/useOnclickOutsiede";
 import { Clear } from "./clear";
 import { Option } from "./option";
@@ -19,6 +19,7 @@ const Select = <T extends Record<string, unknown> = Default>({
   onClear,
 }: SelectProps<T>) => {
   const classes = useStyles();
+  const { color_primary_1, color_primary_3 } = useTheme();
   const [internalValue, setInternalValue] = useState<OptionValue | null>(null);
   const body = useRef<HTMLElement | null>(null);
   const [width, setWidth] = useState(0);
@@ -111,11 +112,11 @@ const Select = <T extends Record<string, unknown> = Default>({
       >
         <div style={{ flex: 1, justifyContent: "center", display: "flex" }}>
           {_label || internalValue?.label ? (
-            <Text theme="Regular" size={14} color={Colors.color_primary_1}>
+            <Text theme="Regular" size={14} color={color_primary_1}>
               {_label || internalValue?.label}
             </Text>
           ) : (
-            <Text theme="Regular" size={14} color={Colors.color_primary_3}>
+            <Text theme="Regular" size={14} color={color_primary_3}>
               {"Select an Item..."}
             </Text>
           )}

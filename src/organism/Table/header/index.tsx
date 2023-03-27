@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { BaseIcon } from "../../../atoms";
-import { Colors } from "../../../colors";
 import { CheckBox } from "../../../molecules/checkbox";
+import { useTheme } from "../../../theme/context";
 import { Column, ColumnType } from "../column";
 import { TableContext } from "../context";
 import { useStyles } from "./style";
@@ -22,6 +22,7 @@ const Header = <T extends object>({
   columns,
   isIndeterminate,
 }: HeaderProps<T>) => {
+  const { color_secondary_2, color_primary_6 } = useTheme();
   const classes = useStyles();
   const { onCheckAllRows, isAllRowsChecked } = useContext(TableContext);
 
@@ -51,11 +52,7 @@ const Header = <T extends object>({
               filterIcon
             ) : (
               <BaseIcon
-                color={
-                  isSearchVisible
-                    ? Colors.color_secondary_2
-                    : Colors.color_primary_6
-                }
+                color={isSearchVisible ? color_secondary_2 : color_primary_6}
                 onClick={onToggleSearchBar}
                 name="Table-_-Filter"
                 size={{ width: 14, height: 14 }}

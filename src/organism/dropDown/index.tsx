@@ -3,7 +3,7 @@ import React, { HTMLAttributes, useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import { PopperProps, usePopper } from "react-popper";
 import { Text } from "../../atoms/text";
-import { Colors } from "../../colors";
+import { useTheme } from "../../theme/context";
 import { useOnClickOutSide } from "../../utils/useOnclickOutsiede";
 import { useStyles } from "./style";
 
@@ -35,6 +35,7 @@ const DropDown = <T extends Default>({
   value: propValue,
 }: DropDownProps<T>) => {
   const classes = useStyles();
+  const { color_primary_1 } = useTheme();
   const [internalValue, setInternalValue] = useState<Value | null>(null);
   const body = useRef<HTMLElement | null>(null);
   const [isVisible, setVisible] = useState<boolean>(false);
@@ -147,7 +148,7 @@ const DropDown = <T extends Default>({
             )}
             key={item.value}
           >
-            <Text size={14} color={Colors.color_primary_1}>
+            <Text size={14} color={color_primary_1}>
               {item.label}
             </Text>
           </div>

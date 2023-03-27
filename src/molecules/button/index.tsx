@@ -3,7 +3,7 @@ import _ from "lodash";
 import React, { useMemo, useState } from "react";
 import { Loading } from "../../atoms/loading";
 import { Text } from "../../atoms/text";
-import { Colors } from "../../colors";
+import { useTheme } from "../../theme/context";
 import { useStyles } from "./style";
 
 type Ripple = {
@@ -37,6 +37,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
+    const { color_white } = useTheme();
     const classes = useStyles();
     const [ripples, setRipples] = useState<Ripple[]>([]);
 
@@ -108,7 +109,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           }}
         >
           {typeof children !== "object" ? (
-            <Text size={16} color={Colors.color_white}>
+            <Text size={16} color={color_white}>
               {children}
             </Text>
           ) : (
@@ -124,11 +125,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               transform: "translate(-20px,-50%)",
             }}
           >
-            <Loading
-              isLoading
-              spinnerColor={Colors.color_white}
-              size={"medium"}
-            />
+            <Loading isLoading spinnerColor={color_white} size={"medium"} />
           </div>
         ) : null}
         {(isLoading || disabled) && <div className={classes["cover"]} />}

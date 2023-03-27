@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { FC } from "react";
 import { BaseIcon, Text } from "../../atoms";
-import { Colors } from "../../colors";
+import { useTheme } from "../../theme/context";
 import { useStyles } from "./style";
 
 export interface NodeButtonProps {
@@ -17,6 +17,7 @@ const NodeButton: FC<NodeButtonProps> = ({
   settingClickHandler,
   isOpen = true,
 }) => {
+  const { color_white } = useTheme();
   const { lomNodeButton, lomNodeButtonSelected } = useStyles();
   const settingClicked = (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -37,13 +38,13 @@ const NodeButton: FC<NodeButtonProps> = ({
         <BaseIcon
           size={{ height: 10, width: 10 }}
           name="Amount-Boxes_Decrease"
-          color={Colors.color_white}
+          color={color_white}
         />
       ) : (
         <BaseIcon
           size={{ height: 10, width: 10 }}
           name="Amount-Boxes_Increase"
-          color={Colors.color_white}
+          color={color_white}
         />
       )}
     </div>

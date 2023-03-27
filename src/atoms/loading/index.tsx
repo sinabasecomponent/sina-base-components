@@ -1,13 +1,12 @@
 import classNames from "classnames";
 import React from "react";
-import { Colors } from "../../colors";
 import { Spinner } from "./spinner";
 import { useStyle } from "./style";
 
 export interface LoadingProps {
   children?: React.ReactNode;
   isLoading?: boolean;
-  spinnerColor?: Colors;
+  spinnerColor?: string;
   size?: "small" | "medium" | "large";
   style?: React.CSSProperties;
 }

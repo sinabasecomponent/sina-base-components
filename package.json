@@ -21,7 +21,7 @@
     "build-storybook": "yarn compile && build-storybook",
     "zeplin": "zeplin connect",
     "release": "yarn lint-commit && yarn compile && yarn workspace web test -- --watchAll=false --silent && npx lerna publish",
-    "publish-npm": "npm publish --access public",
+    "publish-npm": "yarn lint-commit && yarn compile && npm publish",
     "lerna-watch": "lerna run watch --stream",
     "lerna-build": "lerna run compile --stream",
     "lerna-clean": "lerna run clean --parallel",

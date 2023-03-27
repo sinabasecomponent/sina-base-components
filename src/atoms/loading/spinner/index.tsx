@@ -1,4 +1,4 @@
-import { Colors } from "../../../colors";
+import { useTheme } from "../../../theme/context";
 import { useStyle } from "./style";
 
 const SMALL_BORDER = 1;
@@ -13,12 +13,13 @@ const Spinner = ({
   size,
 }: {
   size?: "small" | "medium" | "large";
-  spinerColor?: Colors;
+  spinerColor?: string;
 }) => {
+  const { color_primary_1 } = useTheme();
   const classes = useStyle();
   const borderStyle = spinerColor
     ? `${spinerColor} transparent transparent transparent`
-    : `${Colors.color_primary_1} transparent transparent transparent`;
+    : `${color_primary_1} transparent transparent transparent`;
 
   const borderWidth =
     size === "small"

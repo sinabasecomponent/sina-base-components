@@ -1,5 +1,5 @@
 import { BaseIcon, Text } from "../../atoms";
-import { Colors } from "../../colors";
+import { useTheme } from "../../theme/context";
 import { pxToVh } from "../../utils/convertUnit";
 import { useStyles } from "./style";
 
@@ -9,6 +9,7 @@ export interface NoContentProps {
 
 const NoContent = ({ text }: NoContentProps) => {
   const classes = useStyles();
+  const { color_warning_3 } = useTheme();
   return (
     <div className={classes["noContent"]}>
       <BaseIcon
@@ -17,7 +18,7 @@ const NoContent = ({ text }: NoContentProps) => {
         name="Shelf-View-_-Traffic-Cone"
         unit="viewPort"
       />
-      <Text color={Colors.color_warning_3} size={16}>
+      <Text color={color_warning_3} size={16}>
         {text}
       </Text>
     </div>

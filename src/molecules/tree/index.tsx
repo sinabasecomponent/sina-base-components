@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Colors } from "../../colors";
+import { useTheme } from "../../theme/context";
 import { Collapse } from "./collapse";
 import { LevelContext } from "./context/levelProvider";
 
@@ -34,25 +34,32 @@ const Tree = <T extends TreeBasicType<T>>({
   onLoadData,
   activeItemId,
 }: TreeProps<T>) => {
+  const {
+    color_secondary_3,
+    color_primary_6,
+    color_secondary_1,
+    color_primary_1,
+    color_white,
+    color_primary_3,
+  } = useTheme();
   const level = useContext(LevelContext);
-
   const backgourndColor =
     level === 1
-      ? Colors.color_secondary_3
+      ? color_secondary_3
       : level === 2
-      ? Colors.color_primary_6
+      ? color_primary_6
       : level === 3
-      ? Colors.color_primary_3
-      : Colors.color_primary_3;
+      ? color_primary_3
+      : color_primary_3;
 
   const textColor =
     level === 1
-      ? Colors.color_secondary_1
+      ? color_secondary_1
       : level === 2
-      ? Colors.color_primary_1
+      ? color_primary_1
       : level === 3
-      ? Colors.color_white
-      : Colors.color_white;
+      ? color_white
+      : color_white;
 
   return (
     <div style={{ paddingInlineStart: level > 1 ? 32 : 0 }}>
@@ -61,8 +68,8 @@ const Tree = <T extends TreeBasicType<T>>({
           <Collapse
             onClick={onSelectItem}
             data={data}
-            textColor={textColor}
-            backgroundColor={backgourndColor}
+            textColor={textColor as string}
+            backgroundColor={backgourndColor as string}
             title={data.title}
             level={level}
             key={data.id}

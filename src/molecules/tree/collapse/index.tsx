@@ -1,17 +1,17 @@
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import Measure from 'react-measure';
-import { OnSelectItemProps, TreeBasicType } from '..';
-import { Colors } from '../../../colors';
-import { Item } from '../item';
+import { motion } from "framer-motion";
+import { useState } from "react";
+import Measure from "react-measure";
+import { OnSelectItemProps, TreeBasicType } from "..";
+import { useTheme } from "../../../theme/context";
+import { Item } from "../item";
 
 interface CollapseProps<T> {
   data: T;
   title?: string;
   children: React.ReactNode;
   level: number;
-  backgroundColor: Colors;
-  textColor: Colors;
+  backgroundColor: string;
+  textColor: string;
   onLoadData?: (value: OnSelectItemProps<T>) => Promise<void>;
   onClick?: (value: OnSelectItemProps<T>) => void;
   activeItemId?: string;
@@ -30,6 +30,7 @@ const Collapse = <T extends TreeBasicType<T>>({
   activeItemId,
   id,
 }: CollapseProps<T>) => {
+  const { color_primary_2 } = useTheme();
   const [isOpen, setOpen] = useState(false);
   const [isLoading, setLoading] = useState<boolean>(false);
 
@@ -57,7 +58,7 @@ const Collapse = <T extends TreeBasicType<T>>({
         level={level}
         title={title}
         onClick={handleOnClick}
-        arrowDirection={children ? (isOpen ? 'up' : 'down') : undefined}
+        arrowDirection={children ? (isOpen ? "up" : "down") : undefined}
       />
 
       {children ? (
@@ -66,7 +67,7 @@ const Collapse = <T extends TreeBasicType<T>>({
             const height = contentRect.bounds?.height ?? 0;
             return (
               <motion.div
-                style={{ position: 'relative', marginBlockEnd: 20, height: 0 }}
+                style={{ position: "relative", marginBlockEnd: 20, height: 0 }}
                 animate={{ height: isOpen ? height : 0 }}
               >
                 <div ref={measureRef}>
@@ -74,12 +75,12 @@ const Collapse = <T extends TreeBasicType<T>>({
                   {isOpen ? (
                     <div
                       style={{
-                        position: 'absolute',
+                        position: "absolute",
                         top: -20,
                         left: 14,
                         height: height,
                         width: 0,
-                        borderLeft: `2px dotted ${Colors.color_primary_2}`,
+                        borderLeft: `2px dotted ${color_primary_2}`,
                       }}
                     />
                   ) : null}

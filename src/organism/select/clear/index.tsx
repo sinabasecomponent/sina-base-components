@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { DOMAttributes } from "react";
 import { BaseIcon } from "../../../atoms";
-import { Colors } from "../../../colors";
+import { useTheme } from "../../../theme/context";
 
 const Clear = ({
   handleOnClear,
@@ -12,6 +12,7 @@ const Clear = ({
   whatVisible: "cross" | "arrow" | null;
   isVisible: boolean;
 }) => {
+  const { color_primary_1, color_primary_3 } = useTheme();
   const handleOnClick: DOMAttributes<HTMLDivElement>["onClick"] = (e) => {
     e.stopPropagation();
     handleOnClear();
@@ -28,7 +29,7 @@ const Clear = ({
         }}
       >
         <BaseIcon
-          color={Colors.color_primary_1}
+          color={color_primary_1}
           name={"Performance-_-Table-Setting-_-Cross-icon-for-Delete-Item"}
           size={{ height: 10, width: 12 }}
         />
@@ -42,7 +43,7 @@ const Clear = ({
       >
         <motion.div animate={{ rotate: isVisible ? 180 : 0 }}>
           <BaseIcon
-            color={isVisible ? Colors.color_primary_1 : Colors.color_primary_3}
+            color={isVisible ? color_primary_1 : color_primary_3}
             name={"Every-Boxes-_-Flesh-Icon-for-more-choices"}
             size={{ height: 6, width: 12 }}
           />

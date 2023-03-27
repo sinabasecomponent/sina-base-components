@@ -2,15 +2,14 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Measure from "react-measure";
 import { useVirtual } from "react-virtual";
 import { Loading, ScrollView } from "../../atoms";
-import { Colors } from "../../colors";
 import { NoContent } from "../../molecules/noContent";
+import { useTheme } from "../../theme/context";
 import { Column, ColumnType } from "./column";
 import { Order, OrderBy, TableContext } from "./context";
 import { Header } from "./header";
 import { RowContainer } from "./rowContainer";
 import { SearchBar } from "./searchBar";
 import { useStyles } from "./style";
-// import styles from "./table.module.scss";
 
 export const SEARCH_ICON = 32;
 export const ROW_SELECTION = 62;
@@ -52,6 +51,7 @@ const Table = <T extends Record<string, any>>({
   coloums,
   noContent,
 }: TableProps<T>) => {
+  const { color_primary_1 } = useTheme();
   const classes = useStyles();
   const [order, setOrder] = useState<Order>(undefined);
   const [isSearchVisible, setShowSearchBar] = useState(false);
@@ -243,7 +243,7 @@ const Table = <T extends Record<string, any>>({
                     <thead
                       className={headerClassName}
                       style={{
-                        backgroundColor: Colors.color_primary_1,
+                        backgroundColor: color_primary_1,
                         ...headerStyle,
                       }}
                     >

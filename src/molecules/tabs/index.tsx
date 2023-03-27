@@ -1,12 +1,12 @@
 import classNames from "classnames";
 import { Fragment, ReactNode, useEffect, useMemo, useState } from "react";
 import { Text } from "../../atoms/text";
-import { Colors } from "../../colors";
 import { pxToVh } from "../../utils/convertUnit";
 import { useHorizontalScroll } from "../../utils/useHorizontalScroll";
 import { InternalTabPane } from "./internalTabPane";
 import { TabPane, TabPaneProps } from "./TabPane";
 import { useStyles } from "./style";
+import { useTheme } from "../../theme/context";
 export interface TabsProps {
   children: React.ReactNode;
   activeTab?: string;
@@ -27,6 +27,7 @@ const Tabs = ({
   noContent,
 }: TabsProps) => {
   const classes = useStyles();
+  const { color_white, color_primary_2 } = useTheme();
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [openedTabs, setOpenedTabs] = useState<string[]>([]);
   const tabListRef = useHorizontalScroll();
@@ -113,7 +114,7 @@ const Tabs = ({
         {TabsTitle ? (
           <div
             style={{
-              backgroundColor: Colors.color_white,
+              backgroundColor: color_white,
               borderTopLeftRadius: 20,
             }}
           >
@@ -122,7 +123,7 @@ const Tabs = ({
                 <Text
                   theme="Regular"
                   size={`${pxToVh(20)}vh`}
-                  color={Colors.color_primary_2}
+                  color={color_primary_2}
                 >
                   {TabsTitle}
                 </Text>

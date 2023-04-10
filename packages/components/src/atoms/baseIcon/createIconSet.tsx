@@ -1,8 +1,8 @@
-import { CSSProperties } from 'react';
-import { useWindowSize } from 'usehooks-ts';
-import { Unit } from '.';
+import { CSSProperties } from "react";
+import { useWindowSize } from "usehooks-ts";
+import { Unit } from ".";
 
-interface CreateIcomoonIconSetProps {
+export interface CreateIcomoonIconSetProps {
   icons: {
     icon: {
       paths: string[];
@@ -80,15 +80,15 @@ export function createIcomoonIconSet(glyphMap: CreateIcomoonIconSetProps) {
     let realWidth: number | null = null;
     let realHeight: number | null = null;
 
-    if (props.unit === 'pixel') {
+    if (props.unit === "pixel") {
       realWidth = width;
       realHeight = height;
-    } else if (props.unit === 'viewPort') {
+    } else if (props.unit === "viewPort") {
       realWidth = width * vh;
       realHeight = height * vh;
     }
 
-    let viewBox = '0 0 1024 1024';
+    let viewBox = "0 0 1024 1024";
 
     if (realWidth && realHeight && realWidth > realHeight) {
       const ratio = realHeight / realWidth;
@@ -114,7 +114,7 @@ export function createIcomoonIconSet(glyphMap: CreateIcomoonIconSetProps) {
       <svg
         // xmlns="http://www.w3.org/2000/svg"
         viewBox={viewBox}
-        fill='none'
+        fill="none"
         width={realWidth || 0}
         height={realHeight || 0}
       >

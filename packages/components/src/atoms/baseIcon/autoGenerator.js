@@ -3,14 +3,14 @@
  * that automatically
  */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const fs = require('fs');
+const fs = require("fs");
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const path = require('path');
+const path = require("path");
 
 const resolvePath = (relativePath) => path.resolve(__dirname, relativePath);
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const config = require('../../../public/icomoon/selection.json');
+const config = require("@sina-base/asset/src/icomoon/selection.json");
 
 const icons = {};
 const types = [];
@@ -35,13 +35,13 @@ config.icons.forEach(({ name }) => {
 });
 
 fs.writeFileSync(
-  resolvePath('./iconsContent.ts'),
+  resolvePath("./iconsContent.ts"),
   `// Auto generate
-  export const iconsContent = ${JSON.stringify(icons)}`
+  export const iconsContent = ${JSON.stringify(icons)}`,
 );
 fs.writeFileSync(
-  resolvePath('./iconNames.ts'),
+  resolvePath("./iconNames.ts"),
   `// Auto generate
-  export type IconsNames = ${types.map((name) => `"${name}"`).join('\n|')}
-  `
+  export type IconsNames = ${types.map((name) => `"${name}"`).join("\n|")}
+  `,
 );

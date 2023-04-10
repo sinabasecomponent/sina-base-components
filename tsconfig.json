@@ -15,7 +15,11 @@
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
-  "include": ["packages/components/src", "packages/components/src/custom.d.ts"],
+  "include": [
+    "packages/components/src",
+    "packages/components/src/custom.d.ts",
+    "packages/asset/src/icomoon"
+  ],
   "exclude": [
     "node_modules",
     "packages/components/src/stories",

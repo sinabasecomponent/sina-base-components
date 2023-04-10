@@ -1,10 +1,15 @@
 import classNames from "classnames";
 import React from "react";
-import icomoonJson from "../../icomoon/selection.json";
-import { createIcomoonIconSet } from "./createIconSet";
+import icomoonJson from "@sina-base/asset/src/icomoon/selection.json";
+import {
+  createIcomoonIconSet,
+  CreateIcomoonIconSetProps,
+} from "./createIconSet";
 // import './icon';
 import { IconsNames } from "./iconNames";
-const IconMoon = createIcomoonIconSet(icomoonJson);
+const IconMoon = createIcomoonIconSet(
+  icomoonJson as unknown as CreateIcomoonIconSetProps,
+);
 
 export type Unit = "viewPort" | "pixel";
 

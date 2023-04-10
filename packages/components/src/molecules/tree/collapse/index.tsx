@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Measure from "react-measure";
 import { OnSelectItemProps, TreeBasicType } from "..";
 import { useTheme } from "../../../theme/context";
@@ -16,6 +16,7 @@ interface CollapseProps<T> {
   onClick?: (value: OnSelectItemProps<T>) => void;
   activeItemId?: string;
   id: string;
+  defaultOpen?: boolean;
 }
 
 const Collapse = <T extends TreeBasicType<T>>({
@@ -29,7 +30,9 @@ const Collapse = <T extends TreeBasicType<T>>({
   onClick,
   activeItemId,
   id,
+  defaultOpen,
 }: CollapseProps<T>) => {
+  const ref = useRef<HTMLDivElement>(null);
   const { color_primary_2 } = useTheme();
   const [isOpen, setOpen] = useState(false);
   const [isLoading, setLoading] = useState<boolean>(false);
@@ -48,9 +51,17 @@ const Collapse = <T extends TreeBasicType<T>>({
     }
   };
 
+  useEffect(() => {
+    if (defaultOpen) {
+      ref.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+      setOpen(true);
+    }
+  }, [defaultOpen]);
+
   return (
     <>
       <Item
+        ref={ref}
         isActive={id === activeItemId}
         isLoading={isLoading}
         textColor={textColor}

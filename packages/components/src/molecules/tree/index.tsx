@@ -1,11 +1,13 @@
+import { findGrandParents } from "../../utils/findGrandParents";
+import { flatData } from "../../utils/flattenArray";
 import { useContext } from "react";
 import { useTheme } from "../../theme/context";
 import { Collapse } from "./collapse";
 import { LevelContext } from "./context/levelProvider";
-
 export interface TreeBasicType<T> {
   title: string;
   id: string;
+  parentId?: string | null;
   children?: T[];
 }
 
@@ -15,17 +17,12 @@ export type OnSelectItemProps<T> = {
 };
 
 export type OnLoadData<T> = (value: OnSelectItemProps<T>) => Promise<void>;
-export interface TreeProps<
-  T extends TreeBasicType<T> = {
-    title: string;
-    id: string;
-    children?: { title: string; id: string }[];
-  },
-> {
+export interface TreeProps<T> {
   data: T[];
   onSelectItem?: (value: OnSelectItemProps<T>) => void;
   onLoadData?: (value: OnSelectItemProps<T>) => Promise<void>;
   activeItemId?: string;
+  defaultSeletedItem?: string;
 }
 
 const Tree = <T extends TreeBasicType<T>>({
@@ -33,6 +30,7 @@ const Tree = <T extends TreeBasicType<T>>({
   onSelectItem,
   onLoadData,
   activeItemId,
+  defaultSeletedItem,
 }: TreeProps<T>) => {
   const {
     color_secondary_3,
@@ -61,9 +59,12 @@ const Tree = <T extends TreeBasicType<T>>({
       ? color_white
       : color_white;
 
+  const flat = flatData(data);
+  const grandPrents = findGrandParents(defaultSeletedItem, flat);
   return (
     <div style={{ paddingInlineStart: level > 1 ? 32 : 0 }}>
       {data.map((data) => {
+        const isExist = grandPrents.find((item) => item.id === data.id);
         return (
           <Collapse
             onClick={onSelectItem}
@@ -76,6 +77,7 @@ const Tree = <T extends TreeBasicType<T>>({
             onLoadData={onLoadData}
             id={data.id}
             activeItemId={activeItemId}
+            defaultOpen={Boolean(isExist)}
           >
             {data?.children?.length ? (
               <LevelContext.Provider value={level + 1}>
@@ -84,6 +86,7 @@ const Tree = <T extends TreeBasicType<T>>({
                   data={data.children}
                   onLoadData={onLoadData}
                   activeItemId={activeItemId}
+                  defaultSeletedItem={defaultSeletedItem}
                 />
               </LevelContext.Provider>
             ) : null}

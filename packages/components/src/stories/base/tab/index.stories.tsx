@@ -8,34 +8,36 @@ export default {
   component: Tabs,
 } as Meta<TabsProps>;
 
-const { TabPane } = Tabs;
-
 const Template: Story<TabsProps> = () => {
   const [activeTab, setActiveTab] = useState<string | undefined>(undefined);
+  const items: TabsProps["items"] = [
+    {
+      closeable: true,
+      id: "1",
+      renderTitle: () => {
+        return <div>title</div>;
+      },
+      content: <div>sag</div>,
+    },
+    {
+      closeable: true,
+      id: "2",
+      renderTitle: () => {
+        return <div>title2</div>;
+      },
+      content: <div>sag2</div>,
+    },
+  ];
   return (
     <StoryContainer>
       <div style={{ backgroundColor: "gray", padding: 20, height: "100%" }}>
         <Tabs
-          TabsTitle={"Shelf View"}
           activeTab={activeTab}
           onChange={(id: string) => {
             setActiveTab(id);
           }}
-        >
-          <TabPane closable id="service" renderTitle="abstract service">
-            <div style={{ backgroundColor: "red", height: 200, width: 100 }}>
-              sag
-            </div>
-          </TabPane>
-          <TabPane id="lom" renderTitle="lom">
-            <div style={{ backgroundColor: "blue", height: 200, width: 100 }}>
-              sag
-            </div>
-          </TabPane>
-          <TabPane id="bpm" renderTitle="bpm">
-            <div style={{ backgroundColor: "yellow", height: 200 }}>sag</div>
-          </TabPane>
-        </Tabs>
+          items={items}
+        />
       </div>
     </StoryContainer>
   );

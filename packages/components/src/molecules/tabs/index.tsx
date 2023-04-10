@@ -1,30 +1,37 @@
 import classNames from "classnames";
-import { Fragment, ReactNode, useEffect, useMemo, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Text } from "../../atoms/text";
 import { pxToVh } from "../../utils/convertUnit";
 import { useHorizontalScroll } from "../../utils/useHorizontalScroll";
 import { InternalTabPane } from "./internalTabPane";
-import { TabPane, TabPaneProps } from "./TabPane";
 import { useStyles } from "./style";
 import { useTheme } from "../../theme/context";
+interface TabItem {
+  id: string;
+  content: React.ReactNode;
+  renderTitle:
+    | React.ReactNode
+    | (({ id, isActive }: { id: string; isActive: boolean }) => ReactNode);
+  closeable: boolean;
+}
 export interface TabsProps {
-  children: React.ReactNode;
   activeTab?: string;
   onChange?: (id: string) => void;
   onClose?: (id: string) => void;
   className?: string;
   TabsTitle?: string | React.ReactNode;
   noContent?: React.ReactNode;
+  items: TabItem[];
 }
 
 const Tabs = ({
-  children,
   activeTab: activeTabProp,
   onChange,
   onClose,
   className,
   TabsTitle,
   noContent,
+  items,
 }: TabsProps) => {
   const classes = useStyles();
   const { color_white, color_primary_2 } = useTheme();
@@ -42,45 +49,6 @@ const Tabs = ({
     onClose?.(id);
   };
 
-  const tabs: TabPaneProps[] = useMemo(() => {
-    function getChildren(_children: any): TabPaneProps[] {
-      if (!_children) {
-        return [];
-      }
-      if (
-        typeof _children === "boolean" ||
-        typeof _children === "undefined" ||
-        _children === null
-      ) {
-        return [];
-      }
-      if (typeof _children !== "object") {
-        throw new Error("Tabs children must be TabPane");
-      }
-      if (!Array.isArray(_children)) {
-        if (_children.type === TabPane) {
-          const result: TabPaneProps = {
-            ..._children.props,
-            child: _children,
-          };
-
-          return [result];
-        }
-
-        if (_children.type === Fragment) {
-          return getChildren((_children.props as any)?.children);
-        }
-      }
-      return _children?.flatMap((child: ReactNode) => {
-        return getChildren(child);
-      });
-    }
-
-    const mappedChildren = getChildren(children);
-
-    return mappedChildren;
-  }, [children]);
-
   let _activeTab: string | null = null;
   if (activeTabProp) {
     _activeTab = activeTabProp;
@@ -89,10 +57,10 @@ const Tabs = ({
   }
 
   useEffect(() => {
-    if (tabs.length > 0) {
-      setActiveTab(tabs[0].id);
-      setOpenedTabs((prev) => {
-        return [...prev, tabs[0].id];
+    if (items?.length > 0) {
+      setActiveTab(items[0].id);
+      setOpenedTabs(() => {
+        return [items[0].id];
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -135,7 +103,7 @@ const Tabs = ({
         ) : null}
 
         <div ref={tabListRef} className={classes["tabsList"]}>
-          {tabs.map(({ id, renderTitle, closable }) => {
+          {items?.map(({ id, renderTitle, closeable }) => {
             const isActive = id === _activeTab;
             return (
               <InternalTabPane
@@ -145,7 +113,7 @@ const Tabs = ({
                 key={id}
                 id={id}
                 onClose={handleOnClose}
-                closable={Boolean(closable)}
+                closable={Boolean(closeable)}
               />
             );
           })}
@@ -157,16 +125,16 @@ const Tabs = ({
           <div style={{ height: "100%" }}>{noContent}</div>
         ) : (
           openedTabs.map((_id) => {
-            const tab = tabs.find(({ id }) => id === _id);
+            const tab = items?.find(({ id }) => id === _id);
             return (
               <div
-                key={tab?.id}
+                key={_id}
                 style={{
                   display: tab?.id === _activeTab ? "block" : "none",
                   height: "100%",
                 }}
               >
-                {tab?.children}
+                {tab?.content}
               </div>
             );
           })
@@ -175,7 +143,5 @@ const Tabs = ({
     </div>
   );
 };
-
-Tabs.TabPane = TabPane;
 
 export { Tabs };

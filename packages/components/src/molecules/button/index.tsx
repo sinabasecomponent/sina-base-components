@@ -15,12 +15,13 @@ type Ripple = {
 };
 export interface ButtonProps
   extends Omit<React.HTMLAttributes<HTMLButtonElement>, "type" | "children"> {
-  type?: "submit" | "button" | "reset";
+  htmlType?: "submit" | "button" | "reset";
   mode?: "primary" | "secondary";
   children: React.ReactNode;
   className?: string;
   isLoading?: boolean;
   disabled?: boolean;
+  form?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -28,7 +29,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     {
       children,
       mode = "primary",
-      type = "button",
+      htmlType = "button",
+      form,
       className,
       isLoading,
       disabled,
@@ -89,7 +91,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         {...rest}
         ref={ref}
-        type={type}
+        form={form}
+        type={htmlType}
         onMouseDown={showRipple}
         onMouseUp={onDebounce}
         onClick={handleOnClick}

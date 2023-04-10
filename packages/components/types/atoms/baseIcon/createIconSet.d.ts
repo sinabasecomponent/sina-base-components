@@ -1,6 +1,6 @@
-import { CSSProperties } from 'react';
-import { Unit } from '.';
-interface CreateIcomoonIconSetProps {
+import { CSSProperties } from "react";
+import { Unit } from ".";
+export interface CreateIcomoonIconSetProps {
     icons: {
         icon: {
             paths: string[];
@@ -71,4 +71,3 @@ export declare function createIcomoonIconSet(glyphMap: CreateIcomoonIconSetProps
     style?: CSSProperties;
     unit: Unit;
 }) => JSX.Element;
-export {};

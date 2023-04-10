@@ -1,5 +1,5 @@
 import { createUseStyles } from "react-jss";
-import FiraBold from "../../fonts/FiraGO-Bold.ttf";
+import FiraBold from "@sina-base/asset/fonts/FiraGO-Bold.ttf";
 import FiraBoldItalic from "../../fonts/FiraGO-BoldItalic.ttf";
 import FiroGoBook from "../../fonts/FiraGO-Book.ttf";
 import FiroGoBookItalic from "../../fonts/FiraGO-BookItalic.ttf";

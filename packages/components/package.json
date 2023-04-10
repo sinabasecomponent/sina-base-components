@@ -1,0 +1,47 @@
+{
+  "name": "@sina-base/component",
+  "version": "1.1.44",
+  "private": false,
+  "workspaces": [
+    "packages/*"
+  ],
+  "secure": false,
+  "types": "types/index.d.ts",
+  "main": "src/index.ts",
+  "files": [
+    "src",
+    "types"
+  ],
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "compile": "tsc -b"
+  },
+  "description": "sina base component",
+  "keywords": [],
+  "author": "sinaComs",
+  "license": "ISC",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  }
+}

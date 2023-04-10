@@ -3,7 +3,6 @@
     "target": "ES2020",
     "module": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "declarationDir": "types",
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -14,10 +13,17 @@
     "emitDeclarationOnly": true,
     "jsx": "react-jsxdev",
     "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "outDir": "dist",
-    "rootDir": "./src"
+    "esModuleInterop": true
   },
-  "include": ["src", "./src/custom.d.ts"],
-  "exclude": ["node_modules", "src/stories", "dist", "**/*.test.ts"]
+  "include": [
+    "packages/components/src",
+    "packages/components/src/custom.d.ts",
+    "packages/asset/src/icomoon"
+  ],
+  "exclude": [
+    "node_modules",
+    "packages/components/src/stories",
+    "dist",
+    "**/*.test.ts"
+  ]
 }

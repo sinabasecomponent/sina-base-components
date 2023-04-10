@@ -1,6 +1,6 @@
 {
   "name": "@sina-base/component",
-  "version": "1.1.45",
+  "version": "1.1.46",
   "private": false,
   "workspaces": [
     "packages/*"

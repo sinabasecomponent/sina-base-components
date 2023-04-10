@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.47](https://github.com/sinabasecomponent/sina-base-components/compare/v1.1.46...v1.1.47) (2023-04-10)
+
+**Note:** Version bump only for package sina-components
+
 ## [1.1.46](https://github.com/sinabasecomponent/sina-base-components/compare/v1.1.45...v1.1.46) (2023-04-10)
 
 **Note:** Version bump only for package sina-components

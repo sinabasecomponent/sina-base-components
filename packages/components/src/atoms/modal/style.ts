@@ -21,8 +21,6 @@ const useStyles = createUseStyles(
         backgroundColor: theme.color_white,
         borderRadius: 20,
         overflow: "hidden",
-        width: 500,
-        height: 300,
         maxWidth: "calc(100% - 32px)",
         maxHeight: "calc(100% - 32px)",
       },

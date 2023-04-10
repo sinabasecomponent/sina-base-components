@@ -11,6 +11,7 @@ interface CollapseProps<T> {
     onClick?: (value: OnSelectItemProps<T>) => void;
     activeItemId?: string;
     id: string;
+    defaultOpen?: boolean;
 }
-declare const Collapse: <T extends TreeBasicType<T>>({ title, children, level, backgroundColor, textColor, data, onLoadData, onClick, activeItemId, id, }: CollapseProps<T>) => JSX.Element;
+declare const Collapse: <T extends TreeBasicType<T>>({ title, children, level, backgroundColor, textColor, data, onLoadData, onClick, activeItemId, id, defaultOpen, }: CollapseProps<T>) => JSX.Element;
 export { Collapse };

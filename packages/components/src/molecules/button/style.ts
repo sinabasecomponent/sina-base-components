@@ -7,7 +7,7 @@ const button = {
   padding: "0px 25px",
   width: 140,
   boxShadow: "0px 3px 6px rgba(0, 0, 0, 0.16)",
-  borderSadius: 7,
+  borderRadius: 7,
   height: 40,
   border: "none",
   outline: "none",

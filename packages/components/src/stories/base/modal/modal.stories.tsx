@@ -23,7 +23,17 @@ const Template: Story<ModalProps> = (args) => {
         onClose={onToggleDrawer}
         destroyOnClose
       >
-        <Text>Modal Content</Text>
+        <div
+          style={{
+            width: 300,
+            height: 300,
+            backgroundColor: "white",
+            borderRadius: 8,
+            padding: 10,
+          }}
+        >
+          <Text>Modal Content</Text>
+        </div>
       </Modal>
     </StoryContainer>
   );

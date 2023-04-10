@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import React, { useContext, useLayoutEffect } from "react";
-import Measure from "react-measure";
 import { BaseIcon } from "../../../atoms/baseIcon";
 import { Text } from "../../../atoms/text";
 import { useTheme } from "../../../theme/context";
@@ -61,18 +60,13 @@ const Panel = ({ children, title, id }: PanelProps) => {
           />
         </motion.div>
       </div>
-      <Measure client bounds offset>
-        {({ measureRef, contentRect }) => {
-          return (
-            <motion.div
-              style={{ overflow: "hidden", height: 0 }}
-              animate={{ height: isOpen ? contentRect.bounds?.height : 0 }}
-            >
-              <div ref={measureRef}>{children}</div>
-            </motion.div>
-          );
-        }}
-      </Measure>
+
+      <motion.div
+        style={{ overflow: "hidden", height: 0 }}
+        animate={{ height: isOpen ? "auto" : 0 }}
+      >
+        {children}
+      </motion.div>
     </div>
   );
 };

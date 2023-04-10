@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from "react";
 interface ItemProps {
     title?: string;
     arrowDirection?: "up" | "down";
@@ -10,5 +10,5 @@ interface ItemProps {
     isLoading: boolean;
     onClick?: () => void;
 }
-declare const Item: ({ title, onClick, arrowDirection, level, backgroundColor, isActive, textColor, fontSize, isLoading, }: ItemProps) => JSX.Element;
+declare const Item: React.ForwardRefExoticComponent<ItemProps & React.RefAttributes<HTMLDivElement>>;
 export { Item };

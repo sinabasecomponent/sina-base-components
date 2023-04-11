@@ -1,6 +1,6 @@
-// import { Colors } from '../../../colors';
-
+import { useWindowSize } from "usehooks-ts";
 import { useTheme } from "../../../theme/context";
+import { pxToVh } from "../../../utils/convertUnit";
 
 const CustomRectangle = ({
   mode,
@@ -16,6 +16,8 @@ const CustomRectangle = ({
     color_primary_3,
     color_primary_6,
   } = useTheme();
+  const { height: windowHeight } = useWindowSize();
+  const vh = windowHeight / 100;
   const isLightChecked = mode === "light" && checked;
   const isLightUnChecked = mode === "light" && !checked;
   const isDarkChecked = mode === "dark" && checked;
@@ -40,8 +42,8 @@ const CustomRectangle = ({
   return (
     <div
       style={{
-        width: 16,
-        height: 16,
+        width: 2 * Math.round((pxToVh(20) * vh) / 2),
+        height: 2 * Math.round((pxToVh(20) * vh) / 2),
         borderRadius: 3,
         border: `1px solid ${borderColor}`,
         position: "relative",
@@ -51,8 +53,8 @@ const CustomRectangle = ({
       <div
         style={{
           position: "absolute",
-          width: 10,
-          height: 10,
+          width: 2 * Math.round((pxToVh(12) * vh) / 2),
+          height: 2 * Math.round((pxToVh(12) * vh) / 2),
           backgroundColor: backgroundColor,
           top: "50%",
           left: "50%",

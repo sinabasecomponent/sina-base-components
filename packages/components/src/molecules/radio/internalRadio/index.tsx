@@ -98,8 +98,8 @@ const InternalRadio = React.forwardRef<HTMLDivElement, RadioProps>(
           <motion.div
             className={classes["ripple"]}
             animate={{
-              width: isFocused ? `${pxToVh(20)}vh` : 0,
-              height: isFocused ? `${pxToVh(20)}vh` : 0,
+              width: isFocused ? `${pxToVh(25)}vh` : 0,
+              height: isFocused ? `${pxToVh(25)}vh` : 0,
             }}
           />
         </div>

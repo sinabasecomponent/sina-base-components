@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React, { useEffect, useMemo, useState } from "react";
 import ReactDOM from "react-dom";
-import { useOnClickOutSide } from "../../utils/useOnclickOutsiede";
+import { useOnClickOutSide } from "@sina-base/utils";
 import { useStyles } from "./style";
 
 export interface ModalProps {

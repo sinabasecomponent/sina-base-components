@@ -1,5 +1,5 @@
 import { useWindowSize } from "usehooks-ts";
-import { pxToVh } from "../../../utils/convertUnit";
+import { pxToVh } from "@sina-base/utils";
 import { useStyles } from "./style";
 const CustomCircle = ({
   borderColor,

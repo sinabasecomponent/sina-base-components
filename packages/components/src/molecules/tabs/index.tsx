@@ -1,8 +1,7 @@
 import classNames from "classnames";
 import { ReactNode, useEffect, useState } from "react";
 import { Text } from "../../atoms/text";
-import { pxToVh } from "../../utils/convertUnit";
-import { useHorizontalScroll } from "../../utils/useHorizontalScroll";
+import { pxToVh, useHorizontalScroll } from "@sina-base/utils";
 import { InternalTabPane } from "./internalTabPane";
 import { useStyles } from "./style";
 import { useTheme } from "../../theme/context";

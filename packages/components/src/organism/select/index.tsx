@@ -4,7 +4,7 @@ import { usePopper } from "react-popper";
 import { ScrollView, Text } from "../../atoms";
 import { TextInput } from "../../molecules/textInput";
 import { useTheme } from "../../theme/context";
-import { useOnClickOutSide } from "../../utils/useOnclickOutsiede";
+import { useOnClickOutSide } from "@sina-base/utils";
 import { Clear } from "./clear";
 import { Option } from "./option";
 import { useStyles } from "./style";

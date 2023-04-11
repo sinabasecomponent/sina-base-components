@@ -1,5 +1,4 @@
-import { findGrandParents } from "../../utils/findGrandParents";
-import { flatData } from "../../utils/flattenArray";
+import { findGrandParents, flatData } from "@sina-base/utils";
 import { useContext } from "react";
 import { useTheme } from "../../theme/context";
 import { Collapse } from "./collapse";

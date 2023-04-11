@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 import { theming } from "../../theme";
-import { pxToVh } from "../../utils/convertUnit";
+import { pxToVh } from "@sina-base/utils";
 
 export const useStyles = createUseStyles(
   (theme) => {

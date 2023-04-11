@@ -1,6 +1,6 @@
 import { BaseIcon, Text } from "../../atoms";
 import { useTheme } from "../../theme/context";
-import { pxToVh } from "../../utils/convertUnit";
+import { pxToVh } from "@sina-base/utils";
 import { useStyles } from "./style";
 
 export interface NoContentProps {

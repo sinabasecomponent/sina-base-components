@@ -1,6 +1,6 @@
 import { useWindowSize } from "usehooks-ts";
 import { useTheme } from "../../../theme/context";
-import { pxToVh } from "../../../utils/convertUnit";
+import { pxToVh } from "@sina-base/utils";
 
 const CustomRectangle = ({
   mode,

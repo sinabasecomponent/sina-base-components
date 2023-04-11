@@ -89,8 +89,8 @@
   },
   "dependencies": {
     "@sentry/browser": "^7.1.1",
-    "@sina-base/component": "^1.1.53",
-    "@sina-base/utils": "^1.1.55",
+    "@sina-base/component": "^1.1.56",
+    "@sina-base/utils": "^1.1.56",
     "react-measure": "^2.5.2",
     "react-poper": "^1.1.5",
     "react-popper": "^2.3.0",

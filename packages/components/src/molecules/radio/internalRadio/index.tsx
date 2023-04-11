@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React, { useContext, useState } from "react";
+import { useWindowSize } from "usehooks-ts";
 import { Text } from "../../../atoms/text";
 import { useTheme } from "../../../theme/context";
 import { pxToVh } from "../../../utils/convertUnit";
@@ -23,6 +24,9 @@ const InternalRadio = React.forwardRef<HTMLDivElement, RadioProps>(
       color_primary_6,
     } = useTheme();
     const [isFocused, setFocus] = useState(false);
+
+    const { height: windowHeight } = useWindowSize();
+    const vh = windowHeight / 100;
 
     const {
       onChange,
@@ -98,8 +102,8 @@ const InternalRadio = React.forwardRef<HTMLDivElement, RadioProps>(
           <motion.div
             className={classes["ripple"]}
             animate={{
-              width: isFocused ? `${pxToVh(25)}vh` : 0,
-              height: isFocused ? `${pxToVh(25)}vh` : 0,
+              width: isFocused ? 2 * Math.round((pxToVh(25) * vh) / 2) : 0,
+              height: isFocused ? 2 * Math.round((pxToVh(25) * vh) / 2) : 0,
             }}
           />
         </div>

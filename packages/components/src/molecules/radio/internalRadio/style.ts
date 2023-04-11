@@ -1,6 +1,5 @@
 import { createUseStyles } from "react-jss";
 import { theming } from "../../../theme";
-import { pxToVh } from "../../../utils/convertUnit";
 
 export const useStyles = createUseStyles(
   (theme) => {
@@ -41,16 +40,12 @@ export const useStyles = createUseStyles(
       },
 
       outterCircle: {
-        width: `${pxToVh(20)}vh`,
-        height: `${pxToVh(20)}vh`,
         borderRadius: "50%",
         backgroundColor: theme.color_white,
         zIndex: 2,
         position: "relative",
       },
       innerCircle: {
-        width: `${pxToVh(14)}vh`,
-        height: `${pxToVh(14)}vh`,
         position: "absolute",
         top: "50%",
         left: "50%",

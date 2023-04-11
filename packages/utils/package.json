@@ -1,0 +1,19 @@
+{
+  "name": "@sina-base/utils",
+  "version": "1.1.1",
+  "files": [
+    "src",
+    "types"
+  ],
+  "scripts": {
+    "compile": "tsc -b"
+  },
+  "private": false,
+  "sideEffects": false,
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

@@ -7,7 +7,7 @@
   ],
   "secure": true,
   "scripts": {
-    "components-compile": "yarn workspace @sina-base/component compile",
+    "compile": "yarn workspace @sina-base/component compile && yarn workspace @sina-base/utils compile",
     "lerna-sag": "yarn lerna-clean && yarn lerna-build",
     "lint": "eslint . --ext tsx,ts  --fix",
     "lint-commit": "cross-env COMMIT=true eslint . --ext tsx,ts  --fix",
@@ -16,7 +16,7 @@
     "storybook": "yarn workspace @sina-base/component storybook",
     "build-storybook": "yarn compile && build-storybook",
     "zeplin": "zeplin connect",
-    "release": "yarn lint-commit  && yarn components-compile  && npx lerna publish",
+    "release": "yarn lint-commit  && yarn compile  && npx lerna publish",
     "publish-npm": "yarn lint-commit && yarn compile && npm publish",
     "lerna-watch": "lerna run watch --stream",
     "lerna-build": "lerna run compile --stream",

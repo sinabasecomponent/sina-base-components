@@ -4,7 +4,7 @@ import { useVirtual } from "react-virtual";
 import { Loading, ScrollView } from "../../atoms";
 import { NoContent } from "../../molecules/noContent";
 import { useTheme } from "../../theme/context";
-import { Column, ColumnType } from "./column";
+import { ColumnType } from "./column";
 import { Order, OrderBy, TableContext } from "./context";
 import { Header } from "./header";
 import { RowContainer } from "./rowContainer";
@@ -336,5 +336,5 @@ const Table = <T extends Record<string, any>>({
   );
 };
 
-Table.Column = Column;
+export type { ColumnType };
 export { Table };

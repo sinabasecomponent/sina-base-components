@@ -21,14 +21,6 @@ export interface TableProps<T> {
     coloums: ColumnType<T>[];
     noContent?: React.ReactNode;
 }
-declare const Table: {
-    <T extends Record<string, any>>({ data, onCheckedRows, rowKey, headerStyle, headerClassName, searchBarClassName, searchBarToggle, searchBarStyle, filterIcon, clearFilterIcon, isLoading, onSelectRow, height, coloums, noContent, }: TableProps<T>): JSX.Element;
-    Column: <T_1 extends object>({ title, dataIndex, sorter, style, align, }: {
-        style?: import("react").CSSProperties | undefined;
-        title: import("react").ReactNode;
-        dataIndex: keyof T_1;
-        sorter?: ((a: T_1, b: T_1) => number) | undefined;
-        align?: "center" | "end" | "start" | undefined;
-    }) => JSX.Element;
-};
+declare const Table: <T extends Record<string, any>>({ data, onCheckedRows, rowKey, headerStyle, headerClassName, searchBarClassName, searchBarToggle, searchBarStyle, filterIcon, clearFilterIcon, isLoading, onSelectRow, height, coloums, noContent, }: TableProps<T>) => JSX.Element;
+export type { ColumnType };
 export { Table };

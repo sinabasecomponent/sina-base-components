@@ -2,6 +2,7 @@ import { Meta, Story } from "@storybook/react/types-6-0";
 import { useState } from "react";
 import { Button, ButtonProps } from "../../../molecules";
 import { StoryContainer } from "../../container";
+import React from "react";
 export default {
   title: "button/buttonWithLoading",
   component: Button,

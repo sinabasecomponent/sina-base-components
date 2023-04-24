@@ -1,4 +1,5 @@
 import React, { useState, useRef, useCallback } from "react";
+import * as XLSX from "xlsx";
 import { Modal } from "../modal";
 import { TextInput } from "../../molecules";
 import ReactFlow, {
@@ -13,6 +14,7 @@ import ReactFlow, {
   XYPosition,
   Edge,
   OnEdgesDelete,
+  Node,
 } from "reactflow";
 import { Two } from "./nodes";
 import "reactflow/dist/style.css";
@@ -24,9 +26,22 @@ import { Sixteen } from "./nodes/sixteen";
 import { Thirtytwo } from "./nodes/thirtytwo";
 import { RootNode } from "./nodes/root";
 import { EndNode } from "./nodes/endNode";
+import { Button } from "../../molecules/button";
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
+
+interface ExcelNodesType {
+  label: string;
+  x: number;
+  y: number;
+  absoluteX: number;
+  absoluteY: number;
+  id: string;
+  type: string;
+  width: number;
+  height: number;
+}
 
 const nodeTypes = {
   two: Two,
@@ -115,7 +130,7 @@ const DnDFlow = () => {
         id,
         type,
         position,
-        data: { label: `${type} node-${id}`, edges: edges, id: id },
+        data: { label: `${type} node-${id}`, edges, id },
       };
       setNodes((nds) => nds.concat(newNode));
     },
@@ -141,6 +156,79 @@ const DnDFlow = () => {
         };
       });
     });
+  };
+
+  const exportExcel = () => {
+    const _nodes = nodes.map(
+      ({
+        data: { label },
+        position: { x, y },
+        positionAbsolute: { x: absoluteX, y: absoluteY } = {},
+        id,
+        type,
+        width,
+        height,
+      }) => {
+        return {
+          label,
+          x,
+          y,
+          absoluteX,
+          absoluteY,
+          id,
+          type,
+          width,
+          height,
+        };
+      },
+    );
+
+    const nodesWorksheet = XLSX.utils.json_to_sheet(_nodes);
+    const edgesWorksheet = XLSX.utils.json_to_sheet(edges);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, nodesWorksheet, "nodes");
+    XLSX.utils.book_append_sheet(workbook, edgesWorksheet, "edges");
+    XLSX.writeFile(workbook, "graph.xlsx");
+  };
+
+  const excelToGraph = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e?.target?.files?.[0];
+    const data = await file?.arrayBuffer();
+    const workbook = XLSX.read(data);
+    const nodesArray: ExcelNodesType[] = XLSX.utils.sheet_to_json(
+      workbook.Sheets[workbook.SheetNames[0]],
+    );
+    const edgesArray: Edge<any>[] = XLSX.utils.sheet_to_json(
+      workbook.Sheets[workbook.SheetNames[1]],
+    );
+
+    const nodes: Node<NodeData, string | undefined>[] = nodesArray.map(
+      ({ absoluteX, absoluteY, height, id, label, type, width, x, y }) => {
+        return {
+          data: { label, edges: edgesArray, id },
+          position: {
+            x,
+            y,
+          },
+          height,
+          width,
+          positionAbsolute: {
+            x: absoluteX,
+            y: absoluteY,
+          },
+          type,
+          id,
+        };
+      },
+    );
+    const max = nodes.reduce((a, b) => {
+      const id = +b.id.split("_")[1];
+      return Math.max(a, id);
+    }, -Infinity);
+    id = max + 1;
+
+    setNodes(nodes);
+    setEdges(edgesArray);
   };
 
   return (
@@ -182,6 +270,10 @@ const DnDFlow = () => {
           </div>
           <Sidebar />
         </ReactFlowProvider>
+      </div>
+      <div>
+        <Button onClick={exportExcel}>export excel</Button>
+        <input type={"file"} onChange={excelToGraph} />
       </div>
     </>
   );

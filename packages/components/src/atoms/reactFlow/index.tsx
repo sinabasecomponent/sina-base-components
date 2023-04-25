@@ -27,11 +27,12 @@ import { Thirtytwo } from "./nodes/thirtytwo";
 import { RootNode } from "./nodes/root";
 import { EndNode } from "./nodes/endNode";
 import { Button } from "../../molecules/button";
+import { createNestedArray } from "./createNestedArray";
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
-interface ExcelNodesType {
+export interface ExcelNodesType {
   label: string;
   x: number;
   y: number;
@@ -201,6 +202,18 @@ const DnDFlow = () => {
     const edgesArray: Edge<any>[] = XLSX.utils.sheet_to_json(
       workbook.Sheets[workbook.SheetNames[1]],
     );
+
+    const dataWithParent = nodesArray.map((data) => {
+      const parentId = edgesArray.find(({ target }) => {
+        return target === data.id;
+      })?.source;
+      return {
+        ...data,
+        parentId: parentId ?? null,
+      };
+    });
+
+    const sag = createNestedArray({ nodes: dataWithParent });
 
     const nodes: Node<NodeData, string | undefined>[] = nodesArray.map(
       ({ absoluteX, absoluteY, height, id, label, type, width, x, y }) => {

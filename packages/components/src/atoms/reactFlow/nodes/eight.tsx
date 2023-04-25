@@ -2,57 +2,47 @@ import { Handle, Position } from "reactflow";
 import { NodeData } from "..";
 import { useTheme } from "../../../theme/context";
 import { Text } from "../../text";
+import { Tooltip } from "../../tooltip";
 import { checkValidation } from "./checkValidation";
 
 const Eight = ({ data: { label, edges, id } }: { data: NodeData }) => {
   const { color_primary_1 } = useTheme();
-  const array = Array.from({ length: 8 }, (_, i) => i + 1);
 
   return (
-    <div
-      style={{
-        width: 100,
-        height: 20,
-        border: `1px solid ${color_primary_1}`,
-        borderRadius: 4,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+    <Tooltip
+      content={
+        <div style={{ width: 200, height: 30, border: "1px solid red" }}>
+          {label}
+        </div>
+      }
+      arrowColor={"red"}
     >
-      <Text size={8} color={color_primary_1}>
-        {label}
-      </Text>
-      <Handle type="target" position={Position.Top} id={"a"} />
       <div
         style={{
-          width: "100%",
-          position: "absolute",
-          top: "100%",
+          width: 60,
+          height: 15,
+          border: `1px solid ${color_primary_1}`,
+          borderRadius: 4,
           display: "flex",
-          justifyContent: "space-around",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        {array.map((item) => {
-          return (
-            <Handle
-              key={item}
-              type="source"
-              position={Position.Bottom}
-              id={String(item)}
-              isValidConnection={(connection) =>
-                checkValidation({ connection, id, edges })
-              }
-              style={{
-                position: "static",
-                transform: "translateY(-50%)",
-              }}
-            />
-          );
-        })}
+        <Text ellipsis size={6} color={color_primary_1}>
+          {label}
+        </Text>
+        <Handle type="target" position={Position.Top} id={"a"} />
+        <Handle
+          isValidConnection={(connection) =>
+            checkValidation({ connection, id, edges, capacity: 8 })
+          }
+          type="source"
+          position={Position.Bottom}
+          id={"b"}
+        />
       </div>
-    </div>
+    </Tooltip>
   );
 };
 

@@ -3,32 +3,25 @@ const checkValidation = ({
   connection,
   id,
   edges,
+  capacity,
 }: {
   connection: Connection;
   edges?: Edge<any>[];
   id?: string;
+  capacity?: number;
 }) => {
-  const isSource = connection.source === id;
-  if (isSource) {
-    const sourceEdge = edges?.find(
-      ({ source: edgeSource, sourceHandle: edgeSourceHandle }) => {
-        return (
-          edgeSource === connection.source &&
-          edgeSourceHandle === connection.sourceHandle
-        );
-      },
-    );
-    const targetEdge = edges?.find(({ target: edgeTarget }) => {
-      return edgeTarget === connection.target;
-    });
-    const isSag = sourceEdge || targetEdge;
-    return !isSag;
-  } else {
-    const targetEdge = edges?.find(({ target }) => {
-      return target === connection.target;
-    });
-    return !(targetEdge?.source === connection.source);
-  }
+  const numberOfEdges =
+    edges?.filter(({ source }) => {
+      return source === id;
+    }).length || 0;
+
+  const isOverEdge = capacity && capacity === numberOfEdges ? true : false;
+
+  const targetEdge = edges?.find(({ target: edgeTarget }) => {
+    return edgeTarget === connection.target;
+  });
+  const isSag = Boolean(targetEdge) || isOverEdge;
+  return !isSag;
 };
 
 export { checkValidation };

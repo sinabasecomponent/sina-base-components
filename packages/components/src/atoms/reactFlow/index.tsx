@@ -28,6 +28,7 @@ import { RootNode } from "./nodes/root";
 import { EndNode } from "./nodes/endNode";
 import { Button } from "../../molecules/button";
 import { createNestedArray } from "./createNestedArray";
+import { flatData } from "@sina-base/utils";
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
@@ -214,6 +215,9 @@ const DnDFlow = () => {
     });
 
     const sag = createNestedArray({ nodes: dataWithParent });
+
+    const s = flatData(sag);
+    console.log({ s });
 
     const nodes: Node<NodeData, string | undefined>[] = nodesArray.map(
       ({ absoluteX, absoluteY, height, id, label, type, width, x, y }) => {

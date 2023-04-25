@@ -3,17 +3,14 @@ import { NodeData } from "..";
 import { useTheme } from "../../../theme/context";
 import { Text } from "../../text";
 import { Tooltip } from "../../tooltip";
+import { TooltipContent } from "./tooltipContent";
 
 const EndNode = ({ data: { label } }: { data: NodeData }) => {
   const { color_primary_1 } = useTheme();
   return (
     <Tooltip
-      content={
-        <div style={{ width: 200, height: 30, border: "1px solid red" }}>
-          {label}
-        </div>
-      }
-      arrowColor={"red"}
+      content={<TooltipContent label={label} />}
+      arrowColor={color_primary_1 || ""}
     >
       <div
         style={{

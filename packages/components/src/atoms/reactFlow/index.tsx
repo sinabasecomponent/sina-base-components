@@ -29,7 +29,6 @@ import { EndNode } from "./nodes/endNode";
 import { Button } from "../../molecules/button";
 import { createNestedArray } from "./createNestedArray";
 import { flatData } from "@sina-base/utils";
-
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
@@ -66,7 +65,7 @@ const DnDFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState<NodeData>([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [nodeName, setNodeName] = useState("");
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible] = useState(false);
 
   const [reactFlowInstance, setReactFlowInstance] =
     useState<ReactFlowInstance | null>(null);
@@ -214,12 +213,10 @@ const DnDFlow = () => {
       };
     });
 
-    const sag = createNestedArray({ nodes: dataWithParent });
+    const nestedNodes = createNestedArray({ nodes: dataWithParent });
 
-    const s = flatData(sag);
-    console.log({ s });
-
-    const nodes: Node<NodeData, string | undefined>[] = nodesArray.map(
+    const flat = flatData(nestedNodes);
+    const nodes: Node<NodeData, string | undefined>[] = flat.map(
       ({ absoluteX, absoluteY, height, id, label, type, width, x, y }) => {
         return {
           data: { label, edges: edgesArray, id },

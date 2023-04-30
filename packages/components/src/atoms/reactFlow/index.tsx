@@ -27,8 +27,9 @@ import { Thirtytwo } from "./nodes/thirtytwo";
 import { RootNode } from "./nodes/root";
 import { EndNode } from "./nodes/endNode";
 import { Button } from "../../molecules/button";
-import { createNestedArray } from "./createNestedArray";
-import { flatData } from "@sina-base/utils";
+import ELK from "elkjs";
+const elk = new ELK();
+
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
@@ -203,20 +204,39 @@ const DnDFlow = () => {
       workbook.Sheets[workbook.SheetNames[1]],
     );
 
-    const dataWithParent = nodesArray.map((data) => {
-      const parentId = edgesArray.find(({ target }) => {
-        return target === data.id;
-      })?.source;
+    const sagEdgesArray = edgesArray.map(({ source, target, ...rest }) => {
       return {
-        ...data,
-        parentId: parentId ?? null,
+        ...rest,
+        sources: [source],
+        targets: [target],
       };
     });
 
-    const nestedNodes = createNestedArray({ nodes: dataWithParent });
+    const graph = {
+      id: "root",
+      layoutOptions: {
+        "elk.algorithm": "mrtree",
+        "elk.spacing.nodeNode": "60",
+      },
+      children: nodesArray,
+      edges: sagEdgesArray,
+    };
 
-    const flat = flatData(nestedNodes);
-    const nodes: Node<NodeData, string | undefined>[] = flat.map(
+    const sag = await elk.layout(graph);
+
+    const sagNodes = sag.children?.map(({ x, y, ...rest }) => {
+      return {
+        ...rest,
+        absoluteX: x,
+        absoluteY: y,
+        x,
+        y,
+      };
+    });
+
+    //@ts-ignore
+    const nodes: Node<NodeData, string | undefined>[] = sagNodes?.map(
+      //@ts-ignore
       ({ absoluteX, absoluteY, height, id, label, type, width, x, y }) => {
         return {
           data: { label, edges: edgesArray, id },

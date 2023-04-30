@@ -9,19 +9,14 @@ export default {
 const Template: Story<BaseIconProps> = () => (
   <div
     style={{
-      backgroundColor: "black",
+      backgroundColor: "gray",
       width: "100%",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
     }}
   >
-    <BaseIcon
-      size={{ height: 50, width: 50 }}
-      unit={"pixel"}
-      name={"Calendar-_-Close"}
-    />
+    <BaseIcon size={{ height: 300, width: 300 }} unit={"pixel"} name={"ODC"} />
   </div>
 );
-
 export const Primary = Template.bind({});

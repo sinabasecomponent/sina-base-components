@@ -1,6 +1,6 @@
 {
   "name": "@sina-base/component",
-  "version": "1.1.60",
+  "version": "1.1.61",
   "private": false,
   "secure": false,
   "types": "types/index.d.ts",

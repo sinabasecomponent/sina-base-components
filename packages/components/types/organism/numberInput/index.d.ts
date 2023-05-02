@@ -4,5 +4,5 @@ interface NumberInput extends TextInputProps {
     onDecrease: () => void;
     onIncrease: () => void;
 }
-declare const NumberInput: ({ onDecrease, onIncrease }: NumberInput) => JSX.Element;
+declare const NumberInput: ({ onDecrease, onIncrease, ...rest }: NumberInput) => JSX.Element;
 export { NumberInput };

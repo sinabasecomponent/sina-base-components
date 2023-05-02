@@ -8,7 +8,7 @@ interface NumberInput extends TextInputProps {
   onIncrease: () => void;
 }
 
-const NumberInput = ({ onDecrease, onIncrease }: NumberInput) => {
+const NumberInput = ({ onDecrease, onIncrease, ...rest }: NumberInput) => {
   const { color_primary_1 } = useTheme();
   return (
     <div style={{ position: "relative" }}>
@@ -40,7 +40,7 @@ const NumberInput = ({ onDecrease, onIncrease }: NumberInput) => {
           cursor: "pointer",
         }}
       />
-      <TextInput style={{ paddingInline: 24, textAlign: "center" }} />
+      <TextInput {...rest} style={{ paddingInline: 24, textAlign: "center" }} />
     </div>
   );
 };

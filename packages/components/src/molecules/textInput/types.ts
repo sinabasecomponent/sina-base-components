@@ -10,16 +10,16 @@
 import React from "react";
 // import { TextProps } from "../../atoms";
 
-interface ViewProps
+interface InputElement
   extends Omit<
-    React.HTMLAttributes<HTMLElement>,
+    React.InputHTMLAttributes<HTMLInputElement>,
     "className" | "style" | "children"
   > {
   testID?: string;
   href?: string;
 }
 
-export interface TextInputProps extends Omit<ViewProps, "autoCorrect"> {
+export interface TextInputProps extends Omit<InputElement, "autoCorrect"> {
   className?: string;
   autoCapitalize?: "characters" | "none" | "sentences" | "words";
   // theme?: TextProps["theme"];

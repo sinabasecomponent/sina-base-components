@@ -46,9 +46,6 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       autoCorrect = true,
       blurOnSubmit,
       clearTextOnFocus,
-      // dir,
-      // theme = "regular",
-      // lang,
       editable = true,
       keyboardType = "default",
       multiline = false,
@@ -59,19 +56,15 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       onContentSizeChange,
       onFocus,
       onKeyPress,
-      // onLayout,
       onSelectionChange,
       onSubmitEditing,
-      // placeholderTextColor,
       returnKeyType,
       secureTextEntry = false,
       selection,
       selectTextOnFocus,
       spellCheck,
       className,
-      // style: styleProps,
       testID,
-      label,
       ...rest
     },
     forwardedRef,
@@ -79,7 +72,6 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
     const classes = useStyles();
     let type: React.InputHTMLAttributes<HTMLInputElement>["type"];
     let inputMode: React.HTMLAttributes<HTMLInputElement>["inputMode"];
-    // const themes = useThemes();
 
     switch (keyboardType) {
       case "email-address":
@@ -110,11 +102,11 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       type = "password";
     }
 
-    const dimensions = React.useRef({ height: null, width: null });
+    const dimensions = React.useRef({ height: 0, width: 0 });
     const hostRef = React.useRef(null);
 
     const handleContentSizeChange = React.useCallback(
-      (hostNode: any) => {
+      (hostNode: EventTarget & (HTMLInputElement | HTMLTextAreaElement)) => {
         if (multiline && onContentSizeChange && hostNode != null) {
           const newHeight = hostNode.scrollHeight;
           const newWidth = hostNode.scrollWidth;
@@ -244,23 +236,48 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       }
     }
 
-    const handleSelectionChange: React.DOMAttributes<HTMLInputElement>["onSelect"] =
-      (e) => {
-        if (onSelectionChange) {
-          try {
-            const node = e.target;
-            const { selectionStart, selectionEnd } = node as any;
-            //@ts-ignore
-            e.nativeEvent.selection = {
-              start: selectionStart,
-              end: selectionEnd,
+    const handleSelectionChange = (
+      e: React.SyntheticEvent<HTMLInputElement, Event>,
+    ) => {
+      if (onSelectionChange) {
+        try {
+          const _e = e as Omit<
+            React.SyntheticEvent<HTMLInputElement, Event>,
+            "nativeEvent" | "target"
+          > & {
+            nativeEvent: Event & {
+              selection: { start: number; end: number };
+              text: string;
             };
-            //@ts-ignore
-            e.nativeEvent.text = e.target.value;
-            onSelectionChange(e);
-          } catch (e) {}
-        }
-      };
+            target: EventTarget & {
+              selectionStart: number;
+              selectionEnd: number;
+              value: string;
+            };
+          };
+          const node = _e.target as EventTarget & {
+            selectionStart: number;
+            selectionEnd: number;
+            value: string;
+          };
+
+          const { selectionStart, selectionEnd } = node;
+
+          const nativeEvent = _e.nativeEvent as Event & {
+            selection: { start: number; end: number };
+            text: string;
+          };
+
+          nativeEvent.selection = {
+            start: selectionStart,
+            end: selectionEnd,
+          };
+
+          nativeEvent.text = node.value;
+          onSelectionChange(_e);
+        } catch (_e) {}
+      }
+    };
 
     React.useEffect(() => {
       const node = hostRef.current;
@@ -306,15 +323,12 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
         {...(supportedProps as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
       />
     ) : (
-      <div className={classNames(classes["textInput"], className)}>
-        {label ? <label htmlFor={label}>{label}</label> : null}
-        <div style={{ flex: 1 }}>
-          <input
-            ref={setRef}
-            {...(supportedProps as React.InputHTMLAttributes<HTMLInputElement>)}
-          />
-        </div>
-      </div>
+      <input
+        className={classNames(classes["textInput"], className)}
+        ref={setRef}
+        type={"number"}
+        {...(supportedProps as React.InputHTMLAttributes<HTMLInputElement>)}
+      />
     );
   },
 );

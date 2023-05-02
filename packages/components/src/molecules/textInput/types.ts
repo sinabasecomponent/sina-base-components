@@ -7,26 +7,23 @@
  * @flow
  */
 
-import React from 'react';
-import { TextProps } from '../../atoms';
-//  import { TextProps } from "../../molecules";
+import React from "react";
+// import { TextProps } from "../../atoms";
 
 interface ViewProps
   extends Omit<
     React.HTMLAttributes<HTMLElement>,
-    'className' | 'style' | 'children'
+    "className" | "style" | "children"
   > {
   testID?: string;
   href?: string;
-  onPress?: (e: any) => void;
 }
 
-export interface TextInputProps extends Omit<ViewProps, 'autoCorrect'> {
+export interface TextInputProps extends Omit<ViewProps, "autoCorrect"> {
   className?: string;
-  label?: string;
-  autoCapitalize?: 'characters' | 'none' | 'sentences' | 'words';
-  theme?: TextProps['theme'];
-  lang?: TextProps['lang'];
+  autoCapitalize?: "characters" | "none" | "sentences" | "words";
+  // theme?: TextProps["theme"];
+  // lang?: TextProps["lang"];
   autoComplete?: string;
   autoCompleteType?: string; // Compat with React Native (Bug react-native#26003)
   autoCorrect?: boolean;
@@ -34,42 +31,56 @@ export interface TextInputProps extends Omit<ViewProps, 'autoCorrect'> {
   blurOnSubmit?: boolean;
   clearTextOnFocus?: boolean;
   defaultValue?: string;
-  dir?: 'auto' | 'ltr' | 'rtl';
+  dir?: "auto" | "ltr" | "rtl";
   disabled?: boolean;
   editable?: boolean;
   inputAccessoryViewID?: string;
   keyboardType?:
-    | 'default'
-    | 'email-address'
-    | 'number-pad'
-    | 'numbers-and-punctuation'
-    | 'numeric'
-    | 'phone-pad'
-    | 'search'
-    | 'url'
-    | 'decimal-pad'
-    | 'web-search';
+    | "default"
+    | "email-address"
+    | "number-pad"
+    | "numbers-and-punctuation"
+    | "numeric"
+    | "phone-pad"
+    | "search"
+    | "url"
+    | "decimal-pad"
+    | "web-search";
   maxLength?: number;
   multiline?: boolean;
   numberOfLines?: number;
-  onChange?: (e: any) => void;
+  onChange?: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
   onChangeText?: (e: string) => void;
-  onContentSizeChange?: (e: any) => void;
-  onEndEditing?: (e: any) => void;
-  onKeyPress?: (e: any) => void;
-  onSelectionChange?: (e: any) => void;
-  onScroll?: (e: any) => void;
-  onSubmitEditing?: (e: any) => void;
+  onContentSizeChange?: (e: {
+    nativeEvent: {
+      contentSize: {
+        height: number;
+        width: number;
+      };
+    };
+  }) => void;
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onSelectionChange?: (
+    e: Omit<React.SyntheticEvent<HTMLInputElement, Event>, "nativeEvent"> & {
+      nativeEvent: Event & {
+        selection: { start: number; end: number };
+        text: string;
+      };
+    },
+  ) => void;
+  onSubmitEditing?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   placeholder?: string;
   placeholderTextColor?: string;
   returnKeyType?:
-    | 'enter'
-    | 'done'
-    | 'go'
-    | 'next'
-    | 'previous'
-    | 'search'
-    | 'send';
+    | "enter"
+    | "done"
+    | "go"
+    | "next"
+    | "previous"
+    | "search"
+    | "send";
   secureTextEntry?: boolean;
   selectTextOnFocus?: boolean;
   selection?: {

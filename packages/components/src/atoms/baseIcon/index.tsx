@@ -43,7 +43,7 @@ const BaseIcon = React.forwardRef<HTMLDivElement, BaseIconProps>(
       <div
         ref={ref}
         className={classNames(wrapperClassName)}
-        style={{ display: "flex", ...wrapperStyle }}
+        style={{ display: "inline-flex", ...wrapperStyle }}
         {...rest}
       >
         <IconMoon

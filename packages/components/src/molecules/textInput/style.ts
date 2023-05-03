@@ -6,12 +6,19 @@ const useStyles = createUseStyles(
     return {
       textInput: {
         width: "100%",
-        backgroundColor: theme.color_background,
-        color: theme.color_primary_2,
+        backgroundColor: theme.color_primary_7,
+        color: theme.color_primary_1,
         border: "none",
-        padding: "0.7rem",
-        borderRadius: "0.4375rem",
+        paddingInline: 10,
+        paddingBlock: 10,
+        borderRadius: 7,
         outline: "none",
+        height: 40,
+      },
+      disabled: {
+        backgroundColor: theme.color_background,
+        cursor: "not-allowed",
+        color: theme.color_gray_4,
       },
     };
   },

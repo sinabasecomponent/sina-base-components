@@ -23,6 +23,7 @@ import FiraGOThinItalic from "@sina-base/asset/src/fonts/FiraGO-ThinItalic.ttf";
 import FiraGOTwo from "@sina-base/asset/src/fonts/FiraGO-Two.ttf";
 import FiraGOTwoItalic from "@sina-base/asset/src/fonts/FiraGO-TwoItalic.ttf";
 import FiraGOUltraLight from "@sina-base/asset/src/fonts/FiraGO-UltraLight.ttf";
+export { FiraBold };
 
 export const fontWeights = {
   light: 100,

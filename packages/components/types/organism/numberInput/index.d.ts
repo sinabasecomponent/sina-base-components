@@ -1,8 +1,9 @@
 /// <reference types="react" />
 import { TextInputProps } from "../../molecules";
 interface NumberInput extends TextInputProps {
-    onDecrease: () => void;
-    onIncrease: () => void;
+    onDecrease?: () => void;
+    onIncrease?: () => void;
+    wrapperStyle?: React.CSSProperties;
 }
-declare const NumberInput: ({ onDecrease, onIncrease, ...rest }: NumberInput) => JSX.Element;
+declare const NumberInput: ({ wrapperStyle, onDecrease, onIncrease, ...rest }: NumberInput) => JSX.Element;
 export { NumberInput };

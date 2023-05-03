@@ -7,6 +7,7 @@
  * @flow
  */
 import React from "react";
+import { TextProps } from "../../atoms";
 interface InputElement extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "className" | "style" | "children"> {
     testID?: string;
     href?: string;
@@ -14,6 +15,7 @@ interface InputElement extends Omit<React.InputHTMLAttributes<HTMLInputElement>,
 export interface TextInputProps extends Omit<InputElement, "autoCorrect"> {
     className?: string;
     autoCapitalize?: "characters" | "none" | "sentences" | "words";
+    theme?: TextProps["theme"];
     autoComplete?: string;
     autoCompleteType?: string;
     autoCorrect?: boolean;

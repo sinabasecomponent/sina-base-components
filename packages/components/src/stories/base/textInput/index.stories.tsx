@@ -9,8 +9,9 @@ export default {
 
 const Template: Story<TextInputProps> = () => (
   <StoryContainer>
-    <TextInput />
+    <TextInput style={{ marginBottom: 30 }} theme="bold" />
+    <TextInput disabled value={"sdfsdf"} />
   </StoryContainer>
 );
 
-export const Primary = Template.bind({});
+export const Active = Template.bind({});

@@ -8,6 +8,7 @@
  */
 
 import React from "react";
+import { TextProps } from "../../atoms";
 // import { TextProps } from "../../atoms";
 
 interface InputElement
@@ -22,7 +23,7 @@ interface InputElement
 export interface TextInputProps extends Omit<InputElement, "autoCorrect"> {
   className?: string;
   autoCapitalize?: "characters" | "none" | "sentences" | "words";
-  // theme?: TextProps["theme"];
+  theme?: TextProps["theme"];
   // lang?: TextProps["lang"];
   autoComplete?: string;
   autoCompleteType?: string; // Compat with React Native (Bug react-native#26003)

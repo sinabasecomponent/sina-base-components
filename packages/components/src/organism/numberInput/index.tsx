@@ -4,14 +4,20 @@ import { theming } from "../../theme";
 const { useTheme } = theming;
 
 interface NumberInput extends TextInputProps {
-  onDecrease: () => void;
-  onIncrease: () => void;
+  onDecrease?: () => void;
+  onIncrease?: () => void;
+  wrapperStyle?: React.CSSProperties;
 }
 
-const NumberInput = ({ onDecrease, onIncrease, ...rest }: NumberInput) => {
-  const { color_primary_1 } = useTheme();
+const NumberInput = ({
+  wrapperStyle,
+  onDecrease,
+  onIncrease,
+  ...rest
+}: NumberInput) => {
+  const { color_primary_1, color_gray_4 } = useTheme();
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative", ...wrapperStyle }}>
       <BaseIcon
         name={"Amount-Boxes_Decrease"}
         size={{ height: 7, width: 12 }}
@@ -23,12 +29,12 @@ const NumberInput = ({ onDecrease, onIncrease, ...rest }: NumberInput) => {
           transform: "translateY(-50%)",
           cursor: "pointer",
         }}
-        color={color_primary_1}
+        color={rest.disabled ? color_gray_4 : color_primary_1}
         onClick={onDecrease}
       />
       <BaseIcon
         onClick={onIncrease}
-        color={color_primary_1}
+        color={rest.disabled ? color_gray_4 : color_primary_1}
         name={"Amount-Boxes_Increase"}
         size={{ height: 7, width: 12 }}
         unit={"pixel"}
@@ -40,7 +46,10 @@ const NumberInput = ({ onDecrease, onIncrease, ...rest }: NumberInput) => {
           cursor: "pointer",
         }}
       />
-      <TextInput {...rest} style={{ paddingInline: 24, textAlign: "center" }} />
+      <TextInput
+        {...rest}
+        style={{ paddingInline: 24, textAlign: "center", ...rest.style }}
+      />
     </div>
   );
 };

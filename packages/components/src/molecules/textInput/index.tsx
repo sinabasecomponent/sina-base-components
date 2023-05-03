@@ -4,6 +4,7 @@ import { composeRef } from "reactjs-view-core";
 import { useStyles } from "./style";
 import TextInputState from "./TextInputState";
 import { TextInputProps } from "./types";
+import { useThemes } from "../../atoms/text/style";
 
 /**
  * Determines whether a 'selection' prop differs from a node's existing
@@ -65,6 +66,8 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       spellCheck,
       className,
       testID,
+      disabled,
+      theme,
       ...rest
     },
     forwardedRef,
@@ -317,6 +320,8 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
 
     const setRef = composeRef(hostRef, imperativeRef, forwardedRef);
 
+    const themes = useThemes();
+
     return multiline ? (
       <textarea
         ref={setRef}
@@ -324,10 +329,16 @@ const TextInput = React.forwardRef<HTMLElement, TextInputProps>(
       />
     ) : (
       <input
-        className={classNames(classes["textInput"], className)}
-        ref={setRef}
-        type={"number"}
         {...(supportedProps as React.InputHTMLAttributes<HTMLInputElement>)}
+        className={classNames(
+          classes["textInput"],
+          disabled && classes.disabled,
+          themes[theme || "Regular"],
+          className,
+        )}
+        ref={setRef}
+        type={rest.type}
+        disabled={disabled}
       />
     );
   },

@@ -11,6 +11,12 @@ const Template: Story<any> = () => (
   <StoryContainer>
     <div style={{ width: 100 }}>
       <input />
+      <NumberInput
+        wrapperStyle={{ marginBottom: 40 }}
+        disabled
+        style={{ fontSize: 20 }}
+        value="122"
+      />
       <NumberInput />
     </div>
   </StoryContainer>

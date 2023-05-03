@@ -1,3 +1,5 @@
+import FiraBold from "@sina-base/asset/src/fonts/FiraGO-Bold.ttf";
+export { FiraBold };
 export declare const fontWeights: {
     light: number;
     regular: number;

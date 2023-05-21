@@ -1,5 +1,6 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { Select, SelectProps } from "../../../organism/select";
+import { Select } from "../../../organism/select";
+import { SelectProps } from "../../../organism/select/types";
 import { StoryContainer } from "../../container";
 import React from "react";
 export default {
@@ -9,7 +10,7 @@ export default {
 
 const Template: Story<SelectProps> = () => (
   <StoryContainer>
-    <Select data={[{ label: "sdf", value: "sdfsdfsdf" }]} />
+    <Select disabled data={[{ label: "sdf", value: "sdfsdfsdf" }]} />
   </StoryContainer>
 );
 

@@ -17,6 +17,7 @@ const Select = <T extends Record<string, unknown> = Default>({
   valueExtractor = (item: T) => item.value as Value,
   onChange,
   onClear,
+  disabled,
 }: SelectProps<T>) => {
   const classes = useStyles();
   const { color_primary_1, color_primary_3 } = useTheme();
@@ -46,6 +47,7 @@ const Select = <T extends Record<string, unknown> = Default>({
   }, []);
 
   const handleOnClick = () => {
+    if (disabled) return;
     setVisible((prev) => !prev);
   };
 
@@ -83,6 +85,7 @@ const Select = <T extends Record<string, unknown> = Default>({
   };
 
   const handleMouseEvent = () => {
+    if (disabled) return;
     setIsHovered((prev) => !prev);
   };
 
@@ -104,6 +107,7 @@ const Select = <T extends Record<string, unknown> = Default>({
   return (
     <>
       <div
+        style={{ cursor: disabled ? "not-allowed" : "pointer" }}
         onClick={handleOnClick}
         ref={handleRefOfRefrenceElement}
         className={classes["select"]}

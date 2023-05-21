@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { DOMAttributes } from "react";
 import { BaseIcon } from "../../../atoms";
 import { useTheme } from "../../../theme/context";
+import { useStyles } from "./style";
 
 const Clear = ({
   handleOnClear,
@@ -13,19 +14,18 @@ const Clear = ({
   isVisible: boolean;
 }) => {
   const { color_primary_1, color_primary_3 } = useTheme();
+  const classes = useStyles();
   const handleOnClick: DOMAttributes<HTMLDivElement>["onClick"] = (e) => {
     e.stopPropagation();
     handleOnClear();
   };
   return (
-    <div style={{ height: "100%", width: 20, position: "relative" }}>
+    <div className={classes.container}>
       <div
         onClick={handleOnClick}
+        className={classes.clear}
         style={{
-          position: "absolute",
-          top: 10,
           display: whatVisible === "cross" ? "block" : "none",
-          cursor: "pointer",
         }}
       >
         <BaseIcon
@@ -35,9 +35,8 @@ const Clear = ({
         />
       </div>
       <div
+        className={classes.clear}
         style={{
-          position: "absolute",
-          top: 12,
           display: whatVisible === "arrow" ? "block" : "none",
         }}
       >

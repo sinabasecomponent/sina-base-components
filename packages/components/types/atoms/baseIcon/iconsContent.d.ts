@@ -1,8 +1,8 @@
 export declare const iconsContent: {
-    Modem: string;
     "Abstract-Service-Graph_Hamburger-Menu": string;
     "Abstract-Service-Graph_Menu_Reverse-Icon": string;
     "Abstract-Service-Graph_Menu_Toggle-OFF": string;
+    "Abstract-Service-Graph_Menu_Toggle-ON": string;
     "Abstract-Service-Graph_Narrow-Rectangle-Icon": string;
     "Abstract-Service-Graph_Plus-Icon-for-next-level": string;
     "Abstract-Service-Graph_Trapezius-Icon": string;
@@ -96,6 +96,7 @@ export declare const iconsContent: {
     "Menu-Icon-_-Sina-Logo": string;
     "Menu-Icon-_-Topology": string;
     "Menu-Icon-_-User-Management": string;
+    Modem: string;
     ODC: string;
     OLT: string;
     "Performance-_-Edit-Setting-of-Chart": string;

@@ -16,7 +16,7 @@ const Template: Story<BaseIconProps> = () => (
       alignItems: "center",
     }}
   >
-    <BaseIcon size={{ height: 300, width: 300 }} unit={"pixel"} name={"ODC"} />
+    <BaseIcon size={{ height: 48, width: 60 }} unit={"pixel"} name={"Modem"} />
   </div>
 );
 export const Primary = Template.bind({});

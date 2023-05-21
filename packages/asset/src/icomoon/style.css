@@ -1,10 +1,10 @@
 @font-face {
   font-family: "icomoon";
-  src: url("fonts/icomoon.eot?emhlrp");
-  src: url("fonts/icomoon.eot?emhlrp#iefix") format("embedded-opentype"),
-    url("fonts/icomoon.ttf?emhlrp") format("truetype"),
-    url("fonts/icomoon.woff?emhlrp") format("woff"),
-    url("fonts/icomoon.svg?emhlrp#icomoon") format("svg");
+  src: url("fonts/icomoon.eot?zia1zy");
+  src: url("fonts/icomoon.eot?zia1zy#iefix") format("embedded-opentype"),
+    url("fonts/icomoon.ttf?zia1zy") format("truetype"),
+    url("fonts/icomoon.woff?zia1zy") format("woff"),
+    url("fonts/icomoon.svg?zia1zy#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -26,6 +26,65 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-Modem .path1:before {
+  content: "\e904";
+  color: rgb(230, 237, 252);
+}
+.icon-Modem .path2:before {
+  content: "\e905";
+  margin-left: -1.27734375em;
+  color: rgb(230, 237, 252);
+}
+.icon-Modem .path3:before {
+  content: "\eb44";
+  margin-left: -1.27734375em;
+  color: rgb(230, 237, 252);
+}
+.icon-Modem .path4:before {
+  content: "\eb45";
+  margin-left: -1.27734375em;
+  color: rgb(230, 237, 252);
+}
+.icon-Modem .path5:before {
+  content: "\eb46";
+  margin-left: -1.27734375em;
+  color: rgb(230, 237, 252);
+}
+.icon-Modem .path6:before {
+  content: "\eb47";
+  margin-left: -1.27734375em;
+  color: rgb(41, 46, 63);
+}
+.icon-Modem .path7:before {
+  content: "\eb48";
+  margin-left: -1.27734375em;
+  color: rgb(41, 46, 63);
+}
+.icon-Modem .path8:before {
+  content: "\eb49";
+  margin-left: -1.27734375em;
+  color: rgb(41, 46, 63);
+}
+.icon-Modem .path9:before {
+  content: "\eb4a";
+  margin-left: -1.27734375em;
+  color: none;
+}
+.icon-Modem .path10:before {
+  content: "\eb4b";
+  margin-left: -1.27734375em;
+  color: rgb(41, 46, 63);
+}
+.icon-Modem .path11:before {
+  content: "\eb4c";
+  margin-left: -1.27734375em;
+  color: none;
+}
+.icon-Modem .path12:before {
+  content: "\eb4d";
+  margin-left: -1.27734375em;
+  color: rgb(41, 46, 63);
+}
 .icon-Abstract-Service-Graph_Hamburger-Menu:before {
   content: "\e900";
   color: #684a80;
@@ -40,15 +99,6 @@
 }
 .icon-Abstract-Service-Graph_Menu_Toggle-OFF .path2:before {
   content: "\e903";
-  margin-left: -1.888671875em;
-  color: rgb(255, 255, 255);
-}
-.icon-Abstract-Service-Graph_Menu_Toggle-ON .path1:before {
-  content: "\e904";
-  color: rgb(73, 209, 225);
-}
-.icon-Abstract-Service-Graph_Menu_Toggle-ON .path2:before {
-  content: "\e905";
   margin-left: -1.888671875em;
   color: rgb(255, 255, 255);
 }
@@ -78,11 +128,11 @@
 }
 .icon-Amount-Boxes_Decrease:before {
   content: "\e90c";
-  color: red;
+  color: #fff;
 }
 .icon-Amount-Boxes_Increase:before {
   content: "\e90d";
-  color: red;
+  color: #fff;
 }
 .icon-BPM_Alert-Icon:before {
   content: "\e90e";
@@ -114,7 +164,7 @@
 }
 .icon-Calendar-_-Close:before {
   content: "\e915";
-  color: red;
+  color: #fff;
 }
 .icon-Calendar-_-Combo-Calendar:before {
   content: "\e916";
@@ -122,19 +172,19 @@
 }
 .icon-Calendar-_-Month-_-Next-Month:before {
   content: "\e917";
-  color: red;
+  color: #fff;
 }
 .icon-Calendar-_-Month-_-Previous-Month:before {
   content: "\e918";
-  color: red;
+  color: #fff;
 }
 .icon-Calendar-_-Year-_-Next-Year:before {
   content: "\e919";
-  color: red;
+  color: #fff;
 }
 .icon-Calendar-_-Year-_-Previous-Year:before {
   content: "\e91a";
-  color: red;
+  color: #fff;
 }
 .icon-Create-Project_Alert-Icon:before {
   content: "\e91b";
@@ -1331,50 +1381,50 @@
 }
 .icon-Menu-Icon-_-Create:before {
   content: "\ea15";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Cross:before {
   content: "\ea16";
 }
 .icon-Menu-Icon-_-Dashboard:before {
   content: "\ea17";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Discovery:before {
   content: "\ea18";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Export:before {
   content: "\ea19";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Faults:before {
   content: "\ea1a";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Import:before {
   content: "\ea1b";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Inventory:before {
   content: "\ea1c";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Load:before {
   content: "\ea1d";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Performance:before {
   content: "\ea1e";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Save:before {
   content: "\ea1f";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Services:before {
   content: "\ea20";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-Sina-Logo .path1:before {
   content: "\ea21";
@@ -1422,11 +1472,352 @@
 }
 .icon-Menu-Icon-_-Topology:before {
   content: "\ea2a";
-  color: red;
+  color: #fff;
 }
 .icon-Menu-Icon-_-User-Management:before {
   content: "\ea2b";
-  color: red;
+  color: #fff;
+}
+.icon-ODC .path1:before {
+  content: "\ea2c";
+  color: rgb(230, 237, 252);
+}
+.icon-ODC .path2:before {
+  content: "\ea2d";
+  margin-left: -1em;
+  color: rgb(230, 237, 252);
+}
+.icon-ODC .path3:before {
+  content: "\ea2e";
+  margin-left: -1em;
+  color: rgb(230, 237, 252);
+}
+.icon-ODC .path4:before {
+  content: "\ea2f";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+  opacity: 0.5;
+}
+.icon-ODC .path5:before {
+  content: "\ea30";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+  opacity: 0.5;
+}
+.icon-ODC .path6:before {
+  content: "\ea31";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+  opacity: 0.5;
+}
+.icon-ODC .path7:before {
+  content: "\ea32";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+  opacity: 0.5;
+}
+.icon-ODC .path8:before {
+  content: "\ea33";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+  opacity: 0.5;
+}
+.icon-ODC .path9:before {
+  content: "\ea34";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+  opacity: 0.5;
+}
+.icon-ODC .path10:before {
+  content: "\ea35";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+  opacity: 0.5;
+}
+.icon-ODC .path11:before {
+  content: "\ea36";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+  opacity: 0.5;
+}
+.icon-ODC .path12:before {
+  content: "\ea37";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-ODC .path13:before {
+  content: "\ea38";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-ODC .path14:before {
+  content: "\ea39";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-ODC .path15:before {
+  content: "\ea3a";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-ODC .path16:before {
+  content: "\ea3b";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-ODC .path17:before {
+  content: "\ea3c";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-ODC .path18:before {
+  content: "\ea3d";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-ODC .path19:before {
+  content: "\ea3e";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-ODC .path20:before {
+  content: "\ea3f";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-ODC .path21:before {
+  content: "\ea40";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-ODC .path22:before {
+  content: "\ea41";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-ODC .path23:before {
+  content: "\ea42";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-ODC .path24:before {
+  content: "\ea43";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-ODC .path25:before {
+  content: "\ea44";
+  margin-left: -1em;
+  color: rgb(255, 187, 77);
+}
+.icon-ODC .path26:before {
+  content: "\ea45";
+  margin-left: -1em;
+  color: rgb(230, 237, 252);
+}
+.icon-ODC .path27:before {
+  content: "\ea46";
+  margin-left: -1em;
+  color: rgb(230, 237, 252);
+}
+.icon-ODC .path28:before {
+  content: "\ea47";
+  margin-left: -1em;
+  color: rgb(230, 237, 252);
+}
+.icon-ODC .path29:before {
+  content: "\ea48";
+  margin-left: -1em;
+  color: rgb(230, 237, 252);
+}
+.icon-ODC .path30:before {
+  content: "\ea49";
+  margin-left: -1em;
+  color: rgb(230, 237, 252);
+}
+.icon-ODC .path31:before {
+  content: "\ea4a";
+  margin-left: -1em;
+  color: rgb(230, 237, 252);
+}
+.icon-OLT .path1:before {
+  content: "\ea4b";
+  color: rgb(230, 237, 252);
+}
+.icon-OLT .path2:before {
+  content: "\ea4c";
+  margin-left: -1em;
+  color: none;
+}
+.icon-OLT .path3:before {
+  content: "\ea4d";
+  margin-left: -1em;
+  color: none;
+}
+.icon-OLT .path4:before {
+  content: "\ea4e";
+  margin-left: -1em;
+  color: none;
+}
+.icon-OLT .path5:before {
+  content: "\ea4f";
+  margin-left: -1em;
+  color: none;
+}
+.icon-OLT .path6:before {
+  content: "\ea50";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+}
+.icon-OLT .path7:before {
+  content: "\ea51";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+}
+.icon-OLT .path8:before {
+  content: "\ea52";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+}
+.icon-OLT .path9:before {
+  content: "\ea53";
+  margin-left: -1em;
+  color: none;
+}
+.icon-OLT .path10:before {
+  content: "\ea54";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+}
+.icon-OLT .path11:before {
+  content: "\ea55";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+}
+.icon-OLT .path12:before {
+  content: "\ea56";
+  margin-left: -1em;
+  color: rgb(41, 46, 63);
+}
+.icon-OLT .path13:before {
+  content: "\ea57";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path14:before {
+  content: "\ea58";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path15:before {
+  content: "\ea59";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path16:before {
+  content: "\ea5a";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path17:before {
+  content: "\ea5b";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path18:before {
+  content: "\ea5c";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path19:before {
+  content: "\ea5d";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path20:before {
+  content: "\ea5e";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path21:before {
+  content: "\ea5f";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path22:before {
+  content: "\ea60";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path23:before {
+  content: "\ea61";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path24:before {
+  content: "\ea62";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path25:before {
+  content: "\ea63";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path26:before {
+  content: "\ea64";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path27:before {
+  content: "\ea65";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path28:before {
+  content: "\ea66";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path29:before {
+  content: "\ea67";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path30:before {
+  content: "\ea68";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path31:before {
+  content: "\ea69";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path32:before {
+  content: "\ea6a";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path33:before {
+  content: "\ea6b";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path34:before {
+  content: "\ea6c";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path35:before {
+  content: "\ea6d";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
+}
+.icon-OLT .path36:before {
+  content: "\ea6e";
+  margin-left: -1em;
+  color: rgb(178, 206, 234);
 }
 .icon-ODC .path1:before {
   content: "\ea2c";
@@ -1771,7 +2162,7 @@
 }
 .icon-Performance-_-Edit-Setting-of-Chart:before {
   content: "\ea6f";
-  color: red;
+  color: #fff;
 }
 .icon-Performance-_-No-Chart-Yet .path1:before {
   content: "\ea70";
@@ -1809,7 +2200,7 @@
 }
 .icon-Performance-_-Print-of-Chart:before {
   content: "\ea77";
-  color: red;
+  color: #fff;
 }
 .icon-Performance-_-Table-Setting-_-Bullet:before {
   content: "\ea78";
@@ -2346,11 +2737,11 @@
 }
 .icon-Shelf-View-_-Loopback:before {
   content: "\eae9";
-  color: red;
+  color: #fff;
 }
 .icon-Shelf-View-_-PRBS:before {
   content: "\eaea";
-  color: red;
+  color: #fff;
 }
 .icon-Shelf-View-_-Refresh:before {
   content: "\eaeb";
@@ -2518,7 +2909,7 @@
 }
 .icon-Table-_-Info:before {
   content: "\eb0f";
-  color: red;
+  color: #fff;
 }
 .icon-Table-_-Search-Icon:before {
   content: "\eb10";
@@ -2677,11 +3068,11 @@
 }
 .icon-Tree-View_Flesh-Icon-for-next-level:before {
   content: "\eb34";
-  color: red;
+  color: #fff;
 }
 .icon-Tree-View_Flesh-Icon-for-previous-level:before {
   content: "\eb35";
-  color: red;
+  color: #fff;
 }
 .icon-User-Management-_-Groups-and-User-Tre-View-_-Delete-Icon:before {
   content: "\eb36";

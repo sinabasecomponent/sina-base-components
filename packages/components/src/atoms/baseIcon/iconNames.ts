@@ -1,8 +1,8 @@
 // Auto generate
-  export type IconsNames = "Abstract-Service-Graph_Hamburger-Menu"
+  export type IconsNames = "Modem"
+|"Abstract-Service-Graph_Hamburger-Menu"
 |"Abstract-Service-Graph_Menu_Reverse-Icon"
 |"Abstract-Service-Graph_Menu_Toggle-OFF"
-|"Abstract-Service-Graph_Menu_Toggle-ON"
 |"Abstract-Service-Graph_Narrow-Rectangle-Icon"
 |"Abstract-Service-Graph_Plus-Icon-for-next-level"
 |"Abstract-Service-Graph_Trapezius-Icon"

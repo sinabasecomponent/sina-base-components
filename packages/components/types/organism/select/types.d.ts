@@ -11,6 +11,7 @@ export interface SelectProps<T extends Record<string, unknown> = Default> {
     labelExtractor?: (item: T) => React.ReactNode;
     onChange?: (item: Value) => void;
     onClear?: () => void;
+    disabled?: boolean;
 }
 export declare type OptionValue = {
     value: Value;

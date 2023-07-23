@@ -1,6 +1,6 @@
 {
-  "name": "@sina-base/utils",
-  "version": "1.1.57",
+  "name": "@shakil-ts/utils",
+  "version": "1.1.1",
   "types": "types/index.d.ts",
   "main": "dist/index.js",
   "files": [

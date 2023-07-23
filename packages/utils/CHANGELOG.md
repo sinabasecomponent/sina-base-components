@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.66](https://github.com/sinabasecomponent/sina-base-components/compare/v1.1.65...v1.1.66) (2023-07-23)
+
+**Note:** Version bump only for package @shakil-ts/utils
+
 ## [1.1.57](https://github.com/sinabasecomponent/sina-base-components/compare/v1.1.56...v1.1.57) (2023-04-11)
 
 **Note:** Version bump only for package @sina-base/utils
